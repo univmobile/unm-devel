@@ -1,6 +1,14 @@
+.classpath
+.project
+.settings/
 target/
 pom.xml.tag
 pom.xml.releaseBackup
 pom.xml.next
 release.properties
 .DS_Store
+
+unm-backend-mock/.classpath
+unm-backend-mock/.project
+unm-backend-mock/.settings/
+unm-backend-mock/target/
