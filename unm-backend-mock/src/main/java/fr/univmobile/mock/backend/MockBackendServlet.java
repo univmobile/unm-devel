@@ -40,7 +40,7 @@ public class MockBackendServlet extends HttpServlet {
 
 		for (final String path : new String[] { //
 		"getUniversityConfig-xxx.json", //
-				"iphone-regions.json", //
+				"regions.json", //
 				"listUniversities.json", //
 				"pois.json", //
 				"university_default.json" //
