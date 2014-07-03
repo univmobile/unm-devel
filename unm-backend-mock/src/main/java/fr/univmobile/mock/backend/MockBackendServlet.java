@@ -24,6 +24,29 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.io.IOUtils;
 
+/**
+ * This servlet will serve JSON contents according to paths passed in the
+ * request URIs.
+ * <ul>
+ * <li><code>http://xxx/unm-backend-mock</code> (HTML page)
+ * 		will list all saved JSON contents, plus their paths, such as
+ * 		mon-chemin-a-moi
+ * <li><code>http://xxx/unm-backend-mock/mon-chemin-a-moi</code> (JSON content)
+ * 		will serve the JSON content attached to mon-chemin-a-moi. This URL
+ * 		is used in mocked tests for mobile development.
+ * <li><code>http://xxx/unm-backend-mock/?path=mon-chemin-a-moi</code> (HTML page)
+ * 		will allow to edit the JSON content attached to mon-chemin-a-moi.
+ * </ul>
+ * To add a new path + attached JSON content, enter them in the form.
+ * <p>
+ * To remove an existing path, attach an empty JSON content.
+ * <p>
+ * When it is installed, 
+ * the servlet contains a few sample JSON contents for ease of use. They can
+ * be found in the src/main/webapp/WEB-INF/json/ directory.
+ * 
+ * @author dandriana
+ */
 public class MockBackendServlet extends HttpServlet {
 
 	/**
@@ -184,7 +207,7 @@ public class MockBackendServlet extends HttpServlet {
 
 			if (savedContent != null) {
 
-				// JSON stream
+				// JSON stream: Saved path
 
 				response.setContentType("text/plain");
 				response.setCharacterEncoding(UTF_8);
