@@ -1,6 +1,7 @@
 package fr.univmobile.mock.backend;
 
 import static org.apache.commons.lang3.CharEncoding.UTF_8;
+import static org.apache.commons.lang3.StringUtils.containsWhitespace;
 import static org.apache.commons.lang3.StringUtils.isBlank;
 import static org.apache.commons.lang3.StringUtils.substringAfter;
 import static org.apache.commons.lang3.StringUtils.substringBeforeLast;
@@ -28,22 +29,21 @@ import org.apache.commons.io.IOUtils;
  * This servlet will serve JSON contents according to paths passed in the
  * request URIs.
  * <ul>
- * <li><code>http://xxx/unm-backend-mock</code> (HTML page)
- * 		will list all saved JSON contents, plus their paths, such as
- * 		mon-chemin-a-moi
+ * <li><code>http://xxx/unm-backend-mock</code> (HTML page) will list all saved
+ * JSON contents, plus their paths, such as mon-chemin-a-moi
  * <li><code>http://xxx/unm-backend-mock/mon-chemin-a-moi</code> (JSON content)
- * 		will serve the JSON content attached to mon-chemin-a-moi. This URL
- * 		is used in mocked tests for mobile development.
- * <li><code>http://xxx/unm-backend-mock/?path=mon-chemin-a-moi</code> (HTML page)
- * 		will allow to edit the JSON content attached to mon-chemin-a-moi.
+ * will serve the JSON content attached to mon-chemin-a-moi. This URL is used in
+ * mocked tests for mobile development.
+ * <li><code>http://xxx/unm-backend-mock/?path=mon-chemin-a-moi</code> (HTML
+ * page) will allow to edit the JSON content attached to mon-chemin-a-moi.
  * </ul>
  * To add a new path + attached JSON content, enter them in the form.
  * <p>
  * To remove an existing path, attach an empty JSON content.
  * <p>
- * When it is installed, 
- * the servlet contains a few sample JSON contents for ease of use. They can
- * be found in the src/main/webapp/WEB-INF/json/ directory.
+ * When it is installed, the servlet contains a few sample JSON contents for
+ * ease of use. They can be found in the src/main/webapp/WEB-INF/json/
+ * directory.
  * 
  * @author dandriana
  */
@@ -153,6 +153,8 @@ public class MockBackendServlet extends HttpServlet {
 
 		// 1. HANDLE PARAMETERS AND PATH
 
+		request.setCharacterEncoding(UTF_8);
+		
 		String path = request.getParameter("path");
 		final String content = request.getParameter("content");
 
@@ -166,29 +168,51 @@ public class MockBackendServlet extends HttpServlet {
 
 		if (hasSubmit) {
 
-			// HTML page: Saved path
+			final boolean pathIsInvalid;
 
-			if (isBlank(content)) {
+			// is path valid?
 
-				contents.remove(path);
+			if (path.contains("<") || path.contains(">") //
+					|| path.contains("&") || path.contains("?") //
+					|| containsWhitespace(path)) {
+
+				pathIsInvalid = true;
 
 			} else {
 
-				contents.put(path, content);
+				pathIsInvalid = false;
 			}
 
-			setContents(contents);
+			// HTML page: Save / update / remove path
 
-			request.setAttribute("path", path);
+			if (!pathIsInvalid) {
+
+				if (isBlank(content)) {
+
+					contents.remove(path);
+
+				} else {
+
+					contents.put(path, content);
+				}
+
+				setContents(contents);
+			}
+
+			request.setAttribute("path", escape(path));
 			request.setAttribute("content", content);
+
+			if (pathIsInvalid) {
+				request.setAttribute("pathIsInvalid", Boolean.TRUE);
+			}
 
 		} else if (!isBlank(path)) {
 
 			// HTML page: Saved path
 
-			request.setAttribute("path", path);
-
 			final String savedContent = contents.get(path);
+
+			request.setAttribute("path", escape(path));
 
 			if (savedContent != null) {
 
@@ -201,7 +225,7 @@ public class MockBackendServlet extends HttpServlet {
 
 			final String uriPath = substringAfter(uri, contextPath);
 
-			request.setAttribute("path", uriPath);
+			request.setAttribute("path", escape(uriPath));
 
 			final String savedContent = contents.get(uriPath);
 
@@ -234,5 +258,11 @@ public class MockBackendServlet extends HttpServlet {
 		response.setLocale(Locale.ENGLISH);
 
 		rd.forward(request, response);
+	}
+
+	private static String escape(final String s) {
+
+		return s.replace("&", "&amp;") //
+				.replace("<", "&lt;").replace(">", "&gt;");
 	}
 }

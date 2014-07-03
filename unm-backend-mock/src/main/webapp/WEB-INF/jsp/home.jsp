@@ -67,6 +67,13 @@ div.layout {
 	font-weight: bold;
 	text-align: right;
 }
+span.error {
+	color: #900;
+	font-weight: bold;
+	font-variant: small-caps;
+	background-color: #ddd;
+	padding: 0 0.4em;
+}
 </style>
 </head>
 <body>
@@ -82,6 +89,12 @@ div.layout {
 	<br>
 	<input type="text" name="path" id="text-path" value="${path}">
 	<input type="submit" name="submit" id="submit" value="Save">
+	
+	<c:if test="${pathIsInvalid}">
+	<span class="error">
+	Path is invalid
+	</span>
+	</c:if>
 	
 	<br>
 	<br>
