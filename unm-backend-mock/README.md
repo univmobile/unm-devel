@@ -6,5 +6,6 @@ aux applications UnivMobile iOS et Android
 en cours de développement.
 
   * GitHub: [https://github.com/univmobile/unm-mocks/tree/master/unm-backend-mock](https://github.com/univmobile/unm-mocks/tree/master/unm-backend-mock)
-  * Maven Generated Site: [http://univmobile.vswip.com/nexus/content/sites/pub/unm-backend-mock](http://univmobile.vswip.com/nexus/content/sites/pub/unm-backend-mock/) [0.0.1-SNAPSHOT/](http://univmobile.vswip.com/nexus/content/sites/pub/unm-backend-mock/0.0.1-SNAPSHOT/)
+  * Jenkins Job: [http://univmobile.vswip.com/job/unm-backend-mock/](http://univmobile.vswip.com/job/unm-backend-mock/)
+  * Maven Generated Site: [http://univmobile.vswip.com/nexus/content/sites/pub/unm-backend-mock/](http://univmobile.vswip.com/nexus/content/sites/pub/unm-backend-mock/) [0.0.1-SNAPSHOT/](http://univmobile.vswip.com/nexus/content/sites/pub/unm-backend-mock/0.0.1-SNAPSHOT/)
   * Maven Artifacts: [http://univmobile.vswip.com/nexus/content/repositories/snapshots/fr/univmobile/unm-backend-mock/](http://univmobile.vswip.com/nexus/content/repositories/snapshots/fr/univmobile/unm-backend-mock/) [0.0.1-SNAPSHOT/](http://univmobile.vswip.com/nexus/content/repositories/snapshots/fr/univmobile/unm-backend-mock/0.0.1-SNAPSHOT/)    
