@@ -1,0 +1,84 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<hudson>
+  <disabledAdministrativeMonitors>
+    <string>jenkins.diagnostics.SecurityIsOffMonitor</string>
+  </disabledAdministrativeMonitors>
+  <version>1.570</version>
+  <numExecutors>2</numExecutors>
+  <mode>NORMAL</mode>
+  <useSecurity>true</useSecurity>
+  <authorizationStrategy class="hudson.security.GlobalMatrixAuthorizationStrategy">
+    <permission>com.cloudbees.plugins.credentials.CredentialsProvider.Create:dandriana</permission>
+    <permission>com.cloudbees.plugins.credentials.CredentialsProvider.Delete:dandriana</permission>
+    <permission>com.cloudbees.plugins.credentials.CredentialsProvider.ManageDomains:dandriana</permission>
+    <permission>com.cloudbees.plugins.credentials.CredentialsProvider.Update:dandriana</permission>
+    <permission>com.cloudbees.plugins.credentials.CredentialsProvider.View:dandriana</permission>
+    <permission>hudson.model.Computer.Build:dandriana</permission>
+    <permission>hudson.model.Computer.Configure:dandriana</permission>
+    <permission>hudson.model.Computer.Connect:dandriana</permission>
+    <permission>hudson.model.Computer.Create:dandriana</permission>
+    <permission>hudson.model.Computer.Delete:dandriana</permission>
+    <permission>hudson.model.Computer.Disconnect:dandriana</permission>
+    <permission>hudson.model.Hudson.Administer:dandriana</permission>
+    <permission>hudson.model.Hudson.ConfigureUpdateCenter:dandriana</permission>
+    <permission>hudson.model.Hudson.Read:anonymous</permission>
+    <permission>hudson.model.Hudson.Read:dandriana</permission>
+    <permission>hudson.model.Hudson.RunScripts:dandriana</permission>
+    <permission>hudson.model.Hudson.UploadPlugins:dandriana</permission>
+    <permission>hudson.model.Item.Build:dandriana</permission>
+    <permission>hudson.model.Item.Cancel:dandriana</permission>
+    <permission>hudson.model.Item.Configure:dandriana</permission>
+    <permission>hudson.model.Item.Create:dandriana</permission>
+    <permission>hudson.model.Item.Delete:dandriana</permission>
+    <permission>hudson.model.Item.Discover:dandriana</permission>
+    <permission>hudson.model.Item.Read:anonymous</permission>
+    <permission>hudson.model.Item.Read:dandriana</permission>
+    <permission>hudson.model.Item.Workspace:dandriana</permission>
+    <permission>hudson.model.Run.Delete:dandriana</permission>
+    <permission>hudson.model.Run.Update:dandriana</permission>
+    <permission>hudson.model.View.Configure:dandriana</permission>
+    <permission>hudson.model.View.Create:dandriana</permission>
+    <permission>hudson.model.View.Delete:dandriana</permission>
+    <permission>hudson.model.View.Read:anonymous</permission>
+    <permission>hudson.model.View.Read:dandriana</permission>
+    <permission>hudson.scm.SCM.Tag:dandriana</permission>
+  </authorizationStrategy>
+  <securityRealm class="hudson.security.HudsonPrivateSecurityRealm">
+    <disableSignup>true</disableSignup>
+    <enableCaptcha>false</enableCaptcha>
+  </securityRealm>
+  <disableRememberMe>false</disableRememberMe>
+  <projectNamingStrategy class="jenkins.model.ProjectNamingStrategy$DefaultProjectNamingStrategy"/>
+  <workspaceDir>${JENKINS_HOME}/workspace/${ITEM_FULLNAME}</workspaceDir>
+  <buildsDir>${ITEM_ROOTDIR}/builds</buildsDir>
+  <markupFormatter class="hudson.markup.RawHtmlMarkupFormatter" plugin="antisamy-markup-formatter@1.2">
+    <disableSyntaxHighlighting>false</disableSyntaxHighlighting>
+  </markupFormatter>
+  <jdks>
+    <jdk>
+      <name>JDK 1.6.0_31</name>
+      <home>/usr/lib/jvm/java-6-openjdk-amd64</home>
+      <properties/>
+    </jdk>
+  </jdks>
+  <viewsTabBar class="hudson.views.DefaultViewsTabBar"/>
+  <myViewsTabBar class="hudson.views.DefaultMyViewsTabBar"/>
+  <clouds/>
+  <slaves/>
+  <quietPeriod>5</quietPeriod>
+  <scmCheckoutRetryCount>0</scmCheckoutRetryCount>
+  <views>
+    <hudson.model.AllView>
+      <owner class="hudson" reference="../../.."/>
+      <name>All</name>
+      <filterExecutors>false</filterExecutors>
+      <filterQueue>false</filterQueue>
+      <properties class="hudson.model.View$PropertyList"/>
+    </hudson.model.AllView>
+  </views>
+  <primaryView>All</primaryView>
+  <slaveAgentPort>0</slaveAgentPort>
+  <label></label>
+  <nodeProperties/>
+  <globalNodeProperties/>
+</hudson>
