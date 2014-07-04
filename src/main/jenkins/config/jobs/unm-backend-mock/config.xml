@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <maven2-moduleset plugin="maven-plugin@2.3">
   <actions/>
-  <description>GitHub: &lt;a href=&quot;https://github.com/univmobile/unm-mocks/tree/master/unm-backend-mock&quot;&gt;https://github.com/univmobile/unm-mocks/tree/master/unm-backend-mock&#xd;
+  <description>GitHub: &lt;a href=&quot;https://github.com/univmobile/unm-devel/tree/master/unm-backend-mock&quot;&gt;https://github.com/univmobile/unm-devel/tree/master/unm-backend-mock&#xd;
 &lt;/a&gt;&#xd;
 &lt;p&gt;&#xd;
 Maven Generated Site: &lt;a&#xd;
@@ -20,7 +20,7 @@ Maven Artifacts: &lt;a&#xd;
     <configVersion>2</configVersion>
     <userRemoteConfigs>
       <hudson.plugins.git.UserRemoteConfig>
-        <url>https://github.com/univmobile/unm-mocks.git</url>
+        <url>https://github.com/univmobile/unm-devel.git</url>
       </hudson.plugins.git.UserRemoteConfig>
     </userRemoteConfigs>
     <branches>
