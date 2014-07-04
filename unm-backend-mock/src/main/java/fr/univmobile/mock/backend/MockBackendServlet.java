@@ -65,6 +65,9 @@ public class MockBackendServlet extends HttpServlet {
 		"getUniversityConfig-xxx.json", //
 				"regions.json", //
 				"listUniversities.json", //
+				"listUniversities_bretagne.json", //
+				"listUniversities_ile_de_france.json", //
+				"listUniversities_unrpcl.json", //
 				"pois.json", //
 				"university_default.json" //
 		}) {
