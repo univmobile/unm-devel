@@ -23,24 +23,38 @@
     <permission>hudson.model.Hudson.ConfigureUpdateCenter:dandriana</permission>
     <permission>hudson.model.Hudson.Read:anonymous</permission>
     <permission>hudson.model.Hudson.Read:dandriana</permission>
+    <permission>hudson.model.Hudson.Read:mgauzins</permission>
     <permission>hudson.model.Hudson.RunScripts:dandriana</permission>
     <permission>hudson.model.Hudson.UploadPlugins:dandriana</permission>
     <permission>hudson.model.Item.Build:dandriana</permission>
+    <permission>hudson.model.Item.Build:mgauzins</permission>
     <permission>hudson.model.Item.Cancel:dandriana</permission>
+    <permission>hudson.model.Item.Cancel:mgauzins</permission>
     <permission>hudson.model.Item.Configure:dandriana</permission>
+    <permission>hudson.model.Item.Configure:mgauzins</permission>
     <permission>hudson.model.Item.Create:dandriana</permission>
+    <permission>hudson.model.Item.Create:mgauzins</permission>
     <permission>hudson.model.Item.Delete:dandriana</permission>
+    <permission>hudson.model.Item.Delete:mgauzins</permission>
     <permission>hudson.model.Item.Discover:dandriana</permission>
+    <permission>hudson.model.Item.Discover:mgauzins</permission>
     <permission>hudson.model.Item.Read:anonymous</permission>
     <permission>hudson.model.Item.Read:dandriana</permission>
+    <permission>hudson.model.Item.Read:mgauzins</permission>
     <permission>hudson.model.Item.Workspace:dandriana</permission>
+    <permission>hudson.model.Item.Workspace:mgauzins</permission>
     <permission>hudson.model.Run.Delete:dandriana</permission>
     <permission>hudson.model.Run.Update:dandriana</permission>
+    <permission>hudson.model.Run.Update:mgauzins</permission>
     <permission>hudson.model.View.Configure:dandriana</permission>
+    <permission>hudson.model.View.Configure:mgauzins</permission>
     <permission>hudson.model.View.Create:dandriana</permission>
+    <permission>hudson.model.View.Create:mgauzins</permission>
     <permission>hudson.model.View.Delete:dandriana</permission>
+    <permission>hudson.model.View.Delete:mgauzins</permission>
     <permission>hudson.model.View.Read:anonymous</permission>
     <permission>hudson.model.View.Read:dandriana</permission>
+    <permission>hudson.model.View.Read:mgauzins</permission>
     <permission>hudson.scm.SCM.Tag:dandriana</permission>
   </authorizationStrategy>
   <securityRealm class="hudson.security.HudsonPrivateSecurityRealm">
