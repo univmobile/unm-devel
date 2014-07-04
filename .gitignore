@@ -9,3 +9,8 @@ release.properties
 .DS_Store
 bin/
 /bin
+
+unm-backend-mock/.classpath
+unm-backend-mock/.project
+unm-backend-mock/.settings/
+unm-backend-mock/target/

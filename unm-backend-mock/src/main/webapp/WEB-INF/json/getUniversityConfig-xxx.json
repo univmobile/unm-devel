@@ -1,0 +1,148 @@
+{"university": {
+  "home": {
+    "help": "http://m.univmobile.fr/help.jsp?iphone=true",
+    "items": [
+      {
+        "icon": {
+          "height": 20,
+          "url": "http://m.univmobile.fr/resources/img/sorbonnaute.gif",
+          "width": 20
+        },
+        "link": "http://www.univ-paris1.fr/newsletter/",
+        "title": "Le Sorbonn@ute"
+      },
+      {
+        "icon": {
+          "height": 20,
+          "url": "http://m.univmobile.fr/resources/img/iconEnt.gif",
+          "width": 20
+        },
+        "link": "https://cas.univ-paris1.fr/cas/index.jsp?service=https://esup.univ-paris1.fr/Login",
+        "title": "Mon ENT"
+      },
+      {
+        "icon": {
+          "height": 20,
+          "url": "http://m.univmobile.fr/resources/img/iconSudoc.gif",
+          "width": 20
+        },
+        "link": "http://m.sudoc.fr/sudocmobile/welcome.xhtml?iphone=true",
+        "title": "Catalogue SUDOC"
+      },
+      {
+        "icon": {
+          "height": 20,
+          "url": "http://m.univmobile.fr/resources/img/ruedesfacs.gif",
+          "width": 20
+        },
+        "link": "http://www.ruedesfacs.fr",
+        "title": "Rue des facs"
+      },
+      {
+        "geocampus": "true",
+        "icon": {
+          "height": 60,
+          "url": "http://m.univmobile.fr/resources/img/iconGeo.gif",
+          "width": 60
+        },
+        "title": "Géocampus"
+      },
+      {
+        "icon": {
+          "height": 20,
+          "url": "http://m.univmobile.fr/resources/img/iconPodcast.gif",
+          "width": 20
+        },
+        "link": "http://deimos.apple.com/WebObjects/Core.woa/Browse/univ-paris1.fr",
+        "title": "Podcast"
+      }
+    ],
+    "title": "Université de Paris 1"
+  },
+  "iphoneBannerUrl": "http://m.univmobile.fr/resources/img/banner/paris1_320.gif",
+  "iphoneIconUrl": "http://m.univmobile.fr/resources/img/logo/paris1.png",
+  "tpod1": {
+    "help": "http://m.univmobile.fr/help.jsp?iphone=true",
+    "items": [
+      {
+        "icon": {
+          "height": 20,
+          "url": "http://m.univmobile.fr/resources/img/iconPodcast.gif",
+          "width": 20
+        },
+        "podcastService": "http://m.univmobile.fr/podcast/search.jsp?universityId=paris1&langId=0&menuId=tpod1&iphone=true",
+        "title": "Présentation, découverte et actualités de l'université"
+      },
+      {
+        "icon": {
+          "height": 20,
+          "url": "http://m.univmobile.fr/resources/img/iconPodcast.gif",
+          "width": 20
+        },
+        "submenu": "tpod12",
+        "title": "Cours, séminaires, conférences, colloques"
+      },
+      {
+        "icon": {
+          "height": 20,
+          "url": "http://m.univmobile.fr/resources/img/iconPodcast.gif",
+          "width": 20
+        },
+        "podcastService": "http://m.univmobile.fr/podcast/search.jsp?universityId=paris1&langId=0&menuId=tpod1&iphone=true",
+        "title": "Départements, écoles, instituts, centres de formation"
+      }
+    ],
+    "title": "Podcast de Paris 1"
+  },
+  "tpod12": {
+    "help": "http://m.univmobile.fr/help.jsp?iphone=true",
+    "items": [
+      {
+        "icon": {
+          "height": 20,
+          "url": "http://m.univmobile.fr/resources/img/iconPodcast.gif",
+          "width": 20
+        },
+        "podcastService": "http://m.univmobile.fr/podcast/search.jsp?universityId=paris1&langId=0&menuId=tpod12&iphone=true",
+        "title": "Droit, sciences politiques et sociales"
+      },
+      {
+        "icon": {
+          "height": 20,
+          "url": "http://m.univmobile.fr/resources/img/iconPodcast.gif",
+          "width": 20
+        },
+        "podcastService": "http://m.univmobile.fr/podcast/search.jsp?universityId=paris1&langId=0&menuId=tpod12&iphone=true",
+        "title": "Economie et Gestion"
+      },
+      {
+        "icon": {
+          "height": 20,
+          "url": "http://m.univmobile.fr/resources/img/iconPodcast.gif",
+          "width": 20
+        },
+        "podcastService": "http://m.univmobile.fr/podcast/search.jsp?universityId=paris1&langId=0&menuId=tpod12&iphone=true",
+        "title": "Mathématiques, informatique et applications"
+      },
+      {
+        "icon": {
+          "height": 20,
+          "url": "http://m.univmobile.fr/resources/img/iconPodcast.gif",
+          "width": 20
+        },
+        "podcastService": "http://m.univmobile.fr/podcast/search.jsp?universityId=paris1&langId=0&menuId=tpod12&iphone=true",
+        "title": "Sciences humaines & sociales"
+      },
+      {
+        "icon": {
+          "height": 20,
+          "url": "http://m.univmobile.fr/resources/img/iconPodcast.gif",
+          "width": 20
+        },
+        "podcastService": "http://m.univmobile.fr/podcast/search.jsp?universityId=paris1&langId=0&menuId=tpod12&iphone=true",
+        "title": "Arts"
+      }
+    ],
+    "title": "Cours, séminaires, conférences, colloques"
+  }
+}}
