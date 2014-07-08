@@ -1,0 +1,59 @@
+<ios-devices>
+
+<ios-device id="4c674814dce509954922beb565311c2f1c01b12d" label="iPod bleu">
+	<developer>
+		<id>dandriana</id>
+		<name>David Andrianavalontsalama</name>
+		<email>david.andriana@viewniverse-studio.com</email>
+	</developer>
+</ios-device>
+
+<ios-device id="c89dd903e8a52efff120525f18ec96aa4162f631" label="iPod noir">
+	<developer>
+		<id>dandriana</id>
+		<name>David Andrianavalontsalama</name>
+		<email>david.andriana@viewniverse-studio.com</email>
+	</developer>
+</ios-device>
+
+<ios-device id="c8639749d1ef423627209670ea87845faab3395b" label="iPad">
+	<developer>
+		<id>dandriana</id>
+		<name>David Andrianavalontsalama</name>
+		<email>david.andriana@viewniverse-studio.com</email>
+	</developer>
+</ios-device>
+
+<ios-device id="e27b3759ed5343affde705202f96953efa10f1dd" label="iPad Mini">
+	<developer>
+		<id>pristic</id>
+		<name>Pierre Ristic</name>
+		<email>pierre.ristic@viewniverse-studio.com</email>
+	</developer>
+</ios-device>
+
+<ios-device id="FFFFFFFFBB7FAF2FCE4142ECAF1DE6C915621091" label="iPhone">
+	<developer>
+		<id>bcoleman</id>
+		<name>Benjamin Coleman</name>
+		<email>benjamin.coleman@viewniverse-studio.com</email>
+	</developer>
+</ios-device>
+
+<ios-device id="FFFFFFFF65B04AA59A254B07980F7BC5F0804359" label="iPad">
+	<developer>
+		<id>bcoleman</id>
+		<name>Benjamin Coleman</name>
+		<email>benjamin.coleman@viewniverse-studio.com</email>
+	</developer>
+</ios-device>
+
+<ios-device id="FFFFFFFF9C19A30072FE4306AD7B51F466F86297" label="iPad Mini">
+	<developer>
+		<id>bcoleman</id>
+		<name>Benjamin Coleman</name>
+		<email>benjamin.coleman@viewniverse-studio.com</email>
+	</developer>
+</ios-device>
+
+</ios-devices>
