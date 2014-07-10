@@ -113,7 +113,7 @@ if [ $? -eq 0 ]; then
   echo "Fetch from git done"
   git merge FETCH_HEAD >> "${BUILD_LOG}" 2>&1
   git rev-parse master > "${LATEST_HEAD}"
-  #if ! diff "${LATEST_HEAD}" "${PREV_HEAD}" > /dev/null;  then
+  if ! diff "${LATEST_HEAD}" "${PREV_HEAD}" > /dev/null;  then
     echo "Merge via git done..."
     cat "${LATEST_HEAD}" > "${PREV_HEAD}" # update stored HEAD
     
@@ -199,6 +199,6 @@ if [ $? -eq 0 ]; then
     
     git push
     
-  #fi
+  fi
 fi
 
