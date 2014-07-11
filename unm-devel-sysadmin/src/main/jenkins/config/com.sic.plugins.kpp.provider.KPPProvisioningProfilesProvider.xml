@@ -1,0 +1,6 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<com.sic.plugins.kpp.provider.KPPProvisioningProfilesProvider plugin="kpp-management-plugin@1.0.0">
+  <defaultConfigXmlFileName>com.sic.plugins.kpp.provider.KPPProvisioningProfilesProvider.xml</defaultConfigXmlFileName>
+  <provisioningProfiles/>
+  <provisioningProfilesPath></provisioningProfilesPath>
+</com.sic.plugins.kpp.provider.KPPProvisioningProfilesProvider>

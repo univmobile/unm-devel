@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<com.sic.plugins.kpp.provider.KPPKeychainsProvider plugin="kpp-management-plugin@1.0.0">
+  <defaultConfigXmlFileName>com.sic.plugins.kpp.provider.KPPKeychainsProvider.xml</defaultConfigXmlFileName>
+  <keychains>
+    <com.sic.plugins.kpp.model.KPPKeychain>
+      <fileName>MyKeichain.keychain</fileName>
+      <description></description>
+      <password>tlOILTSkYuQ+CMHFQ/lz/tRjAAT6w1YkIcK9IWNc42s=</password>
+      <certificates>
+        <com.sic.plugins.kpp.model.KPPCertificate>
+          <codeSigningIdentityName>iPhone Distribution: David ANDRIANAVALONTSALAMA (P3CN6EW78V)</codeSigningIdentityName>
+        </com.sic.plugins.kpp.model.KPPCertificate>
+      </certificates>
+    </com.sic.plugins.kpp.model.KPPKeychain>
+  </keychains>
+</com.sic.plugins.kpp.provider.KPPKeychainsProvider>

@@ -5,14 +5,14 @@
   <keepDependencies>false</keepDependencies>
   <properties>
     <hudson.security.AuthorizationMatrixProperty>
-      <permission>hudson.model.Item.Workspace:mgauzins</permission>
-      <permission>hudson.model.Item.Workspace:dummy</permission>
-      <permission>hudson.model.Item.Build:mgauzins</permission>
-      <permission>hudson.model.Item.Build:dummy</permission>
       <permission>hudson.model.Item.Read:mgauzins</permission>
       <permission>hudson.model.Item.Read:dummy</permission>
       <permission>hudson.model.Item.Cancel:mgauzins</permission>
       <permission>hudson.model.Item.Cancel:dummy</permission>
+      <permission>hudson.model.Item.Workspace:mgauzins</permission>
+      <permission>hudson.model.Item.Workspace:dummy</permission>
+      <permission>hudson.model.Item.Build:mgauzins</permission>
+      <permission>hudson.model.Item.Build:dummy</permission>
     </hudson.security.AuthorizationMatrixProperty>
   </properties>
   <scm class="hudson.plugins.git.GitSCM" plugin="git@2.2.2">
@@ -55,7 +55,10 @@ rm -f build/UnivMobile.ipa
 </command>
     </hudson.tasks.Shell>
     <hudson.tasks.Shell>
-      <command>xcodebuild -workspace UnivMobile.xcworkspace -scheme UnivMobile archive</command>
+      <command>security unlock-keychain -p `cat /Users/dandriana/.config/security-unlock-keychain-MyKeichain` /Users/dandriana/Library/Keychains/MyKeichain.keychain</command>
+    </hudson.tasks.Shell>
+    <hudson.tasks.Shell>
+      <command>xcodebuild -workspace UnivMobile.xcworkspace -scheme UnivMobile clean archive</command>
     </hudson.tasks.Shell>
     <hudson.tasks.Shell>
       <command>. build/archive_paths.sh
@@ -72,5 +75,17 @@ xcodebuild -exportArchive -exportFormat IPA -archivePath &quot;${ARCHIVE_PATH}&q
       <onlyIfSuccessful>false</onlyIfSuccessful>
     </hudson.tasks.ArtifactArchiver>
   </publishers>
-  <buildWrappers/>
+  <buildWrappers>
+    <com.sic.plugins.kpp.KPPKeychainsBuildWrapper plugin="kpp-management-plugin@1.0.0">
+      <keychainCertificatePairs>
+        <com.sic.plugins.kpp.model.KPPKeychainCertificatePair>
+          <keychain>MyKeichain.keychain</keychain>
+          <codeSigningIdentity>iPhone Distribution: David ANDRIANAVALONTSALAMA (P3CN6EW78V)</codeSigningIdentity>
+          <varPrefix></varPrefix>
+        </com.sic.plugins.kpp.model.KPPKeychainCertificatePair>
+      </keychainCertificatePairs>
+      <deleteKeychainsAfterBuild>false</deleteKeychainsAfterBuild>
+      <overwriteExistingKeychains>false</overwriteExistingKeychains>
+    </com.sic.plugins.kpp.KPPKeychainsBuildWrapper>
+  </buildWrappers>
 </project>
