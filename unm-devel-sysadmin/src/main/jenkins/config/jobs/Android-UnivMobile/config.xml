@@ -1,0 +1,70 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<project>
+  <actions/>
+  <description></description>
+  <keepDependencies>false</keepDependencies>
+  <properties>
+    <hudson.security.AuthorizationMatrixProperty>
+      <permission>hudson.model.Item.Discover:mgauzins</permission>
+      <permission>hudson.model.Run.Update:mgauzins</permission>
+      <permission>hudson.model.Item.Workspace:mgauzins</permission>
+      <permission>hudson.model.Item.Build:mgauzins</permission>
+      <permission>hudson.model.Item.Delete:mgauzins</permission>
+      <permission>hudson.scm.SCM.Tag:mgauzins</permission>
+      <permission>hudson.model.Run.Delete:mgauzins</permission>
+      <permission>hudson.model.Item.Configure:mgauzins</permission>
+      <permission>hudson.model.Item.Read:mgauzins</permission>
+      <permission>hudson.model.Item.Cancel:mgauzins</permission>
+    </hudson.security.AuthorizationMatrixProperty>
+  </properties>
+  <scm class="hudson.plugins.git.GitSCM" plugin="git@2.2.2">
+    <configVersion>2</configVersion>
+    <userRemoteConfigs>
+      <hudson.plugins.git.UserRemoteConfig>
+        <url>https://github.com/univmobile/unm-android</url>
+      </hudson.plugins.git.UserRemoteConfig>
+    </userRemoteConfigs>
+    <branches>
+      <hudson.plugins.git.BranchSpec>
+        <name>*/master</name>
+      </hudson.plugins.git.BranchSpec>
+    </branches>
+    <doGenerateSubmoduleConfigurations>false</doGenerateSubmoduleConfigurations>
+    <submoduleCfg class="list"/>
+    <extensions/>
+  </scm>
+  <canRoam>true</canRoam>
+  <disabled>false</disabled>
+  <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
+  <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
+  <jdk>(Valeur par défaut)</jdk>
+  <triggers/>
+  <concurrentBuild>false</concurrentBuild>
+  <builders>
+    <hudson.tasks.Ant plugin="ant@1.2">
+      <targets>-Dsdk.dir=/opt/android-sdk-linux/
+-Dkey.store=/opt/android-sdk-linux/univ_fake.keystore
+-Dkey.store.password=univmobile
+-Dkey.alias=univmobile
+-Dkey.alias.password=univmobile
+clean-all
+release</targets>
+      <antName>Ant 1.9.4</antName>
+    </hudson.tasks.Ant>
+    <hudson.tasks.Ant plugin="ant@1.2">
+      <targets>-Dsdk.dir=/opt/android-sdk-linux/
+clean-classes
+debug</targets>
+      <antName>Ant 1.9.4</antName>
+    </hudson.tasks.Ant>
+  </builders>
+  <publishers>
+    <hudson.tasks.ArtifactArchiver>
+      <artifacts>**/*.apk</artifacts>
+      <latestOnly>false</latestOnly>
+      <allowEmptyArchive>false</allowEmptyArchive>
+      <onlyIfSuccessful>false</onlyIfSuccessful>
+    </hudson.tasks.ArtifactArchiver>
+  </publishers>
+  <buildWrappers/>
+</project>

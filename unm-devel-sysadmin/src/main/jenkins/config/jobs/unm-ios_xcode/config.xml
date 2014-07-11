@@ -3,7 +3,18 @@
   <actions/>
   <description></description>
   <keepDependencies>false</keepDependencies>
-  <properties/>
+  <properties>
+    <hudson.security.AuthorizationMatrixProperty>
+      <permission>hudson.model.Item.Workspace:mgauzins</permission>
+      <permission>hudson.model.Item.Workspace:dummy</permission>
+      <permission>hudson.model.Item.Build:mgauzins</permission>
+      <permission>hudson.model.Item.Build:dummy</permission>
+      <permission>hudson.model.Item.Read:mgauzins</permission>
+      <permission>hudson.model.Item.Read:dummy</permission>
+      <permission>hudson.model.Item.Cancel:mgauzins</permission>
+      <permission>hudson.model.Item.Cancel:dummy</permission>
+    </hudson.security.AuthorizationMatrixProperty>
+  </properties>
   <scm class="hudson.plugins.git.GitSCM" plugin="git@2.2.2">
     <configVersion>2</configVersion>
     <userRemoteConfigs>
@@ -25,7 +36,7 @@
   <disabled>false</disabled>
   <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
   <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
-  <jdk>(Default)</jdk>
+  <jdk>MacOS</jdk>
   <triggers>
     <hudson.triggers.SCMTrigger>
       <spec>H/5 * * * *</spec>
