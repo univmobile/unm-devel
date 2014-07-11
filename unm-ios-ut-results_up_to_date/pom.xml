@@ -1,0 +1,204 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>fr.univmobile</groupId>
+	<artifactId>unm-ios-ut-results_up_to_date</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+
+	<dependencies>
+		<dependency>
+			<groupId>fr.univmobile</groupId>
+			<artifactId>unm-ios-ut-results</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.11</version>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-site-plugin</artifactId>
+				<version>3.3</version>
+				<dependencies>
+					<dependency>
+						<groupId>org.apache.maven.doxia</groupId>
+						<artifactId>doxia-module-markdown</artifactId>
+						<version>1.5</version>
+					</dependency>
+					<dependency>
+						<groupId>org.apache.maven.wagon</groupId>
+						<artifactId>wagon-ssh</artifactId>
+						<version>2.6</version>
+					</dependency>
+					<dependency>
+						<groupId>org.apache.maven.wagon</groupId>
+						<artifactId>wagon-webdav-jackrabbit</artifactId>
+						<version>2.6</version>
+					</dependency>
+				</dependencies>
+			</plugin>
+		</plugins>
+	</build>
+
+	<name>unm-ios-ut-results_up_to_date</name>
+	<description>
+        This project checks that the "unm-ios-ut-results" project
+        has reached the most recent revision of the file
+        "data/xcodebuild_test.log" it aims at process.
+    </description>
+	<url>
+        http://univmobile.vswip.com/nexus/content/sites/pub/${project.artifactId}/${project.version}
+    </url>
+
+	<scm>
+		<connection>
+            scm:git:https://github.com/univmobile/unm-devel.git
+        </connection>
+		<developerConnection>
+            scm:git:https://github.com/univmobile/unm-devel.git
+        </developerConnection>
+		<url>
+            https://github.com/univmobile/unm-devel
+        </url>
+	</scm>
+	<ciManagement>
+		<system>jenkins</system>
+		<url>http://univmobile.vswip.com/job/unm-ios-ut-results_up_to_date</url>
+	</ciManagement>
+	<organization>
+		<name>UnivMobile</name>
+		<url>https://github.com/univmobile/</url>
+	</organization>
+	<developers>
+		<developer>
+			<id>dandriana</id>
+			<name>David Andrianavalontsalama</name>
+			<email>david.andriana@viewniverse-studio.com</email>
+		</developer>
+		<developer>
+			<id>choumss</id>
+			<name>Michel Gauzins</name>
+		</developer>
+	</developers>
+	<licenses>
+		<license>
+			<name>LGPL v3</name>
+			<url>http://www.gnu.org/licenses/lgpl-3.0.txt</url>
+		</license>
+	</licenses>
+	<distributionManagement>
+		<repository>
+			<id>vswip</id>
+			<name>Viewniverse Studio WIP Repository for releases</name>
+			<url>
+                http://univmobile.vswip.com/nexus/content/repositories/releases
+            </url>
+			<uniqueVersion>false</uniqueVersion>
+		</repository>
+		<snapshotRepository>
+			<id>vswip</id>
+			<name>Viewniverse Studio WIP Repository for releases</name>
+			<url>
+                http://univmobile.vswip.com/nexus/content/repositories/snapshots
+            </url>
+			<uniqueVersion>false</uniqueVersion>
+		</snapshotRepository>
+		<site>
+			<id>vswip</id>
+			<url>
+                dav:http://univmobile.vswip.com/nexus/content/sites/pub/${project.artifactId}/${project.version}
+            </url>
+		</site>
+	</distributionManagement>
+	<reporting>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jxr-plugin</artifactId>
+				<version>2.3</version>
+				<configuration>
+					<inputEncoding>UTF-8</inputEncoding>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-javadoc-plugin</artifactId>
+				<version>2.9</version>
+				<configuration>
+					<encoding>UTF-8</encoding>
+					<links>
+						<link>http://docs.oracle.com/javase/1.5.0/docs/api/</link>
+					</links>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-pmd-plugin</artifactId>
+				<version>3.0.1</version>
+				<configuration>
+					<targetJdk>1.5</targetJdk>
+					<sourceEncoding>UTF-8</sourceEncoding>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>taglist-maven-plugin</artifactId>
+				<version>2.4</version>
+				<configuration>
+					<encoding>UTF-8</encoding>
+					<sourceFileLocale>en</sourceFileLocale>
+					<tags>
+						<tag>TODO</tag>
+						<tag>@todo</tag>
+						<tag>FIXME</tag>
+						<tag>XXX</tag>
+						<tag>@deprecated</tag>
+					</tags>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>findbugs-maven-plugin</artifactId>
+				<version>2.5.2</version>
+				<configuration>
+					<threshold>Ignore</threshold>
+					<effort>Max</effort>
+					<encoding>UTF-8</encoding>
+					<sourceEncoding>UTF-8</sourceEncoding>
+					<outputEncoding>UTF-8</outputEncoding>
+					<locales>en</locales>
+					<fork>false</fork>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>jdepend-maven-plugin</artifactId>
+				<version>2.0-beta-2</version>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-project-info-reports-plugin</artifactId>
+				<version>2.7</version>
+			</plugin>
+		</plugins>
+	</reporting>
+
+	<properties>
+        <!--            
+            relativizeDecorationLinks=false:
+            Used by maven-site-plugin to keep external links declared
+            in src/site/site.xml as absolute, e.g. link to Jenkins jobs.
+        -->
+		<relativizeDecorationLinks>false</relativizeDecorationLinks>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.build.outputEncoding>UTF-8</project.build.outputEncoding>
+	</properties>
+
+</project>
