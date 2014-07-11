@@ -76,6 +76,8 @@ public class TestResultsAreUpToDateTest {
 			System.out.println();
 		}
 
+		System.out.println();
+		
 		if (!UP_TO_DATE) {
 			fail(message);
 		}
