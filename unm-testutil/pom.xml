@@ -202,6 +202,30 @@
 			</plugin>
 		</plugins>
 	</reporting>
+	<repositories>
+		<repository>
+			<id>avcompris-snapshots</id>
+			<name>Avantage Compris' Snapshot Repository</name>
+			<url>http://repo.avcompris.net/content/groups/public-snapshots</url>
+			<releases>
+				<enabled>false</enabled>
+			</releases>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+		</repository>
+		<repository>
+			<id>avcompris</id>
+			<name>Avantage Compris' Repository</name>
+			<url>http://repo.avcompris.net/content/groups/public</url>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+	</repositories>
 
 	<properties>
         <!--            
