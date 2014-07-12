@@ -25,10 +25,10 @@ public class TestResultsAreUpToDateTest {
 		final JGitHelper jgitHelper = JGitHelper.cloneRepo(
 				"https://github.com/univmobile/unm-integration", dir);
 
-		final String PATH = PROJECT_NAME+"/data/xcodebuild_test.log";
+		final String PATH = PROJECT_NAME + "/data/xcodebuild_test.log";
 
-		final RevCommit[] commits = jgitHelper
-				.getAllCommitsForFileFromHead(PATH);
+		final RevCommit[] commits = jgitHelper.getCommitsForFileFromHead(PATH,
+				100);
 
 		final String commitId0 = commits[0].getId().getName();
 
@@ -77,7 +77,7 @@ public class TestResultsAreUpToDateTest {
 		}
 
 		System.out.println();
-		
+
 		if (!UP_TO_DATE) {
 			fail(message);
 		}
