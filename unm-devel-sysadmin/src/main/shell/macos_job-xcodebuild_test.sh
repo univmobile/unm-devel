@@ -24,7 +24,7 @@
 #       "unm-ios-ut-results", commit and push to GitHub.
 #
 # Parameters:
-#    "${1}": WORKSPACE: Where to put the build files. Default to ../../../ 
+#    "${1}": WORKSPACE: Where to put the build files. Defaults to ../../../ 
 #               (This script will create ${WORKSPACE}/target/)
 #
 
