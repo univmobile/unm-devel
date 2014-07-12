@@ -23,9 +23,9 @@ public class TestResultsAreUpToDateTest {
 		}
 
 		final JGitHelper jgitHelper = JGitHelper.cloneRepo(
-				"https://github.com/univmobile/" + PROJECT_NAME, dir);
+				"https://github.com/univmobile/unm-integration", dir);
 
-		final String PATH = "data/xcodebuild_test.log";
+		final String PATH = PROJECT_NAME+"/data/xcodebuild_test.log";
 
 		final RevCommit[] commits = jgitHelper
 				.getAllCommitsForFileFromHead(PATH);
