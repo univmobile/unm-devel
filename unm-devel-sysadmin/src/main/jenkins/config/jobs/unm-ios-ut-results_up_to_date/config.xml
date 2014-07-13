@@ -38,7 +38,7 @@
       </threshold>
     </jenkins.triggers.ReverseBuildTrigger>
     <hudson.triggers.TimerTrigger>
-      <spec>H H/2 * * *</spec>
+      <spec>H/20 * * * *</spec>
     </hudson.triggers.TimerTrigger>
     <hudson.triggers.SCMTrigger>
       <spec>H/5 * * * *</spec>
