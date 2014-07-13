@@ -1,21 +1,14 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <maven2-moduleset plugin="maven-plugin@2.3">
   <actions/>
-  <description>GitHub: &lt;a href=&quot;https://github.com/univmobile/unm-ios&quot;&gt;https://github.com/univmobile/unm-ios&#xd;
-&lt;/a&gt;&#xd;
-&lt;p/&gt;&#xd;
-Tableau de bord d’intégration continue :&#xd;
-&lt;a href=&quot;http://univmobile.vswip.com/job/unm-devel-it/lastSuccessfulBuild/artifact/unm-devel-it/target/unm-ci-dump.html&quot;&gt;&#xd;
-  UnivMobile iOS — Intégration continue&#xd;
-&lt;/a&gt;&#xd;
-</description>
+  <description></description>
   <keepDependencies>false</keepDependencies>
   <properties/>
   <scm class="hudson.plugins.git.GitSCM" plugin="git@2.2.2">
     <configVersion>2</configVersion>
     <userRemoteConfigs>
       <hudson.plugins.git.UserRemoteConfig>
-        <url>https://github.com/univmobile/unm-ios</url>
+        <url>https://github.com/univmobile/unm-integration.git</url>
       </hudson.plugins.git.UserRemoteConfig>
     </userRemoteConfigs>
     <branches>
@@ -27,27 +20,28 @@ Tableau de bord d’intégration continue :&#xd;
     <submoduleCfg class="list"/>
     <extensions/>
   </scm>
-  <assignedNode>macos</assignedNode>
-  <canRoam>false</canRoam>
+  <canRoam>true</canRoam>
   <disabled>false</disabled>
   <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
   <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
-  <jdk>MacOS</jdk>
+  <jdk>(Default)</jdk>
   <triggers>
-    <hudson.triggers.SCMTrigger>
+    <hudson.triggers.TimerTrigger>
       <spec>H/5 * * * *</spec>
+    </hudson.triggers.TimerTrigger>
+    <hudson.triggers.SCMTrigger>
+      <spec>H * * * *</spec>
       <ignorePostCommitHooks>false</ignorePostCommitHooks>
     </hudson.triggers.SCMTrigger>
   </triggers>
   <concurrentBuild>false</concurrentBuild>
-  <customWorkspace>unm-ios-it</customWorkspace>
+  <customWorkspace>unm-devel-it</customWorkspace>
   <rootModule>
     <groupId>fr.univmobile</groupId>
-    <artifactId>unm-ios-it</artifactId>
+    <artifactId>unm-devel-it</artifactId>
   </rootModule>
-  <rootPOM>unm-ios-it/pom.xml</rootPOM>
-  <goals>clean install -U</goals>
-  <mavenOpts>-Djava.awt.headless=true</mavenOpts>
+  <rootPOM>unm-devel-it/pom.xml</rootPOM>
+  <goals>clean install</goals>
   <aggregatorStyleBuild>true</aggregatorStyleBuild>
   <incrementalBuild>false</incrementalBuild>
   <ignoreUpstremChanges>false</ignoreUpstremChanges>
@@ -63,8 +57,8 @@ Tableau de bord d’intégration continue :&#xd;
   <reporters/>
   <publishers>
     <hudson.tasks.ArtifactArchiver>
-      <artifacts>unm-ios-it/target/**/pageSource.xml</artifacts>
-      <latestOnly>false</latestOnly>
+      <artifacts>unm-devel-it/target/unm-ci-dump.html, unm-devel-it/target/unm-ci-dump.xml</artifacts>
+      <latestOnly>true</latestOnly>
       <allowEmptyArchive>false</allowEmptyArchive>
       <onlyIfSuccessful>false</onlyIfSuccessful>
     </hudson.tasks.ArtifactArchiver>

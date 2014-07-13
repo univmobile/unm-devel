@@ -1,7 +1,14 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <maven2-moduleset plugin="maven-plugin@2.3">
   <actions/>
-  <description></description>
+  <description>GitHub: &lt;a href=&quot;https://github.com/univmobile/unm-devel/tree/master/unm-parent&quot;&gt;https://github.com/univmobile/unm-devel/tree/master/unm-parent&#xd;
+&lt;/a&gt;&#xd;
+&lt;p&gt;&#xd;
+Maven Generated Site: &lt;a&#xd;
+  href=&quot;http://univmobile.vswip.com/nexus/content/sites/pub/unm-parent/&quot;&gt;http://univmobile.vswip.com/nexus/content/sites/pub/unm-parent/&lt;/a&gt;&#xd;
+&lt;a&#xd;
+  href=&quot;http://univmobile.vswip.com/nexus/content/sites/pub/unm-parent/0.0.1-SNAPSHOT/&quot;&gt;0.0.1-SNAPSHOT/&lt;/a&gt;&#xd;
+</description>
   <keepDependencies>false</keepDependencies>
   <properties/>
   <scm class="hudson.plugins.git.GitSCM" plugin="git@2.2.2">

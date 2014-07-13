@@ -9,9 +9,13 @@ Maven Generated Site: &lt;a&#xd;
 &lt;a&#xd;
   href=&quot;http://univmobile.vswip.com/nexus/content/sites/pub/unm-ios/0.0.1-SNAPSHOT/&quot;&gt;0.0.1-SNAPSHOT/&lt;/a&gt;&#xd;
 &lt;p&gt;&#xd;
-&lt;a&#xd;
+  Scénarios : &lt;a&#xd;
   href=&quot;http://univmobile.vswip.com/nexus/content/sites/pub/unm-ios/0.0.1-SNAPSHOT/scenarios.html&quot;&gt;Scénarios 0.0.1-SNAPSHOT&lt;/a&gt;&#xd;
-</description>
+&lt;p&gt;&#xd;
+Tableau de bord d’intégration continue :&#xd;
+&lt;a href=&quot;http://univmobile.vswip.com/job/unm-devel-it/lastSuccessfulBuild/artifact/unm-devel-it/target/unm-ci-dump.html&quot;&gt;&#xd;
+  UnivMobile iOS — Intégration continue&#xd;
+&lt;/a&gt;</description>
   <keepDependencies>false</keepDependencies>
   <properties/>
   <scm class="hudson.plugins.git.GitSCM" plugin="git@2.2.2">
@@ -34,6 +38,7 @@ Maven Generated Site: &lt;a&#xd;
   <disabled>false</disabled>
   <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
   <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
+  <jdk>(Default)</jdk>
   <triggers>
     <hudson.triggers.SCMTrigger>
       <spec>H H * * *</spec>

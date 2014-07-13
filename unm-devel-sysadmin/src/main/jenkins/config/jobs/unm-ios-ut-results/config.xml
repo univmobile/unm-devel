@@ -3,6 +3,11 @@
   <actions/>
   <description>GitHub: &lt;a href=&quot;https://github.com/univmobile/unm-ios-ut-results&quot;&gt;https://github.com/univmobile/unm-ios-ut-results&#xd;
 &lt;/a&gt;&#xd;
+&lt;p/&gt;&#xd;
+Tableau de bord d’intégration continue :&#xd;
+&lt;a href=&quot;http://univmobile.vswip.com/job/unm-devel-it/lastSuccessfulBuild/artifact/unm-devel-it/target/unm-ci-dump.html&quot;&gt;&#xd;
+  UnivMobile iOS — Intégration continue&#xd;
+&lt;/a&gt;&#xd;
 </description>
   <keepDependencies>false</keepDependencies>
   <properties/>
