@@ -59,7 +59,7 @@ if ! cd "${UNM_IOS_REPO}"; then
   exit 1
 fi
 
-echo "pwd: $(pwd)" >> "${BUILD_LOG}"
+echo "pwd: $(pwd)" > "${BUILD_LOG}"
 
 echo "CURRENT_DIR=UNM_IOS_REPO: $(pwd)"
 
