@@ -27,32 +27,19 @@
   <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
   <jdk>JDK 1.6.0_31</jdk>
   <triggers>
-    <jenkins.triggers.ReverseBuildTrigger>
-      <spec></spec>
-      <upstreamProjects>unm-ios-ut-results</upstreamProjects>
-      <threshold>
-        <name>SUCCESS</name>
-        <ordinal>0</ordinal>
-        <color>BLUE</color>
-        <completeBuild>true</completeBuild>
-      </threshold>
-    </jenkins.triggers.ReverseBuildTrigger>
-    <hudson.triggers.TimerTrigger>
-      <spec>H H/2 * * *</spec>
-    </hudson.triggers.TimerTrigger>
     <hudson.triggers.SCMTrigger>
-      <spec>H/5 * * * *</spec>
+      <spec>H * * * *</spec>
       <ignorePostCommitHooks>false</ignorePostCommitHooks>
     </hudson.triggers.SCMTrigger>
   </triggers>
   <concurrentBuild>false</concurrentBuild>
-  <customWorkspace>unm-ios-ut-results_up_to_date</customWorkspace>
+  <customWorkspace>unm-testutil</customWorkspace>
   <rootModule>
     <groupId>fr.univmobile</groupId>
-    <artifactId>unm-ios-ut-results_up_to_date</artifactId>
+    <artifactId>unm-testutil</artifactId>
   </rootModule>
-  <rootPOM>unm-ios-ut-results_up_to_date/pom.xml</rootPOM>
-  <goals>clean install</goals>
+  <rootPOM>unm-testutil/pom.xml</rootPOM>
+  <goals>clean deploy</goals>
   <aggregatorStyleBuild>true</aggregatorStyleBuild>
   <incrementalBuild>false</incrementalBuild>
   <ignoreUpstremChanges>false</ignoreUpstremChanges>
