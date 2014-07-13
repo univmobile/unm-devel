@@ -75,6 +75,7 @@ fi
 # fetch & merge, then inspect head
 git fetch  >> "${BUILD_LOG}" 2>&1
 if [ $? -eq 0 ]; then
+  date
   echo "Fetch from git done"
   git merge FETCH_HEAD >> "${BUILD_LOG}" 2>&1
   git rev-parse master > "${LATEST_HEAD}"
