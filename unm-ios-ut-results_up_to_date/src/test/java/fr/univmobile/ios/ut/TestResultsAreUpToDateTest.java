@@ -16,22 +16,26 @@ public class TestResultsAreUpToDateTest {
 
 		final String PROJECT_NAME = "unm-ios-ut-results";
 
-		final File dir = new File("target/" + PROJECT_NAME);
+		final File dir = new File("target/unm-integration");
 
 		if (dir.exists()) {
-			FileUtils.deleteDirectory(dir);
+			 FileUtils.deleteDirectory(dir);
 		}
 
 		final JGitHelper jgitHelper = JGitHelper.cloneRepo(
-				"https://github.com/univmobile/unm-integration", dir);
+				"https://github.com/univmobile/unm-integration", 
+				//new File("/tmp/ddoo"));
+				dir);
 
 		final String PATH = PROJECT_NAME + "/data/xcodebuild_test.log";
 
 		final RevCommit[] commits = jgitHelper.getCommitsForFileFromHead(PATH,
-				100);
+				400);
 
 		final String commitId0 = commits[0].getId().getName();
 
+		System.out.println("commitId0: "+commitId0);
+		
 		final boolean UP_TO_DATE = jgitHelper.hasTag("processedTestResults/"
 				+ commitId0);
 
