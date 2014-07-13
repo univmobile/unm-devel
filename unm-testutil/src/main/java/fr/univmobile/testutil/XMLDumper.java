@@ -46,13 +46,13 @@ public class XMLDumper implements Dumper {
 		}
 
 		if (value != null) {
-			
-		pw.print(" " + name + "=\"" + value.toString() //
-				.replace("&", "&amp;") //
-				.replace("<", "&lt;") //
-				.replace(">", "&gt;") //
-				.replace("\"", "&quot;") //
-				+ "\"");
+
+			pw.print(" " + name + "=\"" + value.toString() //
+					.replace("&", "&amp;") //
+					.replace("<", "&lt;") //
+					.replace(">", "&gt;") //
+					.replace("\"", "&quot;") //
+					+ "\"");
 		}
 
 		return this;
@@ -113,7 +113,9 @@ public class XMLDumper implements Dumper {
 
 			os = new FileOutputStream(outFile);
 
-			pw = new PrintWriter(new OutputStreamWriter(os, UTF_8));
+			final boolean AUTO_FLUSH = true;
+
+			pw = new PrintWriter(new OutputStreamWriter(os, UTF_8), AUTO_FLUSH);
 
 			rootDumper = new XMLDumper(rootElementName, this, pw);
 		}
