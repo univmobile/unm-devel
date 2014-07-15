@@ -9,6 +9,8 @@ import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 
+import org.apache.commons.io.FileUtils;
+
 public class XMLDumper implements Dumper {
 
 	private boolean inStartElement = true;
@@ -111,6 +113,8 @@ public class XMLDumper implements Dumper {
 		private XMLRootDumper(final String rootElementName, final File outFile)
 				throws IOException {
 
+			FileUtils.forceMkdir(outFile.getParentFile());
+			
 			os = new FileOutputStream(outFile);
 
 			final boolean AUTO_FLUSH = true;
