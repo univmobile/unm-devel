@@ -1,5 +1,6 @@
 package fr.univmobile.testutil;
 
+import static com.google.common.base.Preconditions.checkNotNull;
 import static org.apache.commons.lang3.CharEncoding.UTF_8;
 
 import java.io.File;
@@ -61,6 +62,22 @@ public class XMLDumper implements Dumper {
 	}
 
 	@Override
+	public Dumper addXMLFragment(final File file) throws IOException {
+
+		checkNotNull(file, "file");
+
+		final String xmlContent = FileUtils.readFileToString(file, UTF_8);
+
+		if (xmlContent.contains("<?xml")) {
+			throw new IOException("Not implemented: [<?xml] in XML fragment.");
+		}
+
+		pw.println(xmlContent);
+
+		return this;
+	}
+
+	@Override
 	public Dumper close() throws IOException {
 
 		// TODO add thread safety
@@ -93,9 +110,9 @@ public class XMLDumper implements Dumper {
 	private XMLDumper(final String name, final Dumper parent,
 			final PrintWriter pw) {
 
-		this.name = name;
-		this.parent = parent;
-		this.pw = pw;
+		this.name = checkNotNull(name, "name");
+		this.parent = checkNotNull(parent, "parent");
+		this.pw = checkNotNull(pw, "pw");
 
 		pw.print("<" + name);
 	}
@@ -114,7 +131,7 @@ public class XMLDumper implements Dumper {
 				throws IOException {
 
 			FileUtils.forceMkdir(outFile.getParentFile());
-			
+
 			os = new FileOutputStream(outFile);
 
 			final boolean AUTO_FLUSH = true;
@@ -137,6 +154,12 @@ public class XMLDumper implements Dumper {
 				throws IOException {
 
 			return rootDumper.addAttribute(name, value);
+		}
+
+		@Override
+		public Dumper addXMLFragment(final File file) throws IOException {
+
+			return rootDumper.addXMLFragment(file);
 		}
 
 		@Override

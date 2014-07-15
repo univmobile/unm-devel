@@ -1,5 +1,6 @@
 package fr.univmobile.testutil;
 
+import java.io.File;
 import java.io.IOException;
 
 public interface Dumper {
@@ -8,5 +9,7 @@ public interface Dumper {
 
 	Dumper addAttribute(String name, Object value) throws IOException;
 
+	Dumper addXMLFragment(File file) throws IOException;
+	
 	Dumper close() throws IOException;
 }
