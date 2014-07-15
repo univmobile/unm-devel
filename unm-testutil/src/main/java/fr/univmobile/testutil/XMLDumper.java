@@ -64,6 +64,18 @@ public class XMLDumper implements Dumper {
 	@Override
 	public Dumper addXMLFragment(final File file) throws IOException {
 
+		if (currentChild != null) {
+
+			currentChild.close();
+		}
+
+		if (inStartElement) {
+
+			inStartElement = false;
+
+			pw.println(">");
+		}
+
 		checkNotNull(file, "file");
 
 		final String xmlContent = FileUtils.readFileToString(file, UTF_8);
