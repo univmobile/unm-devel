@@ -49,25 +49,7 @@
   <concurrentBuild>false</concurrentBuild>
   <builders>
     <hudson.tasks.Shell>
-      <command>mkdir -p build/
-rm -f build/UnivMobile.ipa
-/usr/libexec/Plistbuddy -c &quot;Add BUILD_DISPLAY_NAME string &apos;${BUILD_DISPLAY_NAME}&apos;&quot; UnivMobile/UnivMobile-Info.plist 
-/usr/libexec/Plistbuddy -c &quot;Add BUILD_ID string &apos;${BUILD_ID}&apos;&quot; UnivMobile/UnivMobile-Info.plist 
-/usr/libexec/Plistbuddy -c &quot;Add BUILD_NUMBER string &apos;${BUILD_NUMBER}&apos;&quot; UnivMobile/UnivMobile-Info.plist 
-/usr/libexec/Plistbuddy -c &quot;Add GIT_COMMIT string &apos;${GIT_COMMIT}&apos;&quot; UnivMobile/UnivMobile-Info.plist 
-</command>
-    </hudson.tasks.Shell>
-    <hudson.tasks.Shell>
-      <command>security unlock-keychain -p `cat /Users/dandriana/.config/security-unlock-keychain-MyKeichain` /Users/dandriana/Library/Keychains/MyKeichain.keychain</command>
-    </hudson.tasks.Shell>
-    <hudson.tasks.Shell>
-      <command>xcodebuild -workspace UnivMobile.xcworkspace -scheme UnivMobile clean archive</command>
-    </hudson.tasks.Shell>
-    <hudson.tasks.Shell>
-      <command>. build/archive_paths.sh
-
-xcodebuild -exportArchive -exportFormat IPA -archivePath &quot;${ARCHIVE_PATH}&quot; \
-  -exportPath build/UnivMobile.ipa -exportProvisioningProfile UnivMobileAlphaProfile</command>
+      <command>src/main/shell/xcodebuild_archive.sh</command>
     </hudson.tasks.Shell>
   </builders>
   <publishers>

@@ -82,6 +82,11 @@
       <home>/System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Home</home>
       <properties/>
     </jdk>
+    <jdk>
+      <name>MacOS_iOS6</name>
+      <home>/Library/Java/JavaVirtualMachines/jdk1.7.0_60.jdk/Contents/Home</home>
+      <properties/>
+    </jdk>
   </jdks>
   <viewsTabBar class="hudson.views.DefaultViewsTabBar"/>
   <myViewsTabBar class="hudson.views.DefaultMyViewsTabBar"/>
@@ -98,6 +103,35 @@
         <host>88.172.20.221</host>
         <port>22</port>
         <credentialsId>e0c17602-1412-4e94-b12b-f9f110390037</credentialsId>
+        <jvmOptions>-Djava.awt.headless=true</jvmOptions>
+      </launcher>
+      <label></label>
+      <nodeProperties>
+        <hudson.slaves.EnvironmentVariablesNodeProperty>
+          <envVars serialization="custom">
+            <unserializable-parents/>
+            <tree-map>
+              <default>
+                <comparator class="hudson.util.CaseInsensitiveComparator"/>
+              </default>
+              <int>0</int>
+            </tree-map>
+          </envVars>
+        </hudson.slaves.EnvironmentVariablesNodeProperty>
+      </nodeProperties>
+      <userId>dandriana</userId>
+    </slave>
+    <slave>
+      <name>macos_ios6</name>
+      <description></description>
+      <remoteFS>/Users/dandriana/jenkins_node_UnivMobile_ios6</remoteFS>
+      <numExecutors>1</numExecutors>
+      <mode>EXCLUSIVE</mode>
+      <retentionStrategy class="hudson.slaves.RetentionStrategy$Always"/>
+      <launcher class="hudson.plugins.sshslaves.SSHLauncher" plugin="ssh-slaves@1.6">
+        <host>88.172.20.221</host>
+        <port>22</port>
+        <credentialsId>f724c19a-dde3-48f4-87e6-04f01a335545</credentialsId>
         <jvmOptions>-Djava.awt.headless=true</jvmOptions>
       </launcher>
       <label></label>
@@ -143,7 +177,7 @@ Tableau de bord d’intégration continue :&#xd;
       <filterQueue>false</filterQueue>
       <properties class="hudson.model.View$PropertyList"/>
       <jobNames>
-        <comparator class="hudson.util.CaseInsensitiveComparator"/>
+        <comparator class="hudson.util.CaseInsensitiveComparator" reference="../../../../slaves/slave[2]/nodeProperties/hudson.slaves.EnvironmentVariablesNodeProperty/envVars/tree-map/default/comparator"/>
         <string>unm-ios-it</string>
         <string>unm-ios-ut-results</string>
         <string>unm-ios-ut-results_up_to_date</string>
@@ -169,7 +203,7 @@ Tableau de bord d’intégration continue :&#xd;
       <filterQueue>false</filterQueue>
       <properties class="hudson.model.View$PropertyList"/>
       <jobNames>
-        <comparator class="hudson.util.CaseInsensitiveComparator" reference="../../../listView/jobNames/comparator"/>
+        <comparator class="hudson.util.CaseInsensitiveComparator" reference="../../../../slaves/slave[2]/nodeProperties/hudson.slaves.EnvironmentVariablesNodeProperty/envVars/tree-map/default/comparator"/>
       </jobNames>
       <jobFilters/>
       <columns>
@@ -191,7 +225,7 @@ Tableau de bord d’intégration continue :&#xd;
       <filterQueue>false</filterQueue>
       <properties class="hudson.model.View$PropertyList"/>
       <jobNames>
-        <comparator class="hudson.util.CaseInsensitiveComparator" reference="../../../listView/jobNames/comparator"/>
+        <comparator class="hudson.util.CaseInsensitiveComparator" reference="../../../../slaves/slave[2]/nodeProperties/hudson.slaves.EnvironmentVariablesNodeProperty/envVars/tree-map/default/comparator"/>
         <string>Android-UnivMobile</string>
       </jobNames>
       <jobFilters/>
@@ -213,7 +247,7 @@ Tableau de bord d’intégration continue :&#xd;
       <filterQueue>false</filterQueue>
       <properties class="hudson.model.View$PropertyList"/>
       <jobNames>
-        <comparator class="hudson.util.CaseInsensitiveComparator" reference="../../../listView/jobNames/comparator"/>
+        <comparator class="hudson.util.CaseInsensitiveComparator" reference="../../../../slaves/slave[2]/nodeProperties/hudson.slaves.EnvironmentVariablesNodeProperty/envVars/tree-map/default/comparator"/>
         <string>unm-backend-mock</string>
         <string>unm-backend-mock_site</string>
         <string>unm-parent</string>
@@ -239,7 +273,7 @@ Tableau de bord d’intégration continue :&#xd;
       <filterQueue>false</filterQueue>
       <properties class="hudson.model.View$PropertyList"/>
       <jobNames>
-        <comparator class="hudson.util.CaseInsensitiveComparator" reference="../../../listView/jobNames/comparator"/>
+        <comparator class="hudson.util.CaseInsensitiveComparator" reference="../../../../slaves/slave[2]/nodeProperties/hudson.slaves.EnvironmentVariablesNodeProperty/envVars/tree-map/default/comparator"/>
         <string>unm-backend</string>
       </jobNames>
       <jobFilters/>
@@ -261,7 +295,7 @@ Tableau de bord d’intégration continue :&#xd;
       <filterQueue>false</filterQueue>
       <properties class="hudson.model.View$PropertyList"/>
       <jobNames>
-        <comparator class="hudson.util.CaseInsensitiveComparator" reference="../../../listView/jobNames/comparator"/>
+        <comparator class="hudson.util.CaseInsensitiveComparator" reference="../../../../slaves/slave[2]/nodeProperties/hudson.slaves.EnvironmentVariablesNodeProperty/envVars/tree-map/default/comparator"/>
         <string>unm-devel-it</string>
         <string>unm-ios-ut-results</string>
         <string>unm-ios-ut-results_up_to_date</string>

@@ -1,0 +1,8 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<au.com.rayh.GlobalConfigurationImpl plugin="xcode-plugin@1.4.2">
+  <xcodebuildPath>/usr/bin/xcodebuild</xcodebuildPath>
+  <xcrunPath>/usr/bin/xcrun</xcrunPath>
+  <agvtoolPath>/usr/bin/agvtool</agvtoolPath>
+  <defaultKeychain></defaultKeychain>
+  <keychains/>
+</au.com.rayh.GlobalConfigurationImpl>
