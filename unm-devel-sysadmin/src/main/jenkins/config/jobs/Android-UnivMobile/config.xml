@@ -5,16 +5,16 @@
   <keepDependencies>false</keepDependencies>
   <properties>
     <hudson.security.AuthorizationMatrixProperty>
-      <permission>hudson.model.Item.Discover:mgauzins</permission>
+      <permission>hudson.model.Item.Delete:mgauzins</permission>
+      <permission>hudson.model.Item.Read:mgauzins</permission>
+      <permission>hudson.model.Item.Configure:mgauzins</permission>
+      <permission>hudson.model.Item.Cancel:mgauzins</permission>
+      <permission>hudson.model.Run.Delete:mgauzins</permission>
       <permission>hudson.model.Run.Update:mgauzins</permission>
       <permission>hudson.model.Item.Workspace:mgauzins</permission>
       <permission>hudson.model.Item.Build:mgauzins</permission>
-      <permission>hudson.model.Item.Delete:mgauzins</permission>
+      <permission>hudson.model.Item.Discover:mgauzins</permission>
       <permission>hudson.scm.SCM.Tag:mgauzins</permission>
-      <permission>hudson.model.Run.Delete:mgauzins</permission>
-      <permission>hudson.model.Item.Configure:mgauzins</permission>
-      <permission>hudson.model.Item.Read:mgauzins</permission>
-      <permission>hudson.model.Item.Cancel:mgauzins</permission>
     </hudson.security.AuthorizationMatrixProperty>
   </properties>
   <scm class="hudson.plugins.git.GitSCM" plugin="git@2.2.2">
@@ -31,7 +31,11 @@
     </branches>
     <doGenerateSubmoduleConfigurations>false</doGenerateSubmoduleConfigurations>
     <submoduleCfg class="list"/>
-    <extensions/>
+    <extensions>
+      <hudson.plugins.git.extensions.impl.RelativeTargetDirectory>
+        <relativeTargetDir>UnivMobile</relativeTargetDir>
+      </hudson.plugins.git.extensions.impl.RelativeTargetDirectory>
+    </extensions>
   </scm>
   <canRoam>true</canRoam>
   <disabled>false</disabled>
