@@ -1,13 +1,16 @@
 {"region":[{
 	"id":"ile_de_france",
 	"label":"Île de France",
-	"url":"http://m.univmobile.fr"
+	"url":"http://univmobile.vswip.com/unm-backend-mock/listUniversities_ile_de_france",
+	"url_prod":"http://m.univmobile.fr"
 },{
 	"id":"bretagne",
 	"label":"Bretagne",
-	"url":"http://univmobile.ueb.eu"
+	"url":"http://univmobile.vswip.com/unm-backend-mock/listUniversities_bretagne",
+	"url_prod":"http://univmobile.ueb.eu"
 },{
 	"id":"unrpcl",
 	"label":"Limousin/Poitou-Charentes",
-	"url":"http://umobile.univ-lr.fr"
+	"url":"http://univmobile.vswip.com/unm-backend-mock/listUniversities_unrpcl",
+	"url_prod":"http://umobile.univ-lr.fr"
 }]}
