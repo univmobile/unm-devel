@@ -36,6 +36,7 @@ Maven Artifacts: &lt;a&#xd;
   <disabled>false</disabled>
   <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
   <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
+  <jdk>JDK 1.6.0_31</jdk>
   <triggers>
     <hudson.triggers.SCMTrigger>
       <spec>H * * * *</spec>
