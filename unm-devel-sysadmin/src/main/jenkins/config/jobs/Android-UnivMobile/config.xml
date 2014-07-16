@@ -2,6 +2,12 @@
 <project>
   <actions/>
   <description></description>
+  <logRotator class="hudson.tasks.LogRotator">
+    <daysToKeep>-1</daysToKeep>
+    <numToKeep>-1</numToKeep>
+    <artifactDaysToKeep>-1</artifactDaysToKeep>
+    <artifactNumToKeep>-1</artifactNumToKeep>
+  </logRotator>
   <keepDependencies>false</keepDependencies>
   <properties>
     <hudson.security.AuthorizationMatrixProperty>
@@ -21,6 +27,7 @@
     <configVersion>2</configVersion>
     <userRemoteConfigs>
       <hudson.plugins.git.UserRemoteConfig>
+        <name>UnivMobile</name>
         <url>https://github.com/univmobile/unm-android</url>
       </hudson.plugins.git.UserRemoteConfig>
     </userRemoteConfigs>
@@ -31,35 +38,41 @@
     </branches>
     <doGenerateSubmoduleConfigurations>false</doGenerateSubmoduleConfigurations>
     <submoduleCfg class="list"/>
-    <extensions>
-      <hudson.plugins.git.extensions.impl.RelativeTargetDirectory>
-        <relativeTargetDir>UnivMobile</relativeTargetDir>
-      </hudson.plugins.git.extensions.impl.RelativeTargetDirectory>
-    </extensions>
+    <extensions/>
   </scm>
-  <canRoam>true</canRoam>
+  <assignedNode>master</assignedNode>
+  <canRoam>false</canRoam>
   <disabled>false</disabled>
   <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
   <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
-  <jdk>(Valeur par défaut)</jdk>
-  <triggers/>
+  <jdk>(Default)</jdk>
+  <triggers>
+    <hudson.triggers.SCMTrigger>
+      <spec>H/5 * * * *</spec>
+      <ignorePostCommitHooks>false</ignorePostCommitHooks>
+    </hudson.triggers.SCMTrigger>
+  </triggers>
   <concurrentBuild>false</concurrentBuild>
   <builders>
     <hudson.tasks.Ant plugin="ant@1.2">
-      <targets>-Dsdk.dir=/opt/android-sdk-linux/
--Dkey.store=/opt/android-sdk-linux/univ_fake.keystore
--Dkey.store.password=univmobile
--Dkey.alias=univmobile
--Dkey.alias.password=univmobile
-clean-all
+      <targets>clean-all
 release</targets>
       <antName>Ant 1.9.4</antName>
+      <buildFile>UnivMobile/build.xml</buildFile>
+      <properties>sdk.dir=/opt/android-sdk-linux/
+key.store=/opt/android-sdk-linux/univ_fake.keystore
+key.store.password=univmobile
+key.alias=univmobile
+key.alias.password=univmobile
+project.build.directory=UnivMobile</properties>
     </hudson.tasks.Ant>
     <hudson.tasks.Ant plugin="ant@1.2">
-      <targets>-Dsdk.dir=/opt/android-sdk-linux/
-clean-classes
+      <targets>clean-classes
 debug</targets>
       <antName>Ant 1.9.4</antName>
+      <buildFile>UnivMobile/build.xml</buildFile>
+      <properties>sdk.dir=/opt/android-sdk-linux/
+project.build.directory=UnivMobile</properties>
     </hudson.tasks.Ant>
   </builders>
   <publishers>
