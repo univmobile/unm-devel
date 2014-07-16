@@ -32,7 +32,7 @@
 	</developer>
 </ios-device>
 
-<ios-device id="FFFFFFFFBB7FAF2FCE4142ECAF1DE6C915621091" label="iPhone">
+<ios-device id="3c97b05611e387df9ba4418574b85c1a6c094edb" label="iPhone">
 	<developer>
 		<id>bcoleman</id>
 		<name>Benjamin Coleman</name>
@@ -53,6 +53,22 @@
 		<id>bcoleman</id>
 		<name>Benjamin Coleman</name>
 		<email>benjamin.coleman@viewniverse-studio.com</email>
+	</developer>
+</ios-device>
+
+<ios-device id="a21d1f0a6cf7cb72a5209de7261f5e0008506436" label="iPad Air">
+	<developer>
+		<id>aperanovich</id>
+		<name>Alain Peranovich</name>
+		<email>perzo@wanadoo.fr</email>
+	</developer>
+</ios-device>
+
+<ios-device id="9bc2959783375f6ed54029c9d8c3cb711bec9359" label="iPhone 5">
+	<developer>
+		<id>aperanovich</id>
+		<name>Alain Peranovich</name>
+		<email>perzo@wanadoo.fr</email>
 	</developer>
 </ios-device>
 
