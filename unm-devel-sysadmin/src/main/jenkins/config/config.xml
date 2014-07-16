@@ -21,28 +21,41 @@
     <permission>hudson.model.Computer.Disconnect:dandriana</permission>
     <permission>hudson.model.Hudson.Administer:dandriana</permission>
     <permission>hudson.model.Hudson.ConfigureUpdateCenter:dandriana</permission>
+    <permission>hudson.model.Hudson.Read:aalehyane</permission>
+    <permission>hudson.model.Hudson.Read:anonymous</permission>
+    <permission>hudson.model.Hudson.Read:bcoleman</permission>
+    <permission>hudson.model.Hudson.Read:crezvani</permission>
     <permission>hudson.model.Hudson.Read:dandriana</permission>
     <permission>hudson.model.Hudson.Read:dummy</permission>
     <permission>hudson.model.Hudson.Read:mgauzins</permission>
+    <permission>hudson.model.Hudson.Read:pristic</permission>
     <permission>hudson.model.Hudson.RunScripts:dandriana</permission>
     <permission>hudson.model.Hudson.UploadPlugins:dandriana</permission>
+    <permission>hudson.model.Item.Build:aalehyane</permission>
+    <permission>hudson.model.Item.Build:bcoleman</permission>
+    <permission>hudson.model.Item.Build:crezvani</permission>
     <permission>hudson.model.Item.Build:dandriana</permission>
     <permission>hudson.model.Item.Build:dummy</permission>
     <permission>hudson.model.Item.Build:mgauzins</permission>
+    <permission>hudson.model.Item.Build:pristic</permission>
     <permission>hudson.model.Item.Cancel:dandriana</permission>
     <permission>hudson.model.Item.Cancel:dummy</permission>
     <permission>hudson.model.Item.Cancel:mgauzins</permission>
     <permission>hudson.model.Item.Configure:dandriana</permission>
     <permission>hudson.model.Item.Create:dandriana</permission>
-    <permission>hudson.model.Item.Create:dummy</permission>
     <permission>hudson.model.Item.Create:mgauzins</permission>
     <permission>hudson.model.Item.Delete:dandriana</permission>
     <permission>hudson.model.Item.Discover:dandriana</permission>
     <permission>hudson.model.Item.Discover:dummy</permission>
     <permission>hudson.model.Item.Discover:mgauzins</permission>
+    <permission>hudson.model.Item.Read:aalehyane</permission>
+    <permission>hudson.model.Item.Read:anonymous</permission>
+    <permission>hudson.model.Item.Read:bcoleman</permission>
+    <permission>hudson.model.Item.Read:crezvani</permission>
     <permission>hudson.model.Item.Read:dandriana</permission>
     <permission>hudson.model.Item.Read:dummy</permission>
     <permission>hudson.model.Item.Read:mgauzins</permission>
+    <permission>hudson.model.Item.Read:pristic</permission>
     <permission>hudson.model.Item.Workspace:dandriana</permission>
     <permission>hudson.model.Item.Workspace:dummy</permission>
     <permission>hudson.model.Item.Workspace:mgauzins</permission>
@@ -52,12 +65,16 @@
     <permission>hudson.model.View.Configure:dummy</permission>
     <permission>hudson.model.View.Configure:mgauzins</permission>
     <permission>hudson.model.View.Create:dandriana</permission>
-    <permission>hudson.model.View.Create:dummy</permission>
     <permission>hudson.model.View.Create:mgauzins</permission>
     <permission>hudson.model.View.Delete:dandriana</permission>
+    <permission>hudson.model.View.Read:aalehyane</permission>
+    <permission>hudson.model.View.Read:anonymous</permission>
+    <permission>hudson.model.View.Read:bcoleman</permission>
+    <permission>hudson.model.View.Read:crezvani</permission>
     <permission>hudson.model.View.Read:dandriana</permission>
     <permission>hudson.model.View.Read:dummy</permission>
     <permission>hudson.model.View.Read:mgauzins</permission>
+    <permission>hudson.model.View.Read:pristic</permission>
     <permission>hudson.scm.SCM.Tag:dandriana</permission>
   </authorizationStrategy>
   <securityRealm class="hudson.security.HudsonPrivateSecurityRealm">

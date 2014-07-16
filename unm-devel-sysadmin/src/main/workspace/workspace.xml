@@ -1,0 +1,175 @@
+<!--
+
+	Store the different trees/graphs of the different Maven projects
+	and GitHub repositories.
+
+-->
+<workspace>
+
+<gitRepositories>
+<gitRepository name="unm-devel" url="https://github.com/univmobile/unm-devel">
+<description>
+	Des éléments communs aux sous-projets du projet UnivMobile.
+	Il contient des bibliothèques communes :
+	<mavenProject ref="unm-parent"/>,
+	<mavenProject ref="unm-testutil"/>, 
+	des bouchons :
+	<mavenProject ref="unm-backend-mock"/>,
+	et des informations
+	sur l’organisation du développement
+	 ainsi que des scripts Shell :
+	<mavenProject ref="unm-devel-sysadmin"/>.
+	Contrairement à <gitRepository ref="unm-integration"/>,
+	les tests JUnit dans ce repository n’ont pas à faire intervenir de
+	ressources extérieures (bases de données, repositories Git,
+	web apps…).
+</description>
+</gitRepository>
+<gitRepository name="unm-ios" url="https://github.com/univmobile/unm-ios">
+<description>
+	Le projet pour l’application iOS UnivMobile.
+	Il contient le projet Xcode et le code source Objective-C,
+	un script Ant pour de la génération de documentation,
+	et les tests d’intégration dans <mavenProject ref="unm-ios-it"/>.
+</description>
+</gitRepository>
+<gitRepository name="unm-android" url="https://github.com/univmobile/unm-android">
+<description>
+	Le projet pour l’application Android UnivMobile.
+	Il contient le code source Java.
+</description>
+</gitRepository>
+<gitRepository name="unm-backend" url="https://github.com/univmobile/unm-backend">
+<description>
+	Le projet pour la partie backend du projet UnivMobile.
+	Il contient le code source Java et PHP.
+</description>
+</gitRepository>
+<gitRepository name="unm-integration" url="https://github.com/univmobile/unm-integration">
+<description>
+	Des ressources pour l’intégration du projet UnivMobile.
+	On y trouve : un analyseur de logs
+	(<mavenProject ref="unm-ios-ut-results"/>)
+	des tests XCTest du projet <gitRepository ref="unm-ios"/>,
+	un scrutateur de ce projet
+	(<mavenProject ref="unm-ios-ut-results_up_to_date"/>),
+	qui dit si tous les tests ont eu leurs logs analysés,
+	et un analyseur au runtime 
+	(<mavenProject ref="unm-devel-it"/>)
+	des différents jobs Jenkins — tests unitaires et tests d’intégration —
+	attachés à un commit Git en particulier
+	du code de l’application 
+	<gitRepository ref="unm-ios"/>.
+	Les tests JUnit dans ce repository peuvent faire intervenir des
+	ressources extérieures : bases de données, repositories Git,
+	web apps…
+</description>
+</gitRepository>
+</gitRepositories>
+
+<mavenProjects>
+<mavenProject id="unm-ios-it" gitRepository-ref="unm-ios">
+<project>
+	<description>
+		Tests d’intégration, avec Appium, de l’application iOS UnivMobile
+		<gitRepository ref="unm-ios"/>.
+	</description>
+	<parent>
+		<artifactId>unm-parent</artifactId>
+	</parent>
+	<dependencies>
+		<dependency>
+			<artifactId>unm-testutil</artifactId>
+		</dependency>
+	</dependencies>
+</project>
+</mavenProject>
+<mavenProject id="unm-ios" gitRepository-ref="unm-ios" path=".">
+<project>
+	<description>
+		Projets Maven sans code source Java,
+		qui sert à produire de la documentation sur
+		l’application iOS UnivMobile
+		<gitRepository ref="unm-ios"/>.
+	</description>
+</project>
+</mavenProject>
+<mavenProject id="unm-parent" gitRepository-ref="unm-devel">
+<project>
+	<description>
+		POM parent des projets Maven du projet UnivMobile.
+	</description>
+</project>
+</mavenProject>
+<mavenProject id="unm-testutil" gitRepository-ref="unm-devel">
+<project>
+	<description>
+		Classes communes utilitaires pour les tests
+		Jave du projet UnivMobile.
+	</description>
+</project>
+</mavenProject>
+<mavenProject id="unm-backend-mock" gitRepository-ref="unm-devel">
+<project>
+	<description>
+		Bouchon qui simule le backend UnivMobile pour les tests en
+		développement.
+	</description>
+	<parent>
+		<artifactId>unm-parent</artifactId>
+	</parent>
+</project>
+</mavenProject>
+<mavenProject id="unm-ios-ut-results" gitRepository-ref="unm-integration">
+<project>
+	<description>
+		Analyseur de logs 
+		des tests XCTest du projet <gitRepository ref="unm-ios"/>,
+		un scrutateur de ce projet
+		(<mavenProject ref="unm-ios-ut-results_up_to_date"/>),
+		qui dit si tous les tests ont eu leurs logs analysés.
+	</description>
+	<parent>
+		<artifactId>unm-parent</artifactId>
+	</parent>
+</project>
+</mavenProject>
+<mavenProject id="unm-ios-ut-results_up_to_date" gitRepository-ref="unm-integration">
+<project>
+	<description>
+		Scrutateur du projet
+		<mavenProject ref="unm-ios-ut-results_up_to_date"/>
+		qui dit si tous les tests ont eu leurs logs analysés.
+	</description>
+	<parent>
+		<artifactId>unm-parent</artifactId>
+	</parent>
+</project>
+</mavenProject>
+<mavenProject id="unm-devel-it" gitRepository-ref="unm-integration">
+<project>
+	<description>
+		Analyseur au runtime
+		des différents jobs Jenkins — tests unitaires et tests d’intégration —
+		attachés à un commit Git en particulier
+		du code de l’application 
+		<gitRepository ref="unm-ios"/>.
+	</description>
+	<parent>
+		<artifactId>unm-parent</artifactId>
+	</parent>
+</project>
+</mavenProject>
+<mavenProject id="unm-backend" gitRepository-ref="unm-backend" path=".">
+<project>
+	<description>
+		Projets Maven des éléments de backend d’UnivMobile.
+	</description>
+	<parent>
+		<artifactId>unm-parent</artifactId>
+	</parent>
+</project>
+</mavenProject>
+</mavenProjects>
+	
+</workspace>
