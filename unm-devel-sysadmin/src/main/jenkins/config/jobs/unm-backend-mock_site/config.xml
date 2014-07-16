@@ -34,6 +34,7 @@ Maven Generated Site: &lt;a&#xd;
   <disabled>false</disabled>
   <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
   <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
+  <jdk>(Default)</jdk>
   <triggers>
     <hudson.triggers.SCMTrigger>
       <spec>H H * * *</spec>
@@ -47,7 +48,7 @@ Maven Generated Site: &lt;a&#xd;
     <artifactId>unm-backend-mock</artifactId>
   </rootModule>
   <rootPOM>unm-backend-mock/pom.xml</rootPOM>
-  <goals>clean site:site site:deploy</goals>
+  <goals>-U clean site:site site:deploy</goals>
   <aggregatorStyleBuild>true</aggregatorStyleBuild>
   <incrementalBuild>false</incrementalBuild>
   <ignoreUpstremChanges>false</ignoreUpstremChanges>

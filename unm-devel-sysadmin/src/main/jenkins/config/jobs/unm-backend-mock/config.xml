@@ -50,7 +50,7 @@ Maven Artifacts: &lt;a&#xd;
     <artifactId>unm-backend-mock</artifactId>
   </rootModule>
   <rootPOM>unm-backend-mock/pom.xml</rootPOM>
-  <goals>clean deploy</goals>
+  <goals>-U clean deploy</goals>
   <aggregatorStyleBuild>true</aggregatorStyleBuild>
   <incrementalBuild>false</incrementalBuild>
   <ignoreUpstremChanges>false</ignoreUpstremChanges>

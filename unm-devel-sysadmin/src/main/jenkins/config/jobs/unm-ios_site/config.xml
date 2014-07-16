@@ -50,7 +50,7 @@ Tableau de bord d’intégration continue :&#xd;
     <groupId>fr.univmobile</groupId>
     <artifactId>unm-ios</artifactId>
   </rootModule>
-  <goals>clean install site:site site:deploy</goals>
+  <goals>-U clean install site:site site:deploy</goals>
   <aggregatorStyleBuild>true</aggregatorStyleBuild>
   <incrementalBuild>false</incrementalBuild>
   <ignoreUpstremChanges>false</ignoreUpstremChanges>

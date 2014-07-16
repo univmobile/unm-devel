@@ -55,7 +55,7 @@
     <artifactId>unm-ios-ut-results_up_to_date</artifactId>
   </rootModule>
   <rootPOM>unm-ios-ut-results_up_to_date/pom.xml</rootPOM>
-  <goals>clean install</goals>
+  <goals>-U clean install</goals>
   <aggregatorStyleBuild>true</aggregatorStyleBuild>
   <incrementalBuild>false</incrementalBuild>
   <ignoreUpstremChanges>false</ignoreUpstremChanges>

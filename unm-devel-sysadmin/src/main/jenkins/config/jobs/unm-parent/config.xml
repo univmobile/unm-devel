@@ -46,7 +46,7 @@ Maven Generated Site: &lt;a&#xd;
     <artifactId>unm-parent</artifactId>
   </rootModule>
   <rootPOM>unm-parent/pom.xml</rootPOM>
-  <goals>clean deploy</goals>
+  <goals>-U clean deploy</goals>
   <aggregatorStyleBuild>true</aggregatorStyleBuild>
   <incrementalBuild>false</incrementalBuild>
   <ignoreUpstremChanges>false</ignoreUpstremChanges>

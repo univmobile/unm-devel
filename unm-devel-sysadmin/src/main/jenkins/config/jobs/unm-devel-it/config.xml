@@ -41,7 +41,7 @@
     <artifactId>unm-devel-it</artifactId>
   </rootModule>
   <rootPOM>unm-devel-it/pom.xml</rootPOM>
-  <goals>clean install</goals>
+  <goals>-U clean install</goals>
   <aggregatorStyleBuild>true</aggregatorStyleBuild>
   <incrementalBuild>false</incrementalBuild>
   <ignoreUpstremChanges>false</ignoreUpstremChanges>

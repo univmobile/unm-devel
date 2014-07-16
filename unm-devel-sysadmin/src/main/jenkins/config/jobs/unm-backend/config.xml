@@ -24,6 +24,7 @@
   <disabled>false</disabled>
   <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
   <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
+  <jdk>(Default)</jdk>
   <triggers>
     <hudson.triggers.SCMTrigger>
       <spec>H * * * *</spec>
@@ -35,7 +36,7 @@
     <groupId>fr.univmobile</groupId>
     <artifactId>unm-backend</artifactId>
   </rootModule>
-  <goals>clean install</goals>
+  <goals>-U clean install</goals>
   <aggregatorStyleBuild>true</aggregatorStyleBuild>
   <incrementalBuild>false</incrementalBuild>
   <ignoreUpstremChanges>false</ignoreUpstremChanges>

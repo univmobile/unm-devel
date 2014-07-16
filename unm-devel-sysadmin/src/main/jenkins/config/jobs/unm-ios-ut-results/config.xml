@@ -46,7 +46,7 @@ Tableau de bord d’intégration continue :&#xd;
     <artifactId>unm-ios-ut-results</artifactId>
   </rootModule>
   <rootPOM>unm-ios-ut-results/pom.xml</rootPOM>
-  <goals>clean deploy -DtagCommitAfterLaunch=true</goals>
+  <goals>-U clean deploy -DtagCommitAfterLaunch=true</goals>
   <aggregatorStyleBuild>true</aggregatorStyleBuild>
   <incrementalBuild>false</incrementalBuild>
   <ignoreUpstremChanges>false</ignoreUpstremChanges>
