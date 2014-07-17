@@ -120,7 +120,7 @@
             scm:git:https://github.com/univmobile/unm-devel.git
         </developerConnection>
 		<url>
-            https://github.com/univmobile/unm-devel
+			https://github.com/univmobile/unm-devel/tree/master/unm-backend-mock
         </url>
 	</scm>
 	<ciManagement>
