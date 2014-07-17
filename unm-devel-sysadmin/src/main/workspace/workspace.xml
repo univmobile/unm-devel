@@ -39,6 +39,12 @@
 	Il contient le code source Java.
 </description>
 </gitRepository>
+<gitRepository name="unm-webmobile" url="https://github.com/univmobile/unm-webmobile">
+<description>
+	Le projet pour l’application webmobile UnivMobile.
+	Il contient le code source Java.
+</description>
+</gitRepository>
 <gitRepository name="unm-backend" url="https://github.com/univmobile/unm-backend">
 <description>
 	Le projet pour la partie backend du projet UnivMobile.
@@ -101,6 +107,16 @@
 	</description>
 </project>
 </mavenProject>
+<mavenProject id="unm-webapp-parent" gitRepository-ref="unm-devel">
+<project>
+	<description>
+		POM parent des webapps J2EE du projet UnivMobile.
+	</description>
+	<parent>
+		<artifactId>unm-parent</artifactId>
+	</parent>
+</project>
+</mavenProject>
 <mavenProject id="unm-testutil" gitRepository-ref="unm-devel">
 <project>
 	<description>
@@ -116,7 +132,17 @@
 		développement.
 	</description>
 	<parent>
-		<artifactId>unm-parent</artifactId>
+		<artifactId>unm-webapp-parent</artifactId>
+	</parent>
+</project>
+</mavenProject>
+<mavenProject id="unm-webmobile-app" gitRepository-ref="unm-webmobile">
+<project>
+	<description>
+		Application web mobile J2EE. 
+	</description>
+	<parent>
+		<artifactId>unm-webapp-parent</artifactId>
 	</parent>
 </project>
 </mavenProject>
