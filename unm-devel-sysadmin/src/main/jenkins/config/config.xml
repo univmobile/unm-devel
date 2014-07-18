@@ -110,8 +110,14 @@
   <clouds/>
   <slaves>
     <slave>
+      <temporaryOfflineCause class="hudson.node_monitors.DiskSpaceMonitorDescriptor$DiskSpace">
+        <path>/Users/dandriana/jenkins_node_UnivMobile</path>
+        <size>711462912</size>
+        <triggered>true</triggered>
+        <trigger>hudson.node_monitors.DiskSpaceMonitor</trigger>
+      </temporaryOfflineCause>
       <name>macos</name>
-      <description></description>
+      <description>Mac OS X 10.9 Mavericks + Xcode 5.1.1</description>
       <remoteFS>/Users/dandriana/jenkins_node_UnivMobile</remoteFS>
       <numExecutors>1</numExecutors>
       <mode>EXCLUSIVE</mode>
@@ -140,7 +146,7 @@
     </slave>
     <slave>
       <name>macos_ios6</name>
-      <description></description>
+      <description>Mac OS X 10.9 Mavericks + Xcode 4.6.3</description>
       <remoteFS>/Users/dandriana/jenkins_node_UnivMobile_ios6</remoteFS>
       <numExecutors>1</numExecutors>
       <mode>EXCLUSIVE</mode>
@@ -158,7 +164,7 @@
             <unserializable-parents/>
             <tree-map>
               <default>
-                <comparator class="hudson.util.CaseInsensitiveComparator"/>
+                <comparator class="hudson.util.CaseInsensitiveComparator" reference="../../../../../../../slave/nodeProperties/hudson.slaves.EnvironmentVariablesNodeProperty/envVars/tree-map/default/comparator"/>
               </default>
               <int>0</int>
             </tree-map>
@@ -169,7 +175,7 @@
     </slave>
     <slave>
       <name>macos_ios6a</name>
-      <description></description>
+      <description>Mac OS X 10.8.5 Mountain Lion + Xcode 4.6.3</description>
       <remoteFS>/Users/dandriana/jenkins_slave_unm_ios6a</remoteFS>
       <numExecutors>1</numExecutors>
       <mode>EXCLUSIVE</mode>
@@ -187,7 +193,36 @@
             <unserializable-parents/>
             <tree-map>
               <default>
-                <comparator class="hudson.util.CaseInsensitiveComparator" reference="../../../../../../../slave[2]/nodeProperties/hudson.slaves.EnvironmentVariablesNodeProperty/envVars/tree-map/default/comparator"/>
+                <comparator class="hudson.util.CaseInsensitiveComparator" reference="../../../../../../../slave/nodeProperties/hudson.slaves.EnvironmentVariablesNodeProperty/envVars/tree-map/default/comparator"/>
+              </default>
+              <int>0</int>
+            </tree-map>
+          </envVars>
+        </hudson.slaves.EnvironmentVariablesNodeProperty>
+      </nodeProperties>
+      <userId>dandriana</userId>
+    </slave>
+    <slave>
+      <name>macos_ios7</name>
+      <description>Mac OS X 10.9.4 Mavericks + Xcode 5.1.1</description>
+      <remoteFS>/Users/dandriana/jenkins_slave_unm_ios7</remoteFS>
+      <numExecutors>1</numExecutors>
+      <mode>EXCLUSIVE</mode>
+      <retentionStrategy class="hudson.slaves.RetentionStrategy$Always"/>
+      <launcher class="hudson.plugins.sshslaves.SSHLauncher" plugin="ssh-slaves@1.6">
+        <host>88.172.20.221</host>
+        <port>22</port>
+        <credentialsId>14ea0071-a9fb-4382-9d54-9a533ff8c85b</credentialsId>
+        <jvmOptions>-Djava.awt.headless=true</jvmOptions>
+      </launcher>
+      <label></label>
+      <nodeProperties>
+        <hudson.slaves.EnvironmentVariablesNodeProperty>
+          <envVars serialization="custom">
+            <unserializable-parents/>
+            <tree-map>
+              <default>
+                <comparator class="hudson.util.CaseInsensitiveComparator" reference="../../../../../../../slave/nodeProperties/hudson.slaves.EnvironmentVariablesNodeProperty/envVars/tree-map/default/comparator"/>
               </default>
               <int>0</int>
             </tree-map>
@@ -241,8 +276,9 @@ Tableau de bord d’intégration continue :&#xd;
       <filterQueue>false</filterQueue>
       <properties class="hudson.model.View$PropertyList"/>
       <jobNames>
-        <comparator class="hudson.util.CaseInsensitiveComparator" reference="../../../../slaves/slave[2]/nodeProperties/hudson.slaves.EnvironmentVariablesNodeProperty/envVars/tree-map/default/comparator"/>
+        <comparator class="hudson.util.CaseInsensitiveComparator" reference="../../../../slaves/slave/nodeProperties/hudson.slaves.EnvironmentVariablesNodeProperty/envVars/tree-map/default/comparator"/>
         <string>unm-ios-it</string>
+        <string>unm-ios-it_ios6</string>
         <string>unm-ios-ut-results</string>
         <string>unm-ios-ut-results_up_to_date</string>
         <string>unm-ios_site</string>
@@ -267,7 +303,7 @@ Tableau de bord d’intégration continue :&#xd;
       <filterQueue>false</filterQueue>
       <properties class="hudson.model.View$PropertyList"/>
       <jobNames>
-        <comparator class="hudson.util.CaseInsensitiveComparator" reference="../../../../slaves/slave[2]/nodeProperties/hudson.slaves.EnvironmentVariablesNodeProperty/envVars/tree-map/default/comparator"/>
+        <comparator class="hudson.util.CaseInsensitiveComparator" reference="../../../../slaves/slave/nodeProperties/hudson.slaves.EnvironmentVariablesNodeProperty/envVars/tree-map/default/comparator"/>
       </jobNames>
       <jobFilters/>
       <columns>
@@ -289,7 +325,7 @@ Tableau de bord d’intégration continue :&#xd;
       <filterQueue>false</filterQueue>
       <properties class="hudson.model.View$PropertyList"/>
       <jobNames>
-        <comparator class="hudson.util.CaseInsensitiveComparator" reference="../../../../slaves/slave[2]/nodeProperties/hudson.slaves.EnvironmentVariablesNodeProperty/envVars/tree-map/default/comparator"/>
+        <comparator class="hudson.util.CaseInsensitiveComparator" reference="../../../../slaves/slave/nodeProperties/hudson.slaves.EnvironmentVariablesNodeProperty/envVars/tree-map/default/comparator"/>
         <string>Android-UnivMobile</string>
       </jobNames>
       <jobFilters/>
@@ -311,9 +347,11 @@ Tableau de bord d’intégration continue :&#xd;
       <filterQueue>false</filterQueue>
       <properties class="hudson.model.View$PropertyList"/>
       <jobNames>
-        <comparator class="hudson.util.CaseInsensitiveComparator" reference="../../../../slaves/slave[2]/nodeProperties/hudson.slaves.EnvironmentVariablesNodeProperty/envVars/tree-map/default/comparator"/>
+        <comparator class="hudson.util.CaseInsensitiveComparator" reference="../../../../slaves/slave/nodeProperties/hudson.slaves.EnvironmentVariablesNodeProperty/envVars/tree-map/default/comparator"/>
         <string>unm-backend-mock</string>
         <string>unm-backend-mock_site</string>
+        <string>unm-it-commons</string>
+        <string>unm-it-parent</string>
         <string>unm-parent</string>
         <string>unm-parent_site</string>
         <string>unm-testutil</string>
@@ -338,7 +376,7 @@ Tableau de bord d’intégration continue :&#xd;
       <filterQueue>false</filterQueue>
       <properties class="hudson.model.View$PropertyList"/>
       <jobNames>
-        <comparator class="hudson.util.CaseInsensitiveComparator" reference="../../../../slaves/slave[2]/nodeProperties/hudson.slaves.EnvironmentVariablesNodeProperty/envVars/tree-map/default/comparator"/>
+        <comparator class="hudson.util.CaseInsensitiveComparator" reference="../../../../slaves/slave/nodeProperties/hudson.slaves.EnvironmentVariablesNodeProperty/envVars/tree-map/default/comparator"/>
         <string>unm-backend</string>
       </jobNames>
       <jobFilters/>
@@ -360,10 +398,37 @@ Tableau de bord d’intégration continue :&#xd;
       <filterQueue>false</filterQueue>
       <properties class="hudson.model.View$PropertyList"/>
       <jobNames>
-        <comparator class="hudson.util.CaseInsensitiveComparator" reference="../../../../slaves/slave[2]/nodeProperties/hudson.slaves.EnvironmentVariablesNodeProperty/envVars/tree-map/default/comparator"/>
+        <comparator class="hudson.util.CaseInsensitiveComparator" reference="../../../../slaves/slave/nodeProperties/hudson.slaves.EnvironmentVariablesNodeProperty/envVars/tree-map/default/comparator"/>
         <string>unm-devel-it</string>
+        <string>unm-ios-it</string>
+        <string>unm-ios-it_ios6</string>
+        <string>unm-ios-it_ios6_old</string>
         <string>unm-ios-ut-results</string>
         <string>unm-ios-ut-results_up_to_date</string>
+        <string>unm-it-commons_ios6</string>
+        <string>unm-it-commons_ios7</string>
+      </jobNames>
+      <jobFilters/>
+      <columns>
+        <hudson.views.StatusColumn/>
+        <hudson.views.WeatherColumn/>
+        <hudson.views.JobColumn/>
+        <hudson.views.LastSuccessColumn/>
+        <hudson.views.LastFailureColumn/>
+        <hudson.views.LastDurationColumn/>
+        <hudson.views.BuildButtonColumn/>
+      </columns>
+      <recurse>false</recurse>
+    </listView>
+    <listView>
+      <owner class="hudson" reference="../../.."/>
+      <name>unm-mobileweb</name>
+      <filterExecutors>false</filterExecutors>
+      <filterQueue>false</filterQueue>
+      <properties class="hudson.model.View$PropertyList"/>
+      <jobNames>
+        <comparator class="hudson.util.CaseInsensitiveComparator" reference="../../../../slaves/slave/nodeProperties/hudson.slaves.EnvironmentVariablesNodeProperty/envVars/tree-map/default/comparator"/>
+        <string>unm-mobileweb-app</string>
       </jobNames>
       <jobFilters/>
       <columns>
