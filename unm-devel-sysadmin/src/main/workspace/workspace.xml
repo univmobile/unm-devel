@@ -129,6 +129,17 @@
 	</parent>
 </project>
 </mavenProject>
+<mavenProject id="unm-it-commons" gitRepository-ref="unm-devel">
+<project>
+	<description>
+		Classes Java communes aux projets de tests d’intégration
+		du projet UnivMobile.
+	</description>
+	<parent>
+		<artifactId>unm-it-parent</artifactId>
+	</parent>
+</project>
+</mavenProject>
 <mavenProject id="unm-testutil" gitRepository-ref="unm-devel">
 <project>
 	<description>
