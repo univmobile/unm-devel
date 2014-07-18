@@ -82,4 +82,34 @@
 		</repository>
 	</repositories>
 
+	<profiles>
+		<profile>
+			<id>dandriana</id>
+			<properties>
+				<ios.platformVersion.shouldBe>7.1</ios.platformVersion.shouldBe>
+			</properties>
+		</profile>
+		<profile>
+			<id>jenkins</id>
+		</profile>
+		<profile>
+			<id>unm_ios6a</id>
+			<properties>
+				<ios.platformVersion.shouldBe>6.1</ios.platformVersion.shouldBe>
+			</properties>
+		</profile>
+		<profile>
+			<id>unm_temp2</id>
+			<properties>
+				<ios.platformVersion.shouldBe>7.1</ios.platformVersion.shouldBe>
+			</properties>
+		</profile>
+		<profile>
+			<id>unm_ios7</id>
+			<properties>
+				<ios.platformVersion.shouldBe>7.1</ios.platformVersion.shouldBe>
+			</properties>
+		</profile>
+	</profiles>
+
 </project>
