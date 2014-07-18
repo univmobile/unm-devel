@@ -39,10 +39,11 @@
 	Il contient le code source Java.
 </description>
 </gitRepository>
-<gitRepository name="unm-webmobile" url="https://github.com/univmobile/unm-webmobile">
+<gitRepository name="unm-mobileweb" url="https://github.com/univmobile/unm-mobileweb">
 <description>
-	Le projet pour l’application webmobile UnivMobile.
-	Il contient le code source Java.
+	Le projet pour l’application mobile web UnivMobile.
+	Il contient le code source Java de l’application
+	et les tests d’intégration dans <mavenProject ref="unm-mobileweb-it"/>.
 </description>
 </gitRepository>
 <gitRepository name="unm-backend" url="https://github.com/univmobile/unm-backend">
@@ -136,7 +137,7 @@
 	</parent>
 </project>
 </mavenProject>
-<mavenProject id="unm-webmobile-app" gitRepository-ref="unm-webmobile">
+<mavenProject id="unm-mobileweb-app" gitRepository-ref="unm-mobileweb">
 <project>
 	<description>
 		Application web mobile J2EE. 
@@ -144,6 +145,22 @@
 	<parent>
 		<artifactId>unm-webapp-parent</artifactId>
 	</parent>
+</project>
+</mavenProject>
+<mavenProject id="unm-mobileweb-it" gitRepository-ref="unm-mobileweb">
+<project>
+	<description>
+		Tests d’intégration, avec Appium, de l’application mobile web UnivMobile
+		<gitRepository ref="unm-mobileweb"/>.
+	</description>
+	<parent>
+		<artifactId>unm-parent</artifactId>
+	</parent>
+	<dependencies>
+		<dependency>
+			<artifactId>unm-testutil</artifactId>
+		</dependency>
+	</dependencies>
 </project>
 </mavenProject>
 <mavenProject id="unm-ios-ut-results" gitRepository-ref="unm-integration">
