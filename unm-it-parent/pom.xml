@@ -3,6 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<artifactId>unm-it-parent</artifactId>
+	<packaging>pom</packaging>
 
 	<parent>
 		<groupId>fr.univmobile</groupId>
