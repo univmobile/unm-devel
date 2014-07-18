@@ -118,6 +118,17 @@
 	</parent>
 </project>
 </mavenProject>
+<mavenProject id="unm-it-parent" gitRepository-ref="unm-devel">
+<project>
+	<description>
+		POM parent des projets Maven
+		de tests d’intégration du projet UnivMobile.
+	</description>
+	<parent>
+		<artifactId>unm-parent</artifactId>
+	</parent>
+</project>
+</mavenProject>
 <mavenProject id="unm-testutil" gitRepository-ref="unm-devel">
 <project>
 	<description>
