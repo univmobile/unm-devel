@@ -18,6 +18,15 @@
 	<url>
         http://univmobile.vswip.com/nexus/content/sites/pub/${project.artifactId}/${project.version}
     </url>
+    
+    <build>
+    	<testResources>
+    		<testResource>
+    			<directory>src/test/resources</directory>
+    			<filtering>true</filtering>
+    		</testResource>
+    	</testResources>
+    </build>
 
 	<scm>
 		<connection>
