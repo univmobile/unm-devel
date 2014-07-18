@@ -34,9 +34,9 @@ Tableau de bord d’intégration continue :&#xd;
     <submoduleCfg class="list"/>
     <extensions/>
   </scm>
-  <assignedNode>macos_ios6a</assignedNode>
+  <assignedNode>macos_ios6</assignedNode>
   <canRoam>false</canRoam>
-  <disabled>false</disabled>
+  <disabled>true</disabled>
   <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
   <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
   <jdk>MacOS_iOS6</jdk>
