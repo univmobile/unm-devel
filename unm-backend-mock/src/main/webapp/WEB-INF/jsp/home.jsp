@@ -15,15 +15,13 @@ div.layout {
 	display: table;
 }
 #div-form {
-	float: right;
-	margin-left: 0.5em;
 	padding-left: 0.8em;
 	border-left: 1px dashed #000;
+	display: table-cell;
 }
 #div-pathlist {
-	xbackground-color: #ff0;
-	margin-right: 0.5em;
-	display: table;
+	padding-right: 0.5em;
+	display: table-cell;
 	white-space: nowrap;
 }
 #div-pathlist ul {
@@ -82,6 +80,20 @@ span.error {
 
 <div class="layout">
 
+<div id="div-pathlist">
+Saved paths:
+<ul>
+<c:forEach var="key" items="${keys}">
+
+<li>
+	<a href="${contextRoot}${key}">JSON</a>
+	<a href="${contextRoot}?path=${key}">${key}</a>
+
+</c:forEach>
+
+</ul>
+</div>
+
 <div id="div-form">
 <form method="POST" action="${contextRoot}">
 
@@ -107,20 +119,6 @@ span.error {
 		value="${content}"/></textarea>
 
 </form>
-</div>
-
-<div id="div-pathlist">
-Saved paths:
-<ul>
-<c:forEach var="key" items="${keys}">
-
-<li>
-	<a href="${contextRoot}${key}">JSON</a>
-	<a href="${contextRoot}?path=${key}">${key}</a>
-
-</c:forEach>
-
-</ul>
 </div>
 
 </div>
