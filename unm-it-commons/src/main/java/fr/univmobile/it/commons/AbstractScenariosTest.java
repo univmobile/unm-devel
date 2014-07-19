@@ -26,10 +26,30 @@ public abstract class AbstractScenariosTest {
 	protected static Iterable<Object[]> loadParametersForScenarioClasses(
 			final Class<?>... classes) throws Exception {
 
+		final Class<?> firstClazz = classes[0];
+
+		final boolean useSafari = firstClazz.isAnnotationPresent(Safari.class);
+
+		System.out.println(firstClazz);
+		System.out.println("useSafari: "+useSafari);
+		// 1. VALIDATION
+
+		for (final Class<?> clazz : classes) {
+
+			if (clazz.isAnnotationPresent(Safari.class) != useSafari) {
+
+				throw new IllegalArgumentException(
+						"All classes should have the same @Safari annotation: "
+								+ firstClazz + ", " + clazz);
+			}
+		}
+
+		// 2. LOAD PARAMETERS
+
 		final List<Object[]> parameters = new ArrayList<Object[]>();
 
 		loadParameters(parameters, //
-				new AppiumEnabledTestCaptureEngine(), classes);
+				new AppiumEnabledTestCaptureEngine(useSafari), classes);
 
 		loadParameters(parameters, //
 				new AppiumEnabledTestCheckerEngine(), classes);
@@ -61,7 +81,7 @@ public abstract class AbstractScenariosTest {
 
 		for (final Class<?> clazz : classes) {
 
-			if (clazz.getAnnotation(Ignore.class) != null) {
+			if (clazz.isAnnotationPresent(Ignore.class)) {
 				continue;
 			}
 
@@ -134,7 +154,7 @@ public abstract class AbstractScenariosTest {
 
 			for (final Method method : clazz.getMethods()) {
 
-				if (method.getAnnotation(Ignore.class) != null) {
+				if (method.isAnnotationPresent(Ignore.class)) {
 					continue;
 				}
 
@@ -227,8 +247,7 @@ public abstract class AbstractScenariosTest {
 
 		engine.setPlatformName(AppiumEnabledTestDefaultEngine
 				.getCurrentPlatformName());
-		engine.setPlatformVersion(EnvironmentUtils
-				.getCurrentPlatformVersion());
+		engine.setPlatformVersion(EnvironmentUtils.getCurrentPlatformVersion());
 		engine.setDeviceName(deviceName);
 		engine.setScenariosClass(scenariosClass);
 		engine.setScenarioMethod(scenarioMethod);

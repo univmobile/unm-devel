@@ -20,7 +20,12 @@ import org.openqa.selenium.remote.RemoteWebElement;
 final class AppiumEnabledTestCaptureEngine extends
 		AppiumEnabledTestPhasedEngine {
 
-	private final AppiumEnabledTestEngine defaultEngine = new AppiumEnabledTestDefaultEngine();
+	public AppiumEnabledTestCaptureEngine(final boolean useSafari) {
+
+		defaultEngine = new AppiumEnabledTestDefaultEngine(useSafari);
+	}
+
+	private final AppiumEnabledTestEngine defaultEngine;
 
 	@Override
 	public void setUp() throws Exception {

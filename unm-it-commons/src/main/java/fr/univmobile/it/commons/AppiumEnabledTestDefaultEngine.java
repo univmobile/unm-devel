@@ -43,6 +43,13 @@ final class AppiumEnabledTestDefaultEngine implements AppiumEnabledTestEngine {
 
 	private static File app; // the "UnivMobile.app" local directory
 
+	public AppiumEnabledTestDefaultEngine(final boolean useSafari) {
+
+		this.useSafari = useSafari;
+	}
+
+	private final boolean useSafari;
+
 	@Before
 	@Override
 	public void setUp() throws Exception {
@@ -60,7 +67,7 @@ final class AppiumEnabledTestDefaultEngine implements AppiumEnabledTestEngine {
 
 		// final String BUNDLE_ID = "fr.univmobile.UnivMobile";
 
-		if (app == null) {
+		if (app == null && !useSafari) {
 
 			final String appPath;
 
@@ -86,7 +93,7 @@ final class AppiumEnabledTestDefaultEngine implements AppiumEnabledTestEngine {
 
 		final DesiredCapabilities capabilities = new DesiredCapabilities();
 
-		capabilities.setCapability(BROWSER_NAME, "iOS");
+		capabilities.setCapability(BROWSER_NAME, useSafari ? "Safari" : "iOS");
 
 		capabilities.setCapability(PLATFORM, "Mac");
 		capabilities.setCapability(PLATFORM_NAME, getCurrentPlatformName());
@@ -96,7 +103,9 @@ final class AppiumEnabledTestDefaultEngine implements AppiumEnabledTestEngine {
 		capabilities.setCapability(DEVICE, "iPhone Simulator");
 		capabilities.setCapability(DEVICE_NAME, getCurrentDeviceName());
 
-		capabilities.setCapability(APP, app.getAbsolutePath());
+		if (!useSafari) {
+			capabilities.setCapability(APP, app.getAbsolutePath());
+		}
 
 		// System.out.println("DEBUG: new AppiumDriver()...");
 

@@ -42,7 +42,8 @@ public abstract class AppiumEnabledTest implements AppiumEnabledTestEngine {
 
 		if (engine == null) {
 
-			engine = new AppiumEnabledTestDefaultEngine();
+			engine = new AppiumEnabledTestDefaultEngine(this.getClass()
+					.isAnnotationPresent(Safari.class));
 		}
 
 		checkedEngine().setUp();
