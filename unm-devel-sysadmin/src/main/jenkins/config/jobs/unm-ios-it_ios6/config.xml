@@ -81,9 +81,9 @@ Tableau de bord d’intégration continue :&#xd;
   <publishers>
     <hudson.tasks.ArtifactArchiver>
       <artifacts>unm-ios-it/target/screenshots/</artifacts>
-      <latestOnly>false</latestOnly>
+      <latestOnly>true</latestOnly>
       <allowEmptyArchive>false</allowEmptyArchive>
-      <onlyIfSuccessful>false</onlyIfSuccessful>
+      <onlyIfSuccessful>true</onlyIfSuccessful>
     </hudson.tasks.ArtifactArchiver>
   </publishers>
   <buildWrappers/>
