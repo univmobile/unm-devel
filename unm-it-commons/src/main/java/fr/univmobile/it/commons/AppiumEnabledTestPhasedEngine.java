@@ -101,7 +101,7 @@ public abstract class AppiumEnabledTestPhasedEngine implements
 
 	protected final String customizeFilename(final String filename) {
 
-		final String normalizedDeviceName = AbstractScenariosTest
+		final String normalizedDeviceName = ScenarioContext
 				.normalizeDeviceName(deviceName);
 
 		// e.g. "iOS_7.0/iPhoneRetina_4-inch/MyScenario001/scenario4/login.png"
@@ -118,7 +118,7 @@ public abstract class AppiumEnabledTestPhasedEngine implements
 		return scenariosClass.getSimpleName() + "." //
 				+ scenarioMethod.getName() + "." //
 				+ getSimpleName() + "_" //
-				+ AbstractScenariosTest.normalizeDeviceName(deviceName);
+				+ ScenarioContext.normalizeDeviceName(deviceName);
 	}
 
 	abstract boolean hasErrors();

@@ -1,6 +1,7 @@
 package fr.univmobile.it.commons;
 
 import static com.google.common.base.Preconditions.checkNotNull;
+import static fr.univmobile.it.commons.ScenarioContext.normalizeDeviceName;
 import static org.junit.Assert.assertFalse;
 
 import java.io.File;
@@ -151,8 +152,6 @@ public abstract class AbstractScenariosTest {
 
 			// 3. SCENARIO METHODS
 
-			final String classSimpleName = clazz.getSimpleName();
-
 			for (final Method method : clazz.getMethods()) {
 
 				if (method.isAnnotationPresent(Ignore.class)) {
@@ -176,55 +175,24 @@ public abstract class AbstractScenariosTest {
 
 				for (final String deviceName : deviceNames) {
 
-					final String normalizedDeviceName = normalizeDeviceName(deviceName);
-
-					parameters.add(new Object[] { normalizedDeviceName, //
-							classSimpleName, //
-							methodName, //
-							engine.getSimpleName(), //
+					parameters.add(new Object[] { new ScenarioContext(
 							deviceName, //
 							clazz.asSubclass(AppiumEnabledTest.class), //
 							method, //
-							engine });
+							engine) });
 				}
 			}
 		}
 	}
 
-	public static String normalizeDeviceName(final String deviceName) {
+	protected AbstractScenariosTest(final ScenarioContext context) {
 
-		// e.g. "iPhone Retina (3.5-inch)" -> "iPhone_Retina_3.5-inch"
+		checkNotNull(context, "context");
 
-		String normalizedDeviceName = deviceName.replace(' ', '_') //
-				.replace('(', '_').replace(')', '_') //
-				.replace("__", "_");
-
-		if (normalizedDeviceName.startsWith("_")) {
-			normalizedDeviceName = normalizedDeviceName.substring(1);
-		}
-
-		if (normalizedDeviceName.endsWith("_")) {
-			normalizedDeviceName = normalizedDeviceName.substring(0,
-					normalizedDeviceName.length() - 1);
-		}
-
-		return normalizedDeviceName;
-	}
-
-	protected AbstractScenariosTest(final String normalizedDeviceName, //
-			final String scenarioClassSimpleName, //
-			final String scenarioMethodName, //
-			final String engineSimpleName, //
-			final String deviceName, //
-			final Class<? extends AppiumEnabledTest> scenariosClass, //
-			final Method scenarioMethod, //
-			final AppiumEnabledTestPhasedEngine engine) {
-
-		this.deviceName = checkNotNull(normalizedDeviceName, "deviceName");
-		this.scenariosClass = checkNotNull(scenariosClass, "scenariosClass");
-		this.scenarioMethod = checkNotNull(scenarioMethod, "scenarioMethod");
-		this.engine = checkNotNull(engine, "engine");
-
+		this.deviceName = context.normalizedDeviceName;
+		this.scenariosClass = context.scenariosClass;
+		this.scenarioMethod = context.scenarioMethod;
+		this.engine = context.engine;
 	}
 
 	private final String deviceName;
