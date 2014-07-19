@@ -26,9 +26,16 @@
   <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
   <jdk>(Default)</jdk>
   <triggers>
-    <hudson.triggers.TimerTrigger>
-      <spec>H * * * *</spec>
-    </hudson.triggers.TimerTrigger>
+    <jenkins.triggers.ReverseBuildTrigger>
+      <spec></spec>
+      <upstreamProjects>unm-ios-it, unm-ios-it_ios6, unm-mobileweb-it_ios6, unm-mobileweb-it_ios7, </upstreamProjects>
+      <threshold>
+        <name>FAILURE</name>
+        <ordinal>2</ordinal>
+        <color>RED</color>
+        <completeBuild>true</completeBuild>
+      </threshold>
+    </jenkins.triggers.ReverseBuildTrigger>
     <hudson.triggers.SCMTrigger>
       <spec>H/5 * * * *</spec>
       <ignorePostCommitHooks>false</ignorePostCommitHooks>
@@ -57,7 +64,7 @@
   <reporters/>
   <publishers>
     <hudson.tasks.ArtifactArchiver>
-      <artifacts>unm-devel-it/target/unm-ci-dump.html, unm-devel-it/target/unm-ci-dump.xml, unm-devel-it/target/unm-ios-it-scenarios-dump.html, unm-devel-it/target/unm-ios-it-scenarios-dump.xml</artifacts>
+      <artifacts>unm-devel-it/target/unm-ci-dump.html, unm-devel-it/target/unm-ci-dump.xml, unm-devel-it/target/unm-ios-it-scenarios-dump.html, unm-devel-it/target/unm-ios-it-scenarios-dump.xml, unm-devel-it/target/unm-mobileweb-ci-dump.html, unm-devel-it/target/unm-mobileweb-ci-dump.xml</artifacts>
       <latestOnly>true</latestOnly>
       <allowEmptyArchive>false</allowEmptyArchive>
       <onlyIfSuccessful>false</onlyIfSuccessful>

@@ -191,6 +191,19 @@ Application mobile en test :&#xd;
 &lt;a href=&quot;http://univmobile.vswip.com/ios/&quot;&gt;&#xd;
   UnivMobile iOS — Installations ad hoc&#xd;
 &lt;/a&gt;&#xd;
+&lt;/ul&gt;&#xd;
+&#xd;
+UnivMobile mobile web :&#xd;
+&lt;ul&gt;&#xd;
+&lt;li&gt;Tableau de bord d’intégration continue :&#xd;
+&lt;a href=&quot;http://univmobile.vswip.com/job/unm-devel-it/lastSuccessfulBuild/artifact/unm-devel-it/target/unm-mobileweb-ci-dump.html&quot;&gt;&#xd;
+  UnivMobile mobile web — Intégration continue&#xd;
+&lt;/a&gt;&#xd;
+&lt;li&gt;&#xd;
+Captures d’écrans des tests d’intégration :&#xd;
+&lt;a href=&quot;http://univmobile.vswip.com/job/unm-devel-it/lastSuccessfulBuild/artifact/unm-devel-it/target/unm-mobileweb-it-scenarios-dump.html&quot;&gt;&#xd;
+  UnivMobile mobile web — Scénarios&#xd;
+&lt;/a&gt;&#xd;
 &lt;/ul&gt;</description>
       <filterExecutors>false</filterExecutors>
       <filterQueue>false</filterQueue>
@@ -338,11 +351,12 @@ Tableau de bord d’intégration continue :&#xd;
         <string>unm-devel-it</string>
         <string>unm-ios-it</string>
         <string>unm-ios-it_ios6</string>
-        <string>unm-ios-it_ios6_old</string>
         <string>unm-ios-ut-results</string>
         <string>unm-ios-ut-results_up_to_date</string>
         <string>unm-it-commons_ios6</string>
         <string>unm-it-commons_ios7</string>
+        <string>unm-mobileweb-it_ios6</string>
+        <string>unm-mobileweb-it_ios7</string>
       </jobNames>
       <jobFilters/>
       <columns>
@@ -365,6 +379,7 @@ Tableau de bord d’intégration continue :&#xd;
       <jobNames>
         <comparator class="hudson.util.CaseInsensitiveComparator" reference="../../../../slaves/slave/nodeProperties/hudson.slaves.EnvironmentVariablesNodeProperty/envVars/tree-map/default/comparator"/>
         <string>unm-mobileweb-app</string>
+        <string>unm-mobileweb-it_ios6</string>
         <string>unm-mobileweb-it_ios7</string>
       </jobNames>
       <jobFilters/>
