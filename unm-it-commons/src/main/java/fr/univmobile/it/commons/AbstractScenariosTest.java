@@ -28,18 +28,19 @@ public abstract class AbstractScenariosTest {
 
 		final Class<?> firstClazz = classes[0];
 
-		final boolean useSafari = firstClazz.isAnnotationPresent(Safari.class);
+		final boolean useSafari = AppiumSafariEnabledTest.class
+				.isAssignableFrom(firstClazz);
 
 		System.out.println(firstClazz);
-		System.out.println("useSafari: "+useSafari);
+		System.out.println("useSafari: " + useSafari);
 		// 1. VALIDATION
 
 		for (final Class<?> clazz : classes) {
 
-			if (clazz.isAnnotationPresent(Safari.class) != useSafari) {
+			if (AppiumSafariEnabledTest.class.isAssignableFrom(clazz) != useSafari) {
 
 				throw new IllegalArgumentException(
-						"All classes should have the same @Safari annotation: "
+						"None, or all classes, should extend AppiumSafariEnabledTest: "
 								+ firstClazz + ", " + clazz);
 			}
 		}

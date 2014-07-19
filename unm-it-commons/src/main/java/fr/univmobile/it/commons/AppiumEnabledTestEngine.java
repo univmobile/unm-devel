@@ -29,6 +29,8 @@ interface AppiumEnabledTestEngine {
 
 	void waitForElementById(int seconds, String id) throws IOException;
 
+	void get(String url) throws IOException;
+
 	ElementChecker elementById(String id) throws IOException;
 
 	ElementChecker elementByName(String name) throws IOException;

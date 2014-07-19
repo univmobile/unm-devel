@@ -312,6 +312,12 @@ final class AppiumEnabledTestDefaultEngine implements AppiumEnabledTestEngine {
 	}
 
 	@Override
+	public void get(final String url) throws IOException {
+
+		getDriver().get(url);
+	}
+
+	@Override
 	public ElementChecker elementById(final String id) throws IOException {
 
 		return new WebElementChecker(id, findElementById(id));

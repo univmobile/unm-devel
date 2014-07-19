@@ -105,6 +105,12 @@ final class AppiumEnabledTestCaptureEngine extends
 	}
 
 	@Override
+	public void get(final String url) throws IOException {
+		
+		defaultEngine.get(url);
+	}
+
+	@Override
 	public String getSimpleName() {
 
 		return "capture";

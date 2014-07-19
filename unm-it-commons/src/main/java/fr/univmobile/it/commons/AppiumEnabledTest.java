@@ -14,7 +14,7 @@ import org.openqa.selenium.remote.RemoteWebElement;
 public abstract class AppiumEnabledTest implements AppiumEnabledTestEngine {
 
 	@Override
-	public AppiumDriver getDriver() {
+	public final AppiumDriver getDriver() {
 
 		return checkedEngine().getDriver();
 	}
@@ -42,8 +42,9 @@ public abstract class AppiumEnabledTest implements AppiumEnabledTestEngine {
 
 		if (engine == null) {
 
-			engine = new AppiumEnabledTestDefaultEngine(this.getClass()
-					.isAnnotationPresent(Safari.class));
+			engine = new AppiumEnabledTestDefaultEngine(
+					AppiumSafariEnabledTest.class.isAssignableFrom(this
+							.getClass()));
 		}
 
 		checkedEngine().setUp();
@@ -62,11 +63,28 @@ public abstract class AppiumEnabledTest implements AppiumEnabledTestEngine {
 		checkedEngine().takeScreenshot(filename);
 	}
 
+	private AppiumEnabledTest checkUseSafari() {
+		
+		if (!AppiumSafariEnabledTest.class.isAssignableFrom(this.getClass())) {
+			throw new IllegalStateException(
+					"Call this method only from an AppiumSafariEnabledTest subclass.");
+		}
+		
+		return this;
+	}
+	
 	@Override
 	public final void waitForElementById(final int seconds, final String id)
 			throws IOException {
 
-		checkedEngine().waitForElementById(seconds, id);
+		checkUseSafari().checkedEngine().waitForElementById(seconds, id);
+	}
+
+	@Override
+	public final void get(final String url) 
+			throws IOException {
+
+		checkUseSafari().checkedEngine().get(url);
 	}
 
 	@Override

@@ -79,6 +79,12 @@ public class AppiumEnabledTestCheckerEngine extends
 	}
 
 	@Override
+	public void get(final String url) throws IOException {
+
+		// do nothing
+	}
+
+	@Override
 	public final void futureScreenshot(final int ms, final String filename)
 			throws IOException {
 
