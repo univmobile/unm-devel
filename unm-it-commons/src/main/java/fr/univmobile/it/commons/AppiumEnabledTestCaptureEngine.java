@@ -93,6 +93,13 @@ final class AppiumEnabledTestCaptureEngine extends
 	}
 
 	@Override
+	public final void waitForElementById(final int seconds, final String id)
+			throws IOException {
+
+		defaultEngine.waitForElementById(seconds, id);
+	}
+
+	@Override
 	public String getSimpleName() {
 
 		return "capture";

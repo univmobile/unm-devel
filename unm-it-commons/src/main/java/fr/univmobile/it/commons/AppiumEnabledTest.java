@@ -62,6 +62,13 @@ public abstract class AppiumEnabledTest implements AppiumEnabledTestEngine {
 	}
 
 	@Override
+	public final void waitForElementById(final int seconds, final String id)
+			throws IOException {
+
+		checkedEngine().waitForElementById(seconds, id);
+	}
+
+	@Override
 	public final void swipe(final int startX, final int startY, final int endX,
 			final int endY, final int durationMs) throws IOException {
 
@@ -95,7 +102,8 @@ public abstract class AppiumEnabledTest implements AppiumEnabledTestEngine {
 	}
 
 	@Override
-	public final ElementChecker elementByName(final String name) throws IOException {
+	public final ElementChecker elementByName(final String name)
+			throws IOException {
 
 		return checkedEngine().elementByName(name);
 	}

@@ -27,14 +27,16 @@ import org.joda.time.DateTime;
 import org.joda.time.format.DateTimeFormat;
 import org.junit.After;
 import org.junit.Before;
+import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
-import fr.univmobile.it.commons.EnvironmentUtils;
 import fr.univmobile.testutil.PropertiesUtils;
 
 final class AppiumEnabledTestDefaultEngine implements AppiumEnabledTestEngine {
@@ -290,6 +292,14 @@ final class AppiumEnabledTestDefaultEngine implements AppiumEnabledTestEngine {
 			throw new NoSuchElementException(
 					"Could not find element for name: " + name, e);
 		}
+	}
+
+	@Override
+	public void waitForElementById(final int seconds, final String id)
+			throws IOException {
+
+		new WebDriverWait(getDriver(), seconds).until(ExpectedConditions
+				.presenceOfElementLocated(By.id(id)));
 	}
 
 	@Override

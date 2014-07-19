@@ -27,6 +27,8 @@ interface AppiumEnabledTestEngine {
 
 	RemoteWebElement findElementByName(String name) throws IOException;
 
+	void waitForElementById(int seconds, String id) throws IOException;
+
 	ElementChecker elementById(String id) throws IOException;
 
 	ElementChecker elementByName(String name) throws IOException;

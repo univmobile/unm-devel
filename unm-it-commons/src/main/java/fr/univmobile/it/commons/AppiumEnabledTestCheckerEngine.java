@@ -72,6 +72,13 @@ public class AppiumEnabledTestCheckerEngine extends
 	}
 
 	@Override
+	public final void waitForElementById(final int seconds, final String id)
+			throws IOException {
+
+		// do nothing
+	}
+
+	@Override
 	public final void futureScreenshot(final int ms, final String filename)
 			throws IOException {
 
