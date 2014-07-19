@@ -110,70 +110,6 @@
   <clouds/>
   <slaves>
     <slave>
-      <temporaryOfflineCause class="hudson.node_monitors.DiskSpaceMonitorDescriptor$DiskSpace">
-        <path>/Users/dandriana/jenkins_node_UnivMobile</path>
-        <size>711462912</size>
-        <triggered>true</triggered>
-        <trigger>hudson.node_monitors.DiskSpaceMonitor</trigger>
-      </temporaryOfflineCause>
-      <name>macos</name>
-      <description>Mac OS X 10.9 Mavericks + Xcode 5.1.1</description>
-      <remoteFS>/Users/dandriana/jenkins_node_UnivMobile</remoteFS>
-      <numExecutors>1</numExecutors>
-      <mode>EXCLUSIVE</mode>
-      <retentionStrategy class="hudson.slaves.RetentionStrategy$Always"/>
-      <launcher class="hudson.plugins.sshslaves.SSHLauncher" plugin="ssh-slaves@1.6">
-        <host>88.172.20.221</host>
-        <port>22</port>
-        <credentialsId>e0c17602-1412-4e94-b12b-f9f110390037</credentialsId>
-        <jvmOptions>-Djava.awt.headless=true</jvmOptions>
-      </launcher>
-      <label></label>
-      <nodeProperties>
-        <hudson.slaves.EnvironmentVariablesNodeProperty>
-          <envVars serialization="custom">
-            <unserializable-parents/>
-            <tree-map>
-              <default>
-                <comparator class="hudson.util.CaseInsensitiveComparator"/>
-              </default>
-              <int>0</int>
-            </tree-map>
-          </envVars>
-        </hudson.slaves.EnvironmentVariablesNodeProperty>
-      </nodeProperties>
-      <userId>dandriana</userId>
-    </slave>
-    <slave>
-      <name>macos_ios6</name>
-      <description>Mac OS X 10.9 Mavericks + Xcode 4.6.3</description>
-      <remoteFS>/Users/dandriana/jenkins_node_UnivMobile_ios6</remoteFS>
-      <numExecutors>1</numExecutors>
-      <mode>EXCLUSIVE</mode>
-      <retentionStrategy class="hudson.slaves.RetentionStrategy$Always"/>
-      <launcher class="hudson.plugins.sshslaves.SSHLauncher" plugin="ssh-slaves@1.6">
-        <host>88.172.20.221</host>
-        <port>22</port>
-        <credentialsId>f724c19a-dde3-48f4-87e6-04f01a335545</credentialsId>
-        <jvmOptions>-Djava.awt.headless=true</jvmOptions>
-      </launcher>
-      <label></label>
-      <nodeProperties>
-        <hudson.slaves.EnvironmentVariablesNodeProperty>
-          <envVars serialization="custom">
-            <unserializable-parents/>
-            <tree-map>
-              <default>
-                <comparator class="hudson.util.CaseInsensitiveComparator" reference="../../../../../../../slave/nodeProperties/hudson.slaves.EnvironmentVariablesNodeProperty/envVars/tree-map/default/comparator"/>
-              </default>
-              <int>0</int>
-            </tree-map>
-          </envVars>
-        </hudson.slaves.EnvironmentVariablesNodeProperty>
-      </nodeProperties>
-      <userId>dandriana</userId>
-    </slave>
-    <slave>
       <name>macos_ios6a</name>
       <description>Mac OS X 10.8.5 Mountain Lion + Xcode 4.6.3</description>
       <remoteFS>/Users/dandriana/jenkins_slave_unm_ios6a</remoteFS>
@@ -193,7 +129,7 @@
             <unserializable-parents/>
             <tree-map>
               <default>
-                <comparator class="hudson.util.CaseInsensitiveComparator" reference="../../../../../../../slave/nodeProperties/hudson.slaves.EnvironmentVariablesNodeProperty/envVars/tree-map/default/comparator"/>
+                <comparator class="hudson.util.CaseInsensitiveComparator"/>
               </default>
               <int>0</int>
             </tree-map>
@@ -429,6 +365,7 @@ Tableau de bord d’intégration continue :&#xd;
       <jobNames>
         <comparator class="hudson.util.CaseInsensitiveComparator" reference="../../../../slaves/slave/nodeProperties/hudson.slaves.EnvironmentVariablesNodeProperty/envVars/tree-map/default/comparator"/>
         <string>unm-mobileweb-app</string>
+        <string>unm-mobileweb-it_ios7</string>
       </jobNames>
       <jobFilters/>
       <columns>

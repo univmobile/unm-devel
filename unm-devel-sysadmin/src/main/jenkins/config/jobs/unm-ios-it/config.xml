@@ -32,7 +32,9 @@ Tableau de bord d’intégration continue :&#xd;
     </branches>
     <doGenerateSubmoduleConfigurations>false</doGenerateSubmoduleConfigurations>
     <submoduleCfg class="list"/>
-    <extensions/>
+    <extensions>
+      <hudson.plugins.git.extensions.impl.WipeWorkspace/>
+    </extensions>
   </scm>
   <assignedNode>macos_ios7</assignedNode>
   <canRoam>false</canRoam>

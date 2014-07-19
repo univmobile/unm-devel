@@ -32,14 +32,16 @@
     </branches>
     <doGenerateSubmoduleConfigurations>false</doGenerateSubmoduleConfigurations>
     <submoduleCfg class="list"/>
-    <extensions/>
+    <extensions>
+      <hudson.plugins.git.extensions.impl.WipeWorkspace/>
+    </extensions>
   </scm>
-  <assignedNode>macos</assignedNode>
+  <assignedNode>macos_ios7</assignedNode>
   <canRoam>false</canRoam>
   <disabled>false</disabled>
   <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
   <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
-  <jdk>MacOS</jdk>
+  <jdk>MacOS_iOS6</jdk>
   <triggers>
     <hudson.triggers.SCMTrigger>
       <spec>H/5 * * * *</spec>
@@ -60,17 +62,5 @@
       <onlyIfSuccessful>false</onlyIfSuccessful>
     </hudson.tasks.ArtifactArchiver>
   </publishers>
-  <buildWrappers>
-    <com.sic.plugins.kpp.KPPKeychainsBuildWrapper plugin="kpp-management-plugin@1.0.0">
-      <keychainCertificatePairs>
-        <com.sic.plugins.kpp.model.KPPKeychainCertificatePair>
-          <keychain>MyKeichain.keychain</keychain>
-          <codeSigningIdentity>iPhone Distribution: David ANDRIANAVALONTSALAMA (P3CN6EW78V)</codeSigningIdentity>
-          <varPrefix></varPrefix>
-        </com.sic.plugins.kpp.model.KPPKeychainCertificatePair>
-      </keychainCertificatePairs>
-      <deleteKeychainsAfterBuild>false</deleteKeychainsAfterBuild>
-      <overwriteExistingKeychains>false</overwriteExistingKeychains>
-    </com.sic.plugins.kpp.KPPKeychainsBuildWrapper>
-  </buildWrappers>
+  <buildWrappers/>
 </project>
