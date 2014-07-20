@@ -104,6 +104,11 @@
       <home>/Library/Java/JavaVirtualMachines/jdk1.7.0_60.jdk/Contents/Home</home>
       <properties/>
     </jdk>
+    <jdk>
+      <name>Java 7</name>
+      <home>/usr/lib/jvm/java-7-openjdk-amd64</home>
+      <properties/>
+    </jdk>
   </jdks>
   <viewsTabBar class="hudson.views.DefaultViewsTabBar"/>
   <myViewsTabBar class="hudson.views.DefaultMyViewsTabBar"/>
@@ -276,6 +281,7 @@ Tableau de bord d’intégration continue :&#xd;
       <jobNames>
         <comparator class="hudson.util.CaseInsensitiveComparator" reference="../../../../slaves/slave/nodeProperties/hudson.slaves.EnvironmentVariablesNodeProperty/envVars/tree-map/default/comparator"/>
         <string>Android-UnivMobile</string>
+        <string>Android-UnivMobile_android-studio</string>
       </jobNames>
       <jobFilters/>
       <columns>

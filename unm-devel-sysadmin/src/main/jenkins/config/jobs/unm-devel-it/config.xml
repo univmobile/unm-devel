@@ -28,7 +28,7 @@
   <triggers>
     <jenkins.triggers.ReverseBuildTrigger>
       <spec></spec>
-      <upstreamProjects>unm-ios-it, unm-ios-it_ios6, unm-mobileweb-it_ios6, unm-mobileweb-it_ios7, </upstreamProjects>
+      <upstreamProjects>unm-ios-it,unm-ios-it_ios6,unm-mobileweb-it_ios6,unm-mobileweb-it_ios7,</upstreamProjects>
       <threshold>
         <name>FAILURE</name>
         <ordinal>2</ordinal>
