@@ -27,13 +27,13 @@
     <configVersion>2</configVersion>
     <userRemoteConfigs>
       <hudson.plugins.git.UserRemoteConfig>
-        <name>UnivMobile</name>
+        <name>origin</name>
         <url>https://github.com/univmobile/unm-android</url>
       </hudson.plugins.git.UserRemoteConfig>
     </userRemoteConfigs>
     <branches>
       <hudson.plugins.git.BranchSpec>
-        <name>android-studio</name>
+        <name>master</name>
       </hudson.plugins.git.BranchSpec>
     </branches>
     <doGenerateSubmoduleConfigurations>false</doGenerateSubmoduleConfigurations>
@@ -55,14 +55,16 @@
   <concurrentBuild>false</concurrentBuild>
   <builders>
     <hudson.tasks.Shell>
-      <command>cp local.properties_jenkins local.properties</command>
+      <command>cd UnivMobile
+cp local.properties_jenkins local.properties
+</command>
     </hudson.tasks.Shell>
     <hudson.plugins.gradle.Gradle plugin="gradle@1.24">
       <description></description>
       <switches></switches>
       <tasks>clean build</tasks>
       <rootBuildScriptDir></rootBuildScriptDir>
-      <buildFile></buildFile>
+      <buildFile>UnivMobile/build.gradle</buildFile>
       <gradleName>(Default)</gradleName>
       <useWrapper>true</useWrapper>
       <makeExecutable>false</makeExecutable>

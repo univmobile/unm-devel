@@ -11,16 +11,16 @@
   <keepDependencies>false</keepDependencies>
   <properties>
     <hudson.security.AuthorizationMatrixProperty>
-      <permission>hudson.model.Item.Delete:mgauzins</permission>
-      <permission>hudson.model.Item.Read:mgauzins</permission>
-      <permission>hudson.model.Item.Configure:mgauzins</permission>
-      <permission>hudson.model.Item.Cancel:mgauzins</permission>
-      <permission>hudson.model.Run.Delete:mgauzins</permission>
-      <permission>hudson.model.Run.Update:mgauzins</permission>
-      <permission>hudson.model.Item.Workspace:mgauzins</permission>
-      <permission>hudson.model.Item.Build:mgauzins</permission>
-      <permission>hudson.model.Item.Discover:mgauzins</permission>
       <permission>hudson.scm.SCM.Tag:mgauzins</permission>
+      <permission>hudson.model.Item.Build:mgauzins</permission>
+      <permission>hudson.model.Run.Delete:mgauzins</permission>
+      <permission>hudson.model.Item.Workspace:mgauzins</permission>
+      <permission>hudson.model.Run.Update:mgauzins</permission>
+      <permission>hudson.model.Item.Cancel:mgauzins</permission>
+      <permission>hudson.model.Item.Discover:mgauzins</permission>
+      <permission>hudson.model.Item.Configure:mgauzins</permission>
+      <permission>hudson.model.Item.Read:mgauzins</permission>
+      <permission>hudson.model.Item.Delete:mgauzins</permission>
     </hudson.security.AuthorizationMatrixProperty>
   </properties>
   <scm class="hudson.plugins.git.GitSCM" plugin="git@2.2.2">
@@ -54,6 +54,10 @@
   </triggers>
   <concurrentBuild>false</concurrentBuild>
   <builders>
+    <hudson.tasks.Shell>
+      <command>cp UnivMobile/local.properties_jenkins UnivMobile/local.properties
+cp google-play-services/google-play-services_lib/local.properties_jenkins google-play-services/google-play-services_lib/local.properties</command>
+    </hudson.tasks.Shell>
     <hudson.tasks.Ant plugin="ant@1.2">
       <targets>clean-all
 release</targets>
