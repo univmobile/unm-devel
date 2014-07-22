@@ -82,7 +82,7 @@
 		<gitRepository ref="unm-ios"/>.
 	</description>
 	<parent>
-		<artifactId>unm-parent</artifactId>
+		<artifactId>unm-it-parent</artifactId>
 	</parent>
 	<dependencies>
 		<dependency>
@@ -99,6 +99,9 @@
 		l’application iOS UnivMobile
 		<gitRepository ref="unm-ios"/>.
 	</description>
+	<parent>
+		<artifactId>unm-parent</artifactId>
+	</parent>
 </project>
 </mavenProject>
 <mavenProject id="unm-parent" gitRepository-ref="unm-devel">
@@ -146,6 +149,9 @@
 		Classes communes utilitaires pour les tests
 		Jave du projet UnivMobile.
 	</description>
+	<parent>
+		<artifactId>unm-parent</artifactId>
+	</parent>
 </project>
 </mavenProject>
 <mavenProject id="unm-backend-mock" gitRepository-ref="unm-devel">
@@ -176,7 +182,23 @@
 		<gitRepository ref="unm-mobileweb"/>.
 	</description>
 	<parent>
-		<artifactId>unm-parent</artifactId>
+		<artifactId>unm-it-parent</artifactId>
+	</parent>
+	<dependencies>
+		<dependency>
+			<artifactId>unm-testutil</artifactId>
+		</dependency>
+	</dependencies>
+</project>
+</mavenProject>
+<mavenProject id="unm-android-it" gitRepository-ref="unm-android">
+<project>
+	<description>
+		Tests d’intégration, avec Appium, de l’application Android UnivMobile
+		<gitRepository ref="unm-android"/>.
+	</description>
+	<parent>
+		<artifactId>unm-it-parent</artifactId>
 	</parent>
 	<dependencies>
 		<dependency>
@@ -232,6 +254,16 @@
 	</description>
 	<parent>
 		<artifactId>unm-parent</artifactId>
+	</parent>
+</project>
+</mavenProject>
+<mavenProject id="unm-backend-app" gitRepository-ref="unm-backend">
+<project>
+	<description>
+		Application J2EE backend. 
+	</description>
+	<parent>
+		<artifactId>unm-webapp-parent</artifactId>
 	</parent>
 </project>
 </mavenProject>
