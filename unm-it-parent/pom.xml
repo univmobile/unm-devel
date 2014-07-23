@@ -70,11 +70,13 @@
 				<groupId>fr.univmobile</groupId>
 				<artifactId>unm-mobileweb-app</artifactId>
 				<version>0.0.1-SNAPSHOT</version>
+				<type>war</type>
 			</dependency>
 			<dependency>
 				<groupId>fr.univmobile</groupId>
 				<artifactId>unm-backend-app</artifactId>
 				<version>0.0.1-SNAPSHOT</version>
+				<type>war</type>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
