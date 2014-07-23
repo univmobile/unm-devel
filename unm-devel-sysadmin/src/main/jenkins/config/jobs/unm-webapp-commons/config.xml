@@ -1,28 +1,23 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <maven2-moduleset plugin="maven-plugin@2.3">
   <actions/>
-  <description>GitHub: &lt;a href=&quot;https://github.com/univmobile/unm-ios&quot;&gt;https://github.com/univmobile/unm-ios&#xd;
+  <description>GitHub: &lt;a href=&quot;https://github.com/univmobile/unm-devel/tree/master/unm-webapp-commons&quot;&gt;&#xd;
+https://github.com/univmobile/unm-devel/tree/master/unm-webapp-commons&#xd;
 &lt;/a&gt;&#xd;
-&lt;p/&gt;&#xd;
-Tableau de bord d’intégration continue :&#xd;
-&lt;a href=&quot;http://univmobile.vswip.com/job/unm-devel-it/lastSuccessfulBuild/artifact/unm-devel-it/target/unm-ci-dump.html&quot;&gt;&#xd;
-  UnivMobile iOS — Intégration continue&#xd;
-&lt;/a&gt;&#xd;
+&lt;p&gt;&#xd;
+Maven Generated Site: &lt;a&#xd;
+  href=&quot;http://univmobile.vswip.com/nexus/content/sites/pub/unm-webapp-commons/&quot;&gt;&#xd;
+  http://univmobile.vswip.com/nexus/content/sites/pub/unm-webapp-commons/&lt;/a&gt;&#xd;
+&lt;a&#xd;
+  href=&quot;http://univmobile.vswip.com/nexus/content/sites/pub/unm-webapp-commons/0.0.1-SNAPSHOT/&quot;&gt;0.0.1-SNAPSHOT/&lt;/a&gt;&#xd;
 </description>
   <keepDependencies>false</keepDependencies>
-  <properties>
-    <hudson.security.AuthorizationMatrixProperty>
-      <permission>hudson.model.Item.Build:mgauzins</permission>
-      <permission>hudson.model.Item.Workspace:mgauzins</permission>
-      <permission>hudson.model.Item.Cancel:mgauzins</permission>
-      <permission>hudson.model.Item.Read:mgauzins</permission>
-    </hudson.security.AuthorizationMatrixProperty>
-  </properties>
+  <properties/>
   <scm class="hudson.plugins.git.GitSCM" plugin="git@2.2.2">
     <configVersion>2</configVersion>
     <userRemoteConfigs>
       <hudson.plugins.git.UserRemoteConfig>
-        <url>https://github.com/univmobile/unm-ios</url>
+        <url>https://github.com/univmobile/unm-devel.git</url>
       </hudson.plugins.git.UserRemoteConfig>
     </userRemoteConfigs>
     <branches>
@@ -32,41 +27,28 @@ Tableau de bord d’intégration continue :&#xd;
     </branches>
     <doGenerateSubmoduleConfigurations>false</doGenerateSubmoduleConfigurations>
     <submoduleCfg class="list"/>
-    <extensions>
-      <hudson.plugins.git.extensions.impl.WipeWorkspace/>
-    </extensions>
+    <extensions/>
   </scm>
-  <assignedNode>macos_ios7</assignedNode>
+  <assignedNode>master</assignedNode>
   <canRoam>false</canRoam>
-  <disabled>true</disabled>
+  <disabled>false</disabled>
   <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
   <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
-  <jdk>MacOS_iOS6</jdk>
+  <jdk>JDK 1.6.0_31</jdk>
   <triggers>
-    <jenkins.triggers.ReverseBuildTrigger>
-      <spec></spec>
-      <upstreamProjects>unm-ios_xcode</upstreamProjects>
-      <threshold>
-        <name>SUCCESS</name>
-        <ordinal>0</ordinal>
-        <color>BLUE</color>
-        <completeBuild>true</completeBuild>
-      </threshold>
-    </jenkins.triggers.ReverseBuildTrigger>
     <hudson.triggers.SCMTrigger>
       <spec>H/5 * * * *</spec>
       <ignorePostCommitHooks>false</ignorePostCommitHooks>
     </hudson.triggers.SCMTrigger>
   </triggers>
   <concurrentBuild>false</concurrentBuild>
-  <customWorkspace>unm-ios-it</customWorkspace>
+  <customWorkspace>unm-webapp-commons</customWorkspace>
   <rootModule>
     <groupId>fr.univmobile</groupId>
-    <artifactId>unm-ios-it</artifactId>
+    <artifactId>unm-webapp-commons</artifactId>
   </rootModule>
-  <rootPOM>unm-ios-it/pom.xml</rootPOM>
+  <rootPOM>unm-webapp-commons/pom.xml</rootPOM>
   <goals>-U clean deploy</goals>
-  <mavenOpts>-Djava.awt.headless=true</mavenOpts>
   <aggregatorStyleBuild>true</aggregatorStyleBuild>
   <incrementalBuild>false</incrementalBuild>
   <ignoreUpstremChanges>false</ignoreUpstremChanges>
@@ -80,14 +62,7 @@ Tableau de bord d’intégration continue :&#xd;
   <settings class="jenkins.mvn.DefaultSettingsProvider"/>
   <globalSettings class="jenkins.mvn.DefaultGlobalSettingsProvider"/>
   <reporters/>
-  <publishers>
-    <hudson.tasks.ArtifactArchiver>
-      <artifacts>unm-ios-it/target/screenshots/</artifacts>
-      <latestOnly>false</latestOnly>
-      <allowEmptyArchive>false</allowEmptyArchive>
-      <onlyIfSuccessful>false</onlyIfSuccessful>
-    </hudson.tasks.ArtifactArchiver>
-  </publishers>
+  <publishers/>
   <buildWrappers/>
   <prebuilders/>
   <postbuilders/>

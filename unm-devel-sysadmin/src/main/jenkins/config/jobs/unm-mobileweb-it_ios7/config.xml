@@ -31,7 +31,7 @@ Maven Generated Site: &lt;a&#xd;
   </scm>
   <assignedNode>macos_ios7</assignedNode>
   <canRoam>false</canRoam>
-  <disabled>false</disabled>
+  <disabled>true</disabled>
   <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
   <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
   <jdk>MacOS_iOS6</jdk>
