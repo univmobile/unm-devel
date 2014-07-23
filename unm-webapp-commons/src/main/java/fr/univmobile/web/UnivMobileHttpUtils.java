@@ -34,6 +34,29 @@ public abstract class UnivMobileHttpUtils {
 		}
 	}
 
+	public static void sendError403(final HttpServletRequest request,
+			final HttpServletResponse response, final String reason)
+			throws IOException {
+
+		response.setContentType("text/plain");
+		response.setCharacterEncoding(UTF_8);
+		response.setStatus(HttpServletResponse.SC_FORBIDDEN);
+
+		final PrintWriter out = response.getWriter();
+		try {
+
+			out.println("403 FORBIDDEN -- reason: " + reason);
+
+			out.println();
+
+			out.println("requestURI: " + request.getRequestURI());
+
+		} finally {
+			out.flush();
+			out.close();
+		}
+	}
+
 	public static String extractUriPath(final HttpServletRequest request) {
 
 		final String contextPath = request.getContextPath();
