@@ -267,6 +267,23 @@
 	</parent>
 </project>
 </mavenProject>
+<mavenProject id="unm-backend-it" gitRepository-ref="unm-backend">
+<project>
+	<description>
+		Tests d’intégration, avec Selenium, de l’application web UnivMobile
+		backend
+		<gitRepository ref="unm-backend"/>.
+	</description>
+	<parent>
+		<artifactId>unm-it-parent</artifactId>
+	</parent>
+	<dependencies>
+		<dependency>
+			<artifactId>unm-testutil</artifactId>
+		</dependency>
+	</dependencies>
+</project>
+</mavenProject>
 </mavenProjects>
 	
 </workspace>
