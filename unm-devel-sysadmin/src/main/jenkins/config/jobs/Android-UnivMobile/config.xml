@@ -45,7 +45,7 @@
   <disabled>false</disabled>
   <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
   <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
-  <jdk>(Valeur par défaut)</jdk>
+  <jdk>(Default)</jdk>
   <triggers>
     <hudson.triggers.SCMTrigger>
       <spec>H/5 * * * *</spec>
@@ -59,32 +59,32 @@
 cp google-play-services/google-play-services_lib/local.properties_jenkins google-play-services/google-play-services_lib/local.properties</command>
     </hudson.tasks.Shell>
     <hudson.tasks.Ant plugin="ant@1.2">
-      <targets>-DGIT_COMMIT=${GIT_COMMIT}
--DBUILD_ID=${BUILD_ID}
--DBUILD_DISPLAY_NAME=${BUILD_DISPLAY_NAME}
-add-variables
+      <targets>add-variables
 clean-all
 release</targets>
       <antName>Ant 1.9.4</antName>
       <buildFile>UnivMobile/build.xml</buildFile>
       <properties>sdk.dir=/opt/android-sdk-linux/
-key.store=/opt/android-sdk-linux/univ_fake.keystore
-key.store.password=univmobile
+key.store=/opt/android-sdk-linux/univmobile.keystore
+key.store.password=toto;
 key.alias=univmobile
-key.alias.password=univmobile
-project.build.directory=UnivMobile</properties>
+key.alias.password=toto;
+project.build.directory=UnivMobile
+GIT_COMMIT=${GIT_COMMIT}
+BUILD_ID=${BUILD_ID}
+BUILD_DISPLAY_NAME=${BUILD_DISPLAY_NAME}</properties>
     </hudson.tasks.Ant>
     <hudson.tasks.Ant plugin="ant@1.2">
-      <targets>-DGIT_COMMIT=${GIT_COMMIT}
--DBUILD_ID=${BUILD_ID}
--DBUILD_DISPLAY_NAME=${BUILD_DISPLAY_NAME}
-add-variables
+      <targets>add-variables
 clean-classes
 debug</targets>
       <antName>Ant 1.9.4</antName>
       <buildFile>UnivMobile/build.xml</buildFile>
       <properties>sdk.dir=/opt/android-sdk-linux/
-project.build.directory=UnivMobile</properties>
+project.build.directory=UnivMobile
+GIT_COMMIT=${GIT_COMMIT}
+BUILD_ID=${BUILD_ID}
+BUILD_DISPLAY_NAME=${BUILD_DISPLAY_NAME}</properties>
     </hudson.tasks.Ant>
   </builders>
   <publishers>

@@ -309,7 +309,8 @@ Tableau de bord d’intégration continue :&#xd;
       <jobNames>
         <comparator class="hudson.util.CaseInsensitiveComparator" reference="../../../../slaves/slave/nodeProperties/hudson.slaves.EnvironmentVariablesNodeProperty/envVars/tree-map/default/comparator"/>
         <string>Android-UnivMobile</string>
-        <string>Android-UnivMobile_android-studio</string>
+        <string>Android-UnivMobile_gradle</string>
+        <string>unm-android-it</string>
       </jobNames>
       <jobFilters/>
       <columns>
@@ -361,6 +362,7 @@ Tableau de bord d’intégration continue :&#xd;
       <jobNames>
         <comparator class="hudson.util.CaseInsensitiveComparator" reference="../../../../slaves/slave/nodeProperties/hudson.slaves.EnvironmentVariablesNodeProperty/envVars/tree-map/default/comparator"/>
         <string>unm-backend</string>
+        <string>unm-backend-app</string>
       </jobNames>
       <jobFilters/>
       <columns>
@@ -382,6 +384,7 @@ Tableau de bord d’intégration continue :&#xd;
       <properties class="hudson.model.View$PropertyList"/>
       <jobNames>
         <comparator class="hudson.util.CaseInsensitiveComparator" reference="../../../../slaves/slave/nodeProperties/hudson.slaves.EnvironmentVariablesNodeProperty/envVars/tree-map/default/comparator"/>
+        <string>unm-android-it</string>
         <string>unm-devel-it</string>
         <string>unm-ios-it</string>
         <string>unm-ios-it_ios6</string>
