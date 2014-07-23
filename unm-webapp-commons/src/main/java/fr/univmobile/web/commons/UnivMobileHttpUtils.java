@@ -1,4 +1,4 @@
-package fr.univmobile.web;
+package fr.univmobile.web.commons;
 
 import static org.apache.commons.lang3.CharEncoding.UTF_8;
 import static org.apache.commons.lang3.StringUtils.substringAfter;
