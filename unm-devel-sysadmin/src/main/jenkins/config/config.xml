@@ -363,6 +363,7 @@ Tableau de bord d’intégration continue :&#xd;
         <comparator class="hudson.util.CaseInsensitiveComparator" reference="../../../../slaves/slave/nodeProperties/hudson.slaves.EnvironmentVariablesNodeProperty/envVars/tree-map/default/comparator"/>
         <string>unm-backend</string>
         <string>unm-backend-app</string>
+        <string>unm-backend-it</string>
       </jobNames>
       <jobFilters/>
       <columns>
