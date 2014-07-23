@@ -66,6 +66,16 @@
 				<artifactId>unm-it-commons</artifactId>
 				<version>0.0.1-SNAPSHOT</version>
 			</dependency>
+			<dependency>
+				<groupId>fr.univmobile</groupId>
+				<artifactId>unm-mobileweb-app</artifactId>
+				<version>0.0.1-SNAPSHOT</version>
+			</dependency>
+			<dependency>
+				<groupId>fr.univmobile</groupId>
+				<artifactId>unm-backend-app</artifactId>
+				<version>0.0.1-SNAPSHOT</version>
+			</dependency>
 		</dependencies>
 	</dependencyManagement>
 	<build>
