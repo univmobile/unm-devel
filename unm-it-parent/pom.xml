@@ -59,6 +59,17 @@
 			<version>1.2</version>
 		</dependency>
 	</dependencies>
+	<build>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.codehaus.cargo</groupId>
+					<artifactId>cargo-maven2-plugin</artifactId>
+					<version>1.4.8</version>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+	</build>
 
 	<name>unm-it-parent</name>
 	<description>
