@@ -125,7 +125,7 @@ public abstract class AbstractUnivMobileServlet extends HttpServlet {
 	}
 
 	@Override
-	public final void service(final HttpServletRequest request,
+	public void service(final HttpServletRequest request,
 			final HttpServletResponse response) throws IOException,
 			ServletException {
 
