@@ -61,14 +61,10 @@ cp google-play-services/google-play-services_lib/local.properties_jenkins google
     <hudson.tasks.Ant plugin="ant@1.2">
       <targets>add-variables
 clean-all
-release</targets>
+release -propertyfile /opt/android-sdk-linux/keystore.properties</targets>
       <antName>Ant 1.9.4</antName>
       <buildFile>UnivMobile/build.xml</buildFile>
       <properties>sdk.dir=/opt/android-sdk-linux/
-key.store=/opt/android-sdk-linux/univmobile.keystore
-key.store.password=toto;
-key.alias=univmobile
-key.alias.password=toto;
 project.build.directory=UnivMobile
 GIT_COMMIT=${GIT_COMMIT}
 BUILD_ID=${BUILD_ID}
