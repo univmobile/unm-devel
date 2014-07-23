@@ -76,7 +76,12 @@
   <reporters/>
   <publishers/>
   <buildWrappers/>
-  <prebuilders/>
+  <prebuilders>
+    <hudson.tasks.Shell>
+      <command>mkdir -p unm-android-it/apk/
+wget -O unm-android-it/apk/UnivMobile-debug.apk http://univmobile.vswip.com/job/Android-UnivMobile/lastSuccessfulBuild/artifact/UnivMobile/bin/UnivMobile-debug.apk</command>
+    </hudson.tasks.Shell>
+  </prebuilders>
   <postbuilders/>
   <runPostStepsIfResult>
     <name>FAILURE</name>
