@@ -78,3 +78,23 @@ Il faut lancer le job Jenkins unm-ios-ut-results régulièrement afin de ne saut
 
 Un autre projet Java unm-ios-ut-results_up_to_date, lui aussi lancé toutes les 5 minutes par Jenkins, vérifie au cas où que tous les commits du fichier xcodebuild_test.log (logCommitIds) ont été traités par unm-iot-ut-results, c’est-à-dire qu’un tag git a été posé. En cas contraire (unm-ios-ut-results_up_to_date en échec), on peut alors déclencher à la main unm-ios-ut-results dans Jenkins. Néanmoins, le cas est rare, le projet unm-ios-ut-results_up_to_date sert essentiellement au monitoring.
 
+### Signature de l’archive Android (.apk)
+
+Le job Android-UnivMobile crée deux archives :
+
+ * UnivMobile-debug.apk
+ * UnivMobile-release.apk — signée
+ 
+L’archive UnivMobile-release.apk est signée avec la clef du Google Play Store.
+
+Afin de ne stocker ni la clef ni les mots de passe dans la configuration Jenkins, vu qu’elle est enregistrée régulièrement dans src/main/jenkins/config/ dans GitHub, et que des éléments seraient également visibles dans les logs des builds, la solution suivante a été adoptée.
+
+Un fichier « keystore.properties », local à l’environnement d’exécution de Jenkins, et contenant les lignes suivantes :
+
+    key.store=/path/to/univmobile.keystore
+    key.store.password=xxx
+    key.alias=xxx
+    key.alias.password=xxx
+
+Ensuite, le job Android-UnivMobile dans Jenkins est configuré pour lancer Ant avec la target : release -propertyfile /local/path/to/keystore.properties
+
