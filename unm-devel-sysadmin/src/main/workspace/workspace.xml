@@ -143,6 +143,17 @@
 	</parent>
 </project>
 </mavenProject>
+<mavenProject id="unm-webapp-commons" gitRepository-ref="unm-devel">
+<project>
+	<description>
+		Classes Java communes aux projets J2EE web
+		du projet UnivMobile.
+	</description>
+	<parent>
+		<artifactId>unm-webapp-parent</artifactId>
+	</parent>
+</project>
+</mavenProject>
 <mavenProject id="unm-testutil" gitRepository-ref="unm-devel">
 <project>
 	<description>
@@ -243,7 +254,7 @@
 		<gitRepository ref="unm-ios"/>.
 	</description>
 	<parent>
-		<artifactId>unm-parent</artifactId>
+		<artifactId>unm-it-parent</artifactId>
 	</parent>
 </project>
 </mavenProject>
@@ -263,7 +274,7 @@
 		Application J2EE backend. 
 	</description>
 	<parent>
-		<artifactId>unm-webapp-parent</artifactId>
+		<artifactId>unm-backend-parent</artifactId>
 	</parent>
 </project>
 </mavenProject>
