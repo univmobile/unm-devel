@@ -121,6 +121,16 @@
 	</parent>
 </project>
 </mavenProject>
+<mavenProject id="unm-backend-parent" gitRepository-ref="unm-backend">
+<project>
+	<description>
+		POM parent des webapps J2EE backend du projet UnivMobile.
+	</description>
+	<parent>
+		<artifactId>unm-webapp-parent</artifactId>
+	</parent>
+</project>
+</mavenProject>
 <mavenProject id="unm-it-parent" gitRepository-ref="unm-devel">
 <project>
 	<description>
@@ -275,6 +285,46 @@
 	</description>
 	<parent>
 		<artifactId>unm-backend-parent</artifactId>
+	</parent>
+</project>
+</mavenProject>
+<mavenProject id="unm-backend-app-noshib" gitRepository-ref="unm-backend">
+<project>
+	<description>
+		Application J2EE 
+		<mavenProject ref="unm-backend-app"/>,
+		repackagée avec le filtre
+		<mavenProject ref="unm-backend-filter-noshib"/>
+		pour les tests d’intégration
+		sans Shibboleth. 
+	</description>
+	<parent>
+		<artifactId>unm-backend-parent</artifactId>
+	</parent>
+</project>
+</mavenProject>
+<mavenProject id="unm-backend-filter-noshib" gitRepository-ref="unm-backend">
+<project>
+	<description>
+		Filtre de servlet pour le projet
+		<mavenProject ref="unm-backend-app-noshib"/>,
+		qui vise à simuler les attributs propagés par Shibboleth pour des
+		tests d’intégration sans Shibboleth.
+	</description>
+	<parent>
+		<artifactId>unm-backend-parent</artifactId>
+	</parent>
+</project>
+</mavenProject>
+<mavenProject id="unm-backend-core" gitRepository-ref="unm-backend">
+<project>
+	<description>
+		Fonctionnalités non J2EE de l’application web
+		<mavenProject ref="unm-backend-app"/>,
+		en particulier la gestion des données. 
+	</description>
+	<parent>
+		<artifactId>unm-parent</artifactId>
 	</parent>
 </project>
 </mavenProject>
