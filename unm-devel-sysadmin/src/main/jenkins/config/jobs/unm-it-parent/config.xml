@@ -1,8 +1,8 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <maven2-moduleset plugin="maven-plugin@2.3">
   <actions/>
-  <description>GitHub: &lt;a href=&quot;https://github.com/univmobile/unm-devel/tree/master/unm-it-parent&quot;&gt;&#xd;
-https://github.com/univmobile/unm-devel/tree/master/unm-it-parent&#xd;
+  <description>GitHub: &lt;a href=&quot;https://github.com/univmobile/unm-devel/tree/develop/unm-it-parent&quot;&gt;&#xd;
+https://github.com/univmobile/unm-devel/tree/develop/unm-it-parent&#xd;
 &lt;/a&gt;&#xd;
 &lt;p&gt;&#xd;
 Maven Generated Site: &lt;a&#xd;
@@ -22,7 +22,7 @@ Maven Generated Site: &lt;a&#xd;
     </userRemoteConfigs>
     <branches>
       <hudson.plugins.git.BranchSpec>
-        <name>**</name>
+        <name>origin/develop</name>
       </hudson.plugins.git.BranchSpec>
     </branches>
     <doGenerateSubmoduleConfigurations>false</doGenerateSubmoduleConfigurations>
