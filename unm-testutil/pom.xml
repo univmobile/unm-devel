@@ -7,7 +7,7 @@
 	<parent>
 		<groupId>fr.univmobile</groupId>
 		<artifactId>unm-parent</artifactId>
-		<version>0.0.1-SNAPSHOT</version>
+		<version>0.0.1</version>
 		<relativePath/>
 	</parent>
 	
@@ -68,22 +68,6 @@
 		</license>
 	</licenses>
 	<distributionManagement>
-		<repository>
-			<id>vswip</id>
-			<name>Viewniverse Studio WIP Repository for releases</name>
-			<url>
-                http://univmobile.vswip.com/nexus/content/repositories/releases
-            </url>
-			<uniqueVersion>false</uniqueVersion>
-		</repository>
-		<snapshotRepository>
-			<id>vswip</id>
-			<name>Viewniverse Studio WIP Repository for releases</name>
-			<url>
-                http://univmobile.vswip.com/nexus/content/repositories/snapshots
-            </url>
-			<uniqueVersion>false</uniqueVersion>
-		</snapshotRepository>
 		<site>
 			<id>vswip</id>
 			<url>
