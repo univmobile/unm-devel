@@ -39,6 +39,26 @@ public class XMLDumper implements Dumper {
 	}
 
 	@Override
+	public Dumper addCharacters(final String characters) throws IOException {
+		
+		if (currentChild != null) {
+
+			currentChild.close();
+		}
+		
+		if (inStartElement) {
+
+			inStartElement = false;
+
+			pw.print(">");
+		}
+		
+		pw.print(characters);
+		
+		return this;
+	}
+
+	@Override
 	public Dumper addAttribute(final String name, final Object value)
 			throws IOException {
 

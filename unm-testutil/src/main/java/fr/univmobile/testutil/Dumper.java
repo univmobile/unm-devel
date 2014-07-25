@@ -9,6 +9,8 @@ public interface Dumper {
 
 	Dumper addAttribute(String name, Object value) throws IOException;
 
+	Dumper addCharacters(String characters) throws IOException;
+
 	Dumper addXMLFragment(File file) throws IOException;
 	
 	Dumper close() throws IOException;
