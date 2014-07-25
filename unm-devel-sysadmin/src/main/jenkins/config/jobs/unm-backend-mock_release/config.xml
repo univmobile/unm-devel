@@ -37,7 +37,7 @@ Maven Artifacts: &lt;a&#xd;
   <disabled>false</disabled>
   <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
   <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
-  <jdk>JDK 1.6.0_31</jdk>
+  <jdk>Java 7</jdk>
   <triggers/>
   <concurrentBuild>false</concurrentBuild>
   <customWorkspace>unm-backend-mock</customWorkspace>
