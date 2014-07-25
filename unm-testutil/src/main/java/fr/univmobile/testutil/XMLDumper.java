@@ -110,6 +110,8 @@ public class XMLDumper implements Dumper {
 			pw.println("</" + name + ">");
 		}
 
+		pw.flush();
+		
 		isClosed = true;
 
 		return parent;
