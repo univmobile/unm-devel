@@ -43,7 +43,7 @@ Maven Generated Site: &lt;a&#xd;
     <artifactId>unm-it-commons</artifactId>
   </rootModule>
   <rootPOM>unm-it-commons/pom.xml</rootPOM>
-  <goals>-U clean test</goals>
+  <goals>-U clean test site:jar</goals>
   <aggregatorStyleBuild>true</aggregatorStyleBuild>
   <incrementalBuild>false</incrementalBuild>
   <ignoreUpstremChanges>true</ignoreUpstremChanges>

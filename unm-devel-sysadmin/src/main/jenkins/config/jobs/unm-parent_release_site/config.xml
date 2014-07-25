@@ -1,15 +1,13 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <maven2-moduleset plugin="maven-plugin@2.3">
   <actions/>
-  <description>GitHub: &lt;a href=&quot;https://github.com/univmobile/unm-devel/tree/master/unm-webapp-parent&quot;&gt;&#xd;
-https://github.com/univmobile/unm-devel/tree/master/unm-webapp-parent&#xd;
+  <description>GitHub: &lt;a href=&quot;https://github.com/univmobile/unm-devel/tree/master/unm-parent&quot;&gt;https://github.com/univmobile/unm-devel/tree/master/unm-parent&#xd;
 &lt;/a&gt;&#xd;
 &lt;p&gt;&#xd;
 Maven Generated Site: &lt;a&#xd;
-  href=&quot;http://univmobile.vswip.com/nexus/content/sites/pub/unm-webapp-parent/&quot;&gt;&#xd;
-  http://univmobile.vswip.com/nexus/content/sites/pub/unm-webapp-parent/&lt;/a&gt;&#xd;
+  href=&quot;http://univmobile.vswip.com/nexus/content/sites/pub/unm-parent/&quot;&gt;http://univmobile.vswip.com/nexus/content/sites/pub/unm-parent/&lt;/a&gt;&#xd;
 &lt;a&#xd;
-  href=&quot;http://univmobile.vswip.com/nexus/content/sites/pub/unm-webapp-parent/0.0.1/&quot;&gt;0.0.1/&lt;/a&gt;&#xd;
+  href=&quot;http://univmobile.vswip.com/nexus/content/sites/pub/unm-parent/0.0.1/&quot;&gt;0.0.1/&lt;/a&gt;&#xd;
 </description>
   <keepDependencies>false</keepDependencies>
   <properties/>
@@ -17,6 +15,7 @@ Maven Generated Site: &lt;a&#xd;
     <configVersion>2</configVersion>
     <userRemoteConfigs>
       <hudson.plugins.git.UserRemoteConfig>
+        <name>origin</name>
         <url>https://github.com/univmobile/unm-devel.git</url>
       </hudson.plugins.git.UserRemoteConfig>
     </userRemoteConfigs>
@@ -37,13 +36,13 @@ Maven Generated Site: &lt;a&#xd;
   <jdk>JDK 1.6.0_31</jdk>
   <triggers/>
   <concurrentBuild>false</concurrentBuild>
-  <customWorkspace>unm-webapp-parent</customWorkspace>
+  <customWorkspace>unm-parent</customWorkspace>
   <rootModule>
     <groupId>fr.univmobile</groupId>
-    <artifactId>unm-webapp-parent</artifactId>
+    <artifactId>unm-parent</artifactId>
   </rootModule>
-  <rootPOM>unm-webapp-parent/pom.xml</rootPOM>
-  <goals>-U clean site:jar deploy</goals>
+  <rootPOM>unm-parent/pom.xml</rootPOM>
+  <goals>-U clean site:site site:deploy</goals>
   <aggregatorStyleBuild>true</aggregatorStyleBuild>
   <incrementalBuild>false</incrementalBuild>
   <ignoreUpstremChanges>true</ignoreUpstremChanges>
