@@ -67,9 +67,9 @@ echo "CURRENT_DIR=UNM_IOS_REPO: $(pwd)"
 
 if [ ! -d .git ]; then # git clone if the repo is not present already
   rm -f "${PREV_HEAD}"
-  git clone https://github.com/univmobile/unm-ios "${UNM_IOS_REPO}"
+  git clone -b develop https://github.com/univmobile/unm-ios "${UNM_IOS_REPO}"
 elif [ ! -f "${PREV_HEAD}" ]; then # initialize if this is the 1st poll
-  git rev-parse master > "${PREV_HEAD}"
+  git rev-parse develop > "${PREV_HEAD}"
 fi
 
 # fetch & merge, then inspect head
@@ -78,7 +78,7 @@ if [ $? -eq 0 ]; then
   date
   echo "Fetch from git done"
   git merge FETCH_HEAD >> "${BUILD_LOG}" 2>&1
-  git rev-parse master > "${LATEST_HEAD}"
+  git rev-parse develop > "${LATEST_HEAD}"
   if ! diff "${LATEST_HEAD}" "${PREV_HEAD}" > /dev/null;  then
     echo "Merge via git done..."
     cat "${LATEST_HEAD}" > "${PREV_HEAD}" # update stored HEAD

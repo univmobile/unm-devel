@@ -1,15 +1,15 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <maven2-moduleset plugin="maven-plugin@2.3">
   <actions/>
-  <description>GitHub: &lt;a href=&quot;https://github.com/univmobile/unm-devel/tree/develop/unm-it-commons&quot;&gt;&#xd;
-https://github.com/univmobile/unm-devel/tree/develop/unm-it-commons&#xd;
+  <description>GitHub: &lt;a href=&quot;https://github.com/univmobile/unm-devel/tree/master/unm-it-commons&quot;&gt;&#xd;
+https://github.com/univmobile/unm-devel/tree/master/unm-it-commons&#xd;
 &lt;/a&gt;&#xd;
 &lt;p&gt;&#xd;
 Maven Generated Site: &lt;a&#xd;
   href=&quot;http://univmobile.vswip.com/nexus/content/sites/pub/unm-it-commons/&quot;&gt;&#xd;
   http://univmobile.vswip.com/nexus/content/sites/pub/unm-it-commons/&lt;/a&gt;&#xd;
 &lt;a&#xd;
-  href=&quot;http://univmobile.vswip.com/nexus/content/sites/pub/unm-it-commons/0.0.1-SNAPSHOT/&quot;&gt;0.0.1-SNAPSHOT/&lt;/a&gt;&#xd;
+  href=&quot;http://univmobile.vswip.com/nexus/content/sites/pub/unm-it-commons/0.0.1/&quot;&gt;0.0.1/&lt;/a&gt;&#xd;
 </description>
   <keepDependencies>false</keepDependencies>
   <properties/>
@@ -22,25 +22,20 @@ Maven Generated Site: &lt;a&#xd;
     </userRemoteConfigs>
     <branches>
       <hudson.plugins.git.BranchSpec>
-        <name>origin/develop</name>
+        <name>origin/master</name>
       </hudson.plugins.git.BranchSpec>
     </branches>
     <doGenerateSubmoduleConfigurations>false</doGenerateSubmoduleConfigurations>
     <submoduleCfg class="list"/>
     <extensions/>
   </scm>
-  <assignedNode>master</assignedNode>
+  <assignedNode>macos_ios6a</assignedNode>
   <canRoam>false</canRoam>
   <disabled>false</disabled>
   <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
   <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
-  <jdk>JDK 1.6.0_31</jdk>
-  <triggers>
-    <hudson.triggers.SCMTrigger>
-      <spec>H/5 * * * *</spec>
-      <ignorePostCommitHooks>false</ignorePostCommitHooks>
-    </hudson.triggers.SCMTrigger>
-  </triggers>
+  <jdk>MacOS_iOS6</jdk>
+  <triggers/>
   <concurrentBuild>false</concurrentBuild>
   <customWorkspace>unm-it-commons</customWorkspace>
   <rootModule>
@@ -48,10 +43,10 @@ Maven Generated Site: &lt;a&#xd;
     <artifactId>unm-it-commons</artifactId>
   </rootModule>
   <rootPOM>unm-it-commons/pom.xml</rootPOM>
-  <goals>-U clean deploy -Dmaven.test.skip=true</goals>
+  <goals>-U clean test</goals>
   <aggregatorStyleBuild>true</aggregatorStyleBuild>
   <incrementalBuild>false</incrementalBuild>
-  <ignoreUpstremChanges>false</ignoreUpstremChanges>
+  <ignoreUpstremChanges>true</ignoreUpstremChanges>
   <archivingDisabled>false</archivingDisabled>
   <siteArchivingDisabled>false</siteArchivingDisabled>
   <resolveDependencies>false</resolveDependencies>
