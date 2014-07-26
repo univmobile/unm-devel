@@ -1,12 +1,19 @@
 package fr.univmobile.web.commons;
 
 import static com.google.common.base.Preconditions.checkNotNull;
+import static org.apache.commons.lang3.StringUtils.isBlank;
 
 import java.io.IOException;
+import java.lang.reflect.InvocationHandler;
+import java.lang.reflect.Method;
+import java.lang.reflect.Proxy;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 /**
  * The superclass for controllers. In addition to the abstract methids, each
@@ -112,6 +119,34 @@ public abstract class AbstractController {
 	}
 
 	/**
+	 * Set an attribute into the underlying {@link HttpSession} object.
+	 */
+	protected final void setSessionAttribute(final String name,
+			final Object value) {
+
+		checkNotNull(name, "name");
+		checkNotNull(value, "value");
+
+		checkedRequest().getSession().setAttribute(name, value);
+	}
+
+	protected final <T> T getSessionAttribute(final String name,
+			final Class<T> clazz) {
+
+		checkNotNull(name, "name");
+		checkNotNull(clazz, "clazz");
+
+		final Object value = checkedRequest().getSession().getAttribute(name);
+
+		if (value == null) {
+			throw new IllegalStateException("Session attribute is null: "
+					+ name);
+		}
+
+		return clazz.cast(value);
+	}
+
+	/**
 	 * Get an attribute from the underlying {@link HttpServletRequest} object.
 	 */
 	protected final <T> T getAttribute(final String name, final Class<T> clazz) {
@@ -121,7 +156,7 @@ public abstract class AbstractController {
 		final Object value = checkedRequest().getAttribute(name);
 
 		if (value == null) {
-			throw new IllegalStateException("request attribute is null: "
+			throw new IllegalStateException("Request attribute is null: "
 					+ name);
 		}
 
@@ -142,5 +177,140 @@ public abstract class AbstractController {
 		}
 
 		return request;
+	}
+
+	protected final <T> T getHttpInputs(final Class<T> clazz) {
+
+		final HttpMethods httpMethods = clazz.getAnnotation(HttpMethods.class);
+
+		final HttpServletRequest request = checkedRequest();
+
+		if (httpMethods != null) {
+
+			boolean validHttpMethod = false;
+
+			for (final String httpMethod : httpMethods.value()) {
+
+				if (httpMethod.equalsIgnoreCase(request.getMethod())) {
+
+					validHttpMethod = true;
+
+					break;
+				}
+			}
+
+			if (!validHttpMethod) {
+
+				return invalidHttpInputs(clazz);
+			}
+		}
+
+		final Map<Method, String> httpParameterValues = new HashMap<Method, String>();
+
+		for (final Method method : clazz.getMethods()) {
+
+			final boolean required = method.isAnnotationPresent(Required.class);
+
+			final HttpParameter httpParameter = method
+					.getAnnotation(HttpParameter.class);
+
+			if (httpParameter == null) {
+				continue;
+			}
+
+			String httpParameterName = httpParameter.value();
+
+			if (isBlank(httpParameterName)) {
+				httpParameterName = method.getName();
+			}
+
+			final String httpParameterValue = request
+					.getParameter(httpParameterName);
+
+			if (httpParameterValue == null) {
+
+				if (required) {
+
+					return invalidHttpInputs(clazz);
+				}
+
+			} else {
+
+				httpParameterValues.put(method, httpParameterValue);
+			}
+		}
+
+		return validHttpInputs(clazz, httpParameterValues);
+	}
+
+	private static Map<Class<?>, Object> cachedInvalidHttpInputs = new HashMap<Class<?>, Object>();
+
+	private static <T> T invalidHttpInputs(final Class<T> clazz) {
+
+		checkNotNull(clazz, "clazz");
+
+		final Object cached = cachedInvalidHttpInputs.get(clazz);
+
+		if (cached != null) {
+			return clazz.cast(cached);
+		}
+
+		final Object proxy = Proxy.newProxyInstance(
+				AbstractController.class.getClassLoader(),
+				new Class<?>[] { clazz }, new InvocationHandler() {
+
+					@Override
+					public Object invoke(final Object proxy,
+							final Method method, final Object[] args)
+							throws Throwable {
+
+						if ("isValid".equals(method.getName())) {
+
+							return false;
+						}
+
+						throw new NoSuchMethodException(
+								"Illegal call on an invalid HttpInputs: "
+										+ method.getName() + "()");
+					}
+				});
+
+		cachedInvalidHttpInputs.put(clazz, proxy);
+
+		return clazz.cast(proxy);
+	}
+
+	private static <T> T validHttpInputs(final Class<T> clazz,
+			final Map<Method, String> httpParameterValues) {
+
+		checkNotNull(clazz, "clazz");
+		checkNotNull(httpParameterValues, "httpParameterValues");
+
+		final Object proxy = Proxy.newProxyInstance(
+				AbstractController.class.getClassLoader(),
+				new Class<?>[] { clazz }, new InvocationHandler() {
+
+					@Override
+					public Object invoke(final Object proxy,
+							final Method method, final Object[] args)
+							throws Throwable {
+
+						if ("isValid".equals(method.getName())) {
+
+							return true;
+						}
+
+						if (method.isAnnotationPresent(HttpParameter.class)) {
+
+							return httpParameterValues.get(method);
+						}
+
+						throw new NoSuchMethodException(
+								"Illegal call on a valid HttpInputs: "
+										+ method.getName() + "()");
+					}
+				});
+
+		return clazz.cast(proxy);
 	}
 }
