@@ -1,13 +1,21 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <maven2-moduleset plugin="maven-plugin@2.3">
   <actions/>
-  <description>GitHub: &lt;a href=&quot;https://github.com/univmobile/unm-devel/tree/master/unm-parent&quot;&gt;https://github.com/univmobile/unm-devel/tree/master/unm-parent&#xd;
+  <description>GitHub: &lt;a href=&quot;https://github.com/univmobile/unm-mobileweb/tree/master/unm-mobileweb-app&quot;&gt;&#xd;
+https://github.com/univmobile/unm-mobileweb/tree/master/unm-mobileweb-app&#xd;
 &lt;/a&gt;&#xd;
 &lt;p&gt;&#xd;
 Maven Generated Site: &lt;a&#xd;
-  href=&quot;http://univmobile.vswip.com/nexus/content/sites/pub/unm-parent/&quot;&gt;http://univmobile.vswip.com/nexus/content/sites/pub/unm-parent/&lt;/a&gt;&#xd;
+  href=&quot;http://univmobile.vswip.com/nexus/content/sites/pub/unm-mobileweb-app/&quot;&gt;&#xd;
+  http://univmobile.vswip.com/nexus/content/sites/pub/unm-mobileweb-app/&lt;/a&gt;&#xd;
 &lt;a&#xd;
-  href=&quot;http://univmobile.vswip.com/nexus/content/sites/pub/unm-parent/0.0.1/&quot;&gt;0.0.1/&lt;/a&gt;&#xd;
+  href=&quot;http://univmobile.vswip.com/nexus/content/sites/pub/unm-mobileweb-app/0.0.1/&quot;&gt;0.0.1/&lt;/a&gt;&#xd;
+&lt;p&gt;&#xd;
+Maven Artifacts: &lt;a&#xd;
+  href=&quot;http://univmobile.vswip.com/nexus/content/repositories/releases/fr/univmobile/unm-mobileweb-app/&quot;&gt;&#xd;
+  http://univmobile.vswip.com/nexus/content/repositories/releases/fr/univmobile/unm-mobileweb-app/&lt;/a&gt;&#xd;
+&lt;a&#xd;
+  href=&quot;http://univmobile.vswip.com/nexus/content/repositories/releases/fr/univmobile/unm-mobileweb-app/0.0.1/&quot;&gt;0.0.1/&lt;/a&gt;&#xd;
 </description>
   <keepDependencies>false</keepDependencies>
   <properties/>
@@ -15,8 +23,7 @@ Maven Generated Site: &lt;a&#xd;
     <configVersion>2</configVersion>
     <userRemoteConfigs>
       <hudson.plugins.git.UserRemoteConfig>
-        <name>origin</name>
-        <url>https://github.com/univmobile/unm-devel.git</url>
+        <url>https://github.com/univmobile/unm-mobileweb.git</url>
       </hudson.plugins.git.UserRemoteConfig>
     </userRemoteConfigs>
     <branches>
@@ -28,21 +35,20 @@ Maven Generated Site: &lt;a&#xd;
     <submoduleCfg class="list"/>
     <extensions/>
   </scm>
-  <assignedNode>master</assignedNode>
-  <canRoam>false</canRoam>
-  <disabled>true</disabled>
+  <canRoam>true</canRoam>
+  <disabled>false</disabled>
   <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
   <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
-  <jdk>JDK 1.6.0_31</jdk>
+  <jdk>Java 7</jdk>
   <triggers/>
   <concurrentBuild>false</concurrentBuild>
-  <customWorkspace>unm-parent</customWorkspace>
+  <customWorkspace>unm-mobileweb-app</customWorkspace>
   <rootModule>
     <groupId>fr.univmobile</groupId>
-    <artifactId>unm-parent</artifactId>
+    <artifactId>unm-mobileweb-app</artifactId>
   </rootModule>
-  <rootPOM>unm-parent/pom.xml</rootPOM>
-  <goals>-U clean site:site site:deploy</goals>
+  <rootPOM>unm-mobileweb-app/pom.xml</rootPOM>
+  <goals>-U clean site:jar deploy -DGIT_COMMIT=&quot;${GIT_COMMIT}&quot; -DBUILD_ID=&quot;${BUILD_ID}&quot; -DBUILD_NUMBER=&quot;${BUILD_NUMBER}&quot; -DBUILD_DISPLAY_NAME=&quot;${BUILD_DISPLAY_NAME}&quot;</goals>
   <aggregatorStyleBuild>true</aggregatorStyleBuild>
   <incrementalBuild>false</incrementalBuild>
   <ignoreUpstremChanges>true</ignoreUpstremChanges>
