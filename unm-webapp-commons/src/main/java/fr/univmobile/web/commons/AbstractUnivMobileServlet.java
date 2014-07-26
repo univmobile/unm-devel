@@ -35,30 +35,7 @@ public abstract class AbstractUnivMobileServlet extends HttpServlet {
 	@Override
 	public abstract void init() throws ServletException;
 
-	protected final void init(final Class<? extends AbstractController> c0)
-			throws ServletException {
-
-		final List<Class<? extends AbstractController>> controllers = new ArrayList<Class<? extends AbstractController>>();
-
-		controllers.add(c0);
-
-		init(controllers);
-	}
-
-	protected final void init(final Class<? extends AbstractController> c0,
-			final Class<? extends AbstractController> c1)
-			throws ServletException {
-
-		final List<Class<? extends AbstractController>> controllers = new ArrayList<Class<? extends AbstractController>>();
-
-		controllers.add(c0);
-		controllers.add(c1);
-
-		init(controllers);
-	}
-
-	private void init(
-			final Iterable<Class<? extends AbstractController>> controllerClasses)
+	protected final void init(final AbstractController... c)
 			throws ServletException {
 
 		super.init();
@@ -69,28 +46,7 @@ public abstract class AbstractUnivMobileServlet extends HttpServlet {
 
 		final ServletContext servletContext = getServletContext();
 
-		for (final Class<? extends AbstractController> controllerClass : controllerClasses) {
-
-			final AbstractController controller;
-
-			try {
-
-				controller = controllerClass.newInstance();
-
-			} catch (final IllegalAccessException e) {
-
-				e.printStackTrace();
-
-				throw new ServletException("Cannot instantiate: "
-						+ controllerClass, e);
-
-			} catch (final InstantiationException e) {
-
-				e.printStackTrace();
-
-				throw new ServletException("Cannot instantiate: "
-						+ controllerClass, e);
-			}
+		for (final AbstractController controller : c) {
 
 			controllers.add(controller.init(servletContext));
 		}

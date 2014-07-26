@@ -105,7 +105,32 @@ public abstract class AbstractController {
 	 */
 	protected final void setAttribute(final String name, final Object value) {
 
+		checkNotNull(name, "name");
+		checkNotNull(value, "value");
+
 		checkedRequest().setAttribute(name, value);
+	}
+
+	/**
+	 * Get an attribute from the underlying {@link HttpServletRequest} object.
+	 */
+	protected final <T> T getAttribute(final String name, final Class<T> clazz) {
+
+		checkNotNull(name, "name");
+
+		final Object value = checkedRequest().getAttribute(name);
+
+		if (value == null) {
+			throw new IllegalStateException("request attribute is null: "
+					+ name);
+		}
+
+		return clazz.cast(value);
+	}
+
+	protected final String getRemoteUser() {
+
+		return checkedRequest().getRemoteUser();
 	}
 
 	private HttpServletRequest checkedRequest() {
