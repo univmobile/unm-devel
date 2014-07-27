@@ -130,6 +130,13 @@ public abstract class AbstractController {
 		checkedRequest().getSession().setAttribute(name, value);
 	}
 
+	protected final void removeSessionAttribute(final String name) {
+
+		checkNotNull(name, "name");
+
+		checkedRequest().getSession().removeAttribute(name);
+	}
+
 	protected final <T> T getSessionAttribute(final String name,
 			final Class<T> clazz) {
 
@@ -144,6 +151,13 @@ public abstract class AbstractController {
 		}
 
 		return clazz.cast(value);
+	}
+
+	protected final boolean hasSessionAttribute(final String name) {
+
+		checkNotNull(name, "name");
+
+		return checkedRequest().getSession().getAttribute(name) != null;
 	}
 
 	/**
