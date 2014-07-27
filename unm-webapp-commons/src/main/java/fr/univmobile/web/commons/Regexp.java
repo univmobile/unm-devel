@@ -6,13 +6,11 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * Declare the name of the corresponding HTTP Parameter.
+ * Declare a validation regexp of the corresponding HTTP Parameter.
  */
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.METHOD)
-public @interface HttpParameter {
+public @interface Regexp {
 
-	String value() default "";
-	
-	boolean trim() default false;
+	String value();
 }

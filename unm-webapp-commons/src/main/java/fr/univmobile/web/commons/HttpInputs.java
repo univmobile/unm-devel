@@ -2,5 +2,5 @@ package fr.univmobile.web.commons;
 
 public interface HttpInputs {
 
-	boolean isValid();
+	boolean isHttpValid();
 }

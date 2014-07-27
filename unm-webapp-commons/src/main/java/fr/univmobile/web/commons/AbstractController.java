@@ -223,7 +223,8 @@ public abstract class AbstractController {
 
 		for (final Method method : clazz.getMethods()) {
 
-			final boolean required = method.isAnnotationPresent(Required.class);
+			final boolean required = method
+					.isAnnotationPresent(HttpRequired.class);
 
 			final HttpParameter httpParameter = method
 					.getAnnotation(HttpParameter.class);
@@ -238,8 +239,7 @@ public abstract class AbstractController {
 				httpParameterName = method.getName();
 			}
 
-			final String httpParameterValue = request
-					.getParameter(httpParameterName);
+			String httpParameterValue = request.getParameter(httpParameterName);
 
 			if (httpParameterValue == null) {
 
@@ -249,6 +249,11 @@ public abstract class AbstractController {
 				}
 
 			} else {
+
+				if (httpParameter.trim()) {
+
+					httpParameterValue = httpParameterValue.trim();
+				}
 
 				httpParameterValues.put(method, httpParameterValue);
 			}
@@ -278,7 +283,7 @@ public abstract class AbstractController {
 							final Method method, final Object[] args)
 							throws Throwable {
 
-						if ("isValid".equals(method.getName())) {
+						if ("isHttpValid".equals(method.getName())) {
 
 							return false;
 						}
@@ -301,17 +306,25 @@ public abstract class AbstractController {
 		checkNotNull(httpParameterValues, "httpParameterValues");
 
 		final Object proxy = Proxy.newProxyInstance(
-				AbstractController.class.getClassLoader(),
-				new Class<?>[] { clazz }, new InvocationHandler() {
+				AbstractController.class.getClassLoader(), new Class<?>[] {
+						clazz, HttpParameterized.class },
+				new InvocationHandler() {
 
 					@Override
 					public Object invoke(final Object proxy,
 							final Method method, final Object[] args)
 							throws Throwable {
 
-						if ("isValid".equals(method.getName())) {
+						final String methodName = method.getName();
+
+						if ("isHttpValid".equals(methodName)) {
 
 							return true;
+						}
+
+						if ("httpParameterValues".equals(methodName)) {
+
+							return httpParameterValues;
 						}
 
 						if (method.isAnnotationPresent(HttpParameter.class)) {
@@ -321,10 +334,35 @@ public abstract class AbstractController {
 
 						throw new NoSuchMethodException(
 								"Illegal call on a valid HttpInputs: "
-										+ method.getName() + "()");
+										+ methodName + "()");
 					}
 				});
 
 		return clazz.cast(proxy);
+	}
+
+	protected final boolean validate(final HttpInputs inputs,
+			final String errorsName) {
+
+		final HttpParameterized httpParameterized = (HttpParameterized) inputs;
+
+		boolean foundErrors = false;
+
+		for (final Map.Entry<Method, String> entry : httpParameterized
+				.httpParameterValues().entrySet()) {
+
+			final String httpParameterName = entry.getKey().getName();
+			final String httpParameterValue = entry.getValue();
+
+			if (isBlank(httpParameterValue)) {
+
+				checkedRequest().setAttribute(
+						errorsName + "_" + httpParameterName, true);
+
+				foundErrors = true;
+			}
+		}
+
+		return !foundErrors;
 	}
 }
