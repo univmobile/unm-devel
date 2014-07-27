@@ -15,6 +15,8 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import net.avcompris.binding.helper.BinderUtils;
+
 /**
  * The superclass for controllers. In addition to the abstract methids, each
  * controller must implement a constructor because of the
@@ -127,7 +129,8 @@ public abstract class AbstractController {
 		checkNotNull(name, "name");
 		checkNotNull(value, "value");
 
-		checkedRequest().getSession().setAttribute(name, value);
+		checkedRequest().getSession().setAttribute(name,
+				BinderUtils.detach(value));
 	}
 
 	protected final void removeSessionAttribute(final String name) {
