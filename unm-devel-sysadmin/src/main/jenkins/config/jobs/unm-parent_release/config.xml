@@ -32,7 +32,7 @@ Maven Generated Site: &lt;a&#xd;
   <disabled>false</disabled>
   <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
   <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
-  <jdk>JDK 1.6.0_31</jdk>
+  <jdk>Java 7</jdk>
   <triggers/>
   <concurrentBuild>false</concurrentBuild>
   <customWorkspace>unm-parent</customWorkspace>
@@ -41,7 +41,7 @@ Maven Generated Site: &lt;a&#xd;
     <artifactId>unm-parent</artifactId>
   </rootModule>
   <rootPOM>unm-parent/pom.xml</rootPOM>
-  <goals>-U clean deploy</goals>
+  <goals>-U clean site:jar deploy</goals>
   <aggregatorStyleBuild>true</aggregatorStyleBuild>
   <incrementalBuild>false</incrementalBuild>
   <ignoreUpstremChanges>true</ignoreUpstremChanges>

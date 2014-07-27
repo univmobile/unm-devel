@@ -39,6 +39,26 @@ public class XMLDumper implements Dumper {
 	}
 
 	@Override
+	public Dumper addCharacters(final String characters) throws IOException {
+
+		if (currentChild != null) {
+
+			currentChild.close();
+		}
+
+		if (inStartElement) {
+
+			inStartElement = false;
+
+			pw.print(">");
+		}
+
+		pw.print(characters);
+
+		return this;
+	}
+
+	@Override
 	public Dumper addAttribute(final String name, final Object value)
 			throws IOException {
 
@@ -110,6 +130,8 @@ public class XMLDumper implements Dumper {
 			pw.println("</" + name + ">");
 		}
 
+		pw.flush();
+
 		isClosed = true;
 
 		return parent;
@@ -159,6 +181,12 @@ public class XMLDumper implements Dumper {
 		public Dumper addElement(final String name) throws IOException {
 
 			return rootDumper.addElement(name);
+		}
+
+		@Override
+		public Dumper addCharacters(final String characters) throws IOException {
+
+			return rootDumper.addCharacters(characters);
 		}
 
 		@Override

@@ -1,15 +1,15 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <maven2-moduleset plugin="maven-plugin@2.3">
   <actions/>
-  <description>GitHub: &lt;a href=&quot;https://github.com/univmobile/unm-devel/tree/master/unm-it-commons&quot;&gt;&#xd;
-https://github.com/univmobile/unm-devel/tree/master/unm-it-commons&#xd;
+  <description>GitHub: &lt;a href=&quot;https://github.com/univmobile/unm-mobileweb/tree/master/unm-mobileweb-it&quot;&gt;&#xd;
+https://github.com/univmobile/unm-mobileweb/tree/master/unm-mobileweb-it&#xd;
 &lt;/a&gt;&#xd;
 &lt;p&gt;&#xd;
 Maven Generated Site: &lt;a&#xd;
-  href=&quot;http://univmobile.vswip.com/nexus/content/sites/pub/unm-it-commons/&quot;&gt;&#xd;
-  http://univmobile.vswip.com/nexus/content/sites/pub/unm-it-commons/&lt;/a&gt;&#xd;
+  href=&quot;http://univmobile.vswip.com/nexus/content/sites/pub/unm-mobileweb-it/&quot;&gt;&#xd;
+  http://univmobile.vswip.com/nexus/content/sites/pub/unm-mobileweb-it/&lt;/a&gt;&#xd;
 &lt;a&#xd;
-  href=&quot;http://univmobile.vswip.com/nexus/content/sites/pub/unm-it-commons/0.0.1/&quot;&gt;0.0.1/&lt;/a&gt;&#xd;
+  href=&quot;http://univmobile.vswip.com/nexus/content/sites/pub/unm-mobileweb-it/0.0.1/&quot;&gt;0.0.1/&lt;/a&gt;&#xd;
 </description>
   <keepDependencies>false</keepDependencies>
   <properties/>
@@ -17,7 +17,7 @@ Maven Generated Site: &lt;a&#xd;
     <configVersion>2</configVersion>
     <userRemoteConfigs>
       <hudson.plugins.git.UserRemoteConfig>
-        <url>https://github.com/univmobile/unm-devel.git</url>
+        <url>https://github.com/univmobile/unm-mobileweb.git</url>
       </hudson.plugins.git.UserRemoteConfig>
     </userRemoteConfigs>
     <branches>
@@ -29,21 +29,21 @@ Maven Generated Site: &lt;a&#xd;
     <submoduleCfg class="list"/>
     <extensions/>
   </scm>
-  <assignedNode>master</assignedNode>
+  <assignedNode>macos_ios6a</assignedNode>
   <canRoam>false</canRoam>
   <disabled>false</disabled>
   <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
   <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
-  <jdk>Java 7</jdk>
+  <jdk>MacOS_iOS6</jdk>
   <triggers/>
   <concurrentBuild>false</concurrentBuild>
-  <customWorkspace>unm-it-commons</customWorkspace>
+  <customWorkspace>unm-mobileweb-it</customWorkspace>
   <rootModule>
     <groupId>fr.univmobile</groupId>
-    <artifactId>unm-it-commons</artifactId>
+    <artifactId>unm-mobileweb-it</artifactId>
   </rootModule>
-  <rootPOM>unm-it-commons/pom.xml</rootPOM>
-  <goals>-U clean site:jar deploy -Dmaven.test.skip=true</goals>
+  <rootPOM>unm-mobileweb-it/pom.xml</rootPOM>
+  <goals>-U clean install site:jar</goals>
   <aggregatorStyleBuild>true</aggregatorStyleBuild>
   <incrementalBuild>false</incrementalBuild>
   <ignoreUpstremChanges>true</ignoreUpstremChanges>
@@ -57,7 +57,14 @@ Maven Generated Site: &lt;a&#xd;
   <settings class="jenkins.mvn.DefaultSettingsProvider"/>
   <globalSettings class="jenkins.mvn.DefaultGlobalSettingsProvider"/>
   <reporters/>
-  <publishers/>
+  <publishers>
+    <hudson.tasks.ArtifactArchiver>
+      <artifacts>unm-mobileweb-it/target/screenshots/</artifacts>
+      <latestOnly>false</latestOnly>
+      <allowEmptyArchive>false</allowEmptyArchive>
+      <onlyIfSuccessful>false</onlyIfSuccessful>
+    </hudson.tasks.ArtifactArchiver>
+  </publishers>
   <buildWrappers/>
   <prebuilders/>
   <postbuilders/>

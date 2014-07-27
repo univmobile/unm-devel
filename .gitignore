@@ -15,3 +15,4 @@ unm-backend-mock/.classpath
 unm-backend-mock/.project
 unm-backend-mock/.settings/
 unm-backend-mock/target/
+/bin
