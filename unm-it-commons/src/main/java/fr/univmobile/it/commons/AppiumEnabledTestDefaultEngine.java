@@ -192,9 +192,6 @@ final class AppiumEnabledTestDefaultEngine implements AppiumEnabledTestEngine {
 
 			System.out.println();
 
-			if (requiredAppCommitId != null) {
-
-			}
 			if (touchedAtAsString.compareTo(dirModifiedAtString) >= 0) {
 
 				if (mostRecentAppDirName == null
