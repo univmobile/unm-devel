@@ -45,7 +45,7 @@ Maven Generated Site: &lt;a&#xd;
     <artifactId>unm-mobileweb-it</artifactId>
   </rootModule>
   <rootPOM>unm-mobileweb-it/pom.xml</rootPOM>
-  <goals>-U clean install site:jar</goals>
+  <goals>-U dependency:purge-local-repository -DactTransitively=false clean install</goals>
   <aggregatorStyleBuild>true</aggregatorStyleBuild>
   <incrementalBuild>false</incrementalBuild>
   <ignoreUpstremChanges>true</ignoreUpstremChanges>
