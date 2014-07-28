@@ -2,7 +2,7 @@
 
 sudo su - tomcat -c "bin/shutdown.sh"
 
-sudo rm -rf /usr/local/apache-tomcat/webapps/testSP/
+sudo rm -rf /usr/local/apache-tomcat/webapps/unm/
 
 sudo cp unm-backend.war /usr/local/apache-tomcat/webapps/testSP.war
 

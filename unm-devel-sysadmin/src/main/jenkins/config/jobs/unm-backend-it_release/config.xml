@@ -33,7 +33,7 @@
     <artifactId>unm-backend-it</artifactId>
   </rootModule>
   <rootPOM>unm-backend-it/pom.xml</rootPOM>
-  <goals>-U clean site:jar deploy -Dmaven.test.skip=true</goals>
+  <goals>-U clean site:jar deploy</goals>
   <aggregatorStyleBuild>true</aggregatorStyleBuild>
   <incrementalBuild>false</incrementalBuild>
   <ignoreUpstremChanges>true</ignoreUpstremChanges>
