@@ -27,7 +27,7 @@ Tableau de bord d’intégration continue :&#xd;
     </userRemoteConfigs>
     <branches>
       <hudson.plugins.git.BranchSpec>
-        <name>**</name>
+        <name>origin/develop</name>
       </hudson.plugins.git.BranchSpec>
     </branches>
     <doGenerateSubmoduleConfigurations>false</doGenerateSubmoduleConfigurations>
@@ -66,7 +66,7 @@ Tableau de bord d’intégration continue :&#xd;
   </rootModule>
   <rootPOM>unm-ios-it/pom.xml</rootPOM>
   <goals>-U clean deploy</goals>
-  <mavenOpts>-Djava.awt.headless=true</mavenOpts>
+  <mavenOpts>-Djava.awt.headless=true -DappCommitId=769234e039f4af186eb0c1cd509d2b34d07a3b0b</mavenOpts>
   <aggregatorStyleBuild>true</aggregatorStyleBuild>
   <incrementalBuild>false</incrementalBuild>
   <ignoreUpstremChanges>false</ignoreUpstremChanges>

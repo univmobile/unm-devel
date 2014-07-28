@@ -288,6 +288,7 @@ Tableau de bord d’intégration continue :&#xd;
       <properties class="hudson.model.View$PropertyList"/>
       <jobNames>
         <comparator class="hudson.util.CaseInsensitiveComparator" reference="../../../../slaves/slave/nodeProperties/hudson.slaves.EnvironmentVariablesNodeProperty/envVars/tree-map/default/comparator"/>
+        <string>unm-ios</string>
         <string>unm-ios-it</string>
         <string>unm-ios-it_ios6</string>
         <string>unm-ios-ut-results</string>
@@ -475,6 +476,9 @@ Tableau de bord d’intégration continue :&#xd;
       <properties class="hudson.model.View$PropertyList"/>
       <jobNames>
         <comparator class="hudson.util.CaseInsensitiveComparator" reference="../../../../slaves/slave[3]/nodeProperties/hudson.slaves.EnvironmentVariablesNodeProperty/envVars/tree-map/default/comparator"/>
+        <string>unm-ios-it_ios6_release</string>
+        <string>unm-ios-it_release</string>
+        <string>unm-ios_release</string>
       </jobNames>
       <jobFilters/>
       <columns>
