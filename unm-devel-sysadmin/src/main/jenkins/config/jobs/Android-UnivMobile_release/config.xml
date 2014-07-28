@@ -27,13 +27,13 @@
     <configVersion>2</configVersion>
     <userRemoteConfigs>
       <hudson.plugins.git.UserRemoteConfig>
-        <name>origin</name>
+        <name>UnivMobile</name>
         <url>https://github.com/univmobile/unm-android</url>
       </hudson.plugins.git.UserRemoteConfig>
     </userRemoteConfigs>
     <branches>
       <hudson.plugins.git.BranchSpec>
-        <name>origin/develop</name>
+        <name>origin/master</name>
       </hudson.plugins.git.BranchSpec>
     </branches>
     <doGenerateSubmoduleConfigurations>false</doGenerateSubmoduleConfigurations>
@@ -46,31 +46,37 @@
   <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
   <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
   <jdk>Java 7</jdk>
-  <triggers>
-    <hudson.triggers.SCMTrigger>
-      <spec>H/5 * * * *</spec>
-      <ignorePostCommitHooks>false</ignorePostCommitHooks>
-    </hudson.triggers.SCMTrigger>
-  </triggers>
+  <triggers/>
   <concurrentBuild>false</concurrentBuild>
   <builders>
     <hudson.tasks.Shell>
-      <command>cd UnivMobile
-cp local.properties_jenkins local.properties
-</command>
+      <command>cp UnivMobile/local.properties_jenkins UnivMobile/local.properties
+cp google-play-services/google-play-services_lib/local.properties_jenkins google-play-services/google-play-services_lib/local.properties</command>
     </hudson.tasks.Shell>
-    <hudson.plugins.gradle.Gradle plugin="gradle@1.24">
-      <description></description>
-      <switches></switches>
-      <tasks>clean build</tasks>
-      <rootBuildScriptDir></rootBuildScriptDir>
-      <buildFile>UnivMobile/build.gradle</buildFile>
-      <gradleName>(Default)</gradleName>
-      <useWrapper>true</useWrapper>
-      <makeExecutable>false</makeExecutable>
-      <fromRootBuildScriptDir>true</fromRootBuildScriptDir>
-      <useWorkspaceAsHome>false</useWorkspaceAsHome>
-    </hudson.plugins.gradle.Gradle>
+    <hudson.tasks.Ant plugin="ant@1.2">
+      <targets>add-variables
+clean-all
+release -propertyfile /opt/android-sdk-linux/keystore.properties</targets>
+      <antName>Ant 1.9.4</antName>
+      <buildFile>UnivMobile/build.xml</buildFile>
+      <properties>sdk.dir=/opt/android-sdk-linux/
+project.build.directory=UnivMobile
+GIT_COMMIT=${GIT_COMMIT}
+BUILD_ID=${BUILD_ID}
+BUILD_DISPLAY_NAME=${BUILD_DISPLAY_NAME}</properties>
+    </hudson.tasks.Ant>
+    <hudson.tasks.Ant plugin="ant@1.2">
+      <targets>add-variables
+clean-classes
+debug</targets>
+      <antName>Ant 1.9.4</antName>
+      <buildFile>UnivMobile/build.xml</buildFile>
+      <properties>sdk.dir=/opt/android-sdk-linux/
+project.build.directory=UnivMobile
+GIT_COMMIT=${GIT_COMMIT}
+BUILD_ID=${BUILD_ID}
+BUILD_DISPLAY_NAME=${BUILD_DISPLAY_NAME}</properties>
+    </hudson.tasks.Ant>
   </builders>
   <publishers>
     <hudson.tasks.ArtifactArchiver>
