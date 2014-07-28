@@ -7,6 +7,8 @@ import static fr.univmobile.it.commons.AppiumCapabilityType.DEVICE_NAME;
 import static fr.univmobile.it.commons.AppiumCapabilityType.PLATFORM_NAME;
 import static fr.univmobile.it.commons.AppiumCapabilityType.PLATFORM_VERSION;
 import static org.apache.commons.lang3.CharEncoding.UTF_8;
+import static org.apache.commons.lang3.StringUtils.split;
+import static org.apache.commons.lang3.StringUtils.substringAfter;
 import static org.apache.commons.lang3.StringUtils.substringBeforeLast;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
@@ -15,6 +17,7 @@ import static org.openqa.selenium.remote.CapabilityType.BROWSER_NAME;
 import static org.openqa.selenium.remote.CapabilityType.PLATFORM;
 import io.appium.java_client.AppiumDriver;
 
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -22,6 +25,12 @@ import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.annotation.Nullable;
+
+import org.apache.commons.exec.CommandLine;
+import org.apache.commons.exec.DefaultExecutor;
+import org.apache.commons.exec.Executor;
+import org.apache.commons.exec.PumpStreamHandler;
 import org.apache.commons.io.FileUtils;
 import org.joda.time.DateTime;
 import org.joda.time.format.DateTimeFormat;
@@ -54,6 +63,9 @@ final class AppiumEnabledTestDefaultEngine implements AppiumEnabledTestEngine {
 	@Override
 	public void setUp() throws Exception {
 
+		@Nullable
+		final String requiredAppCommitId = System.getProperty("appCommitId");
+
 		if (driver != null) {
 
 			// System.out.println("DEBUG: ??? driver != null => driver.quit()...");
@@ -83,7 +95,8 @@ final class AppiumEnabledTestDefaultEngine implements AppiumEnabledTestEngine {
 				// e.g.
 				// "/var/xcodebuild_test-apps/UnivMobile-20140712-090711.app"
 
-				appPath = getMostRecentAppPah(appPathProperty);
+				appPath = getMostRecentAppPath(appPathProperty,
+						requiredAppCommitId);
 			}
 
 			app = new File(appPath);
@@ -113,11 +126,14 @@ final class AppiumEnabledTestDefaultEngine implements AppiumEnabledTestEngine {
 				capabilities);
 	}
 
-	private static String getMostRecentAppPah(final String appPathProperty)
+	private static String getMostRecentAppPath(final String appPathProperty,
+			@Nullable final String requiredAppCommitId)
 			throws FileNotFoundException, IOException {
 
 		System.out.println("Using UnivMobile-(lastimport).app: "
 				+ appPathProperty + "...");
+
+		System.out.println("requiredAppCommitId: " + requiredAppCommitId);
 
 		final File appRepo = new File(substringBeforeLast(appPathProperty, "/"));
 
@@ -162,6 +178,23 @@ final class AppiumEnabledTestDefaultEngine implements AppiumEnabledTestEngine {
 
 			System.out.println("         modified: " + dirModifiedAtString);
 
+			final String appCommitId = readAppCommitId(appDir);
+
+			System.out.print("      appCommitId: " + appCommitId);
+
+			if (requiredAppCommitId != null
+					&& !requiredAppCommitId.equals(appCommitId)) {
+
+				System.out.println(" (skipping)");
+
+				continue;
+			}
+
+			System.out.println();
+
+			if (requiredAppCommitId != null) {
+
+			}
 			if (touchedAtAsString.compareTo(dirModifiedAtString) >= 0) {
 
 				if (mostRecentAppDirName == null
@@ -174,7 +207,8 @@ final class AppiumEnabledTestDefaultEngine implements AppiumEnabledTestEngine {
 
 		if (mostRecentAppDirName == null) {
 			throw new FileNotFoundException(appRepo.getCanonicalPath()
-					+ "/UnivMobile-(lastimport).app");
+					+ "/UnivMobile-(lastimport).app, requiredAppCommitId: "
+					+ requiredAppCommitId);
 		}
 
 		final String mostRecentAppPath = appRepo.getCanonicalPath() + "/"
@@ -200,6 +234,34 @@ final class AppiumEnabledTestDefaultEngine implements AppiumEnabledTestEngine {
 		FileUtils.copyDirectory(mostRecentApp, appDest);
 
 		return appPath;
+	}
+
+	@Nullable
+	private static String readAppCommitId(final File appDir) throws IOException {
+
+		final Executor executor = new DefaultExecutor();
+
+		final ByteArrayOutputStream bos = new ByteArrayOutputStream();
+
+		executor.setStreamHandler(new PumpStreamHandler(bos, null));
+
+		// $ /usr/libexec/PlistBuddy -c Print Info.plist
+
+		executor.execute(new CommandLine(new File("/usr/libexec/PlistBuddy"))
+				.addArgument("-c").addArgument("Print")
+				.addArgument(new File(appDir, "Info.plist").getCanonicalPath()));
+
+		final String output = bos.toString(UTF_8);
+
+		for (final String line : split(output, "\r\n")) {
+
+			if (line.contains("GIT_COMMIT ")) {
+
+				return substringAfter(line, "=").trim();
+			}
+		}
+
+		return null;
 	}
 
 	@After

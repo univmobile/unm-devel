@@ -4,7 +4,7 @@
     <string>jenkins.diagnostics.SecurityIsOffMonitor</string>
   </disabledAdministrativeMonitors>
   <version>1.570</version>
-  <numExecutors>2</numExecutors>
+  <numExecutors>1</numExecutors>
   <mode>NORMAL</mode>
   <useSecurity>true</useSecurity>
   <authorizationStrategy class="hudson.security.ProjectMatrixAuthorizationStrategy">
@@ -288,6 +288,7 @@ Tableau de bord d’intégration continue :&#xd;
       <properties class="hudson.model.View$PropertyList"/>
       <jobNames>
         <comparator class="hudson.util.CaseInsensitiveComparator" reference="../../../../slaves/slave/nodeProperties/hudson.slaves.EnvironmentVariablesNodeProperty/envVars/tree-map/default/comparator"/>
+        <string>unm-ios</string>
         <string>unm-ios-it</string>
         <string>unm-ios-it_ios6</string>
         <string>unm-ios-ut-results</string>
@@ -364,7 +365,8 @@ Tableau de bord d’intégration continue :&#xd;
         <string>unm-backend-mock</string>
         <string>unm-backend-mock_site</string>
         <string>unm-it-commons</string>
-        <string>unm-it-commons_ios6_release</string>
+        <string>unm-it-commons_ios6</string>
+        <string>unm-it-commons_ios7</string>
         <string>unm-it-parent</string>
         <string>unm-parent</string>
         <string>unm-parent_site</string>
@@ -393,7 +395,11 @@ Tableau de bord d’intégration continue :&#xd;
         <comparator class="hudson.util.CaseInsensitiveComparator" reference="../../../../slaves/slave/nodeProperties/hudson.slaves.EnvironmentVariablesNodeProperty/envVars/tree-map/default/comparator"/>
         <string>unm-backend</string>
         <string>unm-backend-app</string>
+        <string>unm-backend-app-noshib</string>
+        <string>unm-backend-core</string>
+        <string>unm-backend-filter-noshib</string>
         <string>unm-backend-it</string>
+        <string>unm-backend-parent</string>
       </jobNames>
       <jobFilters/>
       <columns>
@@ -470,6 +476,9 @@ Tableau de bord d’intégration continue :&#xd;
       <properties class="hudson.model.View$PropertyList"/>
       <jobNames>
         <comparator class="hudson.util.CaseInsensitiveComparator" reference="../../../../slaves/slave[3]/nodeProperties/hudson.slaves.EnvironmentVariablesNodeProperty/envVars/tree-map/default/comparator"/>
+        <string>unm-ios-it_ios6_release</string>
+        <string>unm-ios-it_release</string>
+        <string>unm-ios_release</string>
       </jobNames>
       <jobFilters/>
       <columns>
