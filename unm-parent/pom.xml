@@ -4,7 +4,7 @@
 
 	<groupId>fr.univmobile</groupId>
 	<artifactId>unm-parent</artifactId>
-	<version>0.0.3</version>
+	<version>0.0.4-SNAPSHOT</version>
 	<packaging>pom</packaging>
 
 	<dependencies>
@@ -84,12 +84,12 @@
 			<dependency>
 				<groupId>fr.univmobile</groupId>
 				<artifactId>unm-ios-ut-results</artifactId>
-				<version>0.0.3</version>
+				<version>0.0.4-SNAPSHOT</version>
 			</dependency>
 			<dependency>
 				<groupId>fr.univmobile</groupId>
 				<artifactId>unm-testutil</artifactId>
-				<version>0.0.3</version>
+				<version>0.0.4-SNAPSHOT</version>
 			</dependency>
 			<dependency>
 				<groupId>org.apache.ant</groupId>
