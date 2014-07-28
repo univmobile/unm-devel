@@ -31,7 +31,9 @@ Maven Artifacts: &lt;a&#xd;
     </branches>
     <doGenerateSubmoduleConfigurations>false</doGenerateSubmoduleConfigurations>
     <submoduleCfg class="list"/>
-    <extensions/>
+    <extensions>
+      <hudson.plugins.git.extensions.impl.CleanBeforeCheckout/>
+    </extensions>
   </scm>
   <canRoam>true</canRoam>
   <disabled>false</disabled>

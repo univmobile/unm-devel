@@ -34,6 +34,7 @@
     <submoduleCfg class="list"/>
     <extensions>
       <hudson.plugins.git.extensions.impl.WipeWorkspace/>
+      <hudson.plugins.git.extensions.impl.CleanBeforeCheckout/>
     </extensions>
   </scm>
   <assignedNode>macos_ios7</assignedNode>
