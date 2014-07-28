@@ -83,7 +83,7 @@ final class AppiumEnabledTestDefaultEngine implements AppiumEnabledTestEngine {
 				// e.g.
 				// "/var/xcodebuild_test-apps/UnivMobile-20140712-090711.app"
 
-				appPath = getMostRecentAppPah(appPathProperty);
+				appPath = getMostRecentAppPath(appPathProperty);
 			}
 
 			app = new File(appPath);
@@ -113,7 +113,7 @@ final class AppiumEnabledTestDefaultEngine implements AppiumEnabledTestEngine {
 				capabilities);
 	}
 
-	private static String getMostRecentAppPah(final String appPathProperty)
+	private static String getMostRecentAppPath(final String appPathProperty)
 			throws FileNotFoundException, IOException {
 
 		System.out.println("Using UnivMobile-(lastimport).app: "
