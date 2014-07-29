@@ -1,24 +1,21 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <maven2-moduleset plugin="maven-plugin@2.3">
   <actions/>
-  <description></description>
+  <description>GitHub: &lt;a href=&quot;https://github.com/univmobile/unm-ios-ut-results&quot;&gt;https://github.com/univmobile/unm-ios-ut-results&#xd;
+&lt;/a&gt;&#xd;
+&lt;p/&gt;&#xd;
+Tableau de bord d’intégration continue :&#xd;
+&lt;a href=&quot;http://univmobile.vswip.com/job/unm-devel-it/lastSuccessfulBuild/artifact/unm-devel-it/target/unm-ci-dump.html&quot;&gt;&#xd;
+  UnivMobile iOS — Intégration continue&#xd;
+&lt;/a&gt;&#xd;
+</description>
   <keepDependencies>false</keepDependencies>
-  <properties>
-    <hudson.security.AuthorizationMatrixProperty>
-      <permission>hudson.model.Item.Build:mgauzins</permission>
-      <permission>hudson.model.Item.Workspace:mgauzins</permission>
-      <permission>hudson.model.Item.Cancel:mgauzins</permission>
-      <permission>hudson.model.Item.Discover:mgauzins</permission>
-      <permission>hudson.model.Item.Configure:mgauzins</permission>
-      <permission>com.cloudbees.plugins.credentials.CredentialsProvider.View:mgauzins</permission>
-      <permission>hudson.model.Item.Read:mgauzins</permission>
-    </hudson.security.AuthorizationMatrixProperty>
-  </properties>
+  <properties/>
   <scm class="hudson.plugins.git.GitSCM" plugin="git@2.2.2">
     <configVersion>2</configVersion>
     <userRemoteConfigs>
       <hudson.plugins.git.UserRemoteConfig>
-        <url>https://github.com/univmobile/unm-android</url>
+        <url>https://github.com/univmobile/unm-integration</url>
       </hudson.plugins.git.UserRemoteConfig>
     </userRemoteConfigs>
     <branches>
@@ -32,7 +29,7 @@
       <hudson.plugins.git.extensions.impl.CleanBeforeCheckout/>
     </extensions>
   </scm>
-  <assignedNode>ks3haxm</assignedNode>
+  <assignedNode>master</assignedNode>
   <canRoam>false</canRoam>
   <disabled>false</disabled>
   <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
@@ -40,14 +37,13 @@
   <jdk>Java 7</jdk>
   <triggers/>
   <concurrentBuild>false</concurrentBuild>
-  <customWorkspace>unm-android-it</customWorkspace>
+  <customWorkspace>unm-ios-ut-results</customWorkspace>
   <rootModule>
     <groupId>fr.univmobile</groupId>
-    <artifactId>unm-android-it</artifactId>
+    <artifactId>unm-ios-ut-results</artifactId>
   </rootModule>
-  <rootPOM>unm-android-it/pom.xml</rootPOM>
-  <goals>-U clean site:jar deploy</goals>
-  <mavenOpts>-Djava.awt.headless=true</mavenOpts>
+  <rootPOM>unm-ios-ut-results/pom.xml</rootPOM>
+  <goals>-U clean site:jar deploy -Dmaven.test.skip=true</goals>
   <aggregatorStyleBuild>true</aggregatorStyleBuild>
   <incrementalBuild>false</incrementalBuild>
   <ignoreUpstremChanges>true</ignoreUpstremChanges>
@@ -63,17 +59,12 @@
   <reporters/>
   <publishers/>
   <buildWrappers/>
-  <prebuilders>
-    <hudson.tasks.Shell>
-      <command>mkdir -p unm-android-it/apk/
-wget -O unm-android-it/apk/UnivMobile-debug.apk http://univmobile.vswip.com/job/Android-UnivMobile/lastSuccessfulBuild/artifact/UnivMobile/bin/UnivMobile-debug.apk</command>
-    </hudson.tasks.Shell>
-  </prebuilders>
+  <prebuilders/>
   <postbuilders/>
   <runPostStepsIfResult>
-    <name>SUCCESS</name>
-    <ordinal>0</ordinal>
-    <color>BLUE</color>
+    <name>FAILURE</name>
+    <ordinal>2</ordinal>
+    <color>RED</color>
     <completeBuild>true</completeBuild>
   </runPostStepsIfResult>
 </maven2-moduleset>
