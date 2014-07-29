@@ -238,7 +238,7 @@
 		qui dit si tous les tests ont eu leurs logs analysés.
 	</description>
 	<parent>
-		<artifactId>unm-parent</artifactId>
+		<artifactId>unm-it-parent</artifactId>
 	</parent>
 </project>
 </mavenProject>
@@ -250,7 +250,7 @@
 		qui dit si tous les tests ont eu leurs logs analysés.
 	</description>
 	<parent>
-		<artifactId>unm-parent</artifactId>
+		<artifactId>unm-it-parent</artifactId>
 	</parent>
 </project>
 </mavenProject>
