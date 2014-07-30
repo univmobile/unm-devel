@@ -20,7 +20,7 @@
 
 	<name>unm-webapp-commons</name>
 	<description>
-		Common classes used by webapps in the UnivMobile iOS project.
+		Common classes used by webapps in the UnivMobile project.
 	</description>
 	<url>
         http://univmobile.vswip.com/nexus/content/sites/pub/${project.artifactId}/${project.version}/
