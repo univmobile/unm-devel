@@ -84,13 +84,18 @@
 			<dependency>
 				<groupId>fr.univmobile</groupId>
 				<artifactId>unm-ios-ut-results</artifactId>
-				<version>0.0.4-SNAPSHOT</version>
+				<version>${project.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>fr.univmobile</groupId>
 				<artifactId>unm-testutil</artifactId>
-				<version>0.0.4-SNAPSHOT</version>
+				<version>${project.version}</version>
 			</dependency>
+			<dependency>
+				<groupId>fr.univmobile</groupId>
+				<artifactId>unm-commons-datasource</artifactId>
+				<version>${project.version}</version>
+			</dependency>	
 			<dependency>
 				<groupId>org.apache.ant</groupId>
 				<artifactId>ant</artifactId>
@@ -114,6 +119,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-source-plugin</artifactId>
+				<version>2.3</version>
 				<executions>
 					<execution>
 						<id>attach-sources</id>
@@ -126,6 +132,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-javadoc-plugin</artifactId>
+				<version>2.9.1</version>
 				<executions>
 					<execution>
 						<id>attach-javadocs</id>
@@ -184,6 +191,11 @@
 						<downloadSources>true</downloadSources>
 						<downloadJavadocs>true</downloadJavadocs>
 					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>org.codehaus.mojo</groupId>
+					<artifactId>exec-maven-plugin</artifactId>
+					<version>1.3.2</version>
 				</plugin>
 			</plugins>
 		</pluginManagement>
