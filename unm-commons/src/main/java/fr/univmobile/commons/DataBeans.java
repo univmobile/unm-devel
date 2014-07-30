@@ -1,4 +1,4 @@
-package fr.univmobile.web.commons;
+package fr.univmobile.commons;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 import static org.apache.commons.lang3.StringUtils.capitalize;

@@ -1,6 +1,6 @@
 package fr.univmobile.web.commons;
 
-import static fr.univmobile.web.commons.DataBeans.instantiate;
+import static fr.univmobile.commons.DataBeans.instantiate;
 
 import java.io.IOException;
 import java.io.InputStream;

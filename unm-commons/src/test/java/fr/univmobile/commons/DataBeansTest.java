@@ -1,4 +1,4 @@
-package fr.univmobile.web.commons;
+package fr.univmobile.commons;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
@@ -10,7 +10,7 @@ import javax.annotation.Nullable;
 
 import org.junit.Test;
 
-import fr.univmobile.web.commons.DataBeans;
+import fr.univmobile.commons.DataBeans;
 
 public class DataBeansTest {
 
