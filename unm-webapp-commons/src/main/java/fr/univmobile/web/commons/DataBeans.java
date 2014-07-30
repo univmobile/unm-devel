@@ -4,6 +4,7 @@ import static com.google.common.base.Preconditions.checkNotNull;
 import static org.apache.commons.lang3.StringUtils.capitalize;
 import static org.apache.commons.lang3.StringUtils.uncapitalize;
 
+import java.io.Serializable;
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
@@ -29,8 +30,9 @@ public abstract class DataBeans {
 		final InvocationHandler invocationHandler = //
 		new DataBeanInvocationHandler(clazz);
 
-		final Object proxy = Proxy.newProxyInstance(classLoader,
-				new Class<?>[] { clazz }, invocationHandler);
+		final Object proxy = Proxy
+				.newProxyInstance(classLoader, new Class<?>[] { clazz,
+						Serializable.class }, invocationHandler);
 
 		return clazz.cast(proxy);
 	}
