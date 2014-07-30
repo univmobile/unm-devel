@@ -10,6 +10,13 @@
 		<version>0.0.4-SNAPSHOT</version>
 		<relativePath />
 	</parent>
+	
+	<dependencies>
+		<dependency>
+			<groupId>fr.univmobile</groupId>
+			<artifactId>unm-commons</artifactId>
+		</dependecy>
+	</dependencies>
 
 	<name>unm-webapp-commons</name>
 	<description>
