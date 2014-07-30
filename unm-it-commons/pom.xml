@@ -23,7 +23,7 @@
 		Common classes used by integration tests in the UnivMobile iOS project.
 	</description>
 	<url>
-        http://univmobile.vswip.com/nexus/content/sites/pub/${project.artifactId}/${project.version}
+        http://univmobile.vswip.com/nexus/content/sites/pub/${project.artifactId}/${project.version}/
     </url>
     
     <build>
