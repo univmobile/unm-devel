@@ -326,6 +326,22 @@
 	<parent>
 		<artifactId>unm-parent</artifactId>
 	</parent>
+	<dependencies>
+		<dependency>
+			<artifactId>unm-commons-datasource</artifactId>
+		</dependency>
+	</dependencies>
+</project>
+</mavenProject>
+<mavenProject id="unm-commons-datasource" gitRepository-ref="unm-backend">
+<project>
+	<description>
+		Framework d’accès aux données utilisé par
+		<mavenProject ref="unm-backend-core"/>.
+	</description>
+	<parent>
+		<artifactId>unm-parent</artifactId>
+	</parent>
 </project>
 </mavenProject>
 <mavenProject id="unm-backend-it" gitRepository-ref="unm-backend">
