@@ -100,7 +100,7 @@
 				<groupId>fr.univmobile</groupId>
 				<artifactId>unm-commons</artifactId>
 				<version>${project.version}</version>
-			</dependecy>
+			</dependency>
 			<dependency>
 				<groupId>fr.univmobile</groupId>
 				<artifactId>unm-ios-ut-results</artifactId>
