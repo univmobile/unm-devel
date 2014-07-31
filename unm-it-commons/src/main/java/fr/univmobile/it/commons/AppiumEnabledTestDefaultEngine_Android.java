@@ -18,12 +18,17 @@ final class AppiumEnabledTestDefaultEngine_Android extends
 
 	private static final File app = new File("apk/UnivMobile-debug.apk");
 
+	public AppiumEnabledTestDefaultEngine_Android() {
+
+		setCurrentPlatformName("Android");
+	}
+
 	@Before
 	@Override
 	public void setUp() throws Exception {
 
-		//@Nullable
-		//final String requiredAppCommitId = System.getProperty("appCommitId");
+		// @Nullable
+		// final String requiredAppCommitId = System.getProperty("appCommitId");
 
 		AppiumDriver driver = getDriver();
 

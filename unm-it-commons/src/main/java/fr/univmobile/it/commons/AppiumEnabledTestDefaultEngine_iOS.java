@@ -26,6 +26,8 @@ final class AppiumEnabledTestDefaultEngine_iOS extends
 	public AppiumEnabledTestDefaultEngine_iOS(final boolean useSafari) {
 
 		this.useSafari = useSafari;
+		
+		setCurrentPlatformName("iOS");
 	}
 
 	private final boolean useSafari;
