@@ -80,7 +80,8 @@
   <prebuilders>
     <hudson.tasks.Shell>
       <command>mkdir -p unm-android-it/apk/
-wget -O unm-android-it/apk/UnivMobile-debug.apk http://univmobile.vswip.com/job/Android-UnivMobile/lastSuccessfulBuild/artifact/UnivMobile/bin/UnivMobile-debug.apk</command>
+wget -O unm-android-it/apk/UnivMobile-debug.apk http://univmobile.vswip.com/job/Android-UnivMobile/lastSuccessfulBuild/artifact/UnivMobile/bin/UnivMobile-debug.apk
+# Or, in: http://univmobile.vswip.com/nexus/content/repositories/snapshots/fr/univmobile/UnivMobile/...</command>
     </hudson.tasks.Shell>
   </prebuilders>
   <postbuilders/>
