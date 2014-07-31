@@ -62,7 +62,7 @@ cp local.properties_jenkins local.properties
     <hudson.plugins.gradle.Gradle plugin="gradle@1.24">
       <description></description>
       <switches></switches>
-      <tasks>clean build uploadArchives</tasks>
+      <tasks>clean build generateReleaseJavadoc uploadArchives</tasks>
       <rootBuildScriptDir></rootBuildScriptDir>
       <buildFile>UnivMobile/build.gradle</buildFile>
       <gradleName>(Default)</gradleName>
