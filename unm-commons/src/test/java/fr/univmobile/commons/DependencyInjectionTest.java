@@ -17,7 +17,7 @@ import org.junit.Test;
 public class DependencyInjectionTest {
 
 	@Test
-	public void testInjectFromInitParams() throws Exception {
+	public void testInjectFromInitParams001() throws Exception {
 
 		final Map<String, String> initParams = DomBinderUtils.xmlContentToJava(
 				new File("src/test/inject/001-inject.xml"), InitParams.class)
@@ -25,8 +25,36 @@ public class DependencyInjectionTest {
 
 		final MyApi api = new DependencyInjection(initParams).getInject(
 				MyApi.class).into(DependencyInjectionTest.class);
-		
+
 		assertEquals("HELLO WORLD!", api.doSomething());
+
+	}
+
+	@Test
+	public void testInjectImplClass() throws Exception {
+
+		final Map<String, String> initParams = DomBinderUtils.xmlContentToJava(
+				new File("src/test/inject/001-inject.xml"), InitParams.class)
+				.getInitParams();
+
+		final MyApi api = new DependencyInjection(initParams).getInject(
+				MyApi.class).into(DependencyInjectionTest.class);
+
+		assertEquals("HELLO WORLD!", api.doSomething());
+
+	}
+
+	@Test
+	public void testInjectFactory() throws Exception {
+
+		final Map<String, String> initParams = DomBinderUtils.xmlContentToJava(
+				new File("src/test/inject/002-inject-factory.xml"),
+				InitParams.class).getInitParams();
+
+		final MyApi api = new DependencyInjection(initParams).getInject(
+				MyApi.class).into(DependencyInjectionTest.class);
+
+		assertEquals("Hxexlxlxox xWxoxrxlxdx!x", api.doSomething());
 
 	}
 
@@ -73,5 +101,27 @@ class MyHandlerImpl implements MyHandler {
 	public String handleSomething(final String s) {
 
 		return s.toUpperCase(Locale.ENGLISH);
+	}
+}
+
+abstract class MyHandlerFactory {
+
+	public static MyHandler newHandler(final String x) {
+		
+		return new MyHandler() {
+			
+			@Override
+			public String handleSomething(final String s) {
+				
+				final StringBuilder sb = new StringBuilder();
+				
+				for (final char c: s.toCharArray()) {
+					
+					sb.append(c).append(x);
+				}
+				
+				return sb.toString();
+			}
+		};
 	}
 }

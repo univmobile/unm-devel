@@ -4,11 +4,20 @@ import static com.google.common.base.Preconditions.checkNotNull;
 import static org.apache.commons.lang3.StringUtils.join;
 import static org.apache.commons.lang3.StringUtils.split;
 import static org.apache.commons.lang3.StringUtils.substringAfter;
+import static org.apache.commons.lang3.StringUtils.substringAfterLast;
+import static org.apache.commons.lang3.StringUtils.substringBetween;
 
+import java.io.File;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+import java.lang.reflect.Modifier;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import javax.annotation.Nullable;
+
+import com.avcompris.lang.NotImplementedException;
 import com.google.common.collect.Iterables;
 import com.google.inject.AbstractModule;
 import com.google.inject.Guice;
@@ -67,7 +76,23 @@ public class DependencyInjection {
 
 				for (final DependencyConfig config : configs) {
 
-					bindTo(config.injectClass, config.implClass);
+					if (!config.isIntoFactory && !config.isImplFactory) {
+
+						bindTo(config.injectClass, config.implClass);
+
+					} else if (config.isImplFactory) {
+
+						bindToFactory(config.injectClass, config.implClass,
+								config.implClassName);
+
+					} else if (config.isIntoFactory) {
+
+						// do nothing. Hardcoded params have already been read.
+
+					} else {
+
+						throw new NotImplementedException();
+					}
 				}
 			}
 
@@ -76,9 +101,99 @@ public class DependencyInjection {
 
 				bind(injectClass).to(implClass.asSubclass(injectClass));
 			}
+
+			private <I> void bindToFactory(final Class<I> injectClass,
+					final Class<?> implClass, @Nullable final String factoryName) {
+
+				bind(injectClass).toInstance(
+						invokeFactory(injectClass, implClass, factoryName));
+			}
 		};
 
 		injector = Guice.createInjector(module);
+	}
+
+	private <T> T invokeFactory(final Class<T> injectClass,
+			final Class<?> factoryClass, @Nullable final String factoryName) {
+
+		// Here, we are using static methods, not Guice.
+
+		Method factoryMethod = null;
+
+		for (final Method method : factoryClass.getMethods()) {
+
+			if (!Modifier.isStatic(method.getModifiers())) {
+				continue;
+			}
+
+			if (!injectClass.isAssignableFrom(method.getReturnType())) {
+				continue;
+			}
+
+			factoryMethod = method;
+
+			break;
+		}
+
+		if (factoryMethod == null) {
+			throw new RuntimeException("Cannot find static factory method in: "
+					+ factoryClass.getName() + ":" + factoryName
+					+ " for inject:" + injectClass.getName());
+		}
+
+		final Class<?>[] paramTypes = factoryMethod.getParameterTypes();
+
+		final Object args[] = new Object[paramTypes.length];
+
+		for (int i = 0; i < paramTypes.length; ++i) {
+
+			args[i] = loadFactoryParam(factoryClass, factoryName, paramTypes[i]);
+		}
+
+		final Object instance;
+
+		try {
+
+			instance = factoryMethod.invoke(null, args);
+
+		} catch (final InvocationTargetException e) {
+			throw new RuntimeException(e.getTargetException());
+		} catch (final IllegalAccessException e) {
+			throw new RuntimeException(e);
+		}
+
+		return injectClass.cast(instance);
+	}
+
+	private Object loadFactoryParam(final Class<?> factoryClass,
+			@Nullable final String factoryName, final Class<?> paramType) {
+
+		for (final DependencyConfig config : configs) {
+
+			if (!factoryClass.equals(config.intoClass)) {
+				continue;
+			}
+
+			if (factoryName != null) {
+				if (!factoryName.equals(config.intoClassName)) {
+					continue;
+				}
+			} else if (config.intoClassName != null) {
+				continue;
+			}
+
+			if (config.implInstance == null) {
+				throw new IllegalStateException("Factory param is null for: "
+						+ factoryClass.getName() + ":" + factoryName
+						+ ", paramType: " + paramType.getName());
+			}
+
+			return config.implInstance;
+		}
+
+		throw new IllegalStateException("Cannot find param config fot: "
+				+ factoryClass.getName() + ":" + factoryName + ", paramType: "
+				+ paramType.getName());
 	}
 
 	private final Injector injector;
@@ -130,11 +245,11 @@ public class DependencyInjection {
 
 		if (injectPackagesParam == null) {
 
-			injectPackages = new String[0];
+			injectPackages = new String[] { "java.lang", "java.io" };
 
 		} else {
 
-			injectPackages = split(injectPackagesParam);
+			injectPackages = split("java.lang java.io " + injectPackagesParam);
 		}
 
 		final List<DependencyConfig> configs = new ArrayList<DependencyConfig>();
@@ -154,14 +269,91 @@ public class DependencyInjection {
 			final String intoClassName = substringAfter(s[1], "into:");
 			final String implClassName = value;
 
+			final DependencyConfig config;
+
 			final Class<?> injectClass = lookupClass(injectPackages,
 					injectClassName);
-			final Class<?> intoClass = lookupClass(injectPackages,
-					intoClassName);
-			final Class<?> implClass = lookupClass(injectPackages,
-					implClassName);
 
-			configs.add(new DependencyConfig(injectClass, intoClass, implClass));
+			if (implClassName.startsWith("factory:")) {
+
+				final Class<?> intoClass = lookupClass(injectPackages,
+						intoClassName);
+
+				final String implFactoryClassName;
+
+				@Nullable
+				final String implFactoryName;
+
+				if (substringAfter(implClassName, "factory:").contains(":")) {
+					implFactoryClassName = substringBetween(implClassName,
+							"factory:", ":");
+					implFactoryName = substringAfterLast(implClassName, ":");
+				} else {
+					implFactoryClassName = substringAfter(implClassName,
+							"factory:");
+					implFactoryName = null;
+				}
+
+				final Class<?> implFactoryClass = lookupClass(injectPackages,
+						implFactoryClassName);
+
+				config = new DependencyConfig(injectClass, //
+						false, intoClass, null, //
+						true, implFactoryClass, implFactoryName, null);
+
+			} else if (intoClassName.startsWith("factory:")) {
+
+				final String intoFactoryClassName;
+				@Nullable
+				final String intoFactoryName;
+				if (substringAfter(implClassName, "factory:").contains(":")) {
+					intoFactoryClassName = substringBetween(intoClassName,
+							"factory:", ":");
+					intoFactoryName = substringAfterLast(intoClassName, ":");
+				} else {
+					intoFactoryClassName = substringAfter(intoClassName,
+							"factory:");
+					intoFactoryName = null;
+				}
+
+				final Class<?> intoFactoryClass = lookupClass(injectPackages,
+						intoFactoryClassName);
+
+				// Hardcoded params.
+				
+				final Object implInstance;
+
+				if (String.class.equals(injectClass)) {
+					
+					implInstance = value;
+					
+				} else if (File.class.equals(injectClass)) {
+					
+					implInstance = new File(value);
+					
+				} else {
+					
+					throw new NotImplementedException("Factory param type: "+
+					injectClassName+", value: "+value);
+				}
+
+				config = new DependencyConfig(injectClass, //
+						true, intoFactoryClass, intoFactoryName, //
+						false, null, null, implInstance);
+
+			} else {
+
+				final Class<?> intoClass = lookupClass(injectPackages,
+						intoClassName);
+				final Class<?> implClass = lookupClass(injectPackages,
+						implClassName);
+
+				config = new DependencyConfig(injectClass, //
+						false, intoClass, null, //
+						false, implClass, null, null);
+			}
+
+			configs.add(config);
 		}
 
 		return Iterables.toArray(configs, DependencyConfig.class);
