@@ -10,7 +10,14 @@
 		<version>0.0.4-SNAPSHOT</version>
 		<relativePath />
 	</parent>
-
+	<dependencies>
+		<dependency>
+			<groupId>com.google.inject</groupId>
+			<artifactId>guice</artifactId>
+			<version>3.0</version>
+		</dependency>
+	</dependencies>
+	
 	<name>unm-commons</name>
 	<description>
 		Common classes used by Java projects in UnivMobile.
@@ -18,15 +25,15 @@
 	<url>
         http://univmobile.vswip.com/nexus/content/sites/pub/${project.artifactId}/${project.version}/
     </url>
-    
-    <build>
-    	<testResources>
-    		<testResource>
-    			<directory>src/test/resources</directory>
-    			<filtering>true</filtering>
-    		</testResource>
-    	</testResources>
-    </build>
+
+	<build>
+		<testResources>
+			<testResource>
+				<directory>src/test/resources</directory>
+				<filtering>true</filtering>
+			</testResource>
+		</testResources>
+	</build>
 
 	<scm>
 		<connection>
