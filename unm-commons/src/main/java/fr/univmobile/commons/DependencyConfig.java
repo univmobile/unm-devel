@@ -6,15 +6,19 @@ import javax.annotation.Nullable;
 
 class DependencyConfig {
 
-	public DependencyConfig(final Class<?> injectClass, //
+	public DependencyConfig( //
+			
+			final Class<?> injectClass, //
+			@Nullable
+			final String injectName,
 
 			final boolean isIntoFactory, //
 			final Class<?> intoClass, //
-			@Nullable final String intoClassName, //
+			@Nullable final String intoName, //
 
 			final boolean isImplFactory, //
 			@Nullable final Class<?> implClass, //
-			@Nullable final String implClassName, //
+			@Nullable final String implName, //
 			@Nullable final Object implInstance) {
 
 		this.isIntoFactory = isIntoFactory;
@@ -24,8 +28,9 @@ class DependencyConfig {
 		this.intoClass = checkNotNull(intoClass, "intoClass");
 		this.implClass = implClass;
 
-		this.intoClassName = intoClassName;
-		this.implClassName = implClassName;
+		this.injectName = injectName;
+		this.intoName = intoName;
+		this.implName = implName;
 		this.implInstance = implInstance;
 	}
 
@@ -38,9 +43,11 @@ class DependencyConfig {
 	public final Class<?> implClass;
 
 	@Nullable
-	public final String intoClassName;
+	public final String injectName;
 	@Nullable
-	public final String implClassName;
+	public final String intoName;
+	@Nullable
+	public final String implName;
 	@Nullable
 	public final Object implInstance;
 }

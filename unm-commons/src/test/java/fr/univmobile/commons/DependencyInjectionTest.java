@@ -14,6 +14,9 @@ import net.avcompris.binding.dom.helper.DomBinderUtils;
 
 import org.junit.Test;
 
+// TODO many tests (with factory:, class:, duplicate injectClass, etc.)
+// TODO are actually in the unm-backend-client-json project.
+// TODO Import some of those tests here.
 public class DependencyInjectionTest {
 
 	@Test

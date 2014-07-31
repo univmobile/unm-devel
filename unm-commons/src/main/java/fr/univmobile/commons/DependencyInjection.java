@@ -8,6 +8,8 @@ import static org.apache.commons.lang3.StringUtils.substringAfterLast;
 import static org.apache.commons.lang3.StringUtils.substringBetween;
 
 import java.io.File;
+import java.lang.annotation.Annotation;
+import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
@@ -16,12 +18,15 @@ import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Nullable;
+import javax.inject.Inject;
+import javax.inject.Named;
 
 import com.avcompris.lang.NotImplementedException;
 import com.google.common.collect.Iterables;
 import com.google.inject.AbstractModule;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
+import com.google.inject.name.Names;
 
 public class DependencyInjection {
 
@@ -78,12 +83,13 @@ public class DependencyInjection {
 
 					if (!config.isIntoFactory && !config.isImplFactory) {
 
-						bindTo(config.injectClass, config.implClass);
+						bindTo(config.injectClass, config.injectName,
+								config.intoClass, config.implClass);
 
 					} else if (config.isImplFactory) {
 
 						bindToFactory(config.injectClass, config.implClass,
-								config.implClassName);
+								config.implName);
 
 					} else if (config.isIntoFactory) {
 
@@ -97,9 +103,64 @@ public class DependencyInjection {
 			}
 
 			private <I> void bindTo(final Class<I> injectClass,
-					final Class<?> implClass) {
+					@Nullable final String injectName,
+					final Class<?> intoClass, final Class<?> implClass) {
 
-				bind(injectClass).to(implClass.asSubclass(injectClass));
+				String named = null;
+
+				if (injectName != null) {
+
+					named = injectName;
+
+				} else {
+
+					loop: for (final Constructor<?> constructor : intoClass
+							.getConstructors()) {
+
+						if (!constructor.isAnnotationPresent(Inject.class)) {
+							continue;
+						}
+
+						final Annotation[][] paramAnnotations = constructor
+								.getParameterAnnotations();
+
+						final Class<?>[] paramTypes = constructor
+								.getParameterTypes();
+
+						for (int i = 0; i < paramTypes.length; ++i) {
+
+							if (!injectClass.equals(paramTypes[i])) {
+								continue;
+							}
+
+							for (int j = 0; j < paramAnnotations[i].length; ++j) {
+
+								final Annotation paramAnnotation = paramAnnotations[i][j];
+
+								if (Named.class.equals(paramAnnotation
+										.annotationType())) {
+
+									named = ((Named) paramAnnotation).value();
+
+									break loop;
+								}
+							}
+						}
+					}
+				}
+
+				final Class<? extends I> targetClass = implClass
+						.asSubclass(injectClass);
+
+				if (named == null) {
+
+					bind(injectClass).to(targetClass);
+
+				} else {
+
+					bind(injectClass).annotatedWith(Names.named(named)).to(
+							targetClass);
+				}
 			}
 
 			private <I> void bindToFactory(final Class<I> injectClass,
@@ -126,7 +187,7 @@ public class DependencyInjection {
 				continue;
 			}
 
-			if (!injectClass.isAssignableFrom(method.getReturnType())) {
+			if (!method.getReturnType().isAssignableFrom(injectClass)) {
 				continue;
 			}
 
@@ -147,7 +208,9 @@ public class DependencyInjection {
 
 		for (int i = 0; i < paramTypes.length; ++i) {
 
-			args[i] = loadFactoryParam(factoryClass, factoryName, paramTypes[i]);
+			final Class<?> paramType = paramTypes[i];
+
+			args[i] = loadFactoryParam(factoryClass, factoryName, paramType);
 		}
 
 		final Object instance;
@@ -170,15 +233,19 @@ public class DependencyInjection {
 
 		for (final DependencyConfig config : configs) {
 
+			if (!paramType.equals(config.injectClass)) {
+				continue;
+			}
+
 			if (!factoryClass.equals(config.intoClass)) {
 				continue;
 			}
 
 			if (factoryName != null) {
-				if (!factoryName.equals(config.intoClassName)) {
+				if (!factoryName.equals(config.intoName)) {
 					continue;
 				}
-			} else if (config.intoClassName != null) {
+			} else if (config.intoName != null) {
 				continue;
 			}
 
@@ -229,8 +296,6 @@ public class DependencyInjection {
 
 			checkNotNull(intoClass, "intoClass");
 
-			System.out.println(injector);
-
 			return injector.getInstance(injectClass);
 		}
 	}
@@ -274,6 +339,14 @@ public class DependencyInjection {
 			final Class<?> injectClass = lookupClass(injectPackages,
 					injectClassName);
 
+			if (injectClassName.contains(":")
+					&& !injectClassName.startsWith("factory:")) {
+				throw new NotImplementedException("injectClassName: "
+						+ injectClassName);
+			}
+
+			final String injectName = null;
+
 			if (implClassName.startsWith("factory:")) {
 
 				final Class<?> intoClass = lookupClass(injectPackages,
@@ -297,7 +370,7 @@ public class DependencyInjection {
 				final Class<?> implFactoryClass = lookupClass(injectPackages,
 						implFactoryClassName);
 
-				config = new DependencyConfig(injectClass, //
+				config = new DependencyConfig(injectClass, injectName, //
 						false, intoClass, null, //
 						true, implFactoryClass, implFactoryName, null);
 
@@ -306,7 +379,7 @@ public class DependencyInjection {
 				final String intoFactoryClassName;
 				@Nullable
 				final String intoFactoryName;
-				if (substringAfter(implClassName, "factory:").contains(":")) {
+				if (substringAfter(intoClassName, "factory:").contains(":")) {
 					intoFactoryClassName = substringBetween(intoClassName,
 							"factory:", ":");
 					intoFactoryName = substringAfterLast(intoClassName, ":");
@@ -320,24 +393,35 @@ public class DependencyInjection {
 						intoFactoryClassName);
 
 				// Hardcoded params.
-				
+
 				final Object implInstance;
 
 				if (String.class.equals(injectClass)) {
-					
+
 					implInstance = value;
-					
+
 				} else if (File.class.equals(injectClass)) {
-					
+
 					implInstance = new File(value);
-					
+
+				} else if (Class.class.equals(injectClass)) {
+
+					if (!value.startsWith("class:")) {
+						throw new IllegalArgumentException(
+								"For parameters of type Class, value must start with prefix \"class:\": \"class:"
+										+ value + "\"");
+					}
+
+					implInstance = lookupClass(injectPackages,
+							substringAfter(value, "class:"));
+
 				} else {
-					
-					throw new NotImplementedException("Factory param type: "+
-					injectClassName+", value: "+value);
+
+					throw new NotImplementedException("Factory param type: "
+							+ injectClassName + ", value: " + value);
 				}
 
-				config = new DependencyConfig(injectClass, //
+				config = new DependencyConfig(injectClass, injectName, //
 						true, intoFactoryClass, intoFactoryName, //
 						false, null, null, implInstance);
 
@@ -348,7 +432,7 @@ public class DependencyInjection {
 				final Class<?> implClass = lookupClass(injectPackages,
 						implClassName);
 
-				config = new DependencyConfig(injectClass, //
+				config = new DependencyConfig(injectClass, injectName, //
 						false, intoClass, null, //
 						false, implClass, null, null);
 			}
