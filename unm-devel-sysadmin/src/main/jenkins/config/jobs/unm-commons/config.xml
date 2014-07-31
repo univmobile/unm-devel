@@ -1,24 +1,23 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <maven2-moduleset plugin="maven-plugin@2.5">
   <actions/>
-  <description></description>
+  <description>GitHub: &lt;a href=&quot;https://github.com/univmobile/unm-devel/tree/develop/unm-commons&quot;&gt;&#xd;
+https://github.com/univmobile/unm-devel/tree/develop/unm-commons&#xd;
+&lt;/a&gt;&#xd;
+&lt;p&gt;&#xd;
+Maven Generated Site: &lt;a&#xd;
+  href=&quot;http://univmobile.vswip.com/nexus/content/sites/pub/unm-commons/&quot;&gt;&#xd;
+  http://univmobile.vswip.com/nexus/content/sites/pub/unm-commons/&lt;/a&gt;&#xd;
+&lt;a&#xd;
+  href=&quot;http://univmobile.vswip.com/nexus/content/sites/pub/unm-commons/0.0.1-SNAPSHOT/&quot;&gt;0.0.1-SNAPSHOT/&lt;/a&gt;&#xd;
+</description>
   <keepDependencies>false</keepDependencies>
-  <properties>
-    <hudson.security.AuthorizationMatrixProperty>
-      <permission>com.cloudbees.plugins.credentials.CredentialsProvider.View:mgauzins</permission>
-      <permission>hudson.model.Item.Cancel:mgauzins</permission>
-      <permission>hudson.model.Item.Workspace:mgauzins</permission>
-      <permission>hudson.model.Item.Read:mgauzins</permission>
-      <permission>hudson.model.Item.Build:mgauzins</permission>
-      <permission>hudson.model.Item.Configure:mgauzins</permission>
-      <permission>hudson.model.Item.Discover:mgauzins</permission>
-    </hudson.security.AuthorizationMatrixProperty>
-  </properties>
+  <properties/>
   <scm class="hudson.plugins.git.GitSCM" plugin="git@2.2.2">
     <configVersion>2</configVersion>
     <userRemoteConfigs>
       <hudson.plugins.git.UserRemoteConfig>
-        <url>https://github.com/univmobile/unm-android</url>
+        <url>https://github.com/univmobile/unm-devel.git</url>
       </hudson.plugins.git.UserRemoteConfig>
     </userRemoteConfigs>
     <branches>
@@ -30,37 +29,26 @@
     <submoduleCfg class="list"/>
     <extensions/>
   </scm>
-  <assignedNode>ks3haxm</assignedNode>
+  <assignedNode>master</assignedNode>
   <canRoam>false</canRoam>
   <disabled>false</disabled>
   <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
   <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
-  <jdk>Java 7</jdk>
+  <jdk>JDK 1.6.0_31</jdk>
   <triggers>
-    <jenkins.triggers.ReverseBuildTrigger>
-      <spec></spec>
-      <upstreamProjects>Android-UnivMobile</upstreamProjects>
-      <threshold>
-        <name>SUCCESS</name>
-        <ordinal>0</ordinal>
-        <color>BLUE</color>
-        <completeBuild>true</completeBuild>
-      </threshold>
-    </jenkins.triggers.ReverseBuildTrigger>
     <hudson.triggers.SCMTrigger>
       <spec>H/5 * * * *</spec>
       <ignorePostCommitHooks>false</ignorePostCommitHooks>
     </hudson.triggers.SCMTrigger>
   </triggers>
   <concurrentBuild>false</concurrentBuild>
-  <customWorkspace>unm-android-it</customWorkspace>
+  <customWorkspace>unm-commons</customWorkspace>
   <rootModule>
     <groupId>fr.univmobile</groupId>
-    <artifactId>unm-android-it</artifactId>
+    <artifactId>unm-commons</artifactId>
   </rootModule>
-  <rootPOM>unm-android-it/pom.xml</rootPOM>
-  <goals>-U clean install</goals>
-  <mavenOpts>-Djava.awt.headless=true</mavenOpts>
+  <rootPOM>unm-commons/pom.xml</rootPOM>
+  <goals>-U clean deploy</goals>
   <aggregatorStyleBuild>true</aggregatorStyleBuild>
   <incrementalBuild>false</incrementalBuild>
   <ignoreUpstremChanges>false</ignoreUpstremChanges>
@@ -77,12 +65,7 @@
   <reporters/>
   <publishers/>
   <buildWrappers/>
-  <prebuilders>
-    <hudson.tasks.Shell>
-      <command>mkdir -p unm-android-it/apk/
-wget -O unm-android-it/apk/UnivMobile-debug.apk http://univmobile.vswip.com/job/Android-UnivMobile/lastSuccessfulBuild/artifact/UnivMobile/bin/UnivMobile-debug.apk</command>
-    </hudson.tasks.Shell>
-  </prebuilders>
+  <prebuilders/>
   <postbuilders/>
   <runPostStepsIfResult>
     <name>FAILURE</name>

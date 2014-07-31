@@ -212,6 +212,25 @@
 	</dependencies>
 </project>
 </mavenProject>
+<mavenProject id="unm-mobileweb-app-local-it" gitRepository-ref="unm-mobileweb">
+<project>
+	<description>
+		Tests d’intégration, avec Appium, de l’application mobile web 
+		UnivMobile
+		<gitRepository ref="unm-mobileweb-app-local"/>,
+		repackagée pour ne pas avoir à faire de communication avec les web
+		services HTTP.
+	</description>
+	<parent>
+		<artifactId>unm-it-parent</artifactId>
+	</parent>
+	<dependencies>
+		<dependency>
+			<artifactId>unm-testutil</artifactId>
+		</dependency>
+	</dependencies>
+</project>
+</mavenProject>
 <mavenProject id="unm-android-it" gitRepository-ref="unm-android">
 <project>
 	<description>
@@ -303,6 +322,20 @@
 	</parent>
 </project>
 </mavenProject>
+<mavenProject id="unm-mobileweb-app-local" gitRepository-ref="unm-mobileweb">
+<project>
+	<description>
+		Application J2EE mobile web
+		<mavenProject ref="unm-mobileweb-app"/>,
+		repackagée avec une configuration locale
+		pour les tests d’intégration
+		sans accès HTTP à des web services. 
+	</description>
+	<parent>
+		<artifactId>unm-webapp-parent</artifactId>
+	</parent>
+</project>
+</mavenProject>
 <mavenProject id="unm-backend-filter-noshib" gitRepository-ref="unm-backend">
 <project>
 	<description>
@@ -353,6 +386,36 @@
 	</description>
 	<parent>
 		<artifactId>unm-it-parent</artifactId>
+	</parent>
+	<dependencies>
+		<dependency>
+			<artifactId>unm-testutil</artifactId>
+		</dependency>
+	</dependencies>
+</project>
+</mavenProject>
+<mavenProject id="unm-backend-client" gitRepository-ref="unm-backend">
+<project>
+	<description>
+		Classes de communication JSON / HTTP pour l’API du backend. 
+	</description>
+	<parent>
+		<artifactId>unm-parent</artifactId>
+	</parent>
+	<dependencies>
+		<dependency>
+			<artifactId>unm-testutil</artifactId>
+		</dependency>
+	</dependencies>
+</project>
+</mavenProject>
+<mavenProject id="unm-commons" gitRepository-ref="unm-devel">
+<project>
+	<description>
+		Classes communes aux projets Maven UnivMobile. 
+	</description>
+	<parent>
+		<artifactId>unm-parent</artifactId>
 	</parent>
 	<dependencies>
 		<dependency>
