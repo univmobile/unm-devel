@@ -1,6 +1,5 @@
 package fr.univmobile.it.commons;
 
-import static com.google.common.base.Preconditions.checkNotNull;
 import static fr.univmobile.it.commons.AppiumCapabilityType.APP;
 import static fr.univmobile.it.commons.AppiumCapabilityType.DEVICE;
 import static fr.univmobile.it.commons.AppiumCapabilityType.DEVICE_NAME;
@@ -8,6 +7,7 @@ import static fr.univmobile.it.commons.AppiumCapabilityType.PLATFORM_NAME;
 import static fr.univmobile.it.commons.AppiumCapabilityType.PLATFORM_VERSION;
 import static org.openqa.selenium.remote.CapabilityType.BROWSER_NAME;
 import static org.openqa.selenium.remote.CapabilityType.PLATFORM;
+import fr.univmobile.testutil.PropertiesUtils;
 import io.appium.java_client.AppiumDriver;
 
 import java.io.File;
@@ -17,8 +17,6 @@ import javax.annotation.Nullable;
 
 import org.junit.Before;
 import org.openqa.selenium.remote.DesiredCapabilities;
-
-import fr.univmobile.testutil.PropertiesUtils;
 
 final class AppiumEnabledTestDefaultEngine_iOS extends
 		AppiumEnabledTestDefaultEngine {
@@ -101,20 +99,5 @@ final class AppiumEnabledTestDefaultEngine_iOS extends
 				capabilities);
 
 		setDriver(driver);
-	}
-
-	private static String currentDeviceName = "iPhone Retina (4-inch)";
-
-	public static void setCurrentDeviceName(final String deviceName) {
-
-		currentDeviceName = checkNotNull(deviceName, "deviceName");
-	}
-
-	/**
-	 * defaults to ""iPhone Retina (4-inch)"
-	 */
-	public static String getCurrentDeviceName() {
-
-		return currentDeviceName;
 	}
 }
