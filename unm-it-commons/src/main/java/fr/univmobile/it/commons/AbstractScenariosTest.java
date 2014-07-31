@@ -29,11 +29,15 @@ public abstract class AbstractScenariosTest {
 
 		final Class<?> firstClazz = classes[0];
 
+		final String platformName = AppiumIOSEnabledTest.class
+				.isAssignableFrom(firstClazz) ? "iOS" : "Android";
+
 		final boolean useSafari = AppiumSafariEnabledTest.class
 				.isAssignableFrom(firstClazz);
 
 		System.out.println(firstClazz);
 		System.out.println("useSafari: " + useSafari);
+
 		// 1. VALIDATION
 
 		for (final Class<?> clazz : classes) {
@@ -50,8 +54,10 @@ public abstract class AbstractScenariosTest {
 
 		final List<Object[]> parameters = new ArrayList<Object[]>();
 
-		loadParameters(parameters, //
-				new AppiumEnabledTestCaptureEngine(useSafari), classes);
+		loadParameters(
+				parameters, //
+				new AppiumEnabledTestCaptureEngine(platformName, useSafari),
+				classes);
 
 		loadParameters(parameters, //
 				new AppiumEnabledTestCheckerEngine(), classes);

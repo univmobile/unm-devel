@@ -1,269 +1,39 @@
 package fr.univmobile.it.commons;
 
 import static com.google.common.base.Preconditions.checkNotNull;
-import static fr.univmobile.it.commons.AppiumCapabilityType.APP;
-import static fr.univmobile.it.commons.AppiumCapabilityType.DEVICE;
-import static fr.univmobile.it.commons.AppiumCapabilityType.DEVICE_NAME;
-import static fr.univmobile.it.commons.AppiumCapabilityType.PLATFORM_NAME;
-import static fr.univmobile.it.commons.AppiumCapabilityType.PLATFORM_VERSION;
 import static org.apache.commons.lang3.CharEncoding.UTF_8;
-import static org.apache.commons.lang3.StringUtils.split;
-import static org.apache.commons.lang3.StringUtils.substringAfter;
-import static org.apache.commons.lang3.StringUtils.substringBeforeLast;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
-import static org.openqa.selenium.remote.CapabilityType.BROWSER_NAME;
-import static org.openqa.selenium.remote.CapabilityType.PLATFORM;
 import io.appium.java_client.AppiumDriver;
 
-import java.io.ByteArrayOutputStream;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
 
-import javax.annotation.Nullable;
-
-import org.apache.commons.exec.CommandLine;
-import org.apache.commons.exec.DefaultExecutor;
-import org.apache.commons.exec.Executor;
-import org.apache.commons.exec.PumpStreamHandler;
 import org.apache.commons.io.FileUtils;
-import org.joda.time.DateTime;
-import org.joda.time.format.DateTimeFormat;
 import org.junit.After;
-import org.junit.Before;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import fr.univmobile.testutil.PropertiesUtils;
+abstract class AppiumEnabledTestDefaultEngine implements
+		AppiumEnabledTestEngine {
 
-final class AppiumEnabledTestDefaultEngine implements AppiumEnabledTestEngine {
+	protected final void setDriver(final AppiumDriver driver) {
 
-	private static File app; // the "UnivMobile.app" local directory
-
-	public AppiumEnabledTestDefaultEngine(final boolean useSafari) {
-
-		this.useSafari = useSafari;
-	}
-
-	private final boolean useSafari;
-
-	@Before
-	@Override
-	public void setUp() throws Exception {
-
-		@Nullable
-		final String requiredAppCommitId = System.getProperty("appCommitId");
-
-		if (driver != null) {
-
-			// System.out.println("DEBUG: ??? driver != null => driver.quit()...");
-
-			driver.quit();
-
-			driver = null;
-		}
-
-		// 1. LAUNCH THE iOS APP
-
-		// final String BUNDLE_ID = "fr.univmobile.UnivMobile";
-
-		if (app == null && !useSafari) {
-
-			final String appPath;
-
-			final String appPathProperty = PropertiesUtils
-					.getTestProperty("AppPath");
-
-			if (!appPathProperty.contains("UnivMobile-(lastimport).app")) {
-
-				appPath = appPathProperty;
-
-			} else {
-
-				// e.g.
-				// "/var/xcodebuild_test-apps/UnivMobile-20140712-090711.app"
-
-				appPath = getMostRecentAppPath(appPathProperty,
-						requiredAppCommitId);
-			}
-
-			app = new File(appPath);
-
-			System.out.println("Using: " + app.getCanonicalPath());
-		}
-
-		final DesiredCapabilities capabilities = new DesiredCapabilities();
-
-		capabilities.setCapability(BROWSER_NAME, useSafari ? "Safari" : "iOS");
-
-		capabilities.setCapability(PLATFORM, "Mac");
-		capabilities.setCapability(PLATFORM_NAME, getCurrentPlatformName());
-		capabilities.setCapability(PLATFORM_VERSION,
-				EnvironmentUtils.getCurrentPlatformVersion());
-
-		capabilities.setCapability(DEVICE, "iPhone Simulator");
-		capabilities.setCapability(DEVICE_NAME, getCurrentDeviceName());
-
-		if (!useSafari) {
-			capabilities.setCapability(APP, app.getAbsolutePath());
-		}
-
-		// System.out.println("DEBUG: new AppiumDriver()...");
-
-		driver = new AppiumDriver(new URL("http://localhost:4723/wd/hub"),
-				capabilities);
-	}
-
-	private static String getMostRecentAppPath(final String appPathProperty,
-			@Nullable final String requiredAppCommitId)
-			throws FileNotFoundException, IOException {
-
-		System.out.println("Using UnivMobile-(lastimport).app: "
-				+ appPathProperty + "...");
-
-		System.out.println("requiredAppCommitId: " + requiredAppCommitId);
-
-		final File appRepo = new File(substringBeforeLast(appPathProperty, "/"));
-
-		if (!appRepo.isDirectory()) {
-			throw new FileNotFoundException("Cannot find APP_REPO for: "
-					+ appPathProperty);
-		}
-
-		final File touched_after_lastimport = new File(appRepo,
-				"touched_after_lastimport");
-
-		if (!touched_after_lastimport.exists()) {
-			throw new FileNotFoundException(appRepo.getCanonicalPath() + "/"
-					+ touched_after_lastimport.getName());
-		}
-
-		final long touchedAt = touched_after_lastimport.lastModified();
-
-		final String touchedAtAsString = new DateTime(touchedAt)
-				.toString(DateTimeFormat.forPattern("YYYYMMdd-HHmmss"));
-
-		System.out.println(touched_after_lastimport + ".modified: "
-				+ touchedAtAsString);
-
-		String mostRecentAppDirName = null;
-
-		// e.g. "UnivMobile-20140712-090711.app"
-
-		for (final File appDir : appRepo.listFiles()) {
-
-			final String appDirName = appDir.getName();
-
-			if (!appDirName.startsWith("UnivMobile-")
-					|| !appDirName.endsWith(".app")) {
-				continue;
-			}
-
-			System.out.println("  appDir.name: " + appDirName);
-
-			final String dirModifiedAtString = appDirName.substring(
-					appDirName.length() - 19, appDirName.length() - 4);
-
-			System.out.println("         modified: " + dirModifiedAtString);
-
-			final String appCommitId = readAppCommitId(appDir);
-
-			System.out.print("      appCommitId: " + appCommitId);
-
-			if (requiredAppCommitId != null
-					&& !requiredAppCommitId.equals(appCommitId)) {
-
-				System.out.println(" (skipping)");
-
-				continue;
-			}
-
-			System.out.println();
-
-			if (touchedAtAsString.compareTo(dirModifiedAtString) >= 0) {
-
-				if (mostRecentAppDirName == null
-						|| mostRecentAppDirName.compareTo(appDirName) < 0) {
-
-					mostRecentAppDirName = appDirName;
-				}
-			}
-		}
-
-		if (mostRecentAppDirName == null) {
-			throw new FileNotFoundException(appRepo.getCanonicalPath()
-					+ "/UnivMobile-(lastimport).app, requiredAppCommitId: "
-					+ requiredAppCommitId);
-		}
-
-		final String mostRecentAppPath = appRepo.getCanonicalPath() + "/"
-				+ mostRecentAppDirName;
-
-		System.out.println("Found most recent: " + mostRecentAppPath);
-
-		final File mostRecentApp = new File(mostRecentAppPath);
-
-		final String HOME = System.getenv("HOME");
-
-		final String appPath = HOME + "/tmp/UnivMobile.app";
-
-		final File appDest = new File(appPath);
-
-		if (appDest.exists()) {
-
-			FileUtils.deleteDirectory(appDest);
-		}
-
-		System.out.println("Copying into: " + appPath + "...");
-
-		FileUtils.copyDirectory(mostRecentApp, appDest);
-
-		return appPath;
-	}
-
-	@Nullable
-	private static String readAppCommitId(final File appDir) throws IOException {
-
-		final Executor executor = new DefaultExecutor();
-
-		final ByteArrayOutputStream bos = new ByteArrayOutputStream();
-
-		executor.setStreamHandler(new PumpStreamHandler(bos, null));
-
-		// $ /usr/libexec/PlistBuddy -c Print Info.plist
-
-		executor.execute(new CommandLine(new File("/usr/libexec/PlistBuddy"))
-				.addArgument("-c").addArgument("Print")
-				.addArgument(new File(appDir, "Info.plist").getCanonicalPath()));
-
-		final String output = bos.toString(UTF_8);
-
-		for (final String line : split(output, "\r\n")) {
-
-			if (line.contains("GIT_COMMIT ")) {
-
-				return substringAfter(line, "=").trim();
-			}
-		}
-
-		return null;
+		this.driver = checkNotNull(driver, "driver");
 	}
 
 	@After
 	@Override
-	public void tearDown() throws Exception {
+	public final void tearDown() throws Exception {
 
 		cleanExistingFuture();
 
@@ -280,7 +50,7 @@ final class AppiumEnabledTestDefaultEngine implements AppiumEnabledTestEngine {
 	private AppiumDriver driver;
 
 	@Override
-	public void takeScreenshot(final String filename) throws IOException {
+	public final void takeScreenshot(final String filename) throws IOException {
 
 		System.out.println("Taking screenshot: " + filename + "...");
 
@@ -300,7 +70,7 @@ final class AppiumEnabledTestDefaultEngine implements AppiumEnabledTestEngine {
 	}
 
 	@Override
-	public void swipe(final int startX, final int startY, final int endX,
+	public final void swipe(final int startX, final int startY, final int endX,
 			final int endY, final int durationMs) throws IOException {
 
 		final JavascriptExecutor javascriptExecutor = (JavascriptExecutor) driver;
@@ -320,7 +90,7 @@ final class AppiumEnabledTestDefaultEngine implements AppiumEnabledTestEngine {
 	}
 
 	@Override
-	public void savePageSource(final String filename) throws IOException {
+	public final void savePageSource(final String filename) throws IOException {
 
 		System.out.println("Saving pageSource: " + filename + "...");
 
@@ -334,7 +104,8 @@ final class AppiumEnabledTestDefaultEngine implements AppiumEnabledTestEngine {
 	}
 
 	@Override
-	public RemoteWebElement findElementById(final String id) throws IOException {
+	public final RemoteWebElement findElementById(final String id)
+			throws IOException {
 
 		try {
 
@@ -348,7 +119,7 @@ final class AppiumEnabledTestDefaultEngine implements AppiumEnabledTestEngine {
 	}
 
 	@Override
-	public RemoteWebElement findElementByName(final String name)
+	public final RemoteWebElement findElementByName(final String name)
 			throws IOException {
 
 		try {
@@ -363,7 +134,7 @@ final class AppiumEnabledTestDefaultEngine implements AppiumEnabledTestEngine {
 	}
 
 	@Override
-	public void waitForElementById(final int seconds, final String id)
+	public final void waitForElementById(final int seconds, final String id)
 			throws IOException {
 
 		new WebDriverWait(getDriver(), seconds).until(ExpectedConditions
@@ -371,31 +142,32 @@ final class AppiumEnabledTestDefaultEngine implements AppiumEnabledTestEngine {
 	}
 
 	@Override
-	public void get(final String url) throws IOException {
+	public final void get(final String url) throws IOException {
 
 		getDriver().get(url);
 	}
 
 	@Override
-	public ElementChecker elementById(final String id) throws IOException {
+	public final ElementChecker elementById(final String id) throws IOException {
 
 		return new WebElementChecker(id, findElementById(id));
 	}
 
 	@Override
-	public ElementChecker elementByName(final String name) throws IOException {
+	public final ElementChecker elementByName(final String name)
+			throws IOException {
 
 		return new WebElementChecker("name=" + name, findElementById(name));
 	}
 
 	@Override
-	public AppiumDriver getDriver() {
+	public final AppiumDriver getDriver() {
 
 		return driver;
 	}
 
 	@Override
-	public void pause(final int ms) throws InterruptedException {
+	public final void pause(final int ms) throws InterruptedException {
 
 		Thread.sleep(ms);
 	}
@@ -423,7 +195,7 @@ final class AppiumEnabledTestDefaultEngine implements AppiumEnabledTestEngine {
 	}
 
 	@Override
-	public void futureScreenshot(final int ms, final String filename)
+	public final void futureScreenshot(final int ms, final String filename)
 			throws IOException {
 
 		cleanExistingFuture();
@@ -457,8 +229,23 @@ final class AppiumEnabledTestDefaultEngine implements AppiumEnabledTestEngine {
 
 	public static String getCurrentPlatformName() {
 
-		return "iOS";
+		if (currentPlatformName == null) {
+			throw new IllegalStateException("currentPlatformName is null");
+		}
+
+		return currentPlatformName;
 	}
+
+	public static void setCurrentPlatformName(final String currentPlatformName) {
+
+		AppiumEnabledTestDefaultEngine.currentPlatformName = checkNotNull(
+				currentPlatformName, "currentPlatformName");
+	}
+
+	/**
+	 * e.g. "iOS"
+	 */
+	private static String currentPlatformName;
 
 	private static String currentDeviceName = "iPhone Retina (4-inch)";
 

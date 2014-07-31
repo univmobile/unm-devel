@@ -17,12 +17,30 @@ import org.apache.commons.io.FileUtils;
 import org.joda.time.DateTime;
 import org.openqa.selenium.remote.RemoteWebElement;
 
+import com.avcompris.lang.NotImplementedException;
+
 final class AppiumEnabledTestCaptureEngine extends
 		AppiumEnabledTestPhasedEngine {
 
-	public AppiumEnabledTestCaptureEngine(final boolean useSafari) {
+	public AppiumEnabledTestCaptureEngine(
+			final String platformName,
+			final boolean useSafari) {
 
-		defaultEngine = new AppiumEnabledTestDefaultEngine(useSafari);
+		checkNotNull(platformName,"platformName");
+		
+		if ("iOS".equals(platformName)) {
+
+			defaultEngine = new AppiumEnabledTestDefaultEngine_iOS(useSafari);
+
+		} else if ("Android".equals(platformName)){
+
+			throw new NotImplementedException();
+	//		defaultEngine = new AppiumEnabledTestDefaultEngine_Android();
+
+		} else {
+			
+			throw new IllegalStateException("Unknown platformName: "+platformName);
+		}
 	}
 
 	private final AppiumEnabledTestEngine defaultEngine;

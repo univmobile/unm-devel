@@ -36,15 +36,16 @@ public abstract class AppiumEnabledTest implements AppiumEnabledTestEngine {
 		this.engine = checkNotNull(engine, "engine");
 	}
 
+	abstract AppiumEnabledTestEngine newEngine(boolean useSafari);
+
 	@Before
 	@Override
 	public final void setUp() throws Exception {
 
 		if (engine == null) {
 
-			engine = new AppiumEnabledTestDefaultEngine(
-					AppiumSafariEnabledTest.class.isAssignableFrom(this
-							.getClass()));
+			engine = newEngine(AppiumSafariEnabledTest.class
+					.isAssignableFrom(this.getClass()));
 		}
 
 		checkedEngine().setUp();
@@ -64,15 +65,15 @@ public abstract class AppiumEnabledTest implements AppiumEnabledTestEngine {
 	}
 
 	private AppiumEnabledTest checkUseSafari() {
-		
+
 		if (!AppiumSafariEnabledTest.class.isAssignableFrom(this.getClass())) {
 			throw new IllegalStateException(
 					"Call this method only from an AppiumSafariEnabledTest subclass.");
 		}
-		
+
 		return this;
 	}
-	
+
 	@Override
 	public final void waitForElementById(final int seconds, final String id)
 			throws IOException {
@@ -81,8 +82,7 @@ public abstract class AppiumEnabledTest implements AppiumEnabledTestEngine {
 	}
 
 	@Override
-	public final void get(final String url) 
-			throws IOException {
+	public final void get(final String url) throws IOException {
 
 		checkUseSafari().checkedEngine().get(url);
 	}
