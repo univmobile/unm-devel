@@ -6,11 +6,18 @@ import javax.annotation.Nullable;
 
 class DependencyConfig {
 
+	@Override
+	public String toString() {
+
+		return "inject:" + injectClass + ":" + injectName //
+				+ " into:" + intoClass + ":" + intoName //
+				+ " = " + implClass + ":" + implName;
+	}
+
 	public DependencyConfig( //
-			
+
 			final Class<?> injectClass, //
-			@Nullable
-			final String injectName,
+			@Nullable final String injectName,
 
 			final boolean isIntoFactory, //
 			final Class<?> intoClass, //
