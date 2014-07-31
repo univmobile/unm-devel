@@ -12,7 +12,7 @@ public class EnvironmentUtilsTest {
 	public void testGetPlatformVersion() throws Exception {
 
 		final String platformVersion = EnvironmentUtils
-				.getCurrentPlatformVersion();
+				.getCurrentPlatformVersion("iOS");
 
 		final String platformVersionRef = PropertiesUtils
 				.getTestProperty("ios.platformVersion.shouldBe");

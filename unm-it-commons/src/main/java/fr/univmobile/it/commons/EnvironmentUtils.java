@@ -1,5 +1,6 @@
 package fr.univmobile.it.commons;
 
+import static com.google.common.base.Preconditions.checkNotNull;
 import static org.apache.commons.lang3.CharEncoding.UTF_8;
 import static org.apache.commons.lang3.StringUtils.isBlank;
 import static org.apache.commons.lang3.StringUtils.split;
@@ -19,7 +20,24 @@ public abstract class EnvironmentUtils {
 	/**
 	 * e.g. "7.1"
 	 */
-	public static String getCurrentPlatformVersion() throws IOException {
+	public static String getCurrentPlatformVersion(final String platformName)
+			throws IOException {
+
+		checkNotNull(platformName, "platformName");
+
+		if ("iOS".equals(platformName)) {
+			return getCurrentPlatformVersion_iOS();
+		}
+
+		if ("Android".equals(platformName)) {
+			return "XXX";
+		}
+
+		throw new IllegalArgumentException("Unknown platformName: "
+				+ platformName);
+	}
+
+	private static String getCurrentPlatformVersion_iOS() throws IOException {
 
 		final Executor executor = new DefaultExecutor();
 

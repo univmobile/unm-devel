@@ -82,9 +82,12 @@ final class AppiumEnabledTestDefaultEngine_iOS extends
 		capabilities.setCapability(BROWSER_NAME, useSafari ? "Safari" : "iOS");
 
 		capabilities.setCapability(PLATFORM, "Mac");
-		capabilities.setCapability(PLATFORM_NAME, getCurrentPlatformName());
+		
+		final String platformName = getCurrentPlatformName();
+		
+		capabilities.setCapability(PLATFORM_NAME, platformName);
 		capabilities.setCapability(PLATFORM_VERSION,
-				EnvironmentUtils.getCurrentPlatformVersion());
+				EnvironmentUtils.getCurrentPlatformVersion("iOS"));
 
 		capabilities.setCapability(DEVICE, "iPhone Simulator");
 		capabilities.setCapability(DEVICE_NAME, getCurrentDeviceName());

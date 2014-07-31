@@ -9,7 +9,7 @@ import java.lang.reflect.Method;
 import javax.annotation.Nullable;
 
 import org.openqa.selenium.remote.RemoteWebElement;
-
+import static fr.univmobile.it.commons.ScenarioContext.*;
 public abstract class AppiumEnabledTestPhasedEngine implements
 		AppiumEnabledTestEngine {
 
@@ -93,7 +93,7 @@ public abstract class AppiumEnabledTestPhasedEngine implements
 		this.scenarioMethod = checkNotNull(scenarioMethod, "scenarioMethod");
 	}
 
-	private String platformName; // e.g. "iOS"
+	private String platformName; // e.g. "iOS", "Android"
 	private String platformVersion; // e.g. "7.1"
 	private String deviceName; // e.g. "iPhone Retina (4-inch)"
 	private Class<? extends AppiumEnabledTest> scenariosClass;
@@ -101,12 +101,15 @@ public abstract class AppiumEnabledTestPhasedEngine implements
 
 	protected final String customizeFilename(final String filename) {
 
-		final String normalizedDeviceName = ScenarioContext
-				.normalizeDeviceName(deviceName);
+		final String normalizedDeviceName = 
+				normalizeDeviceName(deviceName);
+		final String normalizedPlatformName = 
+				normalizePlatformName(platformName, platformVersion);
 
 		// e.g. "iOS_7.0/iPhoneRetina_4-inch/MyScenario001/scenario4/login.png"
 
-		return platformName + "_" + platformVersion + "/" //
+		return 
+				normalizedPlatformName+ "/" //
 				+ normalizedDeviceName + "/" //
 				+ scenariosClass.getSimpleName() + "/" //
 				+ scenarioMethod.getName() + "/" //

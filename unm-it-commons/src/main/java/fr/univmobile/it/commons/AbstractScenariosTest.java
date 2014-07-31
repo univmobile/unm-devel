@@ -220,9 +220,11 @@ public abstract class AbstractScenariosTest {
 
 		final AppiumEnabledTest instance = scenariosClass.newInstance();
 
-		engine.setPlatformName(AppiumEnabledTestDefaultEngine
-				.getCurrentPlatformName());
-		engine.setPlatformVersion(EnvironmentUtils.getCurrentPlatformVersion());
+		final String platformName = AppiumEnabledTestDefaultEngine
+				.getCurrentPlatformName();
+		engine.setPlatformName(platformName);
+		engine.setPlatformVersion(EnvironmentUtils
+				.getCurrentPlatformVersion(platformName));
 		engine.setDeviceName(deviceName);
 		engine.setScenariosClass(scenariosClass);
 		engine.setScenarioMethod(scenarioMethod);
