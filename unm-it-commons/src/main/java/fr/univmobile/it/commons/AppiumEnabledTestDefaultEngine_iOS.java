@@ -39,8 +39,8 @@ final class AppiumEnabledTestDefaultEngine_iOS extends
 		@Nullable
 		final String requiredAppCommitId = System.getProperty("appCommitId");
 
-		AppiumDriver driver=getDriver();
-		
+		AppiumDriver driver = getDriver();
+
 		if (driver != null) {
 
 			// System.out.println("DEBUG: ??? driver != null => driver.quit()...");
@@ -99,7 +99,7 @@ final class AppiumEnabledTestDefaultEngine_iOS extends
 
 		driver = new AppiumDriver(new URL("http://localhost:4723/wd/hub"),
 				capabilities);
-		
+
 		setDriver(driver);
 	}
 
