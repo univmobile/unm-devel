@@ -144,70 +144,6 @@
       <userId>dandriana</userId>
     </slave>
     <slave>
-      <temporaryOfflineCause class="hudson.slaves.OfflineCause$UserCause">
-        <description>
-          <holder>
-            <owner>hudson.slaves.Messages</owner>
-          </holder>
-          <key>SlaveComputer.DisconnectedBy</key>
-          <args>
-            <string>dandriana</string>
-            <string></string>
-          </args>
-        </description>
-        <user>
-          <fullName>David Andrianavalontsalama</fullName>
-          <description></description>
-          <properties>
-            <hudson.model.PaneStatusProperties>
-              <collapsed/>
-            </hudson.model.PaneStatusProperties>
-            <jenkins.security.LastGrantedAuthoritiesProperty>
-              <roles>
-                <string>authenticated</string>
-              </roles>
-              <timestamp>1404281325386</timestamp>
-            </jenkins.security.LastGrantedAuthoritiesProperty>
-            <jenkins.security.ApiTokenProperty>
-              <apiToken>ETreFCO01qBNVTu6+y8/CIBPpV17p6gqQ1BXDNL2ogfgwvGvGqDHoHg1kVmnSfCP</apiToken>
-            </jenkins.security.ApiTokenProperty>
-            <com.cloudbees.plugins.credentials.UserCredentialsProvider_-UserCredentialsProperty plugin="credentials@1.15">
-              <domainCredentialsMap class="hudson.util.CopyOnWriteMap$Hash">
-                <entry>
-                  <com.cloudbees.plugins.credentials.domains.Domain>
-                    <specifications/>
-                  </com.cloudbees.plugins.credentials.domains.Domain>
-                  <java.util.concurrent.CopyOnWriteArrayList/>
-                </entry>
-              </domainCredentialsMap>
-            </com.cloudbees.plugins.credentials.UserCredentialsProvider_-UserCredentialsProperty>
-            <hudson.tasks.Mailer_-UserProperty plugin="mailer@1.9">
-              <emailAddress>david.andriana@viewniverse-studio.com</emailAddress>
-            </hudson.tasks.Mailer_-UserProperty>
-            <hudson.model.MyViewsProperty>
-              <primaryViewName></primaryViewName>
-              <views>
-                <hudson.model.AllView>
-                  <owner class="hudson.model.MyViewsProperty" reference="../../.."/>
-                  <name>All</name>
-                  <filterExecutors>false</filterExecutors>
-                  <filterQueue>false</filterQueue>
-                  <properties class="hudson.model.View$PropertyList"/>
-                </hudson.model.AllView>
-              </views>
-            </hudson.model.MyViewsProperty>
-            <hudson.security.HudsonPrivateSecurityRealm_-Details>
-              <passwordHash>#jbcrypt:$2a$10$YsNfF1q.elq6lYi9JBcsDeNmOFCL214UfguX.ccmyJkhDwFNjM0Lu</passwordHash>
-            </hudson.security.HudsonPrivateSecurityRealm_-Details>
-            <org.jenkinsci.main.modules.cli.auth.ssh.UserPropertyImpl>
-              <authorizedKeys></authorizedKeys>
-            </org.jenkinsci.main.modules.cli.auth.ssh.UserPropertyImpl>
-            <hudson.search.UserSearchProperty>
-              <insensitiveSearch>false</insensitiveSearch>
-            </hudson.search.UserSearchProperty>
-          </properties>
-        </user>
-      </temporaryOfflineCause>
       <name>macos_ios7</name>
       <description>Mac OS X 10.9.4 Mavericks + Xcode 5.1.1</description>
       <remoteFS>/Users/dandriana/jenkins_slave_unm_ios7</remoteFS>
@@ -368,8 +304,6 @@ Tableau de bord d’intégration continue :&#xd;
         <string>unm-ios</string>
         <string>unm-ios-it</string>
         <string>unm-ios-it_ios6</string>
-        <string>unm-ios-ut-results</string>
-        <string>unm-ios-ut-results_up_to_date</string>
         <string>unm-ios_site</string>
         <string>unm-ios_xcode</string>
       </jobNames>
@@ -504,10 +438,7 @@ Tableau de bord d’intégration continue :&#xd;
       <properties class="hudson.model.View$PropertyList"/>
       <jobNames>
         <comparator class="hudson.util.CaseInsensitiveComparator" reference="../../../../slaves/slave/nodeProperties/hudson.slaves.EnvironmentVariablesNodeProperty/envVars/tree-map/default/comparator"/>
-        <string>unm-android-it</string>
         <string>unm-devel-it</string>
-        <string>unm-ios-it</string>
-        <string>unm-ios-it_ios6</string>
         <string>unm-ios-ut-results</string>
         <string>unm-ios-ut-results_up_to_date</string>
         <string>unm-it-commons_ios6</string>
