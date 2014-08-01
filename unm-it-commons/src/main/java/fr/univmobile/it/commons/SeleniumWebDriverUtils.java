@@ -22,6 +22,7 @@ import org.openqa.selenium.remote.RemoteWebElement;
 
 import com.avcompris.lang.NotImplementedException;
 import com.thoughtworks.selenium.Selenium;
+import com.thoughtworks.selenium.SeleniumException;
 
 abstract class SeleniumWebDriverUtils {
 
@@ -185,7 +186,6 @@ abstract class SeleniumWebDriverUtils {
 
 		private static String calcLocator(final By by) {
 
-			// this.by =
 			checkNotNull(by, "by");
 
 			final String s = by.toString();
@@ -198,19 +198,44 @@ abstract class SeleniumWebDriverUtils {
 			throw new NotImplementedException();
 		}
 
+		private static String calcId(final By by) {
+
+			checkNotNull(by, "by");
+
+			final String s = by.toString();
+
+			if (s.startsWith("By.id: ")) {
+
+				return substringAfter(s, ": ");
+			}
+
+			throw new NotImplementedException("By: " + by);
+		}
+
 		public class SeleniumBackedWebElement implements WebElement {
 
 			public SeleniumBackedWebElement(final By by) {
 
+				this.by = checkNotNull(by, "by");
+
 				locator = calcLocator(by);
 			}
 
-			// private final By by;
+			private final By by;
 			private final String locator;
 
 			@Override
 			public void click() {
-				throw new NotImplementedException();
+
+				if (!selenium.isElementPresent(locator)) {
+					throw new SeleniumException("click(): element[" + locator
+							+ "] is not present");
+				}
+
+				final String script = "window.document.getElementById('"
+						+ calcId(by) + "').click();";
+
+				selenium.getEval(script);
 			}
 
 			@Override
@@ -250,7 +275,7 @@ abstract class SeleniumWebDriverUtils {
 
 			@Override
 			public String getText() {
-				throw new NotImplementedException();
+				return selenium.getText(locator);
 			}
 
 			@Override
@@ -269,7 +294,7 @@ abstract class SeleniumWebDriverUtils {
 				if (!selenium.isElementPresent(locator)) {
 					return false;
 				}
-				
+
 				return selenium.isVisible(locator);
 			}
 
