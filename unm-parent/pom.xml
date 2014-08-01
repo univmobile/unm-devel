@@ -65,7 +65,7 @@
 				<groupId>net.avcompris.commons</groupId>
 				<artifactId>avc-binding-json</artifactId>
 				<version>0.1.0</version>
-			</dependency>	
+			</dependency>
 			<dependency>
 				<groupId>com.googlecode.json-simple</groupId>
 				<artifactId>json-simple</artifactId>
@@ -115,7 +115,7 @@
 				<groupId>fr.univmobile</groupId>
 				<artifactId>unm-commons-datasource</artifactId>
 				<version>${project.version}</version>
-			</dependency>	
+			</dependency>
 			<dependency>
 				<groupId>org.apache.ant</groupId>
 				<artifactId>ant</artifactId>
@@ -148,6 +148,26 @@
 						</goals>
 					</execution>
 				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>2.17</version>
+				<dependencies>
+					<dependency>
+						<groupId>org.apache.maven.surefire</groupId>
+						<artifactId>surefire-junit47</artifactId>
+						<version>2.17</version>
+					</dependency>
+				</dependencies>
+				<configuration>
+					<includes>
+						<include>**/Scenario*.java</include>
+						<include>**/Test*.java</include>
+						<include>**/*Test.java</include>
+						<include>**/*TestCase.java</include>
+					</includes>
+				</configuration>
 			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
