@@ -1,5 +1,6 @@
 package fr.univmobile.it.commons;
 
+import static com.google.common.base.Preconditions.checkNotNull;
 import static fr.univmobile.it.commons.SeleniumWebDriverUtils.getWrappedSelenium;
 import static fr.univmobile.it.commons.SeleniumWebDriverUtils.wrapToWebDriver;
 
@@ -13,10 +14,12 @@ import fr.univmobile.testutil.PropertiesUtils;
 final class SeleniumEnabledTestDefaultEngine extends
 		WebDriverEnabledTestDefaultEngine {
 
-	public SeleniumEnabledTestDefaultEngine() {
+	public SeleniumEnabledTestDefaultEngine(final String defaultBrowser) {
 
-		// setCurrentPlatformName("Android");
+		this.defaultBrowser = checkNotNull(defaultBrowser, "defaultBrowser");
 	}
+
+	private final String defaultBrowser;
 
 	@Before
 	@Override
@@ -41,7 +44,10 @@ final class SeleniumEnabledTestDefaultEngine extends
 		final String url = "http://localhost:"
 				+ PropertiesUtils.getTestProperty("tomcat.port") + "/";
 
-		selenium = new DefaultSelenium("localhost", seleniumPort, "*firefox",
+		System.out.println("Using browser: " + defaultBrowser + "...");
+
+		selenium = new DefaultSelenium("localhost", seleniumPort,
+				defaultBrowser, // "*firefox",
 				url);
 
 		selenium.start();
