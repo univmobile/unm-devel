@@ -192,7 +192,7 @@ abstract class SeleniumWebDriverUtils {
 
 			if (s.startsWith("By.id: ")) {
 
-				return "//*[@id = '" + substringAfter(s, ": ") + "']";
+				return "//*[@id=\"" + substringAfter(s, ": ") + "\"]";
 			}
 
 			throw new NotImplementedException();
