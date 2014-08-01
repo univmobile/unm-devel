@@ -61,7 +61,7 @@ final class SeleniumEnabledTestDefaultEngine extends
 				+ "&NO_SHIB_remoteUser=tformica@univ-paris1.fr" //
 		);
 
-		selenium.waitForPageToLoad(Integer.toString(10000));
+		selenium.waitForPageToLoad(Integer.toString(60000));
 
 		setDriver(wrapToWebDriver(selenium));
 	}
