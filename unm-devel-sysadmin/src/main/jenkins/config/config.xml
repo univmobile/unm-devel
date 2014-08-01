@@ -441,6 +441,8 @@ Tableau de bord d’intégration continue :&#xd;
         <comparator class="hudson.util.CaseInsensitiveComparator" reference="../../../../slaves/slave/nodeProperties/hudson.slaves.EnvironmentVariablesNodeProperty/envVars/tree-map/default/comparator"/>
         <string>unm-backend-mock</string>
         <string>unm-backend-mock_site</string>
+        <string>unm-commons</string>
+        <string>unm-commons_release</string>
         <string>unm-it-commons</string>
         <string>unm-it-commons_ios6</string>
         <string>unm-it-commons_ios7</string>
@@ -448,6 +450,7 @@ Tableau de bord d’intégration continue :&#xd;
         <string>unm-parent</string>
         <string>unm-parent_site</string>
         <string>unm-testutil</string>
+        <string>unm-webapp-commons</string>
         <string>unm-webapp-parent</string>
       </jobNames>
       <jobFilters/>
@@ -478,6 +481,7 @@ Tableau de bord d’intégration continue :&#xd;
         <string>unm-backend-core</string>
         <string>unm-backend-filter-noshib</string>
         <string>unm-backend-it</string>
+        <string>unm-backend-it_macos</string>
         <string>unm-backend-parent</string>
       </jobNames>
       <jobFilters/>
@@ -532,6 +536,9 @@ Tableau de bord d’intégration continue :&#xd;
       <jobNames>
         <comparator class="hudson.util.CaseInsensitiveComparator" reference="../../../../slaves/slave/nodeProperties/hudson.slaves.EnvironmentVariablesNodeProperty/envVars/tree-map/default/comparator"/>
         <string>unm-mobileweb-app</string>
+        <string>unm-mobileweb-app-local</string>
+        <string>unm-mobileweb-app-local-it_ios6</string>
+        <string>unm-mobileweb-app-local-it_ios7</string>
         <string>unm-mobileweb-it_ios6</string>
         <string>unm-mobileweb-it_ios7</string>
       </jobNames>
