@@ -1,14 +1,13 @@
 package fr.univmobile.it.commons;
 
-import io.appium.java_client.AppiumDriver;
-
 import java.io.IOException;
 
 import org.junit.After;
 import org.junit.Before;
-import org.openqa.selenium.remote.RemoteWebElement;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 
-interface AppiumEnabledTestEngine {
+interface WebDriverEnabledTestEngine {
 
 	@Before
 	void setUp() throws Exception;
@@ -23,9 +22,9 @@ interface AppiumEnabledTestEngine {
 	void swipe(int startX, int startY, int endX, int endY, int durationMs)
 			throws IOException;
 
-	RemoteWebElement findElementById(String id) throws IOException;
+	WebElement findElementById(String id) throws IOException;
 
-	RemoteWebElement findElementByName(String name) throws IOException;
+	WebElement findElementByName(String name) throws IOException;
 
 	void waitForElementById(int seconds, String id) throws IOException;
 
@@ -35,7 +34,7 @@ interface AppiumEnabledTestEngine {
 
 	ElementChecker elementByName(String name) throws IOException;
 
-	AppiumDriver getDriver();
+	WebDriver getDriver();
 
 	void pause(int ms) throws InterruptedException;
 

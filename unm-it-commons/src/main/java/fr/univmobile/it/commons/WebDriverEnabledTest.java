@@ -1,7 +1,6 @@
 package fr.univmobile.it.commons;
 
 import static com.google.common.base.Preconditions.checkNotNull;
-import io.appium.java_client.AppiumDriver;
 
 import java.io.IOException;
 
@@ -9,17 +8,19 @@ import javax.annotation.Nullable;
 
 import org.junit.After;
 import org.junit.Before;
-import org.openqa.selenium.remote.RemoteWebElement;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 
-public abstract class AppiumEnabledTest implements AppiumEnabledTestEngine {
+public abstract class WebDriverEnabledTest implements
+		WebDriverEnabledTestEngine {
 
 	@Override
-	public final AppiumDriver getDriver() {
+	public final WebDriver getDriver() {
 
 		return checkedEngine().getDriver();
 	}
 
-	private AppiumEnabledTestEngine checkedEngine() {
+	private WebDriverEnabledTestEngine checkedEngine() {
 
 		if (engine == null) {
 			throw new IllegalStateException("engine == null");
@@ -29,14 +30,14 @@ public abstract class AppiumEnabledTest implements AppiumEnabledTestEngine {
 	}
 
 	@Nullable
-	private AppiumEnabledTestEngine engine;
+	private WebDriverEnabledTestEngine engine;
 
-	final void setEngine(final AppiumEnabledTestEngine engine) {
+	final void setEngine(final WebDriverEnabledTestEngine engine) {
 
 		this.engine = checkNotNull(engine, "engine");
 	}
 
-	abstract AppiumEnabledTestEngine newEngine(boolean useSafari);
+	abstract WebDriverEnabledTestEngine newEngine(boolean useSafari);
 
 	@Before
 	@Override
@@ -64,7 +65,7 @@ public abstract class AppiumEnabledTest implements AppiumEnabledTestEngine {
 		checkedEngine().takeScreenshot(filename);
 	}
 
-	private AppiumEnabledTest checkUseSafari() {
+	private WebDriverEnabledTest checkUseSafari() {
 
 		if (!AppiumSafariEnabledTest.class.isAssignableFrom(this.getClass())) {
 			throw new IllegalStateException(
@@ -101,14 +102,13 @@ public abstract class AppiumEnabledTest implements AppiumEnabledTestEngine {
 	}
 
 	@Override
-	public final RemoteWebElement findElementById(final String id)
-			throws IOException {
+	public final WebElement findElementById(final String id) throws IOException {
 
 		return checkedEngine().findElementById(id);
 	}
 
 	@Override
-	public final RemoteWebElement findElementByName(final String name)
+	public final WebElement findElementByName(final String name)
 			throws IOException {
 
 		return checkedEngine().findElementByName(name);

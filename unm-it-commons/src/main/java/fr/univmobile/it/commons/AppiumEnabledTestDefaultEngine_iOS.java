@@ -7,7 +7,6 @@ import static fr.univmobile.it.commons.AppiumCapabilityType.PLATFORM_NAME;
 import static fr.univmobile.it.commons.AppiumCapabilityType.PLATFORM_VERSION;
 import static org.openqa.selenium.remote.CapabilityType.BROWSER_NAME;
 import static org.openqa.selenium.remote.CapabilityType.PLATFORM;
-import fr.univmobile.testutil.PropertiesUtils;
 import io.appium.java_client.AppiumDriver;
 
 import java.io.File;
@@ -16,17 +15,20 @@ import java.net.URL;
 import javax.annotation.Nullable;
 
 import org.junit.Before;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
+import fr.univmobile.testutil.PropertiesUtils;
+
 final class AppiumEnabledTestDefaultEngine_iOS extends
-		AppiumEnabledTestDefaultEngine {
+		WebDriverEnabledTestDefaultEngine {
 
 	private static File app; // the "UnivMobile.app" local directory
 
 	public AppiumEnabledTestDefaultEngine_iOS(final boolean useSafari) {
 
 		this.useSafari = useSafari;
-		
+
 		setCurrentPlatformName("iOS");
 	}
 
@@ -39,7 +41,7 @@ final class AppiumEnabledTestDefaultEngine_iOS extends
 		@Nullable
 		final String requiredAppCommitId = System.getProperty("appCommitId");
 
-		AppiumDriver driver = getDriver();
+		WebDriver driver = getDriver();
 
 		if (driver != null) {
 
@@ -84,9 +86,9 @@ final class AppiumEnabledTestDefaultEngine_iOS extends
 		capabilities.setCapability(BROWSER_NAME, useSafari ? "Safari" : "iOS");
 
 		capabilities.setCapability(PLATFORM, "Mac");
-		
+
 		final String platformName = getCurrentPlatformName();
-		
+
 		capabilities.setCapability(PLATFORM_NAME, platformName);
 		capabilities.setCapability(PLATFORM_VERSION,
 				EnvironmentUtils.getCurrentPlatformVersion("iOS"));

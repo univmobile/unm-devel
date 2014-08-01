@@ -16,8 +16,7 @@ import javax.annotation.Nullable;
 
 import org.apache.commons.io.FileUtils;
 
-public class AppiumEnabledTestCheckerEngine extends
-		AppiumEnabledTestPhasedEngine {
+public class TestCheckerEngine extends TestPhasedEngine {
 
 	private final ElementCheckObserverStdout stdoutObserver = new ElementCheckObserverStdout();
 
@@ -187,6 +186,26 @@ class ElementCheckerWithAttributes implements ElementChecker {
 
 		observer.notifyCheck(id + ".text.shouldEqualTo: " + ref,
 				ref.equals(text), "expected: <" + ref + ">, but was: <" + text
+						+ ">");
+	}
+
+	@Override
+	public void textShouldContain(final String ref) throws IOException {
+
+		final String text = attributes.get("text");
+
+		observer.notifyCheck(id + ".text.shouldContain: " + ref,
+				ref.equals(text), "expected: <..." + ref + "...>, but was: <"
+						+ text + ">");
+	}
+
+	@Override
+	public void textShouldNotContain(final String ref) throws IOException {
+
+		final String text = attributes.get("text");
+
+		observer.notifyCheck(id + ".text.shouldNotContain: " + ref,
+				ref.equals(text), "expected: !<" + ref + ">, but was: <" + text
 						+ ">");
 	}
 

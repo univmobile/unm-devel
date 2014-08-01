@@ -126,12 +126,12 @@ class ElementCheckObserverStdout implements ElementCheckObserver {
 class ElementCheckObserverXMLDump implements ElementCheckObserver {
 
 	public void init(final String deviceName,
-			final Class<? extends AppiumEnabledTest> scenariosClass, //
+			final Class<? extends WebDriverEnabledTest> scenariosClass, //
 			final Method scenarioMethod, final File outFile) throws IOException {
 
 		// close(); // close the previous use
 
-		final String platformName = AppiumEnabledTestDefaultEngine
+		final String platformName = WebDriverEnabledTestDefaultEngine
 				.getCurrentPlatformName();
 		final String platformVersion = EnvironmentUtils
 				.getCurrentPlatformVersion(platformName);

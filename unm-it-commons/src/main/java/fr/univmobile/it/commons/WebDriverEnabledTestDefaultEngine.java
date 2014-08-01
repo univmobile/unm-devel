@@ -1,32 +1,33 @@
 package fr.univmobile.it.commons;
 
 import static com.google.common.base.Preconditions.checkNotNull;
+import static fr.univmobile.it.commons.SeleniumWebDriverUtils.getScreenshotAsFile;
 import static org.apache.commons.lang3.CharEncoding.UTF_8;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
-import io.appium.java_client.AppiumDriver;
 
 import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.annotation.Nullable;
+
 import org.apache.commons.io.FileUtils;
 import org.junit.After;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.NoSuchElementException;
-import org.openqa.selenium.OutputType;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.remote.RemoteWebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-abstract class AppiumEnabledTestDefaultEngine implements
-		AppiumEnabledTestEngine {
+abstract class WebDriverEnabledTestDefaultEngine implements
+		WebDriverEnabledTestEngine {
 
-	protected final void setDriver(final AppiumDriver driver) {
+	protected final void setDriver(final WebDriver driver) {
 
 		this.driver = checkNotNull(driver, "driver");
 	}
@@ -47,7 +48,7 @@ abstract class AppiumEnabledTestDefaultEngine implements
 		}
 	}
 
-	private AppiumDriver driver;
+	private WebDriver driver;
 
 	@Override
 	public final void takeScreenshot(final String filename) throws IOException {
@@ -57,7 +58,7 @@ abstract class AppiumEnabledTestDefaultEngine implements
 		// final WebDriver augmentedDriver = new Augmenter().augment(driver);
 
 		final File srcFile = // ((TakesScreenshot) augmentedDriver)
-		driver.getScreenshotAs(OutputType.FILE);
+		getScreenshotAsFile(driver);
 
 		final File destFile = new File(new File("target", "screenshots"),
 				filename);
@@ -104,12 +105,11 @@ abstract class AppiumEnabledTestDefaultEngine implements
 	}
 
 	@Override
-	public final RemoteWebElement findElementById(final String id)
-			throws IOException {
+	public final WebElement findElementById(final String id) throws IOException {
 
 		try {
 
-			return (RemoteWebElement) driver.findElementById(id);
+			return driver.findElement(By.id(id));
 
 		} catch (final NoSuchElementException e) {
 
@@ -119,12 +119,12 @@ abstract class AppiumEnabledTestDefaultEngine implements
 	}
 
 	@Override
-	public final RemoteWebElement findElementByName(final String name)
+	public final WebElement findElementByName(final String name)
 			throws IOException {
 
 		try {
 
-			return (RemoteWebElement) driver.findElementByName(name);
+			return (WebElement) driver.findElement(By.name(name));
 
 		} catch (final NoSuchElementException e) {
 
@@ -161,7 +161,8 @@ abstract class AppiumEnabledTestDefaultEngine implements
 	}
 
 	@Override
-	public final AppiumDriver getDriver() {
+	@Nullable
+	public final WebDriver getDriver() {
 
 		return driver;
 	}
@@ -238,7 +239,7 @@ abstract class AppiumEnabledTestDefaultEngine implements
 
 	public static void setCurrentPlatformName(final String currentPlatformName) {
 
-		AppiumEnabledTestDefaultEngine.currentPlatformName = checkNotNull(
+		WebDriverEnabledTestDefaultEngine.currentPlatformName = checkNotNull(
 				currentPlatformName, "currentPlatformName");
 	}
 
@@ -278,6 +279,18 @@ final class WebElementChecker implements ElementChecker {
 	public void textShouldEqualTo(final String ref) {
 
 		assertEquals(id + ".text", ref, element.getText());
+	}
+
+	@Override
+	public void textShouldContain(final String ref) {
+
+		assertTrue(id + ".text <= " + ref, element.getText().contains(ref));
+	}
+
+	@Override
+	public void textShouldNotContain(final String ref) {
+
+		assertFalse(id + ".text !<= " + ref, element.getText().contains(ref));
 	}
 
 	@Override

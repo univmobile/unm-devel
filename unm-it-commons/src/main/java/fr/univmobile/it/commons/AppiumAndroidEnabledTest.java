@@ -1,10 +1,10 @@
 package fr.univmobile.it.commons;
 
 
-public abstract class AppiumAndroidEnabledTest extends AppiumEnabledTest {
+public abstract class AppiumAndroidEnabledTest extends WebDriverEnabledTest {
 
 	@Override
-	final AppiumEnabledTestEngine newEngine(final boolean useSafari) {
+	final WebDriverEnabledTestEngine newEngine(final boolean useSafari) {
 
 		return new AppiumEnabledTestDefaultEngine_Android();
 	}

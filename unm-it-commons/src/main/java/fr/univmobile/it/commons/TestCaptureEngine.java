@@ -15,17 +15,15 @@ import javax.annotation.Nullable;
 
 import org.apache.commons.io.FileUtils;
 import org.joda.time.DateTime;
-import org.openqa.selenium.remote.RemoteWebElement;
+import org.openqa.selenium.WebElement;
 
-final class AppiumEnabledTestCaptureEngine extends
-		AppiumEnabledTestPhasedEngine {
+final class TestCaptureEngine extends TestPhasedEngine {
 
-	public AppiumEnabledTestCaptureEngine(final String platformName,
-			final boolean useSafari) {
+	public TestCaptureEngine(final String platformName, final boolean useSafari) {
 
 		checkNotNull(platformName, "platformName");
 
-		AppiumEnabledTestDefaultEngine.setCurrentPlatformName(platformName);
+		WebDriverEnabledTestDefaultEngine.setCurrentPlatformName(platformName);
 
 		if ("iOS".equals(platformName)) {
 
@@ -42,7 +40,7 @@ final class AppiumEnabledTestCaptureEngine extends
 		}
 	}
 
-	private final AppiumEnabledTestEngine defaultEngine;
+	private final WebDriverEnabledTestEngine defaultEngine;
 
 	@Override
 	public void setUp() throws Exception {
@@ -162,7 +160,7 @@ final class AppiumEnabledTestCaptureEngine extends
 final class WebElementCapturer implements ElementChecker {
 
 	public WebElementCapturer(final PrintWriter pw, final String id,
-			final RemoteWebElement element) {
+			final WebElement element) {
 
 		this.id = checkNotNull(id, "id");
 		this.element = checkNotNull(element, "element");
@@ -171,13 +169,13 @@ final class WebElementCapturer implements ElementChecker {
 		pw.println(id + ":");
 		pw.println("  text: " + normalizeSpace(element.getText()));
 		pw.println("  visible: " + element.isDisplayed());
-		pw.println("  id: " + element.getId());
+		pw.println("  id: " + SeleniumWebDriverUtils.getId(element));
 
 		pw.println();
 	}
 
 	private final String id;
-	private final RemoteWebElement element;
+	private final WebElement element;
 	private final PrintWriter pw;
 
 	@Override
@@ -194,6 +192,46 @@ final class WebElementCapturer implements ElementChecker {
 
 		if (!ref.equals(text)) {
 			message(id + ".text: expected: <" + ref + ">, but was: <" + text
+					+ ">");
+		}
+
+		pw.println();
+	}
+
+	@Override
+	public void textShouldContain(@Nullable final String ref)
+			throws IOException {
+
+		pw.println("# " + id + ".text.shouldContain: " + ref);
+
+		if (ref == null) {
+			return; // swallow the NPE
+		}
+
+		final String text = element.getText();
+
+		if (!text.contains(ref)) {
+			message(id + ".text: expected: <..." + ref + "...>, but was: <"
+					+ text + ">");
+		}
+
+		pw.println();
+	}
+
+	@Override
+	public void textShouldNotContain(@Nullable final String ref)
+			throws IOException {
+
+		pw.println("# " + id + ".text.shouldNotContain: " + ref);
+
+		if (ref == null) {
+			return; // swallow the NPE
+		}
+
+		final String text = element.getText();
+
+		if (text.contains(ref)) {
+			message(id + ".text: expected: !<" + ref + ">, but was: <" + text
 					+ ">");
 		}
 

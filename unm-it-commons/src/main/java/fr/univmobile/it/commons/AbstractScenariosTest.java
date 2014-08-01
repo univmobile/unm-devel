@@ -56,17 +56,17 @@ public abstract class AbstractScenariosTest {
 
 		loadParameters(
 				parameters, //
-				new AppiumEnabledTestCaptureEngine(platformName, useSafari),
+				new TestCaptureEngine(platformName, useSafari),
 				classes);
 
 		loadParameters(parameters, //
-				new AppiumEnabledTestCheckerEngine(), classes);
+				new TestCheckerEngine(), classes);
 
 		return parameters;
 	}
 
 	private static void loadParameters(final Collection<Object[]> parameters,
-			final AppiumEnabledTestPhasedEngine engine, //
+			final TestPhasedEngine engine, //
 			final Class<?>... classes) throws IOException {
 
 		FileUtils.forceMkdir(new File("target", "screenshots"));
@@ -84,7 +84,7 @@ public abstract class AbstractScenariosTest {
 
 	private static void loadParameters(final Dumper dumper,
 			final Collection<Object[]> parameters,
-			final AppiumEnabledTestPhasedEngine engine, //
+			final TestPhasedEngine engine, //
 			final Class<?>... classes) throws IOException {
 
 		for (final Class<?> clazz : classes) {
@@ -99,10 +99,10 @@ public abstract class AbstractScenariosTest {
 					.addAttribute("className", clazz.getName()) //
 					.addAttribute("classSimpleName", clazz.getSimpleName());
 
-			if (!AppiumEnabledTest.class.isAssignableFrom(clazz)) {
+			if (!WebDriverEnabledTest.class.isAssignableFrom(clazz)) {
 				throw new IllegalArgumentException(
 						"Scenarios class should extends "
-								+ AppiumEnabledTest.class.getSimpleName()
+								+ WebDriverEnabledTest.class.getSimpleName()
 								+ ": " + clazz);
 			}
 
@@ -183,7 +183,7 @@ public abstract class AbstractScenariosTest {
 
 					parameters.add(new Object[] { new ScenarioContext(
 							deviceName, //
-							clazz.asSubclass(AppiumEnabledTest.class), //
+							clazz.asSubclass(WebDriverEnabledTest.class), //
 							method, //
 							engine) });
 				}
@@ -202,9 +202,9 @@ public abstract class AbstractScenariosTest {
 	}
 
 	private final String deviceName;
-	private final Class<? extends AppiumEnabledTest> scenariosClass;
+	private final Class<? extends WebDriverEnabledTest> scenariosClass;
 	private final Method scenarioMethod;
-	private final AppiumEnabledTestPhasedEngine engine;
+	private final TestPhasedEngine engine;
 
 	@Test
 	public void run() throws Throwable {
@@ -218,9 +218,9 @@ public abstract class AbstractScenariosTest {
 
 		// 0. OBJECT INSTANCE
 
-		final AppiumEnabledTest instance = scenariosClass.newInstance();
+		final WebDriverEnabledTest instance = scenariosClass.newInstance();
 
-		final String platformName = AppiumEnabledTestDefaultEngine
+		final String platformName = WebDriverEnabledTestDefaultEngine
 				.getCurrentPlatformName();
 		engine.setPlatformName(platformName);
 		engine.setPlatformVersion(EnvironmentUtils
@@ -229,7 +229,7 @@ public abstract class AbstractScenariosTest {
 		engine.setScenariosClass(scenariosClass);
 		engine.setScenarioMethod(scenarioMethod);
 
-		AppiumEnabledTestDefaultEngine.setCurrentDeviceName(deviceName);
+		WebDriverEnabledTestDefaultEngine.setCurrentDeviceName(deviceName);
 
 		instance.setEngine(engine);
 

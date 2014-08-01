@@ -7,9 +7,9 @@ import java.lang.reflect.Method;
 public class ScenarioContext {
 
 	ScenarioContext(final String deviceName, //
-			final Class<? extends AppiumEnabledTest> scenariosClass, //
+			final Class<? extends WebDriverEnabledTest> scenariosClass, //
 			final Method scenarioMethod, //
-			final AppiumEnabledTestPhasedEngine engine) {
+			final TestPhasedEngine engine) {
 
 		this.deviceName = checkNotNull(deviceName, "deviceName");
 		this.normalizedDeviceName = normalizeDeviceName(deviceName);
@@ -29,9 +29,9 @@ public class ScenarioContext {
 
 	final String normalizedDeviceName;
 	final String deviceName;
-	final Class<? extends AppiumEnabledTest> scenariosClass;
+	final Class<? extends WebDriverEnabledTest> scenariosClass;
 	final Method scenarioMethod;
-	final AppiumEnabledTestPhasedEngine engine;
+	final TestPhasedEngine engine;
 
 	public static String normalizePlatformName(final String platformName,
 			final String platformVersion) {

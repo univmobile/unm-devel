@@ -11,10 +11,11 @@ import java.io.File;
 import java.net.URL;
 
 import org.junit.Before;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
 final class AppiumEnabledTestDefaultEngine_Android extends
-		AppiumEnabledTestDefaultEngine {
+		WebDriverEnabledTestDefaultEngine {
 
 	private static final File app = new File("apk/UnivMobile-debug.apk");
 
@@ -30,7 +31,7 @@ final class AppiumEnabledTestDefaultEngine_Android extends
 		// @Nullable
 		// final String requiredAppCommitId = System.getProperty("appCommitId");
 
-		AppiumDriver driver = getDriver();
+		WebDriver driver = getDriver();
 
 		if (driver != null) {
 
@@ -41,7 +42,7 @@ final class AppiumEnabledTestDefaultEngine_Android extends
 			driver = null;
 		}
 
-		// 1. LAUNCH THE iOS APP
+		// 1. LAUNCH THE ANDROID APP
 
 		System.out.println("Using: " + app.getCanonicalPath());
 

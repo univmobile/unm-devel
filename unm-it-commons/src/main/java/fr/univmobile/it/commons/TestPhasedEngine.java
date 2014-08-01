@@ -1,6 +1,8 @@
 package fr.univmobile.it.commons;
 
 import static com.google.common.base.Preconditions.checkNotNull;
+import static fr.univmobile.it.commons.ScenarioContext.normalizeDeviceName;
+import static fr.univmobile.it.commons.ScenarioContext.normalizePlatformName;
 import io.appium.java_client.AppiumDriver;
 
 import java.io.IOException;
@@ -8,15 +10,14 @@ import java.lang.reflect.Method;
 
 import javax.annotation.Nullable;
 
-import org.openqa.selenium.remote.RemoteWebElement;
-import static fr.univmobile.it.commons.ScenarioContext.*;
-public abstract class AppiumEnabledTestPhasedEngine implements
-		AppiumEnabledTestEngine {
+import org.openqa.selenium.WebElement;
+public abstract class TestPhasedEngine implements
+		WebDriverEnabledTestEngine {
 
 	public abstract String getSimpleName();
 
 	@Override
-	public final RemoteWebElement findElementById(String id) throws IOException {
+	public final WebElement findElementById(String id) throws IOException {
 
 		throw new IllegalStateException(
 				"Because it’s using a phased engine, a scenario test should not call findElementById(): "
@@ -24,7 +25,7 @@ public abstract class AppiumEnabledTestPhasedEngine implements
 	}
 
 	@Override
-	public final RemoteWebElement findElementByName(String name)
+	public final WebElement findElementByName(String name)
 			throws IOException {
 
 		throw new IllegalStateException(
@@ -72,13 +73,13 @@ public abstract class AppiumEnabledTestPhasedEngine implements
 		this.deviceName = checkNotNull(deviceName, "deviceName");
 	}
 
-	public final Class<? extends AppiumEnabledTest> getScenariosClass() {
+	public final Class<? extends WebDriverEnabledTest> getScenariosClass() {
 
 		return scenariosClass;
 	}
 
 	public final void setScenariosClass(
-			final Class<? extends AppiumEnabledTest> scenariosClass) {
+			final Class<? extends WebDriverEnabledTest> scenariosClass) {
 
 		this.scenariosClass = checkNotNull(scenariosClass, "scenariosClass");
 	}
@@ -96,7 +97,7 @@ public abstract class AppiumEnabledTestPhasedEngine implements
 	private String platformName; // e.g. "iOS", "Android"
 	private String platformVersion; // e.g. "7.1"
 	private String deviceName; // e.g. "iPhone Retina (4-inch)"
-	private Class<? extends AppiumEnabledTest> scenariosClass;
+	private Class<? extends WebDriverEnabledTest> scenariosClass;
 	private Method scenarioMethod;
 
 	protected final String customizeFilename(final String filename) {
