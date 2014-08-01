@@ -144,6 +144,70 @@
       <userId>dandriana</userId>
     </slave>
     <slave>
+      <temporaryOfflineCause class="hudson.slaves.OfflineCause$UserCause">
+        <description>
+          <holder>
+            <owner>hudson.slaves.Messages</owner>
+          </holder>
+          <key>SlaveComputer.DisconnectedBy</key>
+          <args>
+            <string>dandriana</string>
+            <string></string>
+          </args>
+        </description>
+        <user>
+          <fullName>David Andrianavalontsalama</fullName>
+          <description></description>
+          <properties>
+            <hudson.model.PaneStatusProperties>
+              <collapsed/>
+            </hudson.model.PaneStatusProperties>
+            <jenkins.security.LastGrantedAuthoritiesProperty>
+              <roles>
+                <string>authenticated</string>
+              </roles>
+              <timestamp>1404281325386</timestamp>
+            </jenkins.security.LastGrantedAuthoritiesProperty>
+            <jenkins.security.ApiTokenProperty>
+              <apiToken>ETreFCO01qBNVTu6+y8/CIBPpV17p6gqQ1BXDNL2ogfgwvGvGqDHoHg1kVmnSfCP</apiToken>
+            </jenkins.security.ApiTokenProperty>
+            <com.cloudbees.plugins.credentials.UserCredentialsProvider_-UserCredentialsProperty plugin="credentials@1.15">
+              <domainCredentialsMap class="hudson.util.CopyOnWriteMap$Hash">
+                <entry>
+                  <com.cloudbees.plugins.credentials.domains.Domain>
+                    <specifications/>
+                  </com.cloudbees.plugins.credentials.domains.Domain>
+                  <java.util.concurrent.CopyOnWriteArrayList/>
+                </entry>
+              </domainCredentialsMap>
+            </com.cloudbees.plugins.credentials.UserCredentialsProvider_-UserCredentialsProperty>
+            <hudson.tasks.Mailer_-UserProperty plugin="mailer@1.9">
+              <emailAddress>david.andriana@viewniverse-studio.com</emailAddress>
+            </hudson.tasks.Mailer_-UserProperty>
+            <hudson.model.MyViewsProperty>
+              <primaryViewName></primaryViewName>
+              <views>
+                <hudson.model.AllView>
+                  <owner class="hudson.model.MyViewsProperty" reference="../../.."/>
+                  <name>All</name>
+                  <filterExecutors>false</filterExecutors>
+                  <filterQueue>false</filterQueue>
+                  <properties class="hudson.model.View$PropertyList"/>
+                </hudson.model.AllView>
+              </views>
+            </hudson.model.MyViewsProperty>
+            <hudson.security.HudsonPrivateSecurityRealm_-Details>
+              <passwordHash>#jbcrypt:$2a$10$YsNfF1q.elq6lYi9JBcsDeNmOFCL214UfguX.ccmyJkhDwFNjM0Lu</passwordHash>
+            </hudson.security.HudsonPrivateSecurityRealm_-Details>
+            <org.jenkinsci.main.modules.cli.auth.ssh.UserPropertyImpl>
+              <authorizedKeys></authorizedKeys>
+            </org.jenkinsci.main.modules.cli.auth.ssh.UserPropertyImpl>
+            <hudson.search.UserSearchProperty>
+              <insensitiveSearch>false</insensitiveSearch>
+            </hudson.search.UserSearchProperty>
+          </properties>
+        </user>
+      </temporaryOfflineCause>
       <name>macos_ios7</name>
       <description>Mac OS X 10.9.4 Mavericks + Xcode 5.1.1</description>
       <remoteFS>/Users/dandriana/jenkins_slave_unm_ios7</remoteFS>
@@ -237,7 +301,7 @@
       <owner class="hudson" reference="../../.."/>
       <name>All</name>
       <description>&lt;h2&gt;Jobs Jenkins sur le projet UnivMobile&lt;/h2&gt;&#xd;
-UnivMobile iOS :&#xd;
+UnivMobile iOS :&#xd;
 &lt;ul&gt;&#xd;
 &lt;li&gt;Tableau de bord d’intégration continue :&#xd;
 &lt;a href=&quot;http://univmobile.vswip.com/job/unm-devel-it/lastSuccessfulBuild/artifact/unm-devel-it/target/unm-ci-dump.html&quot;&gt;&#xd;
@@ -252,6 +316,19 @@ Captures d’écrans des tests d’intégration :&#xd;
 Application mobile en test :&#xd;
 &lt;a href=&quot;http://univmobile.vswip.com/ios/&quot;&gt;&#xd;
   UnivMobile iOS — Installations ad hoc&#xd;
+&lt;/a&gt;&#xd;
+&lt;/ul&gt;&#xd;
+&#xd;
+UnivMobile Android :&#xd;
+&lt;ul&gt;&#xd;
+&lt;li&gt;Tableau de bord d’intégration continue :&#xd;
+&lt;a href=&quot;http://univmobile.vswip.com/job/unm-devel-it/lastSuccessfulBuild/artifact/unm-devel-it/target/unm-android-ci-dump.html&quot;&gt;&#xd;
+  UnivMobile Android — Intégration continue&#xd;
+&lt;/a&gt;&#xd;
+&lt;li&gt;&#xd;
+Captures d’écrans des tests d’intégration :&#xd;
+&lt;a href=&quot;http://univmobile.vswip.com/job/unm-devel-it/lastSuccessfulBuild/artifact/unm-devel-it/target/unm-android-it-scenarios-dump.html&quot;&gt;&#xd;
+  UnivMobile Android — Scénarios&#xd;
 &lt;/a&gt;&#xd;
 &lt;/ul&gt;&#xd;
 &#xd;
@@ -396,6 +473,8 @@ Tableau de bord d’intégration continue :&#xd;
         <string>unm-backend</string>
         <string>unm-backend-app</string>
         <string>unm-backend-app-noshib</string>
+        <string>unm-backend-client</string>
+        <string>unm-backend-client_release</string>
         <string>unm-backend-core</string>
         <string>unm-backend-filter-noshib</string>
         <string>unm-backend-it</string>
@@ -518,11 +597,56 @@ Tableau de bord d’intégration continue :&#xd;
     <listView>
       <owner class="hudson" reference="../../.."/>
       <name>develop</name>
+      <description>&lt;h2&gt;Jobs Jenkins sur le projet UnivMobile&lt;/h2&gt;&#xd;
+UnivMobile iOS :&#xd;
+&lt;ul&gt;&#xd;
+&lt;li&gt;Tableau de bord d’intégration continue :&#xd;
+&lt;a href=&quot;http://univmobile.vswip.com/job/unm-devel-it/lastSuccessfulBuild/artifact/unm-devel-it/target/unm-ci-dump.html&quot;&gt;&#xd;
+  UnivMobile iOS — Intégration continue&#xd;
+&lt;/a&gt;&#xd;
+&lt;li&gt;&#xd;
+Captures d’écrans des tests d’intégration :&#xd;
+&lt;a href=&quot;http://univmobile.vswip.com/job/unm-devel-it/lastSuccessfulBuild/artifact/unm-devel-it/target/unm-ios-it-scenarios-dump.html&quot;&gt;&#xd;
+  UnivMobile iOS — Scénarios&#xd;
+&lt;/a&gt;&#xd;
+&lt;li&gt;&#xd;
+Application mobile en test :&#xd;
+&lt;a href=&quot;http://univmobile.vswip.com/ios/&quot;&gt;&#xd;
+  UnivMobile iOS — Installations ad hoc&#xd;
+&lt;/a&gt;&#xd;
+&lt;/ul&gt;&#xd;
+&#xd;
+UnivMobile Android :&#xd;
+&lt;ul&gt;&#xd;
+&lt;li&gt;Tableau de bord d’intégration continue :&#xd;
+&lt;a href=&quot;http://univmobile.vswip.com/job/unm-devel-it/lastSuccessfulBuild/artifact/unm-devel-it/target/unm-android-ci-dump.html&quot;&gt;&#xd;
+  UnivMobile Android — Intégration continue&#xd;
+&lt;/a&gt;&#xd;
+&lt;li&gt;&#xd;
+Captures d’écrans des tests d’intégration :&#xd;
+&lt;a href=&quot;http://univmobile.vswip.com/job/unm-devel-it/lastSuccessfulBuild/artifact/unm-devel-it/target/unm-android-it-scenarios-dump.html&quot;&gt;&#xd;
+  UnivMobile Android — Scénarios&#xd;
+&lt;/a&gt;&#xd;
+&lt;/ul&gt;&#xd;
+&#xd;
+UnivMobile mobile web :&#xd;
+&lt;ul&gt;&#xd;
+&lt;li&gt;Tableau de bord d’intégration continue :&#xd;
+&lt;a href=&quot;http://univmobile.vswip.com/job/unm-devel-it/lastSuccessfulBuild/artifact/unm-devel-it/target/unm-mobileweb-ci-dump.html&quot;&gt;&#xd;
+  UnivMobile mobile web — Intégration continue&#xd;
+&lt;/a&gt;&#xd;
+&lt;li&gt;&#xd;
+Captures d’écrans des tests d’intégration :&#xd;
+&lt;a href=&quot;http://univmobile.vswip.com/job/unm-devel-it/lastSuccessfulBuild/artifact/unm-devel-it/target/unm-mobileweb-it-scenarios-dump.html&quot;&gt;&#xd;
+  UnivMobile mobile web — Scénarios&#xd;
+&lt;/a&gt;&#xd;
+&lt;/ul&gt;</description>
       <filterExecutors>false</filterExecutors>
       <filterQueue>false</filterQueue>
       <properties class="hudson.model.View$PropertyList"/>
       <jobNames>
         <comparator class="hudson.util.CaseInsensitiveComparator"/>
+        <string>unm-backend-it_macos</string>
       </jobNames>
       <jobFilters/>
       <columns>
@@ -541,6 +665,20 @@ Tableau de bord d’intégration continue :&#xd;
   <primaryView>develop</primaryView>
   <slaveAgentPort>0</slaveAgentPort>
   <label></label>
-  <nodeProperties/>
+  <nodeProperties>
+    <hudson.slaves.EnvironmentVariablesNodeProperty>
+      <envVars serialization="custom">
+        <unserializable-parents/>
+        <tree-map>
+          <default>
+            <comparator class="hudson.util.CaseInsensitiveComparator"/>
+          </default>
+          <int>1</int>
+          <string>DISPLAY</string>
+          <string>:1.5</string>
+        </tree-map>
+      </envVars>
+    </hudson.slaves.EnvironmentVariablesNodeProperty>
+  </nodeProperties>
   <globalNodeProperties/>
 </hudson>

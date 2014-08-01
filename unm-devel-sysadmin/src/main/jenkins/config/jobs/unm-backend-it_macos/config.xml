@@ -20,11 +20,12 @@
     <submoduleCfg class="list"/>
     <extensions/>
   </scm>
-  <canRoam>true</canRoam>
+  <assignedNode>macos_ios7</assignedNode>
+  <canRoam>false</canRoam>
   <disabled>false</disabled>
   <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
   <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
-  <jdk>JDK 1.6.0_31</jdk>
+  <jdk>MacOS_iOS6</jdk>
   <triggers>
     <hudson.triggers.SCMTrigger>
       <spec>H/5 * * * *</spec>
