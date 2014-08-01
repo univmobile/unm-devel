@@ -52,6 +52,8 @@ final class SeleniumEnabledTestDefaultEngine extends
 
 		selenium.start();
 
+		selenium.getEval("window.resizeTo(1280, 960);");
+		
 		selenium.open("/unm-backend" //
 				+ "?NO_SHIB_uid=tformica" //
 				+ "&NO_SHIB_eppn=tformica@univ-paris1.fr" //
