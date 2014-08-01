@@ -33,6 +33,11 @@ final class TestCaptureEngine extends TestPhasedEngine {
 
 			defaultEngine = new AppiumEnabledTestDefaultEngine_Android();
 
+		} else if ("Mac OS X".equals(platformName)
+				|| "Debian".equals(platformName)) {
+
+			defaultEngine = new SeleniumEnabledTestDefaultEngine("*firefox");
+
 		} else {
 
 			throw new IllegalStateException("Unknown platformName: "

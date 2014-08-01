@@ -29,8 +29,35 @@ public abstract class AbstractScenariosTest {
 
 		final Class<?> firstClazz = classes[0];
 
-		final String platformName = AppiumIOSEnabledTest.class
-				.isAssignableFrom(firstClazz) ? "iOS" : "Android";
+		final Class<? extends WebDriverEnabledTest> testClass;
+
+		final String platformName;
+
+		if (AppiumIOSEnabledTest.class.isAssignableFrom(firstClazz)) {
+
+			platformName = "iOS";
+
+			testClass = AppiumIOSEnabledTest.class;
+
+		} else if (AppiumAndroidEnabledTest.class.isAssignableFrom(firstClazz)) {
+
+			platformName = "Android";
+
+			testClass = AppiumAndroidEnabledTest.class;
+
+		} else if (SeleniumEnabledTest.class.isAssignableFrom(firstClazz)) {
+
+			platformName = System.getProperty("os.name").startsWith("Mac") //
+			? "Mac OS X"
+					: "Debian";
+
+			testClass = SeleniumEnabledTest.class;
+
+		} else {
+
+			throw new IllegalStateException("Unknown platformName for class: "
+					+ firstClazz);
+		}
 
 		final boolean useSafari = AppiumSafariEnabledTest.class
 				.isAssignableFrom(firstClazz);
@@ -43,10 +70,16 @@ public abstract class AbstractScenariosTest {
 		for (final Class<?> clazz : classes) {
 
 			if (AppiumSafariEnabledTest.class.isAssignableFrom(clazz) != useSafari) {
-
 				throw new IllegalArgumentException(
 						"None, or all classes, should extend AppiumSafariEnabledTest: "
 								+ firstClazz + ", " + clazz);
+			}
+
+			if (!testClass.isAssignableFrom(clazz)) {
+				throw new IllegalArgumentException(
+						"None, or all classes, should extend "
+								+ testClass.getSimpleName() + ": " + firstClazz
+								+ ", " + clazz);
 			}
 		}
 
@@ -54,10 +87,8 @@ public abstract class AbstractScenariosTest {
 
 		final List<Object[]> parameters = new ArrayList<Object[]>();
 
-		loadParameters(
-				parameters, //
-				new TestCaptureEngine(platformName, useSafari),
-				classes);
+		loadParameters(parameters, //
+				new TestCaptureEngine(platformName, useSafari), classes);
 
 		loadParameters(parameters, //
 				new TestCheckerEngine(), classes);

@@ -33,6 +33,14 @@ public abstract class EnvironmentUtils {
 			return "XXX";
 		}
 
+		if ("Mac OS X".equals(platformName)) {
+			return System.getProperty("os.version");
+		}
+
+		if ("Debian".equals(platformName)) {
+			return System.getProperty("os.version");
+		}
+
 		throw new IllegalArgumentException("Unknown platformName: "
 				+ platformName);
 	}
