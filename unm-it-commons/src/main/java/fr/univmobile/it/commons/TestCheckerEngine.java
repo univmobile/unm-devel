@@ -195,7 +195,7 @@ class ElementCheckerWithAttributes implements ElementChecker {
 		final String text = attributes.get("text");
 
 		observer.notifyCheck(id + ".text.shouldContain: " + ref,
-				ref.equals(text), "expected: <..." + ref + "...>, but was: <"
+				text.contains(ref), "expected: <..." + ref + "...>, but was: <"
 						+ text + ">");
 	}
 
@@ -205,7 +205,7 @@ class ElementCheckerWithAttributes implements ElementChecker {
 		final String text = attributes.get("text");
 
 		observer.notifyCheck(id + ".text.shouldNotContain: " + ref,
-				ref.equals(text), "expected: !<" + ref + ">, but was: <" + text
+				text.contains(ref), "expected: !<" + ref + ">, but was: <" + text
 						+ ">");
 	}
 
