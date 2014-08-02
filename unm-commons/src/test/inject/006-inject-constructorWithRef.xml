@@ -1,0 +1,21 @@
+<init-params>
+	<init-param>
+		<param-name>inject-packages</param-name>
+		<param-value>
+			fr.univmobile.commons
+			fr.univmobile.commons.test
+		</param-value>
+	</init-param>
+	<init-param>
+		<param-name>inject:MyApi into:DependencyInjectionTest</param-name>
+		<param-value>MyApiImplWithString</param-value>
+	</init-param>
+	<init-param>
+		<param-name>inject:ref:String into:MyApiImplWithString</param-name>
+		<param-value>ref:toto</param-value>
+	</init-param>
+	<init-param>
+		<param-name>inject:String ref:toto</param-name>
+		<param-value>z</param-value>
+	</init-param>
+</init-params>

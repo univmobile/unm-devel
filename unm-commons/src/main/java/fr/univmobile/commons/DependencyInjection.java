@@ -22,61 +22,59 @@ import javax.annotation.Nullable;
 import javax.inject.Inject;
 import javax.inject.Named;
 
+import org.apache.commons.lang3.NotImplementedException;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
-import com.avcompris.lang.NotImplementedException;
 import com.google.common.collect.Iterables;
 import com.google.inject.AbstractModule;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
 import com.google.inject.name.Names;
 
-class DependencyInjection {
+/**
+ * Initialize a {@link DependencyInjection} object with a configuration that
+ * takes the form of a map of Strings (such as init-params in a web.xml file).
+ * The syntax is the following:
+ * <ul>
+ * <li>Keys: of the form "<code>inject:Xxx into:Yyy</code>"
+ * <li>Values: of the form "<code>XxxImpl</code>" (or "<code>ZzzImpl</code>
+ * " that implements "<code>Xxx</code>")
+ * </ul>
+ * <p>
+ * "<code>XxxImpl | ZzzImpl</code>" must be a concrete class, and subclass or
+ * implements "<code>Xxx</code>". It will be the actual implementation injected
+ * into the "<code>Yyy</code>" class in lieu of its " <code>Xxx</code>"
+ * parameter.
+ * <p>
+ * "<code>Yyy</code>" must be a concrete class with a constructor that takes a "
+ * <code>Xxx</code>" object.
+ * <p>
+ * Also, you can inject a factory, for instance, using instead of "
+ * <code>Yyy</code>": "<code>factory:YyyFactory</code>"
+ * <p>
+ * Also, you can inject a global ref with: "<code>inject:Xxx ref:aaa</code>
+ * ", where "<code>aaa</code>" is a name for the ref you will reuse afterwards,
+ * by using: "<code>inject:ref:Xxx into:Yyy</code>" as key and "
+ * <code>ref:aaa</code>" as value. The "<code>ref:</code>" prefix is repeated ("
+ * <code>inject:ref:Xxx</code>" and "<code>ref:aaa</code>") because the first
+ * one is mandatory, and the second one is kept for readibility.
+ * <p>
+ * Also, you can inject a class that subclasses a certain type, for instance,
+ * using instead of "<code>inject:Xxx</code>": " <code>inject:class:Uuu</code>"
+ * <p>
+ * Also, you can name your injected objects (and reuse the name aftewards), for
+ * instance, using instead of "<code>ZzzImpl</code>": "
+ * <code>ZzzImpl:toto</code>", then reusing it in an injection declaration: "
+ * <code>inject:... into:ZzzImpl:toto</code>"
+ * <p>
+ * Note, in order to ease the writing of the configuration, you can use a
+ * special parameter, named "<code>inject-packages</code>", with a list of
+ * packages to use as prefixes when looking up the classes from their declared
+ * names.
+ */
+public class DependencyInjection {
 
-	/**
-	 * Initialize a {@link DependencyInjection} object with a configuration that
-	 * takes the form of a map of Strings (such as init-params in a web.xml
-	 * file). The syntax is the following:
-	 * <ul>
-	 * <li>Keys: of the form "<code>inject:Xxx into:Yyy</code>"
-	 * <li>Values: of the form "<code>XxxImpl</code>" (or "<code>ZzzImpl</code>
-	 * " that implements "<code>Xxx</code>")
-	 * </ul>
-	 * <p>
-	 * "<code>XxxImpl | ZzzImpl</code>" must be a concrete class, and subclass
-	 * or implements "<code>Xxx</code>". It will be the actual implementation
-	 * injected into the "<code>Yyy</code>" class in lieu of its "
-	 * <code>Xxx</code>" parameter.
-	 * <p>
-	 * "<code>Yyy</code>" must be a concrete class with a constructor that takes
-	 * a "<code>Xxx</code>" object.
-	 * <p>
-	 * Also, you can inject a factory, for instance, using instead of "
-	 * <code>Yyy</code>": "<code>factory:YyyFactory</code>"
-	 * <p>
-	 * Also, you can inject a global ref with: "<code>inject:Xxx ref:aaa</code>
-	 * ", where "<code>aaa</code>" is a name for the ref you will reuse
-	 * afterwards, by using: "<code>inject:ref:Xxx into:Yyy</code>" as key and "
-	 * <code>ref:aaa</code>" as value. The "<code>ref:</code>" prefix is
-	 * repeated ("<code>inject:ref:Xxx</code>" and "<code>ref:aaa</code>")
-	 * because the first one is mandatory, and the second one is kept for
-	 * readibility.
-	 * <p>
-	 * Also, you can inject a class that subclasses a certain type, for
-	 * instance, using instead of "<code>inject:Xxx</code>": "
-	 * <code>inject:class:Uuu</code>"
-	 * <p>
-	 * Also, you can name your injected objects (and reuse the name aftewards),
-	 * for instance, using instead of "<code>ZzzImpl</code>": "
-	 * <code>ZzzImpl:toto</code>", then reusing it in an injection declaration:
-	 * "<code>inject:... into:ZzzImpl:toto</code>"
-	 * <p>
-	 * Note, in order to ease the writing of the configuration, you can use a
-	 * special parameter, named "<code>inject-packages</code>", with a list of
-	 * packages to use as prefixes when looking up the classes from their
-	 * declared names.
-	 */
 	public DependencyInjection(final Map<String, String> map) {
 
 		this(mapToConfig(map));
@@ -118,7 +116,7 @@ class DependencyInjection {
 
 					} else {
 
-						throw new NotImplementedException();
+						throw new NotImplementedException("Illegal config");
 					}
 				}
 			}
