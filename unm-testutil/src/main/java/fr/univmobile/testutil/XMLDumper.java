@@ -167,7 +167,7 @@ public class XMLDumper implements Dumper {
 		private XMLRootDumper(final String rootElementName, final File outFile)
 				throws IOException {
 
-			FileUtils.forceMkdir(outFile.getParentFile());
+			FileUtils.forceMkdir(outFile.getCanonicalFile().getParentFile());
 
 			os = new FileOutputStream(outFile);
 
