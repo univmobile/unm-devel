@@ -72,14 +72,29 @@ public class DependencyInjectionTest {
 	}
 
 	@Test
+	public void testInjectFactoryWithFileRef() throws Exception {
+
+		final Map<String, String> initParams = DomBinderUtils.xmlContentToJava(
+				new File("src/test/inject/005-inject-factoryWithFileRef.xml"),
+				InitParams.class).getInitParams();
+
+		final MyApi api = new DependencyInjection(initParams).getInject(
+				MyApi.class).into(DependencyInjectionTest.class);
+
+		assertEquals("Hello World!(pom.xml)", api.doSomething());
+	}
+
+	@Test
 	public void testInjectRef() throws Exception {
 
 		final Map<String, String> initParams = DomBinderUtils.xmlContentToJava(
 				new File("src/test/inject/004-inject-ref.xml"),
 				InitParams.class).getInitParams();
 
-		assertEquals("z", new DependencyInjection(initParams).getInject(String.class).ref("toto"));
-		}
+		assertEquals("z",
+				new DependencyInjection(initParams).getInject(String.class)
+						.ref("toto"));
+	}
 
 	@XPath("/init-params")
 	public interface InitParams {
@@ -130,20 +145,35 @@ class MyHandlerImpl implements MyHandler {
 abstract class MyHandlerFactory {
 
 	public static MyHandler newHandler(final String x) {
-		
+
 		return new MyHandler() {
-			
+
 			@Override
 			public String handleSomething(final String s) {
-				
+
 				final StringBuilder sb = new StringBuilder();
-				
-				for (final char c: s.toCharArray()) {
-					
+
+				for (final char c : s.toCharArray()) {
+
 					sb.append(c).append(x);
 				}
-				
+
 				return sb.toString();
+			}
+		};
+	}
+}
+
+abstract class MyFileHandlerFactory {
+
+	public static MyHandler newHandler(final File x) {
+
+		return new MyHandler() {
+
+			@Override
+			public String handleSomething(final String s) {
+
+				return s + "(" + x.getName() + ")";
 			}
 		};
 	}
