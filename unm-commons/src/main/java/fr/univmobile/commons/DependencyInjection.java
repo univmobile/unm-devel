@@ -22,6 +22,9 @@ import javax.annotation.Nullable;
 import javax.inject.Inject;
 import javax.inject.Named;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+
 import com.avcompris.lang.NotImplementedException;
 import com.google.common.collect.Iterables;
 import com.google.inject.AbstractModule;
@@ -29,7 +32,7 @@ import com.google.inject.Guice;
 import com.google.inject.Injector;
 import com.google.inject.name.Names;
 
-public class DependencyInjection {
+class DependencyInjection {
 
 	/**
 	 * Initialize a {@link DependencyInjection} object with a configuration that
@@ -103,9 +106,7 @@ public class DependencyInjection {
 
 						// do nothing. Hardcoded params have already been read.
 
-					} else if (config.injectRef
-							
-							) {
+					} else if (config.injectRef) {
 
 						bindToRef(config.injectClass, config.injectName,
 								config.intoClass, (String) config.implInstance);
@@ -402,6 +403,10 @@ public class DependencyInjection {
 				continue;
 			}
 
+			if (log.isInfoEnabled()) {
+				log.info("Loading " + key + " -> " + value);
+			}
+
 			final String[] s = split(key);
 
 			final String injectClassName;
@@ -592,6 +597,8 @@ public class DependencyInjection {
 
 		return Iterables.toArray(configs, DependencyConfig.class);
 	}
+
+	private static final Log log = LogFactory.getLog(DependencyInjection.class);
 
 	private static Class<?> lookupClass(final String[] injectPackages,
 			final String className) {
