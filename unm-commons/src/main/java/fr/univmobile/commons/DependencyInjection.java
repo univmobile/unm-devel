@@ -1,6 +1,7 @@
 package fr.univmobile.commons;
 
 import static com.google.common.base.Preconditions.checkNotNull;
+import static org.apache.commons.lang3.StringUtils.isBlank;
 import static org.apache.commons.lang3.StringUtils.join;
 import static org.apache.commons.lang3.StringUtils.split;
 import static org.apache.commons.lang3.StringUtils.substringAfter;
@@ -51,6 +52,14 @@ public class DependencyInjection {
 	 * Also, you can inject a factory, for instance, using instead of "
 	 * <code>Yyy</code>": "<code>factory:YyyFactory</code>"
 	 * <p>
+	 * Also, you can inject a global ref with: "<code>inject:Xxx ref:aaa</code>
+	 * ", where "<code>aaa</code>" is a name for the ref you will reuse
+	 * afterwards, by using: "<code>inject:ref:Xxx into:Yyy</code>" as key and "
+	 * <code>ref:aaa</code>" as value. The "<code>ref:</code>" prefix is
+	 * repeated ("<code>inject:ref:Xxx</code>" and "<code>ref:aaa</code>")
+	 * because the first one is mandatory, and the second one is kept for
+	 * readibility.
+	 * <p>
 	 * Also, you can inject a class that subclasses a certain type, for
 	 * instance, using instead of "<code>inject:Xxx</code>": "
 	 * <code>inject:class:Uuu</code>"
@@ -81,7 +90,11 @@ public class DependencyInjection {
 
 				for (final DependencyConfig config : configs) {
 
-					if (!config.isIntoFactory && !config.isImplFactory) {
+					if (config.intoClass == null) {
+
+						// do nothing. Named ref.
+
+					} else if (!config.isIntoFactory && !config.isImplFactory) {
 
 						bindTo(config.injectClass, config.injectName,
 								config.intoClass, config.implClass);
@@ -249,6 +262,13 @@ public class DependencyInjection {
 				continue;
 			}
 
+			if (config.injectRef) {
+
+				final String ref = (String) config.implInstance;
+
+				return getRef(config.injectClass, ref);
+			}
+
 			if (config.implInstance == null) {
 				throw new IllegalStateException("Factory param is null for: "
 						+ factoryClass.getName() + ":" + factoryName
@@ -298,6 +318,28 @@ public class DependencyInjection {
 
 			return injector.getInstance(injectClass);
 		}
+
+		public E ref(final String ref) {
+
+			return getRef(injectClass, ref);
+		}
+	}
+
+	private <E> E getRef(final Class<E> injectClass, final String ref) {
+
+		checkNotNull(ref, "ref");
+
+		for (final DependencyConfig config : configs) {
+
+			if (config.intoClass == null && ref.equals(config.intoName)
+					&& injectClass.equals(config.injectClass)) {
+
+				return injectClass.cast(config.implInstance);
+			}
+		}
+
+		throw new IllegalStateException("Ref not found: " + ref
+				+ " for class: " + injectClass.getName());
 	}
 
 	private static DependencyConfig[] mapToConfig(final Map<String, String> map) {
@@ -330,8 +372,18 @@ public class DependencyInjection {
 
 			final String[] s = split(key);
 
-			final String injectClassName = substringAfter(s[0], "inject:");
+			final String injectClassName;
+			final boolean injectRef;
+			if (s[0].contains("inject:ref:")) {
+				injectClassName = substringAfter(s[0], "inject:ref:");
+				injectRef = true;
+			} else {
+				injectClassName = substringAfter(s[0], "inject:");
+				injectRef = false;
+			}
+
 			final String intoClassName = substringAfter(s[1], "into:");
+			final String ref = substringAfter(s[1], "ref:");
 			final String implClassName = value;
 
 			final DependencyConfig config;
@@ -370,7 +422,8 @@ public class DependencyInjection {
 				final Class<?> implFactoryClass = lookupClass(injectPackages,
 						implFactoryClassName);
 
-				config = new DependencyConfig(injectClass, injectName, //
+				config = new DependencyConfig( //
+						injectClass, injectName, injectRef,//
 						false, intoClass, null, //
 						true, implFactoryClass, implFactoryName, null);
 
@@ -396,7 +449,17 @@ public class DependencyInjection {
 
 				final Object implInstance;
 
-				if (String.class.equals(injectClass)) {
+				if (injectRef) {
+
+					if (!value.contains("ref:")) {
+						throw new IllegalArgumentException(
+								"ref should always start with \"ref:\": "
+										+ value);
+					}
+
+					implInstance = substringAfter(value, "ref:");
+
+				} else if (String.class.equals(injectClass)) {
 
 					implInstance = value;
 
@@ -421,8 +484,34 @@ public class DependencyInjection {
 							+ injectClassName + ", value: " + value);
 				}
 
-				config = new DependencyConfig(injectClass, injectName, //
+				config = new DependencyConfig( //
+						injectClass, injectName, injectRef, //
 						true, intoFactoryClass, intoFactoryName, //
+						false, null, null, implInstance);
+
+			} else if (!isBlank(ref) && isBlank(intoClassName)) {
+
+				// Hardcoded params.
+
+				final Object implInstance;
+
+				if (String.class.equals(injectClass)) {
+
+					implInstance = value;
+
+				} else if (File.class.equals(injectClass)) {
+
+					implInstance = new File(value);
+
+				} else {
+
+					throw new NotImplementedException("Ref type: "
+							+ injectClassName + ", value: " + value);
+				}
+
+				config = new DependencyConfig( //
+						injectClass, injectName, injectRef, //
+						false, null, ref, //
 						false, null, null, implInstance);
 
 			} else {
@@ -432,7 +521,8 @@ public class DependencyInjection {
 				final Class<?> implClass = lookupClass(injectPackages,
 						implClassName);
 
-				config = new DependencyConfig(injectClass, injectName, //
+				config = new DependencyConfig( //
+						injectClass, injectName, injectRef, //
 						false, intoClass, null, //
 						false, implClass, null, null);
 			}

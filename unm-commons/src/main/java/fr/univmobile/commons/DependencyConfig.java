@@ -18,9 +18,10 @@ class DependencyConfig {
 
 			final Class<?> injectClass, //
 			@Nullable final String injectName,
+			final boolean injectRef,
 
 			final boolean isIntoFactory, //
-			final Class<?> intoClass, //
+			@Nullable final Class<?> intoClass, //
 			@Nullable final String intoName, //
 
 			final boolean isImplFactory, //
@@ -32,10 +33,16 @@ class DependencyConfig {
 		this.isImplFactory = isImplFactory;
 
 		this.injectClass = checkNotNull(injectClass, "injectClass");
-		this.intoClass = checkNotNull(intoClass, "intoClass");
+		this.intoClass = intoClass;
 		this.implClass = implClass;
 
+		if (intoClass == null && intoName == null) {
+			throw new IllegalArgumentException(
+					"intoClass == null && intoName == null");
+		}
+
 		this.injectName = injectName;
+		this.injectRef=injectRef;
 		this.intoName = intoName;
 		this.implName = implName;
 		this.implInstance = implInstance;
@@ -45,6 +52,8 @@ class DependencyConfig {
 	public final boolean isImplFactory;
 
 	public final Class<?> injectClass;
+	public final boolean injectRef;
+	@Nullable
 	public final Class<?> intoClass;
 	@Nullable
 	public final Class<?> implClass;

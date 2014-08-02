@@ -30,7 +30,6 @@ public class DependencyInjectionTest {
 				MyApi.class).into(DependencyInjectionTest.class);
 
 		assertEquals("HELLO WORLD!", api.doSomething());
-
 	}
 
 	@Test
@@ -44,7 +43,6 @@ public class DependencyInjectionTest {
 				MyApi.class).into(DependencyInjectionTest.class);
 
 		assertEquals("HELLO WORLD!", api.doSomething());
-
 	}
 
 	@Test
@@ -58,8 +56,30 @@ public class DependencyInjectionTest {
 				MyApi.class).into(DependencyInjectionTest.class);
 
 		assertEquals("Hxexlxlxox xWxoxrxlxdx!x", api.doSomething());
-
 	}
+
+	@Test
+	public void testInjectFactoryWithRef() throws Exception {
+
+		final Map<String, String> initParams = DomBinderUtils.xmlContentToJava(
+				new File("src/test/inject/003-inject-factoryWithRef.xml"),
+				InitParams.class).getInitParams();
+
+		final MyApi api = new DependencyInjection(initParams).getInject(
+				MyApi.class).into(DependencyInjectionTest.class);
+
+		assertEquals("Hzezlzlzoz zWzozrzlzdz!z", api.doSomething());
+	}
+
+	@Test
+	public void testInjectRef() throws Exception {
+
+		final Map<String, String> initParams = DomBinderUtils.xmlContentToJava(
+				new File("src/test/inject/004-inject-ref.xml"),
+				InitParams.class).getInitParams();
+
+		assertEquals("z", new DependencyInjection(initParams).getInject(String.class).ref("toto"));
+		}
 
 	@XPath("/init-params")
 	public interface InitParams {
