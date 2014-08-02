@@ -53,7 +53,10 @@ public class XMLDumper implements Dumper {
 			pw.print(">");
 		}
 
-		pw.print(characters);
+		pw.print(characters //
+				.replace("&", "&amp;") //
+				.replace("<", "&lt;") //
+				.replace(">", "&gt;"));
 
 		return this;
 	}
