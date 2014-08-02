@@ -8,6 +8,7 @@ import java.util.Locale;
 import java.util.Map;
 
 import javax.inject.Inject;
+import javax.inject.Named;
 
 import net.avcompris.binding.annotation.XPath;
 import net.avcompris.binding.dom.helper.DomBinderUtils;
@@ -96,6 +97,21 @@ public class DependencyInjectionTest {
 						.ref("toto"));
 	}
 
+	@Test
+	public void testInjectConstructorWithRef() throws Exception {
+
+		final Map<String, String> initParams = DomBinderUtils.xmlContentToJava(
+				new File("src/test/inject/006-inject-constructorWithRef.xml"),
+				InitParams.class).getInitParams();
+
+		final MyApi api = new DependencyInjection(initParams).getInject(
+				MyApi.class).into(DependencyInjectionTest.class);
+
+		assertEquals(MyApiImplWithString.class, api.getClass());
+
+		assertEquals("zHello World!z", api.doSomething());
+	}
+
 	@XPath("/init-params")
 	public interface InitParams {
 
@@ -176,5 +192,22 @@ abstract class MyFileHandlerFactory {
 				return s + "(" + x.getName() + ")";
 			}
 		};
+	}
+}
+
+class MyApiImplWithString implements MyApi {
+
+	@Inject
+	public MyApiImplWithString(@Named final String toto) {
+
+		this.toto = checkNotNull(toto, "toto");
+	}
+
+	private final String toto;
+
+	@Override
+	public String doSomething() {
+
+		return toto + "Hello World!" + toto;
 	}
 }

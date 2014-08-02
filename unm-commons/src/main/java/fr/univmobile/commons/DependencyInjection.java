@@ -94,11 +94,6 @@ public class DependencyInjection {
 
 						// do nothing. Named ref.
 
-					} else if (!config.isIntoFactory && !config.isImplFactory) {
-
-						bindTo(config.injectClass, config.injectName,
-								config.intoClass, config.implClass);
-
 					} else if (config.isImplFactory) {
 
 						bindToFactory(config.injectClass, config.implClass,
@@ -107,6 +102,18 @@ public class DependencyInjection {
 					} else if (config.isIntoFactory) {
 
 						// do nothing. Hardcoded params have already been read.
+
+					} else if (config.injectRef
+							
+							) {
+
+						bindToRef(config.injectClass, config.injectName,
+								config.intoClass, (String) config.implInstance);
+
+					} else if (!config.isIntoFactory && !config.isImplFactory) {
+
+						bindTo(config.injectClass, config.injectName,
+								config.intoClass, config.implClass);
 
 					} else {
 
@@ -119,60 +126,49 @@ public class DependencyInjection {
 					@Nullable final String injectName,
 					final Class<?> intoClass, final Class<?> implClass) {
 
-				String named = null;
+				// String named = null;
 
 				if (injectName != null) {
 
-					named = injectName;
+					// named = injectName;
 
 				} else {
 
-					loop: for (final Constructor<?> constructor : intoClass
-							.getConstructors()) {
+					final String named = getNamedAnnotationValue(injectClass,
+							intoClass);
 
-						if (!constructor.isAnnotationPresent(Inject.class)) {
-							continue;
-						}
+					final Class<? extends I> targetClass = implClass
+							.asSubclass(injectClass);
 
-						final Annotation[][] paramAnnotations = constructor
-								.getParameterAnnotations();
+					if (named == null) {
 
-						final Class<?>[] paramTypes = constructor
-								.getParameterTypes();
+						bind(injectClass).to(targetClass);
 
-						for (int i = 0; i < paramTypes.length; ++i) {
+					} else {
 
-							if (!injectClass.equals(paramTypes[i])) {
-								continue;
-							}
-
-							for (int j = 0; j < paramAnnotations[i].length; ++j) {
-
-								final Annotation paramAnnotation = paramAnnotations[i][j];
-
-								if (Named.class.equals(paramAnnotation
-										.annotationType())) {
-
-									named = ((Named) paramAnnotation).value();
-
-									break loop;
-								}
-							}
-						}
+						bind(injectClass).annotatedWith(Names.named(named)).to(
+								targetClass);
 					}
 				}
+			}
 
-				final Class<? extends I> targetClass = implClass
-						.asSubclass(injectClass);
+			private <I> void bindToRef(final Class<I> injectClass,
+					@Nullable final String injectName,
+					final Class<?> intoClass, final String ref) {
+
+				final I value = getRef(injectClass, substringAfter(ref, "ref:"));
+
+				final String named = getNamedAnnotationValue(injectClass,
+						intoClass);
 
 				if (named == null) {
 
-					bind(injectClass).to(targetClass);
+					bind(injectClass).toInstance(value);
 
 				} else {
 
-					bind(injectClass).annotatedWith(Names.named(named)).to(
-							targetClass);
+					bind(injectClass).annotatedWith(Names.named(named))
+							.toInstance(value);
 				}
 			}
 
@@ -185,6 +181,42 @@ public class DependencyInjection {
 		};
 
 		injector = Guice.createInjector(module);
+	}
+
+	@Nullable
+	private static String getNamedAnnotationValue(final Class<?> injectClass,
+			final Class<?> intoClass) {
+
+		for (final Constructor<?> constructor : intoClass.getConstructors()) {
+
+			if (!constructor.isAnnotationPresent(Inject.class)) {
+				continue;
+			}
+
+			final Annotation[][] paramAnnotations = constructor
+					.getParameterAnnotations();
+
+			final Class<?>[] paramTypes = constructor.getParameterTypes();
+
+			for (int i = 0; i < paramTypes.length; ++i) {
+
+				if (!injectClass.equals(paramTypes[i])) {
+					continue;
+				}
+
+				for (int j = 0; j < paramAnnotations[i].length; ++j) {
+
+					final Annotation paramAnnotation = paramAnnotations[i][j];
+
+					if (Named.class.equals(paramAnnotation.annotationType())) {
+
+						return ((Named) paramAnnotation).value();
+					}
+				}
+			}
+		}
+
+		return null;
 	}
 
 	private <T> T invokeFactory(final Class<T> injectClass,
@@ -512,6 +544,34 @@ public class DependencyInjection {
 				config = new DependencyConfig( //
 						injectClass, injectName, injectRef, //
 						false, null, ref, //
+						false, null, null, implInstance);
+
+			} else if (injectRef) {
+
+				// Hardcoded params.
+
+				final Object implInstance;
+
+				final Class<?> intoClass = lookupClass(injectPackages,
+						intoClassName);
+
+				if (String.class.equals(injectClass)) {
+
+					implInstance = value;
+
+				} else if (File.class.equals(injectClass)) {
+
+					implInstance = new File(value);
+
+				} else {
+
+					throw new NotImplementedException("Ref type: "
+							+ injectClassName + ", value: " + value);
+				}
+
+				config = new DependencyConfig( //
+						injectClass, injectName, injectRef, //
+						false, intoClass, ref, //
 						false, null, null, implInstance);
 
 			} else {
