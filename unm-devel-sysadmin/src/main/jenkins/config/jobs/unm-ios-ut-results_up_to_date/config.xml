@@ -1,9 +1,8 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<maven2-moduleset plugin="maven-plugin@2.5">
+<?xml version="1.0" encoding="UTF-8"?><maven2-moduleset plugin="maven-plugin@2.5">
   <actions/>
-  <description>Tableau de bord d’intégration continue :&#xd;
-&lt;a href=&quot;http://univmobile.vswip.com/job/unm-devel-it/lastSuccessfulBuild/artifact/unm-devel-it/target/unm-ci-dump.html&quot;&gt;&#xd;
-  UnivMobile iOS — Intégration continue&#xd;
+  <description>Tableau de bord d’intégration continue :&#13;
+&lt;a href="http://univmobile.vswip.com/job/unm-devel-it/lastSuccessfulBuild/artifact/unm-devel-it/target/unm-ci-dump.html"&gt;&#13;
+  UnivMobile iOS — Intégration continue&#13;
 &lt;/a&gt;</description>
   <keepDependencies>false</keepDependencies>
   <properties/>
@@ -31,7 +30,7 @@
   <jdk>JDK 1.6.0_31</jdk>
   <triggers>
     <jenkins.triggers.ReverseBuildTrigger>
-      <spec></spec>
+      <spec/>
       <upstreamProjects>unm-ios-ut-results</upstreamProjects>
       <threshold>
         <name>SUCCESS</name>
