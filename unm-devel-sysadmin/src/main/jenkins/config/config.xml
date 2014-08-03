@@ -279,7 +279,22 @@ Captures d’écrans des tests d’intégration :&#xd;
 &lt;a href=&quot;http://univmobile.vswip.com/job/unm-devel-it/lastSuccessfulBuild/artifact/unm-devel-it/target/unm-mobileweb-it-scenarios-dump.html&quot;&gt;&#xd;
   UnivMobile mobile web — Scénarios&#xd;
 &lt;/a&gt;&#xd;
-&lt;/ul&gt;</description>
+&lt;/ul&gt;&#xd;
+&#xd;
+UnivMobile backend :&#xd;
+&lt;ul&gt;&#xd;
+&lt;li&gt;Tableau de bord d’intégration continue :&#xd;
+&lt;a href=&quot;http://univmobile.vswip.com/job/unm-devel-it/lastSuccessfulBuild/artifact/unm-devel-it/target/unm-backend-ci-dump.html&quot;&gt;&#xd;
+  UnivMobile backend — Intégration continue&#xd;
+&lt;/a&gt;&#xd;
+&lt;li&gt;&#xd;
+Captures d’écrans des tests d’intégration :&#xd;
+&lt;a href=&quot;http://univmobile.vswip.com/job/unm-devel-it/lastSuccessfulBuild/artifact/unm-devel-it/target/unm-backend-it-scenarios-dump.html&quot;&gt;&#xd;
+  UnivMobile backend — Scénarios&#xd;
+&lt;/a&gt;&#xd;
+&lt;/ul&gt;&#xd;
+&#xd;
+</description>
       <filterExecutors>false</filterExecutors>
       <filterQueue>false</filterQueue>
       <properties class="hudson.model.View$PropertyList"/>
@@ -377,6 +392,7 @@ Tableau de bord d’intégration continue :&#xd;
         <string>unm-backend-mock_site</string>
         <string>unm-commons</string>
         <string>unm-commons_release</string>
+        <string>unm-devel-xmldoclet</string>
         <string>unm-it-commons</string>
         <string>unm-it-commons_ios6</string>
         <string>unm-it-commons_ios7</string>
@@ -578,13 +594,29 @@ Captures d’écrans des tests d’intégration :&#xd;
 &lt;a href=&quot;http://univmobile.vswip.com/job/unm-devel-it/lastSuccessfulBuild/artifact/unm-devel-it/target/unm-mobileweb-it-scenarios-dump.html&quot;&gt;&#xd;
   UnivMobile mobile web — Scénarios&#xd;
 &lt;/a&gt;&#xd;
-&lt;/ul&gt;</description>
+&lt;/ul&gt;&#xd;
+&#xd;
+UnivMobile backend :&#xd;
+&lt;ul&gt;&#xd;
+&lt;li&gt;Tableau de bord d’intégration continue :&#xd;
+&lt;a href=&quot;http://univmobile.vswip.com/job/unm-devel-it/lastSuccessfulBuild/artifact/unm-devel-it/target/unm-backend-ci-dump.html&quot;&gt;&#xd;
+  UnivMobile backend — Intégration continue&#xd;
+&lt;/a&gt;&#xd;
+&lt;li&gt;&#xd;
+Captures d’écrans des tests d’intégration :&#xd;
+&lt;a href=&quot;http://univmobile.vswip.com/job/unm-devel-it/lastSuccessfulBuild/artifact/unm-devel-it/target/unm-backend-it-scenarios-dump.html&quot;&gt;&#xd;
+  UnivMobile backend — Scénarios&#xd;
+&lt;/a&gt;&#xd;
+&lt;/ul&gt;&#xd;
+&#xd;
+</description>
       <filterExecutors>false</filterExecutors>
       <filterQueue>false</filterQueue>
       <properties class="hudson.model.View$PropertyList"/>
       <jobNames>
         <comparator class="hudson.util.CaseInsensitiveComparator"/>
-        <string>unm-backend-it_macos</string>
+        <string>unm-backend-it-data</string>
+        <string>unm-mobileweb-core</string>
       </jobNames>
       <jobFilters/>
       <columns>
