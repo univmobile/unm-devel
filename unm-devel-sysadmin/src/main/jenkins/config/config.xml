@@ -433,6 +433,7 @@ Tableau de bord d’intégration continue :&#xd;
         <string>unm-backend-it</string>
         <string>unm-backend-it_macos</string>
         <string>unm-backend-parent</string>
+        <string>unm-commons-datasource</string>
       </jobNames>
       <jobFilters/>
       <columns>

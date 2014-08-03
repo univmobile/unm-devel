@@ -11,15 +11,15 @@
   <keepDependencies>false</keepDependencies>
   <properties>
     <hudson.security.AuthorizationMatrixProperty>
-      <permission>hudson.scm.SCM.Tag:mgauzins</permission>
-      <permission>hudson.model.Item.Build:mgauzins</permission>
-      <permission>hudson.model.Run.Delete:mgauzins</permission>
-      <permission>hudson.model.Item.Workspace:mgauzins</permission>
-      <permission>hudson.model.Run.Update:mgauzins</permission>
       <permission>hudson.model.Item.Cancel:mgauzins</permission>
+      <permission>hudson.model.Item.Workspace:mgauzins</permission>
+      <permission>hudson.model.Item.Build:mgauzins</permission>
+      <permission>hudson.model.Item.Read:mgauzins</permission>
+      <permission>hudson.model.Run.Delete:mgauzins</permission>
       <permission>hudson.model.Item.Discover:mgauzins</permission>
       <permission>hudson.model.Item.Configure:mgauzins</permission>
-      <permission>hudson.model.Item.Read:mgauzins</permission>
+      <permission>hudson.scm.SCM.Tag:mgauzins</permission>
+      <permission>hudson.model.Run.Update:mgauzins</permission>
       <permission>hudson.model.Item.Delete:mgauzins</permission>
     </hudson.security.AuthorizationMatrixProperty>
   </properties>
@@ -44,7 +44,7 @@
   <canRoam>false</canRoam>
   <disabled>false</disabled>
   <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
-  <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
+  <blockBuildWhenUpstreamBuilding>true</blockBuildWhenUpstreamBuilding>
   <jdk>Java 7</jdk>
   <triggers>
     <hudson.triggers.SCMTrigger>
@@ -89,6 +89,7 @@ BUILD_DISPLAY_NAME=${BUILD_DISPLAY_NAME}</properties>
       <latestOnly>false</latestOnly>
       <allowEmptyArchive>false</allowEmptyArchive>
       <onlyIfSuccessful>false</onlyIfSuccessful>
+      <defaultExcludes>true</defaultExcludes>
     </hudson.tasks.ArtifactArchiver>
   </publishers>
   <buildWrappers/>
