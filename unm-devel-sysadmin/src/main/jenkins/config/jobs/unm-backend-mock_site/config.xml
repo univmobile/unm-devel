@@ -1,15 +1,16 @@
-<?xml version="1.0" encoding="UTF-8"?><maven2-moduleset plugin="maven-plugin@2.5">
+<?xml version='1.0' encoding='UTF-8'?>
+<maven2-moduleset plugin="maven-plugin@2.5">
   <actions/>
-  <description>Main Jenkins Job: &lt;a&#13;
-  href="http://univmobile.vswip.com/job/unm-backend-mock/"&gt;http://univmobile.vswip.com/job/unm-backend-mock/&lt;/a&gt;&#13;
-&lt;p&gt;&#13;
-GitHub: &lt;a href="https://github.com/univmobile/unm-devel/tree/master/unm-backend-mock"&gt;https://github.com/univmobile/unm-devel/tree/master/unm-backend-mock&#13;
-&lt;/a&gt;&#13;
-&lt;p&gt;&#13;
-Maven Generated Site: &lt;a&#13;
-  href="http://univmobile.vswip.com/nexus/content/sites/pub/unm-backend-mock/"&gt;http://univmobile.vswip.com/nexus/content/sites/pub/unm-backend-mock/&lt;/a&gt;&#13;
-&lt;a&#13;
-  href="http://univmobile.vswip.com/nexus/content/sites/pub/unm-backend-mock/0.0.1-SNAPSHOT/"&gt;0.0.1-SNAPSHOT/&lt;/a&gt;&#13;
+  <description>Main Jenkins Job: &lt;a&#xd;
+  href=&quot;http://univmobile.vswip.com/job/unm-backend-mock/&quot;&gt;http://univmobile.vswip.com/job/unm-backend-mock/&lt;/a&gt;&#xd;
+&lt;p&gt;&#xd;
+GitHub: &lt;a href=&quot;https://github.com/univmobile/unm-devel/tree/master/unm-backend-mock&quot;&gt;https://github.com/univmobile/unm-devel/tree/master/unm-backend-mock&#xd;
+&lt;/a&gt;&#xd;
+&lt;p&gt;&#xd;
+Maven Generated Site: &lt;a&#xd;
+  href=&quot;http://univmobile.vswip.com/nexus/content/sites/pub/unm-backend-mock/&quot;&gt;http://univmobile.vswip.com/nexus/content/sites/pub/unm-backend-mock/&lt;/a&gt;&#xd;
+&lt;a&#xd;
+  href=&quot;http://univmobile.vswip.com/nexus/content/sites/pub/unm-backend-mock/0.0.1-SNAPSHOT/&quot;&gt;0.0.1-SNAPSHOT/&lt;/a&gt;&#xd;
 </description>
   <keepDependencies>false</keepDependencies>
   <properties/>
