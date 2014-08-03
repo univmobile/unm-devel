@@ -1,15 +1,14 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<maven2-moduleset plugin="maven-plugin@2.5">
+<?xml version="1.0" encoding="UTF-8"?><maven2-moduleset plugin="maven-plugin@2.5">
   <actions/>
-  <description>GitHub: &lt;a href=&quot;https://github.com/univmobile/unm-devel/tree/develop/unm-it-parent&quot;&gt;&#xd;
-https://github.com/univmobile/unm-devel/tree/develop/unm-it-parent&#xd;
-&lt;/a&gt;&#xd;
-&lt;p&gt;&#xd;
-Maven Generated Site: &lt;a&#xd;
-  href=&quot;http://univmobile.vswip.com/nexus/content/sites/pub/unm-it-parent/&quot;&gt;&#xd;
-  http://univmobile.vswip.com/nexus/content/sites/pub/unm-it-parent/&lt;/a&gt;&#xd;
-&lt;a&#xd;
-  href=&quot;http://univmobile.vswip.com/nexus/content/sites/pub/unm-it-parent/0.0.1-SNAPSHOT/&quot;&gt;0.0.1-SNAPSHOT/&lt;/a&gt;&#xd;
+  <description>GitHub: &lt;a href="https://github.com/univmobile/unm-devel/tree/develop/unm-it-parent"&gt;&#13;
+https://github.com/univmobile/unm-devel/tree/develop/unm-it-parent&#13;
+&lt;/a&gt;&#13;
+&lt;p&gt;&#13;
+Maven Generated Site: &lt;a&#13;
+  href="http://univmobile.vswip.com/nexus/content/sites/pub/unm-it-parent/"&gt;&#13;
+  http://univmobile.vswip.com/nexus/content/sites/pub/unm-it-parent/&lt;/a&gt;&#13;
+&lt;a&#13;
+  href="http://univmobile.vswip.com/nexus/content/sites/pub/unm-it-parent/0.0.1-SNAPSHOT/"&gt;0.0.1-SNAPSHOT/&lt;/a&gt;&#13;
 </description>
   <keepDependencies>false</keepDependencies>
   <properties/>

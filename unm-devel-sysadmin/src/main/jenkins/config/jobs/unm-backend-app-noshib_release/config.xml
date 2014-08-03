@@ -1,21 +1,20 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<maven2-moduleset plugin="maven-plugin@2.5">
+<?xml version="1.0" encoding="UTF-8"?><maven2-moduleset plugin="maven-plugin@2.5">
   <actions/>
-  <description>GitHub: &lt;a href=&quot;https://github.com/univmobile/unm-backend/tree/master/unm-backend-app-noshib&quot;&gt;&#xd;
-https://github.com/univmobile/unm-backend/tree/master/unm-backend-app-noshib&#xd;
-&lt;/a&gt;&#xd;
-&lt;p&gt;&#xd;
-Maven Generated Site: &lt;a&#xd;
-  href=&quot;http://univmobile.vswip.com/nexus/content/sites/pub/unm-backend-app-noshib/&quot;&gt;&#xd;
-  http://univmobile.vswip.com/nexus/content/sites/pub/unm-backend-app-noshib/&lt;/a&gt;&#xd;
-&lt;a&#xd;
-  href=&quot;http://univmobile.vswip.com/nexus/content/sites/pub/unm-backend-app-noshib/0.0.2/&quot;&gt;0.0.2/&lt;/a&gt;&#xd;
-&lt;p&gt;&#xd;
-Maven Artifacts: &lt;a&#xd;
-  href=&quot;http://univmobile.vswip.com/nexus/content/repositories/releases/fr/univmobile/unm-backend-app-noshib/&quot;&gt;&#xd;
-  http://univmobile.vswip.com/nexus/content/repositories/releases/fr/univmobile/unm-backend-app-noshib/&lt;/a&gt;&#xd;
-&lt;a&#xd;
-  href=&quot;http://univmobile.vswip.com/nexus/content/repositories/releases/fr/univmobile/unm-backend-app-noshib/0.0.2/&quot;&gt;0.0.2/&lt;/a&gt;&#xd;
+  <description>GitHub: &lt;a href="https://github.com/univmobile/unm-backend/tree/master/unm-backend-app-noshib"&gt;&#13;
+https://github.com/univmobile/unm-backend/tree/master/unm-backend-app-noshib&#13;
+&lt;/a&gt;&#13;
+&lt;p&gt;&#13;
+Maven Generated Site: &lt;a&#13;
+  href="http://univmobile.vswip.com/nexus/content/sites/pub/unm-backend-app-noshib/"&gt;&#13;
+  http://univmobile.vswip.com/nexus/content/sites/pub/unm-backend-app-noshib/&lt;/a&gt;&#13;
+&lt;a&#13;
+  href="http://univmobile.vswip.com/nexus/content/sites/pub/unm-backend-app-noshib/0.0.2/"&gt;0.0.2/&lt;/a&gt;&#13;
+&lt;p&gt;&#13;
+Maven Artifacts: &lt;a&#13;
+  href="http://univmobile.vswip.com/nexus/content/repositories/releases/fr/univmobile/unm-backend-app-noshib/"&gt;&#13;
+  http://univmobile.vswip.com/nexus/content/repositories/releases/fr/univmobile/unm-backend-app-noshib/&lt;/a&gt;&#13;
+&lt;a&#13;
+  href="http://univmobile.vswip.com/nexus/content/repositories/releases/fr/univmobile/unm-backend-app-noshib/0.0.2/"&gt;0.0.2/&lt;/a&gt;&#13;
 </description>
   <keepDependencies>false</keepDependencies>
   <properties/>
@@ -50,7 +49,7 @@ Maven Artifacts: &lt;a&#xd;
     <artifactId>unm-backend-app-noshib</artifactId>
   </rootModule>
   <rootPOM>unm-backend-app-noshib/pom.xml</rootPOM>
-  <goals>-U clean site:jar deploy -DGIT_COMMIT=&quot;${GIT_COMMIT}&quot; -DBUILD_ID=&quot;${BUILD_ID}&quot; -DBUILD_NUMBER=&quot;${BUILD_NUMBER}&quot; -DBUILD_DISPLAY_NAME=&quot;${BUILD_DISPLAY_NAME}&quot;</goals>
+  <goals>-U clean site:jar deploy -DGIT_COMMIT="${GIT_COMMIT}" -DBUILD_ID="${BUILD_ID}" -DBUILD_NUMBER="${BUILD_NUMBER}" -DBUILD_DISPLAY_NAME="${BUILD_DISPLAY_NAME}"</goals>
   <aggregatorStyleBuild>true</aggregatorStyleBuild>
   <incrementalBuild>false</incrementalBuild>
   <ignoreUpstremChanges>true</ignoreUpstremChanges>
