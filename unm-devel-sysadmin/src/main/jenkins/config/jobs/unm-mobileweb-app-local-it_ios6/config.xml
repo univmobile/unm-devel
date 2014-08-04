@@ -1,6 +1,7 @@
-<?xml version="1.0" encoding="UTF-8"?><maven2-moduleset plugin="maven-plugin@2.5">
+<?xml version='1.0' encoding='UTF-8'?>
+<maven2-moduleset plugin="maven-plugin@2.5">
   <actions/>
-  <description/>
+  <description></description>
   <keepDependencies>false</keepDependencies>
   <properties/>
   <scm class="hudson.plugins.git.GitSCM" plugin="git@2.2.2">
@@ -21,13 +22,13 @@
   </scm>
   <assignedNode>macos_ios6a</assignedNode>
   <canRoam>false</canRoam>
-  <disabled>false</disabled>
+  <disabled>true</disabled>
   <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
   <blockBuildWhenUpstreamBuilding>true</blockBuildWhenUpstreamBuilding>
   <jdk>MacOS_iOS6</jdk>
   <triggers>
     <jenkins.triggers.ReverseBuildTrigger>
-      <spec/>
+      <spec></spec>
       <upstreamProjects>unm-it-parent, unm-it-commons, unm-mobileweb-app-local, unm-backend-it-data, </upstreamProjects>
       <threshold>
         <name>SUCCESS</name>

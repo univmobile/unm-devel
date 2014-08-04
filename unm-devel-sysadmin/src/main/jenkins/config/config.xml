@@ -4,7 +4,7 @@
     <string>jenkins.diagnostics.SecurityIsOffMonitor</string>
   </disabledAdministrativeMonitors>
   <version>1.574</version>
-  <numExecutors>1</numExecutors>
+  <numExecutors>4</numExecutors>
   <mode>NORMAL</mode>
   <useSecurity>true</useSecurity>
   <authorizationStrategy class="hudson.security.ProjectMatrixAuthorizationStrategy">
@@ -427,7 +427,6 @@ Tableau de bord d’intégration continue :&#xd;
         <string>unm-backend-app</string>
         <string>unm-backend-app-noshib</string>
         <string>unm-backend-client</string>
-        <string>unm-backend-client_release</string>
         <string>unm-backend-core</string>
         <string>unm-backend-filter-noshib</string>
         <string>unm-backend-it</string>
