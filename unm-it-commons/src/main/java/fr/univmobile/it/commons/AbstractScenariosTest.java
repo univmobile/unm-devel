@@ -8,6 +8,7 @@ import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.lang.reflect.Modifier;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -263,11 +264,21 @@ public abstract class AbstractScenariosTest {
 
 		// 1. SETUP METHODS
 
-		instance.setUp();
+		recursiveSetUp(scenariosClass); // Also call instance.setUp()
+	}
 
-		for (final Method method : scenariosClass.getMethods()) {
+	private void recursiveSetUp(final Class<?> clazz) throws Exception {
+
+		final Class<?> superclazz = clazz.getSuperclass();
+
+		if (superclazz != null) {
+			recursiveSetUp(superclazz);
+		}
+
+		for (final Method method : clazz.getDeclaredMethods()) {
 
 			if (method.isAnnotationPresent(Before.class)
+					&& Modifier.isPublic(method.getModifiers())
 					&& method.getParameterTypes().length == 0) {
 
 				System.out.println("Invoking: @Before " //
@@ -283,9 +294,17 @@ public abstract class AbstractScenariosTest {
 
 		// 9. RELEASE OBJECT INSTANCE
 
-		for (final Method method : scenariosClass.getMethods()) {
+		recursiveTearDown(scenariosClass); // Also call instance.tearDown()
+
+		instance = null;
+	}
+	
+	private void recursiveTearDown(final Class<?> clazz) throws Exception {
+		
+		for (final Method method : clazz.getDeclaredMethods()) {
 
 			if (method.isAnnotationPresent(After.class)
+					&& Modifier.isPublic(method.getModifiers())
 					&& method.getParameterTypes().length == 0) {
 
 				System.out.println("Invoking: @After " //
@@ -295,7 +314,11 @@ public abstract class AbstractScenariosTest {
 			}
 		}
 
-		instance = null;
+		final Class<?> superclazz = clazz.getSuperclass();
+
+		if (superclazz != null) {
+			recursiveTearDown(superclazz);
+		}
 	}
 
 	private WebDriverEnabledTest instance;
@@ -315,12 +338,6 @@ public abstract class AbstractScenariosTest {
 		} catch (final InvocationTargetException e) {
 
 			throw e.getTargetException();
-
-		} finally {
-
-			// 9. TEARDOWN
-
-			instance.tearDown();
 		}
 
 		assertFalse("There were errors.", engine.hasErrors());
