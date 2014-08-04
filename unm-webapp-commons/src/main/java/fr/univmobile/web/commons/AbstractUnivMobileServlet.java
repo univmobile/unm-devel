@@ -35,6 +35,18 @@ public abstract class AbstractUnivMobileServlet extends HttpServlet {
 	@Override
 	public abstract void init() throws ServletException;
 
+	protected final String getBaseURL() {
+
+		if (baseURL == null) {
+			throw new IllegalStateException("baseURL has not been initialized."
+					+ " Make sure the init() method was called.");
+		}
+
+		return baseURL;
+	}
+
+	private String baseURL;
+
 	protected final void init(final AbstractController... c)
 			throws ServletException {
 
@@ -53,7 +65,7 @@ public abstract class AbstractUnivMobileServlet extends HttpServlet {
 
 		final ServletConfig servletConfig = getServletConfig();
 
-		String baseURL = servletConfig.getInitParameter("baseURL");
+		baseURL = servletConfig.getInitParameter("baseURL");
 
 		if (isBlank(baseURL)) {
 
