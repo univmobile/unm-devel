@@ -9,11 +9,20 @@ import java.io.PrintWriter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+
 public abstract class UnivMobileHttpUtils {
+
+	private static Log log = LogFactory.getLog(UnivMobileHttpUtils.class);
 
 	public static void sendError404(final HttpServletRequest request,
 			final HttpServletResponse response, final String path)
 			throws IOException {
+
+		final String message = "404 NOT FOUND -- path: " + path;
+
+		log.error(message);
 
 		response.setContentType("text/plain");
 		response.setCharacterEncoding(UTF_8);
@@ -22,7 +31,7 @@ public abstract class UnivMobileHttpUtils {
 		final PrintWriter out = response.getWriter();
 		try {
 
-			out.println("404 NOT FOUND -- path: " + path);
+			out.println(message);
 
 			out.println();
 
@@ -38,6 +47,10 @@ public abstract class UnivMobileHttpUtils {
 			final HttpServletResponse response, final String reason)
 			throws IOException {
 
+		final String message = "403 FORBIDDEN -- reason: " + reason;
+
+		log.error(message);
+
 		response.setContentType("text/plain");
 		response.setCharacterEncoding(UTF_8);
 		response.setStatus(HttpServletResponse.SC_FORBIDDEN);
@@ -45,7 +58,7 @@ public abstract class UnivMobileHttpUtils {
 		final PrintWriter out = response.getWriter();
 		try {
 
-			out.println("403 FORBIDDEN -- reason: " + reason);
+			out.println(message);
 
 			out.println();
 
