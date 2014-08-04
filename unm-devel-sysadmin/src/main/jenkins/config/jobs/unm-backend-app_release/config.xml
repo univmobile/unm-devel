@@ -41,7 +41,7 @@ Maven Artifacts: &lt;a&#13;
   <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
   <blockBuildWhenUpstreamBuilding>true</blockBuildWhenUpstreamBuilding>
   <jdk>Java 7</jdk>
-  <triggers/>
+  <triggers><jenkins.triggers.ReverseBuildTrigger><spec/><upstreamProjects>unm-backend-parent_release, unm-backend-core_release, unm-webapp-commons_release, </upstreamProjects><threshold><name>SUCCESS</name><ordinal>0</ordinal><color>BLUE</color><completeBuild>true</completeBuild></threshold></jenkins.triggers.ReverseBuildTrigger></triggers>
   <concurrentBuild>false</concurrentBuild>
   <customWorkspace>unm-backend-app</customWorkspace>
   <rootModule>

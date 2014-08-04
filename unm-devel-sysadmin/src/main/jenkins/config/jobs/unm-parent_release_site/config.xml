@@ -33,7 +33,7 @@ Maven Generated Site: &lt;a&#13;
   <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
   <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
   <jdk>JDK 1.6.0_31</jdk>
-  <triggers/>
+  <triggers><jenkins.triggers.ReverseBuildTrigger><spec/><upstreamProjects/><threshold><name>SUCCESS</name><ordinal>0</ordinal><color>BLUE</color><completeBuild>true</completeBuild></threshold></jenkins.triggers.ReverseBuildTrigger></triggers>
   <concurrentBuild>false</concurrentBuild>
   <customWorkspace>unm-parent</customWorkspace>
   <rootModule>

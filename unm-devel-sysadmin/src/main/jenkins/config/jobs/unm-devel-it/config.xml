@@ -27,7 +27,7 @@
   <triggers>
     <jenkins.triggers.ReverseBuildTrigger>
       <spec/>
-      <upstreamProjects>unm-ios-it,unm-ios-it_ios6,unm-mobileweb-it_ios6,unm-mobileweb-it_ios7,unm-ios_xcode</upstreamProjects>
+      <upstreamProjects>unm-it-parent, unm-ios-ut-results, </upstreamProjects>
       <threshold>
         <name>UNSTABLE</name>
         <ordinal>1</ordinal>

@@ -27,7 +27,7 @@
   <triggers>
     <jenkins.triggers.ReverseBuildTrigger>
       <spec/>
-      <upstreamProjects>unm-it-parent, unm-backend-it-data, </upstreamProjects>
+      <upstreamProjects>unm-it-parent, unm-it-commons, unm-backend-app-noshib, unm-mobileweb-core, unm-backend-it-data, </upstreamProjects>
       <threshold>
         <name>SUCCESS</name>
         <ordinal>0</ordinal>

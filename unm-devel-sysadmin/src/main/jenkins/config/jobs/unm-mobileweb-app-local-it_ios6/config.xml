@@ -28,7 +28,7 @@
   <triggers>
     <jenkins.triggers.ReverseBuildTrigger>
       <spec/>
-      <upstreamProjects>unm-mobileweb-app-local</upstreamProjects>
+      <upstreamProjects>unm-it-parent, unm-it-commons, unm-mobileweb-app-local, unm-backend-it-data, </upstreamProjects>
       <threshold>
         <name>SUCCESS</name>
         <ordinal>0</ordinal>

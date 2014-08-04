@@ -39,7 +39,7 @@ Maven Generated Site: &lt;a&#13;
       <spec>H H * * *</spec>
       <ignorePostCommitHooks>false</ignorePostCommitHooks>
     </hudson.triggers.SCMTrigger>
-  </triggers>
+  <jenkins.triggers.ReverseBuildTrigger><spec/><upstreamProjects>unm-webapp-parent, </upstreamProjects><threshold><name>SUCCESS</name><ordinal>0</ordinal><color>BLUE</color><completeBuild>true</completeBuild></threshold></jenkins.triggers.ReverseBuildTrigger></triggers>
   <concurrentBuild>false</concurrentBuild>
   <customWorkspace>unm-backend-mock</customWorkspace>
   <rootModule>

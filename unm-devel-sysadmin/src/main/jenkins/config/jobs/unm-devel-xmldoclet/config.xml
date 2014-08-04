@@ -28,7 +28,7 @@
   <triggers>
     <jenkins.triggers.ReverseBuildTrigger>
       <spec/>
-      <upstreamProjects>unm-parent</upstreamProjects>
+      <upstreamProjects>unm-parent, unm-parent_release_site, unm-parent_site, unm-testutil, </upstreamProjects>
       <threshold>
         <name>SUCCESS</name>
         <ordinal>0</ordinal>
