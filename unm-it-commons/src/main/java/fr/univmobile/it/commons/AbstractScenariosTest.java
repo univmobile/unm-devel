@@ -268,6 +268,9 @@ public abstract class AbstractScenariosTest {
 			if (method.isAnnotationPresent(Before.class)
 					&& method.getParameterTypes().length == 0) {
 
+				System.out.println("Invoking: @Before " //
+						+ method.getName() + "()");
+
 				method.invoke(instance);
 			}
 		}
@@ -282,6 +285,9 @@ public abstract class AbstractScenariosTest {
 
 			if (method.isAnnotationPresent(After.class)
 					&& method.getParameterTypes().length == 0) {
+
+				System.out.println("Invoking: @After " //
+						+ method.getName() + "()");
 
 				method.invoke(instance);
 			}
