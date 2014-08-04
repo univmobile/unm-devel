@@ -242,6 +242,8 @@ public abstract class AbstractScenariosTest {
 	@Before
 	public final void setUp() throws Exception {
 
+		System.out.println();
+
 		// 0. INITIALIZE OBJECT INSTANCE
 
 		final String platformName = WebDriverEnabledTestDefaultEngine
@@ -300,8 +302,6 @@ public abstract class AbstractScenariosTest {
 
 	@Test
 	public final void run() throws Throwable {
-
-		System.out.println();
 
 		System.out.println("Running test: " + scenariosClass.getSimpleName()
 				+ "." + scenarioMethod.getName() //
