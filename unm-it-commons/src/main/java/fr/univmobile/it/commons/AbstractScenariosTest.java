@@ -13,6 +13,8 @@ import java.util.Collection;
 import java.util.List;
 
 import org.apache.commons.io.FileUtils;
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -237,19 +239,10 @@ public abstract class AbstractScenariosTest {
 	private final Method scenarioMethod;
 	private final TestPhasedEngine engine;
 
-	@Test
-	public void run() throws Throwable {
+	@Before
+	public final void setUp() throws Exception {
 
-		System.out.println();
-
-		System.out.println("Running test: " + scenariosClass.getSimpleName()
-				+ "." + scenarioMethod.getName() //
-				+ "." + engine.getSimpleName() //
-				+ "(" + deviceName + ")...");
-
-		// 0. OBJECT INSTANCE
-
-		final WebDriverEnabledTest instance = scenariosClass.newInstance();
+		// 0. INITIALIZE OBJECT INSTANCE
 
 		final String platformName = WebDriverEnabledTestDefaultEngine
 				.getCurrentPlatformName();
@@ -262,11 +255,52 @@ public abstract class AbstractScenariosTest {
 
 		WebDriverEnabledTestDefaultEngine.setCurrentDeviceName(deviceName);
 
+		instance = scenariosClass.newInstance();
+
 		instance.setEngine(engine);
 
-		// 1. SETUP
+		// 1. SETUP METHODS
 
 		instance.setUp();
+
+		for (final Method method : scenariosClass.getMethods()) {
+
+			if (method.isAnnotationPresent(Before.class)
+					&& method.getParameterTypes().length == 0) {
+
+				method.invoke(instance);
+			}
+		}
+	}
+
+	@After
+	public final void tearDown() throws Exception {
+
+		// 9. RELEASE OBJECT INSTANCE
+
+		for (final Method method : scenariosClass.getMethods()) {
+
+			if (method.isAnnotationPresent(After.class)
+					&& method.getParameterTypes().length == 0) {
+
+				method.invoke(instance);
+			}
+		}
+
+		instance = null;
+	}
+
+	private WebDriverEnabledTest instance;
+
+	@Test
+	public final void run() throws Throwable {
+
+		System.out.println();
+
+		System.out.println("Running test: " + scenariosClass.getSimpleName()
+				+ "." + scenarioMethod.getName() //
+				+ "." + engine.getSimpleName() //
+				+ "(" + deviceName + ")...");
 
 		try {
 
