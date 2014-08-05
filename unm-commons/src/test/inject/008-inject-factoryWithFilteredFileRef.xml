@@ -20,6 +20,10 @@
 	</init-param>
 	<init-param>
 		<param-name>inject:File ref:pomy</param-name>
-		<param-value>pom.xml</param-value>
+		<param-value>po${ref:m.x}ml</param-value>
+	</init-param>
+	<init-param>
+		<param-name>inject:String ref:m.x</param-name>
+		<param-value>m.x</param-value>
 	</init-param>
 </init-params>

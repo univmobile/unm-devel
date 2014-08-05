@@ -86,6 +86,21 @@ public class DependencyInjectionTest {
 	}
 
 	@Test
+	public void testInjectFactoryWithFilteredFileRef() throws Exception {
+
+		final Map<String, String> initParams = DomBinderUtils
+				.xmlContentToJava(
+						new File(
+								"src/test/inject/008-inject-factoryWithFilteredFileRef.xml"),
+						InitParams.class).getInitParams();
+
+		final MyApi api = new DependencyInjection(initParams).getInject(
+				MyApi.class).into(DependencyInjectionTest.class);
+
+		assertEquals("Hello World!(pom.xml)", api.doSomething());
+	}
+
+	@Test
 	public void testInjectRef() throws Exception {
 
 		final Map<String, String> initParams = DomBinderUtils.xmlContentToJava(
@@ -112,8 +127,39 @@ public class DependencyInjectionTest {
 		assertEquals("zHello World!z", api.doSomething());
 	}
 
+	@Test
+	public void testInjectConstructorWithFilteredRef() throws Exception {
+
+		final Map<String, String> initParams = DomBinderUtils.xmlContentToJava(
+				new File("src/test/inject/007-inject-filteredRef.xml"),
+				InitParams.class).getInitParams();
+
+		final MyApi api = new DependencyInjection(initParams).getInject(
+				MyApi.class).into(DependencyInjectionTest.class);
+
+		assertEquals(MyApiImplWithString.class, api.getClass());
+
+		assertEquals("zazHello World!zaz", api.doSomething());
+	}
+
+	@Test
+	public void testInjectFilteredRef() throws Exception {
+
+		final Map<String, String> initParams = DomBinderUtils.xmlContentToJava(
+				new File("src/test/inject/007-inject-filteredRef.xml"),
+				InitParams.class).getInitParams();
+
+		assertEquals("a",
+				new DependencyInjection(initParams).getInject(String.class)
+						.ref("hello"));
+
+		assertEquals("zaz",
+				new DependencyInjection(initParams).getInject(String.class)
+						.ref("toto"));
+	}
+
 	@XPath("/init-params")
-	public interface InitParams {
+	private interface InitParams {
 
 		@XPath(value = "init-param", //
 		mapKeysType = String.class, mapValuesType = String.class, //

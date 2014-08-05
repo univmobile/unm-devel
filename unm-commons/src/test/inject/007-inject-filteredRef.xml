@@ -8,18 +8,18 @@
 	</init-param>
 	<init-param>
 		<param-name>inject:MyApi into:DependencyInjectionTest</param-name>
-		<param-value>MyApiImpl</param-value>
+		<param-value>MyApiImplWithString</param-value>
 	</init-param>
 	<init-param>
-		<param-name>inject:MyHandler into:MyApiImpl</param-name>
-		<param-value>factory:MyFileHandlerFactory</param-value>
+		<param-name>inject:String into:MyApiImplWithString</param-name>
+		<param-value>${ref:toto}</param-value>
 	</init-param>
 	<init-param>
-		<param-name>inject:File into:factory:MyFileHandlerFactory</param-name>
-		<param-value>${ref:pomy}</param-value>
+		<param-name>inject:String ref:toto</param-name>
+		<param-value>z${ref:hello}z</param-value>
 	</init-param>
 	<init-param>
-		<param-name>inject:File ref:pomy</param-name>
-		<param-value>pom.xml</param-value>
+		<param-name>inject:String ref:hello</param-name>
+		<param-value>a</param-value>
 	</init-param>
 </init-params>

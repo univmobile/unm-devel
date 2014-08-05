@@ -15,8 +15,8 @@
 		<param-value>factory:MyHandlerFactory</param-value>
 	</init-param>
 	<init-param>
-		<param-name>inject:ref:String into:factory:MyHandlerFactory</param-name>
-		<param-value>ref:toto</param-value>
+		<param-name>inject:String into:factory:MyHandlerFactory</param-name>
+		<param-value>${ref:toto}</param-value>
 	</init-param>
 	<init-param>
 		<param-name>inject:String ref:toto</param-name>

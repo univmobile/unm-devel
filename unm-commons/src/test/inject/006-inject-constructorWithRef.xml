@@ -11,8 +11,8 @@
 		<param-value>MyApiImplWithString</param-value>
 	</init-param>
 	<init-param>
-		<param-name>inject:ref:String into:MyApiImplWithString</param-name>
-		<param-value>ref:toto</param-value>
+		<param-name>inject:String into:MyApiImplWithString</param-name>
+		<param-value>${ref:toto}</param-value>
 	</init-param>
 	<init-param>
 		<param-name>inject:String ref:toto</param-name>
