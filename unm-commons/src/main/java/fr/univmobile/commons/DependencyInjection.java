@@ -611,7 +611,8 @@ public class DependencyInjection {
 						false, null, ref, //
 						false, null, null, implInstance);
 
-			} else if (value.contains("${ref:")) {
+			} else if (String.class.equals(injectClass)
+					|| File.class.equals(injectClass)) {
 
 				final Class<?> intoClass = lookupClass(injectPackages,
 						intoClassName);

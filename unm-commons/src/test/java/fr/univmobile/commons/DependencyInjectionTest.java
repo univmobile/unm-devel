@@ -141,6 +141,21 @@ public class DependencyInjectionTest {
 	}
 
 	@Test
+	public void testInjectConstructorWithString() throws Exception {
+
+		final Map<String, String> initParams = DomBinderUtils.xmlContentToJava(
+				new File("src/test/inject/010-inject-constructorWithString.xml"),
+				InitParams.class).getInitParams();
+
+		final MyApi api = new DependencyInjection(initParams).getInject(
+				MyApi.class).into(DependencyInjectionTest.class);
+
+		assertEquals(MyApiImplWithString.class, api.getClass());
+
+		assertEquals("yHello World!y", api.doSomething());
+	}
+
+	@Test
 	public void testInjectConstructorWithFilteredRef() throws Exception {
 
 		final Map<String, String> initParams = DomBinderUtils.xmlContentToJava(
