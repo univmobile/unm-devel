@@ -1,6 +1,7 @@
-<?xml version="1.0" encoding="UTF-8"?><maven2-moduleset plugin="maven-plugin@2.5">
+<?xml version='1.0' encoding='UTF-8'?>
+<maven2-moduleset plugin="maven-plugin@2.5">
   <actions/>
-  <description/>
+  <description></description>
   <keepDependencies>false</keepDependencies>
   <properties/>
   <scm class="hudson.plugins.git.GitSCM" plugin="git@2.2.2">
@@ -26,11 +27,21 @@
   <blockBuildWhenUpstreamBuilding>true</blockBuildWhenUpstreamBuilding>
   <jdk>MacOS_iOS6</jdk>
   <triggers>
+    <jenkins.triggers.ReverseBuildTrigger>
+      <spec></spec>
+      <upstreamProjects>unm-it-parent, unm-it-commons, unm-backend-app-noshib, unm-mobileweb-core, unm-backend-it-data, </upstreamProjects>
+      <threshold>
+        <name>SUCCESS</name>
+        <ordinal>0</ordinal>
+        <color>BLUE</color>
+        <completeBuild>true</completeBuild>
+      </threshold>
+    </jenkins.triggers.ReverseBuildTrigger>
     <hudson.triggers.SCMTrigger>
       <spec>H/5 * * * *</spec>
       <ignorePostCommitHooks>false</ignorePostCommitHooks>
     </hudson.triggers.SCMTrigger>
-  <jenkins.triggers.ReverseBuildTrigger><spec/><upstreamProjects>unm-it-parent, unm-it-commons, unm-backend-app-noshib, unm-mobileweb-core, unm-backend-it-data, </upstreamProjects><threshold><name>SUCCESS</name><ordinal>0</ordinal><color>BLUE</color><completeBuild>true</completeBuild></threshold></jenkins.triggers.ReverseBuildTrigger></triggers>
+  </triggers>
   <concurrentBuild>false</concurrentBuild>
   <customWorkspace>unm-backend-it</customWorkspace>
   <rootModule>
@@ -55,7 +66,7 @@
   <reporters/>
   <publishers>
     <hudson.tasks.ArtifactArchiver>
-      <artifacts>unm-backend-it/target/screenshots/</artifacts>
+      <artifacts>unm-backend-it/target/screenshots/, unm-backend-it/target/pageSource.html</artifacts>
       <latestOnly>false</latestOnly>
       <allowEmptyArchive>false</allowEmptyArchive>
       <onlyIfSuccessful>false</onlyIfSuccessful>
@@ -65,7 +76,7 @@
   <buildWrappers/>
   <prebuilders>
     <hudson.tasks.Shell>
-      <command>echo "DISPLAY: ${DISPLAY}"</command>
+      <command>echo &quot;DISPLAY: ${DISPLAY}&quot;</command>
     </hudson.tasks.Shell>
   </prebuilders>
   <postbuilders/>
