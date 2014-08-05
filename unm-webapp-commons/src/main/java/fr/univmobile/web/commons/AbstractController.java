@@ -18,7 +18,7 @@ import javax.servlet.http.HttpSession;
 import net.avcompris.binding.helper.BinderUtils;
 
 /**
- * The superclass for controllers. In addition to the abstract methids, each
+ * The superclass for controllers. In addition to the abstract methods, each
  * controller must implement a constructor because of the
  * {@link ServletException} thrown by the default constructor of this
  * {@link AbstractController} class, and be annotated with the {@link Paths}
