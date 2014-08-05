@@ -1,10 +1,14 @@
 package fr.univmobile.commons;
 
 import static com.google.common.base.Preconditions.checkNotNull;
+import static org.apache.commons.lang3.StringUtils.substringAfter;
 
 import java.io.File;
 
 import javax.annotation.Nullable;
+
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 
 import com.avcompris.lang.NotImplementedException;
 
@@ -37,8 +41,6 @@ class DependencyConfig {
 			final Class<?> injectClass, //
 			@Nullable final String injectName,
 
-			// final boolean injectRef,
-
 			final boolean isIntoFactory, //
 			@Nullable final Class<?> intoClass, //
 			@Nullable final String intoName, //
@@ -61,7 +63,6 @@ class DependencyConfig {
 		}
 
 		this.injectName = injectName;
-		// this.injectRef = injectRef;
 		this.intoName = intoName;
 		this.implName = implName;
 		this.implInstance = implInstance;
@@ -89,13 +90,28 @@ class DependencyConfig {
 
 class FutureInstance<E> {
 
-	private final Class<E> injectClass;
+	@Nullable
+	private final Class<? extends E> injectClass;
+
+	@Nullable
 	private final String value;
+
+	@Nullable
+	private final E instance;
 
 	@Override
 	public String toString() {
 
 		return injectClass.getSimpleName() + "=" + value;
+	}
+
+	public FutureInstance(final E instance) {
+
+		injectClass = null;
+
+		value = null;
+
+		this.instance = checkNotNull(instance, "instance");
 	}
 
 	public static <E> FutureInstance<E> create(final Class<E> injectClass,
@@ -108,6 +124,8 @@ class FutureInstance<E> {
 
 		this.injectClass = checkNotNull(injectClass, "injectClass");
 		this.value = checkNotNull(value, "value");
+
+		instance = null;
 
 		if (String.class.equals(injectClass)) {
 
@@ -138,6 +156,10 @@ class FutureInstance<E> {
 			final DependencyInjection dependencyInjection,
 			final Class<F> instanceClass) {
 
+		if (instance != null) {
+			return instanceClass.cast(instance);
+		}
+
 		if (!instanceClass.isAssignableFrom(injectClass)) {
 			throw new IllegalArgumentException("instanceClass: "
 					+ instanceClass.getName() + " should be a subclass of: "
@@ -147,9 +169,15 @@ class FutureInstance<E> {
 		return instanceClass.cast(getActualInstance(dependencyInjection));
 	}
 
+	private static final Log log = LogFactory.getLog(DependencyConfig.class);
+
 	public E getActualInstance(final DependencyInjection dependencyInjection) {
 
 		final String filteredValue = dependencyInjection.filter(value);
+
+		if (log.isDebugEnabled()) {
+			log.debug("getActualInstance().filteredValue: " + filteredValue);
+		}
 
 		if (String.class.equals(injectClass)) {
 
@@ -161,7 +189,17 @@ class FutureInstance<E> {
 
 		} else if (Class.class.equals(injectClass)) {
 
-			return injectClass.cast(new File(filteredValue));
+			if (!filteredValue.startsWith("class:")) {
+				throw new IllegalArgumentException(
+						"For parameters of type Class, value must start with prefix \"class:\": \"class:"
+								+ filteredValue + "\"");
+			}
+
+			@SuppressWarnings("unchecked")
+			final E clazz = (E) dependencyInjection.lookupClass(injectClass,
+					substringAfter(filteredValue, "class:"));
+
+			return clazz;
 
 		} else {
 
@@ -170,48 +208,3 @@ class FutureInstance<E> {
 		}
 	}
 }
-
-/*
- * private static FutureInstance futureInstance(final Class<?> injectClass,
- * final String value) {
- * 
- * final Object implInstance;
- * 
- * 
- * /* } else if (String.class.equals(injectClass)) {
- * 
- * implInstance = value;
- * 
- * } else if (File.class.equals(injectClass)) {
- * 
- * implInstance = new File(value);
- * 
- * } else if (Class.class.equals(injectClass)) {
- * 
- * if (!value.startsWith("class:")) { throw new IllegalArgumentException(
- * "For parameters of type Class, value must start with prefix \"class:\": \"class:"
- * + value + "\""); }
- * 
- * implInstance = lookupClass(injectPackages, substringAfter(value, "class:"));
- * 
- * } else {
- * 
- * throw new NotImplementedException("Factory param type: " + injectClassName +
- * ", value: " + value);
- */
-
-/*
- * 
- * if (String.class.equals(injectClass)) {
- * 
- * implInstance = value;
- * 
- * } else if (File.class.equals(injectClass)) {
- * 
- * implInstance = new File(value);
- * 
- * } else {
- * 
- * throw new NotImplementedException("Ref type: " + injectClassName +
- * ", value: " + value); } }
- */

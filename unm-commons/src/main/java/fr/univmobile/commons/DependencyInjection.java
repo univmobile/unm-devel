@@ -78,9 +78,26 @@ public class DependencyInjection {
 		this(mapToConfig(map));
 	}
 
-	private DependencyInjection(final DependencyConfig[] configs) {
+	private static class Config {
 
-		this.configs = checkNotNull(configs, "configs");
+		public final String[] injectPackages;
+		public final DependencyConfig[] configs;
+
+		public Config(final String[] injectPackages,
+				final DependencyConfig[] configs) {
+
+			this.injectPackages = checkNotNull(injectPackages, "injectPackages");
+			this.configs = checkNotNull(configs, "configs");
+		}
+	}
+
+	private final Config config;
+
+	private DependencyInjection(final Config config) {
+
+		this.config = checkNotNull(config, "config ");
+
+		configs = config.configs;
 
 		final AbstractModule module = new AbstractModule() {
 
@@ -104,9 +121,6 @@ public class DependencyInjection {
 
 					} else if (config.implInstance != null) {
 
-						/*
-						 * } else if (config.injectRef) {
-						 */
 						bindToInstance(config.injectClass, config.injectName,
 								config.intoClass, config.implInstance);
 
@@ -156,17 +170,12 @@ public class DependencyInjection {
 			private <I> void bindToInstance(final Class<I> injectClass,
 					@Nullable final String injectName,
 					final Class<?> intoClass,
-					final FutureInstance<?> futureInstance
-			// final String ref
-			) {
+					final FutureInstance<?> futureInstance) {
 
 				checkNotNull(futureInstance, "futureInstance");
 
 				final I value = futureInstance.getActualInstance(
 						DependencyInjection.this, injectClass);
-
-				// final I value = getRef(injectClass, substringAfter(ref,
-				// "ref:"));
 
 				final String named = getNamedAnnotationValue(injectClass,
 						intoClass);
@@ -227,6 +236,23 @@ public class DependencyInjection {
 		}
 
 		return null;
+	}
+
+	public <I> Class<? extends I> lookupClass(final Class<I> injectClass,
+			final String className) {
+
+		checkNotNull(injectClass, "injectClass");
+
+		final Class<?> clazz = lookupClass(config.injectPackages, className);
+
+		if (!injectClass.isAssignableFrom(clazz)) {
+
+			throw new ClassCastException("Cannot subclass: "
+					+ clazz.getSimpleName() + " into: "
+					+ injectClass.getSimpleName());
+		}
+
+		return clazz.asSubclass(injectClass);
 	}
 
 	private <T> T invokeFactory(final Class<T> injectClass,
@@ -303,16 +329,6 @@ public class DependencyInjection {
 			} else if (config.intoName != null) {
 				continue;
 			}
-
-			/*
-			 * 
-			 * if (config.injectRef) {
-			 * 
-			 * final String ref = config.implInstance
-			 * .getActualInstance(this,String.class);
-			 * 
-			 * return getRef(config.injectClass, ref); }
-			 */
 
 			if (config.implInstance == null) {
 				throw new IllegalStateException("Factory param is null for: "
@@ -486,7 +502,7 @@ public class DependencyInjection {
 		return sb.toString();
 	}
 
-	private static DependencyConfig[] mapToConfig(final Map<String, String> map) {
+	private static Config mapToConfig(final Map<String, String> map) {
 
 		checkNotNull(map, "map");
 
@@ -520,15 +536,7 @@ public class DependencyInjection {
 
 			final String[] s = split(key);
 
-			final String injectClassName;
-			// final boolean injectRef;
-			/*
-			 * if (s[0].contains("inject:ref:")) { injectClassName =
-			 * substringAfter(s[0], "inject:ref:"); injectRef = true; } else {
-			 */
-			injectClassName = substringAfter(s[0], "inject:");
-			// injectRef = false;
-			// }
+			final String injectClassName = substringAfter(s[0], "inject:");
 
 			final String intoClassName = substringAfter(s[1], "into:");
 			final String ref = substringAfter(s[1], "ref:");
@@ -595,20 +603,8 @@ public class DependencyInjection {
 
 				// Hardcoded params.
 
-				final FutureInstance<?> implInstance;
-				/*
-				 * if (injectRef) {
-				 * 
-				 * if (!value.contains("ref:")) { throw new
-				 * IllegalArgumentException(
-				 * "ref should always start with \"ref:\": " + value); }
-				 * 
-				 * implInstance = substringAfter(value, "ref:");
-				 * 
-				 * } else {
-				 */
-				implInstance = FutureInstance.create(injectClass, value);
-				// }
+				final FutureInstance<?> implInstance = FutureInstance.create(
+						injectClass, value);
 
 				config = new DependencyConfig( //
 						injectClass, injectName, // injectRef, //
@@ -627,59 +623,37 @@ public class DependencyInjection {
 						false, null, ref, //
 						false, null, null, implInstance);
 
-				/*
-				 * } else if (injectRef) {
-				 * 
-				 * // Hardcoded params.
-				 * 
-				 * final FutureInstance<?> implInstance;
-				 * 
-				 * final Class<?> intoClass = lookupClass(injectPackages,
-				 * intoClassName);
-				 * 
-				 * implInstance = FutureInstance.create(injectClass, value); /*
-				 * if (String.class.equals(injectClass)) {
-				 * 
-				 * implInstance = value;
-				 * 
-				 * } else if (File.class.equals(injectClass)) {
-				 * 
-				 * implInstance = new File(value);
-				 * 
-				 * } else {
-				 * 
-				 * throw new NotImplementedException("Ref type: " +
-				 * injectClassName + ", value: " + value); }
-				 */
-				/*
-				 * config = new DependencyConfig( // injectClass, injectName,
-				 * injectRef, // false, intoClass, ref, // false, null, null,
-				 * implInstance);
-				 */
-
 			} else if (value.contains("${ref:")) {
 
 				final Class<?> intoClass = lookupClass(injectPackages,
 						intoClassName);
 
-				final FutureInstance<?> implInstance;
-				/*
-				 * if (injectRef) {
-				 * 
-				 * if (!value.contains("ref:")) { throw new
-				 * IllegalArgumentException(
-				 * "ref should always start with \"ref:\": " + value); }
-				 * 
-				 * implInstance = substringAfter(value, "ref:");
-				 * 
-				 * } else {
-				 */
-				implInstance = FutureInstance.create(injectClass, value);
+				final FutureInstance<?> implInstance = FutureInstance.create(
+						injectClass, value);
 
 				config = new DependencyConfig( //
 						injectClass, injectName, // injectRef, //
 						false, intoClass, null, //
 						false, null, null, implInstance);
+
+			} else if (Class.class.equals(injectClass)) {
+
+				if (!value.startsWith("class:")) {
+					throw new IllegalArgumentException(
+							"For parameters of type Class, value must start with prefix \"class:\": \"class:"
+									+ value + "\"");
+				}
+
+				final Class<?> intoClass = lookupClass(injectPackages,
+						intoClassName);
+				final Class<?> implInstance = lookupClass(injectPackages,
+						substringAfter(value, "class:"));
+
+				config = new DependencyConfig( //
+						Class.class, injectName, // injectRef, //
+						false, intoClass, null, //
+						false, null, null, new FutureInstance<Class<?>>(
+								implInstance));
 
 			} else {
 
@@ -697,7 +671,8 @@ public class DependencyInjection {
 			configs.add(config);
 		}
 
-		return Iterables.toArray(configs, DependencyConfig.class);
+		return new Config(injectPackages, //
+				Iterables.toArray(configs, DependencyConfig.class));
 	}
 
 	private static final Log log = LogFactory.getLog(DependencyInjection.class);

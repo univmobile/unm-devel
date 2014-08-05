@@ -1,0 +1,13 @@
+<init-params>
+	<init-param>
+		<param-name>inject-packages</param-name>
+		<param-value>
+			fr.univmobile.commons
+			fr.univmobile.commons.test
+		</param-value>
+	</init-param>
+	<init-param>
+		<param-name>inject:Class into:DependencyInjectionTest</param-name>
+		<param-value>class:MyHandlerImpl</param-value>
+	</init-param>
+</init-params>

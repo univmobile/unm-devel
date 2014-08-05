@@ -34,6 +34,19 @@ public class DependencyInjectionTest {
 	}
 
 	@Test
+	public void testInjectClass() throws Exception {
+
+		final Map<String, String> initParams = DomBinderUtils.xmlContentToJava(
+				new File("src/test/inject/009-inject-class.xml"), InitParams.class)
+				.getInitParams();
+
+		final Class<?> clazz = new DependencyInjection(initParams).getInject(
+				Class.class).into(DependencyInjectionTest.class);
+
+		assertEquals(MyHandlerImpl.class, clazz);
+	}
+
+	@Test
 	public void testInjectImplClass() throws Exception {
 
 		final Map<String, String> initParams = DomBinderUtils.xmlContentToJava(
