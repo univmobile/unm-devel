@@ -238,21 +238,9 @@ public class DependencyInjection {
 		return null;
 	}
 
-	public <I> Class<? extends I> lookupClass(final Class<I> injectClass,
-			final String className) {
+	public Class<?> lookupClass(final String className) {
 
-		checkNotNull(injectClass, "injectClass");
-
-		final Class<?> clazz = lookupClass(config.injectPackages, className);
-
-		if (!injectClass.isAssignableFrom(clazz)) {
-
-			throw new ClassCastException("Cannot subclass: "
-					+ clazz.getSimpleName() + " into: "
-					+ injectClass.getSimpleName());
-		}
-
-		return clazz.asSubclass(injectClass);
+		return lookupClass(config.injectPackages, className);
 	}
 
 	private <T> T invokeFactory(final Class<T> injectClass,

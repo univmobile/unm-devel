@@ -196,7 +196,7 @@ class FutureInstance<E> {
 			}
 
 			@SuppressWarnings("unchecked")
-			final E clazz = (E) dependencyInjection.lookupClass(injectClass,
+			final E clazz = (E) dependencyInjection.lookupClass(
 					substringAfter(filteredValue, "class:"));
 
 			return clazz;
