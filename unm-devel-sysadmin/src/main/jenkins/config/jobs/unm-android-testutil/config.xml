@@ -53,13 +53,13 @@
     </hudson.triggers.SCMTrigger>
   </triggers>
   <concurrentBuild>false</concurrentBuild>
-  <customWorkspace>unm-android-it</customWorkspace>
+  <customWorkspace>unm-android-testutil</customWorkspace>
   <rootModule>
     <groupId>fr.univmobile</groupId>
-    <artifactId>unm-android-it</artifactId>
+    <artifactId>unm-android-testutil</artifactId>
   </rootModule>
-  <rootPOM>unm-android-it/pom.xml</rootPOM>
-  <goals>-U clean install</goals>
+  <rootPOM>unm-android-testutil/pom.xml</rootPOM>
+  <goals>-U clean deploy</goals>
   <mavenOpts>-Djava.awt.headless=true</mavenOpts>
   <aggregatorStyleBuild>true</aggregatorStyleBuild>
   <incrementalBuild>false</incrementalBuild>
@@ -75,24 +75,9 @@
   <settings class="jenkins.mvn.DefaultSettingsProvider"/>
   <globalSettings class="jenkins.mvn.DefaultGlobalSettingsProvider"/>
   <reporters/>
-  <publishers>
-    <hudson.tasks.ArtifactArchiver>
-      <artifacts>unm-android-it/target/screenshots/</artifacts>
-      <latestOnly>false</latestOnly>
-      <allowEmptyArchive>false</allowEmptyArchive>
-      <onlyIfSuccessful>false</onlyIfSuccessful>
-      <defaultExcludes>true</defaultExcludes>
-    </hudson.tasks.ArtifactArchiver>
-  </publishers>
+  <publishers/>
   <buildWrappers/>
-  <prebuilders>
-    <hudson.tasks.Shell>
-      <command># mkdir -p unm-android-it/apk/
-# wget -O unm-android-it/apk/UnivMobile-debug.apk http://univmobile.vswip.com/job/Android-UnivMobile
-# /lastSuccessfulBuild/artifact/UnivMobile/bin/UnivMobile-debug.apk
-# Or, in: http://univmobile.vswip.com/nexus/content/repositories/snapshots/fr/univmobile/UnivMobile/...</command>
-    </hudson.tasks.Shell>
-  </prebuilders>
+  <prebuilders/>
   <postbuilders/>
   <runPostStepsIfResult>
     <name>FAILURE</name>
