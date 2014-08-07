@@ -17,7 +17,8 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 final class AppiumEnabledTestDefaultEngine_Android extends
 		WebDriverEnabledTestDefaultEngine {
 
-	private static final File app = new File("apk/UnivMobile-debug.apk");
+	private static final File app = // new File("apk/UnivMobile-debug.apk");
+	new File("target", "UnivMobile_localhost.apk");
 
 	public AppiumEnabledTestDefaultEngine_Android() {
 
