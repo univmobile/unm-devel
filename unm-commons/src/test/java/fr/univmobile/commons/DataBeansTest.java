@@ -10,8 +10,6 @@ import javax.annotation.Nullable;
 
 import org.junit.Test;
 
-import fr.univmobile.commons.DataBeans;
-
 public class DataBeansTest {
 
 	@Test
@@ -83,6 +81,38 @@ public class DataBeansTest {
 
 		assertSame(person0, person1);
 	}
+
+	@Test
+	public void test_instantiatePersonWithAddress_arrayFieldIsEmpty()
+			throws Exception {
+
+		final PersonWithAddress person = DataBeans
+				.instantiate(PersonWithAddress.class);
+
+		assertEquals(0, person.getAddresses().length);
+	}
+
+	@Test
+	public void test_instantiatePersonWithAddress_addToArray() throws Exception {
+
+		final PersonWithAddress person = DataBeans
+				.instantiate(PersonWithAddress.class);
+
+		person.addToAddresses(DataBeans.instantiate(
+				PersonWithAddress.Address.class).setText("20 street"));
+
+		assertEquals(1, person.getAddresses().length);
+
+		assertEquals("20 street", person.getAddresses()[0].getText());
+
+		person.addToAddresses(DataBeans.instantiate(
+				PersonWithAddress.Address.class).setText("40 avenue"));
+
+		assertEquals(2, person.getAddresses().length);
+
+		assertEquals("20 street", person.getAddresses()[0].getText());
+		assertEquals("40 avenue", person.getAddresses()[1].getText());
+	}
 }
 
 interface Person {
@@ -95,4 +125,18 @@ interface Person {
 	Person setFirstName(String firstName);
 
 	void setLastName(String lastName);
+}
+
+interface PersonWithAddress {
+
+	Address[] getAddresses();
+
+	void addToAddresses(Address address);
+
+	interface Address {
+
+		String getText();
+
+		Address setText(String text);
+	}
 }

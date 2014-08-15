@@ -5,6 +5,7 @@ import static org.apache.commons.lang3.StringUtils.capitalize;
 import static org.apache.commons.lang3.StringUtils.uncapitalize;
 
 import java.io.Serializable;
+import java.lang.reflect.Array;
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
@@ -16,6 +17,8 @@ import java.util.Map;
 import java.util.TreeMap;
 
 import javax.annotation.Nullable;
+
+import org.apache.commons.lang3.NotImplementedException;
 
 import com.google.common.collect.Iterables;
 
@@ -179,7 +182,19 @@ public abstract class DataBeans {
 
 			final String methodName = accessor.getName();
 
-			return uncapitalize(methodName.substring(3));
+			if (methodName.startsWith("get") || methodName.startsWith("set")) {
+
+				return uncapitalize(methodName.substring(3));
+
+			} else if (methodName.startsWith("addTo")) {
+
+				return uncapitalize(methodName.substring(5));
+
+			} else {
+
+				throw new IllegalArgumentException(
+						"Unknown prefix for method name: " + methodName);
+			}
 		}
 
 		@Nullable
@@ -318,6 +333,37 @@ public abstract class DataBeans {
 
 				final Object value = properties.get(propertyName);
 
+				final Class<?> returnType = method.getReturnType();
+
+				if (returnType.isArray()) {
+
+					if (value == null) {
+
+						return Array.newInstance(returnType.getComponentType(),
+								0);
+
+					} else { // List -> Array
+
+						final List<?> list = (List<?>) value;
+
+						final int length = list.size();
+
+						final Object array = Array.newInstance(
+								returnType.getComponentType(), length);
+
+						int index = 0;
+
+						for (final Object item : list) {
+
+							Array.set(array, index, item);
+
+							++index;
+						}
+
+						return array;
+					}
+				}
+
 				if (value == null) {
 
 					if (!method.isAnnotationPresent(Nullable.class)) {
@@ -358,6 +404,41 @@ public abstract class DataBeans {
 				if (setterReturnType == null
 						|| void.class.equals(setterReturnType)
 						|| Void.class.equals(setterReturnType)) {
+					return null;
+				}
+
+				return proxy;
+			}
+
+			if (methodName.startsWith("addTo") && oneArg) {
+
+				final String propertyName = getPropertyName(method);
+
+				final Object value = args[0];
+
+				if (value == null) {
+					throw new NotImplementedException("Array property "
+							+ propertyName + " cannot contain null in: "
+							+ clazz);
+				}
+
+				@SuppressWarnings("unchecked")
+				List<Object> list = (List<Object>) properties.get(propertyName);
+
+				if (list == null) {
+
+					list = new ArrayList<Object>();
+
+					properties.put(propertyName, list);
+				}
+
+				list.add(value);
+
+				final Class<?> adderReturnType = method.getReturnType();
+
+				if (adderReturnType == null
+						|| void.class.equals(adderReturnType)
+						|| Void.class.equals(adderReturnType)) {
 					return null;
 				}
 
