@@ -23,7 +23,7 @@ public abstract class UnivMobileHttpUtils {
 		final String message = "404 NOT FOUND -- path: " + path;
 
 		log.error(message);
-
+		
 		response.setContentType("text/plain");
 		response.setCharacterEncoding(UTF_8);
 		response.setStatus(HttpServletResponse.SC_NOT_FOUND);
