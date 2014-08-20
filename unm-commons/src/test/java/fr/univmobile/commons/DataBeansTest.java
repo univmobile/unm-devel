@@ -2,6 +2,7 @@ package fr.univmobile.commons;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
+import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNotSame;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertSame;
@@ -32,6 +33,42 @@ public class DataBeansTest {
 		assertEquals("{firstName: David, lastName: null}", person.toString());
 
 		assertEquals(person, person);
+	}
+
+	@Test
+	public void test_setNullable() throws Exception {
+
+		final Person person = DataBeans.instantiate(Person.class);
+
+		assertNull(person.getFirstName());
+
+		person.setFirstName("David");
+
+		assertNotNull(person.getFirstName());
+
+		person.setFirstName(null);
+
+		assertNull(person.getFirstName());
+	}
+
+	@Test(expected = IllegalArgumentException.class)
+	public void test_setNotNullable() throws Exception {
+
+		final Person person = DataBeans.instantiate(Person.class);
+
+		person.setLastName("David");
+
+		assertNotNull(person.getLastName());
+
+		person.setLastName(null);
+	}
+
+	@Test(expected = IllegalStateException.class)
+	public void test_getNotNullable() throws Exception {
+
+		final Person person = DataBeans.instantiate(Person.class);
+
+		person.getLastName();
 	}
 
 	@Test
@@ -122,7 +159,7 @@ interface Person {
 
 	String getLastName();
 
-	Person setFirstName(String firstName);
+	Person setFirstName(@Nullable String firstName);
 
 	void setLastName(String lastName);
 }

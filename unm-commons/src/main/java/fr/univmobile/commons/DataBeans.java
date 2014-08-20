@@ -5,6 +5,7 @@ import static org.apache.commons.lang3.StringUtils.capitalize;
 import static org.apache.commons.lang3.StringUtils.uncapitalize;
 
 import java.io.Serializable;
+import java.lang.annotation.Annotation;
 import java.lang.reflect.Array;
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
@@ -385,7 +386,8 @@ public abstract class DataBeans {
 
 				if (value == null) {
 
-					if (!method.isAnnotationPresent(Nullable.class)) {
+					if (!isMethodParamAnnotationPresent(method, 0,
+							Nullable.class)) {
 						throw new IllegalArgumentException("Property "
 								+ propertyName + " cannot be set to null in: "
 								+ clazz + " -- No @Nullable annotation on: "
@@ -448,5 +450,20 @@ public abstract class DataBeans {
 			throw new IllegalStateException("Cannot handle method: " + method
 					+ " in class: " + clazz);
 		}
+	}
+
+	private static boolean isMethodParamAnnotationPresent(final Method method,
+			final int paramIndex,
+			final Class<? extends Annotation> annotationClass) {
+
+		for (final Annotation annotation : method.getParameterAnnotations()[paramIndex]) {
+
+			if (annotationClass.isInstance(annotation)) {
+
+				return true;
+			}
+		}
+
+		return false;
 	}
 }
