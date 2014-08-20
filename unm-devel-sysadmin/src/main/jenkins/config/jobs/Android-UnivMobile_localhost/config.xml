@@ -54,6 +54,14 @@
   </triggers>
   <concurrentBuild>false</concurrentBuild>
   <builders>
+    <hudson.tasks.Ant plugin="ant@1.2">
+      <targets>add-variables</targets>
+      <antName>Ant 1.9.4</antName>
+      <buildFile>UnivMobile/build.xml</buildFile>
+      <properties>GIT_COMMIT=${GIT_COMMIT}
+BUILD_ID=${BUILD_ID}
+BUILD_DISPLAY_NAME=${BUILD_DISPLAY_NAME}</properties>
+    </hudson.tasks.Ant>
     <hudson.tasks.Shell>
       <command>cd UnivMobile
 cp local.properties_jenkins_localhost local.properties

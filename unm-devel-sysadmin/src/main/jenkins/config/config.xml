@@ -630,7 +630,7 @@ Captures d’écrans des tests d’intégration :&#xd;
         <hudson.views.LastDurationColumn/>
         <hudson.views.BuildButtonColumn/>
       </columns>
-      <includeRegex>.*(?&lt;!_release)</includeRegex>
+      <includeRegex>.*(?&lt;!_release(_site)?)</includeRegex>
       <recurse>false</recurse>
     </listView>
   </views>
