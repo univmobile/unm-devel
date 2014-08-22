@@ -1,8 +1,9 @@
-<?xml version="1.0" encoding="UTF-8"?><project>
+<?xml version='1.0' encoding='UTF-8'?>
+<project>
   <actions/>
-  <description>Tableau de bord d’intégration continue :&#13;
-&lt;a href="http://univmobile.vswip.com/job/unm-devel-it/lastSuccessfulBuild/artifact/unm-devel-it/target/unm-ci-dump.html"&gt;&#13;
-  UnivMobile iOS — Intégration continue&#13;
+  <description>Tableau de bord d’intégration continue :&#xd;
+&lt;a href=&quot;http://univmobile.vswip.com/job/unm-devel-it/lastSuccessfulBuild/artifact/unm-devel-it/target/unm-ci-dump.html&quot;&gt;&#xd;
+  UnivMobile iOS — Intégration continue&#xd;
 &lt;/a&gt;</description>
   <keepDependencies>false</keepDependencies>
   <properties>
@@ -50,6 +51,11 @@
   </triggers>
   <concurrentBuild>false</concurrentBuild>
   <builders>
+    <hudson.tasks.Ant plugin="ant@1.2">
+      <targets>update-plist</targets>
+      <antName>MacOS</antName>
+      <properties>jsonBaseURL=http://univmobile.vswip.com/unm-backend/json/</properties>
+    </hudson.tasks.Ant>
     <hudson.tasks.Shell>
       <command>src/main/shell/xcodebuild_archive.sh</command>
     </hudson.tasks.Shell>

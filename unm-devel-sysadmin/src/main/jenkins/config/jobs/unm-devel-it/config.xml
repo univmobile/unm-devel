@@ -68,7 +68,7 @@
       <artifacts>unm-devel-it/target/unm-*-dump.html, unm-devel-it/target/unm-*-dump.xml</artifacts>
       <latestOnly>true</latestOnly>
       <allowEmptyArchive>false</allowEmptyArchive>
-      <onlyIfSuccessful>false</onlyIfSuccessful>
+      <onlyIfSuccessful>true</onlyIfSuccessful>
       <defaultExcludes>true</defaultExcludes>
     </hudson.tasks.ArtifactArchiver>
   </publishers>

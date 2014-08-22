@@ -14,5 +14,10 @@
         </hudson.tools.InstallSourceProperty>
       </properties>
     </hudson.tasks.Ant_-AntInstallation>
+    <hudson.tasks.Ant_-AntInstallation>
+      <name>MacOS</name>
+      <home>/usr/local/Cellar/ant/1.9.4/libexec</home>
+      <properties/>
+    </hudson.tasks.Ant_-AntInstallation>
   </installations>
 </hudson.tasks.Ant_-DescriptorImpl>
