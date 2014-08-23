@@ -71,6 +71,22 @@
 				<artifactId>unm-webapp-commons</artifactId>
 				<version>${project.version}</version>
 			</dependency>
+			<dependency>
+				<groupId>fr.univmobile</groupId>
+				<artifactId>unm-backend-core</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>fr.univmobile</groupId>
+				<artifactId>unm-mobileweb-core</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>fr.univmobile</groupId>
+				<artifactId>unm-mobileweb-app</artifactId>
+				<type>war</type>
+				<version>${project.version}</version>
+			</dependency>
 		</dependencies>
 	</dependencyManagement>
 	<build>

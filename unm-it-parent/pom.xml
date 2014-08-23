@@ -68,6 +68,11 @@
 			</dependency>
 			<dependency>
 				<groupId>fr.univmobile</groupId>
+				<artifactId>unm-backend-it-data</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>fr.univmobile</groupId>
 				<artifactId>unm-mobileweb-app</artifactId>
 				<version>${project.version}</version>
 				<type>war</type>
@@ -83,6 +88,33 @@
 				<artifactId>unm-backend-app-noshib</artifactId>
 				<version>${project.version}</version>
 				<type>war</type>
+			</dependency>
+			<dependency>
+				<groupId>fr.univmobile</groupId>
+				<artifactId>unm-mobileweb-core</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>fr.univmobile</groupId>
+				<artifactId>unm-mobileweb-app-local</artifactId>
+				<type>war</type>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>fr.univmobile</groupId>
+				<artifactId>unm-ios</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>fr.univmobile</groupId>
+				<artifactId>unm-android-testutil</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>fr.univmobile.localhost</groupId>
+				<artifactId>UnivMobile</artifactId>
+				<type>apk</type>
+				<version>${project.version}</version>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
