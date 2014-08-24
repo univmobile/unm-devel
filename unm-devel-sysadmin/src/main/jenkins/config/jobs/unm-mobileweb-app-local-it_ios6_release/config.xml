@@ -1,56 +1,55 @@
 <?xml version="1.0" encoding="UTF-8"?><maven2-moduleset plugin="maven-plugin@2.5">
   <actions/>
-  <description>Main Jenkins Job: &lt;a&#13;
-  href="http://univmobile.vswip.com/job/unm-backend-mock/"&gt;http://univmobile.vswip.com/job/unm-backend-mock/&lt;/a&gt;&#13;
-&lt;p&gt;&#13;
-GitHub: &lt;a href="https://github.com/univmobile/unm-devel/tree/master/unm-backend-mock"&gt;https://github.com/univmobile/unm-devel/tree/master/unm-backend-mock&#13;
-&lt;/a&gt;&#13;
-&lt;p&gt;&#13;
-Maven Generated Site: &lt;a&#13;
-  href="http://univmobile.vswip.com/nexus/content/sites/pub/unm-backend-mock/"&gt;http://univmobile.vswip.com/nexus/content/sites/pub/unm-backend-mock/&lt;/a&gt;&#13;
-&lt;a&#13;
-  href="http://univmobile.vswip.com/nexus/content/sites/pub/unm-backend-mock/0.0.1-SNAPSHOT/"&gt;0.0.1-SNAPSHOT/&lt;/a&gt;&#13;
-</description>
+  <description/>
   <keepDependencies>false</keepDependencies>
   <properties/>
   <scm class="hudson.plugins.git.GitSCM" plugin="git@2.2.2">
     <configVersion>2</configVersion>
     <userRemoteConfigs>
       <hudson.plugins.git.UserRemoteConfig>
-        <url>https://github.com/univmobile/unm-devel.git</url>
+        <url>https://github.com/univmobile/unm-mobileweb.git</url>
       </hudson.plugins.git.UserRemoteConfig>
     </userRemoteConfigs>
     <branches>
       <hudson.plugins.git.BranchSpec>
-        <name>origin/develop</name>
+        <name>origin/master</name>
       </hudson.plugins.git.BranchSpec>
     </branches>
     <doGenerateSubmoduleConfigurations>false</doGenerateSubmoduleConfigurations>
     <submoduleCfg class="list"/>
-    <extensions/>
+    <extensions>
+      <hudson.plugins.git.extensions.impl.CleanBeforeCheckout/>
+    </extensions>
   </scm>
-  <canRoam>true</canRoam>
+  <assignedNode>macos_ios6a</assignedNode>
+  <canRoam>false</canRoam>
   <disabled>true</disabled>
   <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
   <blockBuildWhenUpstreamBuilding>true</blockBuildWhenUpstreamBuilding>
-  <jdk>(Default)</jdk>
+  <jdk>MacOS_iOS6</jdk>
   <triggers>
-    <hudson.triggers.SCMTrigger>
-      <spec>H H * * *</spec>
-      <ignorePostCommitHooks>false</ignorePostCommitHooks>
-    </hudson.triggers.SCMTrigger>
-  <jenkins.triggers.ReverseBuildTrigger><spec/><upstreamProjects>unm-webapp-parent, </upstreamProjects><threshold><name>SUCCESS</name><ordinal>0</ordinal><color>BLUE</color><completeBuild>true</completeBuild></threshold></jenkins.triggers.ReverseBuildTrigger></triggers>
+    <jenkins.triggers.ReverseBuildTrigger>
+      <spec/>
+      <upstreamProjects>unm-it-parent_release, unm-it-commons_ios6_release, unm-it-commons_ios7_release, unm-it-commons_release, unm-mobileweb-app-local_release, unm-backend-it-data_release, </upstreamProjects>
+      <threshold>
+        <name>SUCCESS</name>
+        <ordinal>0</ordinal>
+        <color>BLUE</color>
+        <completeBuild>true</completeBuild>
+      </threshold>
+    </jenkins.triggers.ReverseBuildTrigger>
+  </triggers>
   <concurrentBuild>false</concurrentBuild>
-  <customWorkspace>unm-backend-mock</customWorkspace>
+  <customWorkspace>unm-mobileweb-app-local-it</customWorkspace>
   <rootModule>
     <groupId>fr.univmobile</groupId>
-    <artifactId>unm-backend-mock</artifactId>
+    <artifactId>unm-mobileweb-app-local-it</artifactId>
   </rootModule>
-  <rootPOM>unm-backend-mock/pom.xml</rootPOM>
-  <goals>-U clean site:site site:deploy</goals>
+  <rootPOM>unm-mobileweb-app-local-it/pom.xml</rootPOM>
+  <goals>-U clean install</goals>
   <aggregatorStyleBuild>true</aggregatorStyleBuild>
   <incrementalBuild>false</incrementalBuild>
-  <ignoreUpstremChanges>false</ignoreUpstremChanges>
+  <ignoreUpstremChanges>true</ignoreUpstremChanges>
   <archivingDisabled>false</archivingDisabled>
   <siteArchivingDisabled>false</siteArchivingDisabled>
   <fingerprintingDisabled>false</fingerprintingDisabled>
@@ -62,7 +61,15 @@ Maven Generated Site: &lt;a&#13;
   <settings class="jenkins.mvn.DefaultSettingsProvider"/>
   <globalSettings class="jenkins.mvn.DefaultGlobalSettingsProvider"/>
   <reporters/>
-  <publishers/>
+  <publishers>
+    <hudson.tasks.ArtifactArchiver>
+      <artifacts>unm-mobileweb-app-local-it/target/screenshots/</artifacts>
+      <latestOnly>false</latestOnly>
+      <allowEmptyArchive>false</allowEmptyArchive>
+      <onlyIfSuccessful>false</onlyIfSuccessful>
+      <defaultExcludes>true</defaultExcludes>
+    </hudson.tasks.ArtifactArchiver>
+  </publishers>
   <buildWrappers/>
   <prebuilders/>
   <postbuilders/>

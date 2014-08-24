@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><maven2-moduleset plugin="maven-plugin@2.3">
+<?xml version="1.0" encoding="UTF-8"?><maven2-moduleset plugin="maven-plugin@2.5">
   <actions/>
   <description>GitHub: &lt;a href="https://github.com/univmobile/unm-mobileweb/tree/master/unm-mobileweb-app"&gt;&#13;
 https://github.com/univmobile/unm-mobileweb/tree/master/unm-mobileweb-app&#13;
@@ -39,9 +39,20 @@ Maven Artifacts: &lt;a&#13;
   <canRoam>true</canRoam>
   <disabled>false</disabled>
   <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
-  <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
+  <blockBuildWhenUpstreamBuilding>true</blockBuildWhenUpstreamBuilding>
   <jdk>Java 7</jdk>
-  <triggers><jenkins.triggers.ReverseBuildTrigger><spec/><upstreamProjects>unm-webapp-parent_release, unm-webapp-commons_release, </upstreamProjects><threshold><name>SUCCESS</name><ordinal>0</ordinal><color>BLUE</color><completeBuild>true</completeBuild></threshold></jenkins.triggers.ReverseBuildTrigger></triggers>
+  <triggers>
+    <jenkins.triggers.ReverseBuildTrigger>
+      <spec/>
+      <upstreamProjects>unm-webapp-parent_release, unm-webapp-commons_release, unm-mobileweb-core_release, </upstreamProjects>
+      <threshold>
+        <name>SUCCESS</name>
+        <ordinal>0</ordinal>
+        <color>BLUE</color>
+        <completeBuild>true</completeBuild>
+      </threshold>
+    </jenkins.triggers.ReverseBuildTrigger>
+  </triggers>
   <concurrentBuild>false</concurrentBuild>
   <customWorkspace>unm-mobileweb-app</customWorkspace>
   <rootModule>
@@ -55,6 +66,7 @@ Maven Artifacts: &lt;a&#13;
   <ignoreUpstremChanges>true</ignoreUpstremChanges>
   <archivingDisabled>false</archivingDisabled>
   <siteArchivingDisabled>false</siteArchivingDisabled>
+  <fingerprintingDisabled>false</fingerprintingDisabled>
   <resolveDependencies>false</resolveDependencies>
   <processPlugins>false</processPlugins>
   <mavenValidationLevel>-1</mavenValidationLevel>

@@ -336,28 +336,6 @@ Tableau de bord d’intégration continue :&#xd;
     </listView>
     <listView>
       <owner class="hudson" reference="../../.."/>
-      <name>Maven Generated Sites</name>
-      <filterExecutors>false</filterExecutors>
-      <filterQueue>false</filterQueue>
-      <properties class="hudson.model.View$PropertyList"/>
-      <jobNames>
-        <comparator class="hudson.util.CaseInsensitiveComparator" reference="../../../../slaves/slave/nodeProperties/hudson.slaves.EnvironmentVariablesNodeProperty/envVars/tree-map/default/comparator"/>
-      </jobNames>
-      <jobFilters/>
-      <columns>
-        <hudson.views.StatusColumn/>
-        <hudson.views.WeatherColumn/>
-        <hudson.views.JobColumn/>
-        <hudson.views.LastSuccessColumn/>
-        <hudson.views.LastFailureColumn/>
-        <hudson.views.LastDurationColumn/>
-        <hudson.views.BuildButtonColumn/>
-      </columns>
-      <includeRegex>.*_site</includeRegex>
-      <recurse>false</recurse>
-    </listView>
-    <listView>
-      <owner class="hudson" reference="../../.."/>
       <name>unm-android</name>
       <filterExecutors>false</filterExecutors>
       <filterQueue>false</filterQueue>
@@ -367,6 +345,7 @@ Tableau de bord d’intégration continue :&#xd;
         <string>Android-UnivMobile</string>
         <string>Android-UnivMobile_gradle</string>
         <string>unm-android-it</string>
+        <string>unm-android-testutil</string>
       </jobNames>
       <jobFilters/>
       <columns>
@@ -430,6 +409,8 @@ Tableau de bord d’intégration continue :&#xd;
         <string>unm-backend-core</string>
         <string>unm-backend-filter-noshib</string>
         <string>unm-backend-it</string>
+        <string>unm-backend-it-data</string>
+        <string>unm-backend-it-parent</string>
         <string>unm-backend-it_macos</string>
         <string>unm-backend-parent</string>
         <string>unm-commons-datasource</string>
@@ -486,6 +467,7 @@ Tableau de bord d’intégration continue :&#xd;
         <string>unm-mobileweb-app-local</string>
         <string>unm-mobileweb-app-local-it_ios6</string>
         <string>unm-mobileweb-app-local-it_ios7</string>
+        <string>unm-mobileweb-core</string>
         <string>unm-mobileweb-it_ios6</string>
         <string>unm-mobileweb-it_ios7</string>
       </jobNames>
@@ -509,9 +491,18 @@ Tableau de bord d’intégration continue :&#xd;
       <properties class="hudson.model.View$PropertyList"/>
       <jobNames>
         <comparator class="hudson.util.CaseInsensitiveComparator" reference="../../../../slaves/slave[3]/nodeProperties/hudson.slaves.EnvironmentVariablesNodeProperty/envVars/tree-map/default/comparator"/>
+        <string>unm-android-testutil_release</string>
+        <string>unm-backend-it-data_release</string>
+        <string>unm-backend-it-parent_release</string>
+        <string>unm-backend-it_macos_release</string>
+        <string>unm-commons-datasource_release</string>
         <string>unm-ios-it_ios6_release</string>
         <string>unm-ios-it_release</string>
         <string>unm-ios_release</string>
+        <string>unm-mobileweb-app-local-it_ios6_release</string>
+        <string>unm-mobileweb-app-local-it_ios7_release</string>
+        <string>unm-mobileweb-app-local_release</string>
+        <string>unm-mobileweb-core_release</string>
       </jobNames>
       <jobFilters/>
       <columns>
@@ -618,6 +609,7 @@ Captures d’écrans des tests d’intégration :&#xd;
         <string>Android-UnivMobile_localhost</string>
         <string>unm-android-testutil</string>
         <string>unm-backend-it-data</string>
+        <string>unm-backend-it-parent</string>
         <string>unm-mobileweb-core</string>
       </jobNames>
       <jobFilters/>

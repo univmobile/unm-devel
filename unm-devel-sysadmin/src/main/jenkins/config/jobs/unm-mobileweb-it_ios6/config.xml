@@ -37,7 +37,7 @@ Maven Generated Site: &lt;a&#13;
   <triggers>
     <jenkins.triggers.ReverseBuildTrigger>
       <spec/>
-      <upstreamProjects>unm-it-parent, unm-it-commons, unm-backend-app, unm-mobileweb-app, unm-backend-it-data, </upstreamProjects>
+      <upstreamProjects>unm-backend-it-parent, unm-mobileweb-app, unm-backend-app, </upstreamProjects>
       <threshold>
         <name>SUCCESS</name>
         <ordinal>0</ordinal>

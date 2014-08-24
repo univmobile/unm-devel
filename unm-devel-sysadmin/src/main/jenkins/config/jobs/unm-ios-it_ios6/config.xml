@@ -42,7 +42,7 @@ Tableau de bord d’intégration continue :&#13;
   <triggers>
     <jenkins.triggers.ReverseBuildTrigger>
       <spec/>
-      <upstreamProjects>unm-it-parent, unm-it-commons, </upstreamProjects>
+      <upstreamProjects>unm-backend-it-parent, unm-ios, </upstreamProjects>
       <threshold>
         <name>SUCCESS</name>
         <ordinal>0</ordinal>

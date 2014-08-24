@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><maven2-moduleset plugin="maven-plugin@2.3">
+<?xml version="1.0" encoding="UTF-8"?><maven2-moduleset plugin="maven-plugin@2.5">
   <actions/>
   <description>GitHub: &lt;a href="https://github.com/univmobile/unm-devel/tree/master/unm-it-commons"&gt;&#13;
 https://github.com/univmobile/unm-devel/tree/master/unm-it-commons&#13;
@@ -34,7 +34,7 @@ Maven Generated Site: &lt;a&#13;
   <canRoam>false</canRoam>
   <disabled>false</disabled>
   <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
-  <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
+  <blockBuildWhenUpstreamBuilding>true</blockBuildWhenUpstreamBuilding>
   <jdk>MacOS_iOS6</jdk>
   <triggers><jenkins.triggers.ReverseBuildTrigger><spec/><upstreamProjects>unm-it-parent_release, </upstreamProjects><threshold><name>SUCCESS</name><ordinal>0</ordinal><color>BLUE</color><completeBuild>true</completeBuild></threshold></jenkins.triggers.ReverseBuildTrigger></triggers>
   <concurrentBuild>false</concurrentBuild>
@@ -50,6 +50,7 @@ Maven Generated Site: &lt;a&#13;
   <ignoreUpstremChanges>true</ignoreUpstremChanges>
   <archivingDisabled>false</archivingDisabled>
   <siteArchivingDisabled>false</siteArchivingDisabled>
+  <fingerprintingDisabled>false</fingerprintingDisabled>
   <resolveDependencies>false</resolveDependencies>
   <processPlugins>false</processPlugins>
   <mavenValidationLevel>-1</mavenValidationLevel>

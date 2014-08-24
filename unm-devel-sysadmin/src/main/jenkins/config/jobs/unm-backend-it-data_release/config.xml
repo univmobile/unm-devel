@@ -7,7 +7,7 @@
     <configVersion>2</configVersion>
     <userRemoteConfigs>
       <hudson.plugins.git.UserRemoteConfig>
-        <url>https://github.com/univmobile/unm-mobileweb.git</url>
+        <url>https://github.com/univmobile/unm-backend.git</url>
       </hudson.plugins.git.UserRemoteConfig>
     </userRemoteConfigs>
     <branches>
@@ -21,8 +21,7 @@
       <hudson.plugins.git.extensions.impl.CleanBeforeCheckout/>
     </extensions>
   </scm>
-  <assignedNode>master</assignedNode>
-  <canRoam>false</canRoam>
+  <canRoam>true</canRoam>
   <disabled>false</disabled>
   <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
   <blockBuildWhenUpstreamBuilding>true</blockBuildWhenUpstreamBuilding>
@@ -30,7 +29,7 @@
   <triggers>
     <jenkins.triggers.ReverseBuildTrigger>
       <spec/>
-      <upstreamProjects>unm-backend-it-parent_release, unm-mobileweb-app_release, unm-backend-app_release, </upstreamProjects>
+      <upstreamProjects>unm-it-parent_release, unm-backend-core_release, </upstreamProjects>
       <threshold>
         <name>SUCCESS</name>
         <ordinal>0</ordinal>
@@ -40,13 +39,13 @@
     </jenkins.triggers.ReverseBuildTrigger>
   </triggers>
   <concurrentBuild>false</concurrentBuild>
-  <customWorkspace>unm-mobileweb-it</customWorkspace>
+  <customWorkspace>unm-backend-it-data</customWorkspace>
   <rootModule>
     <groupId>fr.univmobile</groupId>
-    <artifactId>unm-mobileweb-it</artifactId>
+    <artifactId>unm-backend-it-data</artifactId>
   </rootModule>
-  <rootPOM>unm-mobileweb-it/pom.xml</rootPOM>
-  <goals>-U clean site:jar deploy -Dmaven.test.skip=true</goals>
+  <rootPOM>unm-backend-it-data/pom.xml</rootPOM>
+  <goals>-U clean site:jar deploy</goals>
   <aggregatorStyleBuild>true</aggregatorStyleBuild>
   <incrementalBuild>false</incrementalBuild>
   <ignoreUpstremChanges>true</ignoreUpstremChanges>

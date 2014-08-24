@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><maven2-moduleset plugin="maven-plugin@2.3">
+<?xml version="1.0" encoding="UTF-8"?><maven2-moduleset plugin="maven-plugin@2.5">
   <actions/>
   <description>Tableau de bord d’intégration continue :&#13;
 &lt;a href="http://univmobile.vswip.com/job/unm-devel-it/lastSuccessfulBuild/artifact/unm-devel-it/target/unm-ci-dump.html"&gt;&#13;
@@ -28,9 +28,20 @@
   <canRoam>false</canRoam>
   <disabled>false</disabled>
   <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
-  <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
+  <blockBuildWhenUpstreamBuilding>true</blockBuildWhenUpstreamBuilding>
   <jdk>Java 7</jdk>
-  <triggers><jenkins.triggers.ReverseBuildTrigger><spec/><upstreamProjects>unm-it-parent_release, unm-ios-ut-results_release, unm-it-commons_ios6_release, unm-it-commons_ios7_release, unm-it-commons_release, </upstreamProjects><threshold><name>SUCCESS</name><ordinal>0</ordinal><color>BLUE</color><completeBuild>true</completeBuild></threshold></jenkins.triggers.ReverseBuildTrigger></triggers>
+  <triggers>
+    <jenkins.triggers.ReverseBuildTrigger>
+      <spec/>
+      <upstreamProjects>unm-it-parent_release, unm-ios-ut-results_release, unm-it-commons_ios6_release, unm-it-commons_ios7_release, unm-it-commons_release, </upstreamProjects>
+      <threshold>
+        <name>SUCCESS</name>
+        <ordinal>0</ordinal>
+        <color>BLUE</color>
+        <completeBuild>true</completeBuild>
+      </threshold>
+    </jenkins.triggers.ReverseBuildTrigger>
+  </triggers>
   <concurrentBuild>false</concurrentBuild>
   <customWorkspace>unm-ios-ut-results_up_to_date</customWorkspace>
   <rootModule>
@@ -44,6 +55,7 @@
   <ignoreUpstremChanges>true</ignoreUpstremChanges>
   <archivingDisabled>false</archivingDisabled>
   <siteArchivingDisabled>false</siteArchivingDisabled>
+  <fingerprintingDisabled>false</fingerprintingDisabled>
   <resolveDependencies>false</resolveDependencies>
   <processPlugins>false</processPlugins>
   <mavenValidationLevel>-1</mavenValidationLevel>

@@ -2,12 +2,22 @@
   <actions/>
   <description/>
   <keepDependencies>false</keepDependencies>
-  <properties/>
+  <properties>
+    <hudson.security.AuthorizationMatrixProperty>
+      <permission>hudson.model.Item.Cancel:mgauzins</permission>
+      <permission>hudson.model.Item.Workspace:mgauzins</permission>
+      <permission>hudson.model.Item.Build:mgauzins</permission>
+      <permission>hudson.model.Item.Read:mgauzins</permission>
+      <permission>hudson.model.Item.Discover:mgauzins</permission>
+      <permission>hudson.model.Item.Configure:mgauzins</permission>
+      <permission>com.cloudbees.plugins.credentials.CredentialsProvider.View:mgauzins</permission>
+    </hudson.security.AuthorizationMatrixProperty>
+  </properties>
   <scm class="hudson.plugins.git.GitSCM" plugin="git@2.2.2">
     <configVersion>2</configVersion>
     <userRemoteConfigs>
       <hudson.plugins.git.UserRemoteConfig>
-        <url>https://github.com/univmobile/unm-mobileweb.git</url>
+        <url>https://github.com/univmobile/unm-android</url>
       </hudson.plugins.git.UserRemoteConfig>
     </userRemoteConfigs>
     <branches>
@@ -21,7 +31,7 @@
       <hudson.plugins.git.extensions.impl.CleanBeforeCheckout/>
     </extensions>
   </scm>
-  <assignedNode>master</assignedNode>
+  <assignedNode>ks3haxm</assignedNode>
   <canRoam>false</canRoam>
   <disabled>false</disabled>
   <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
@@ -30,7 +40,7 @@
   <triggers>
     <jenkins.triggers.ReverseBuildTrigger>
       <spec/>
-      <upstreamProjects>unm-backend-it-parent_release, unm-mobileweb-app_release, unm-backend-app_release, </upstreamProjects>
+      <upstreamProjects>unm-it-parent_release, unm-it-commons_ios6_release, unm-it-commons_ios7_release, unm-it-commons_release, </upstreamProjects>
       <threshold>
         <name>SUCCESS</name>
         <ordinal>0</ordinal>
@@ -40,13 +50,14 @@
     </jenkins.triggers.ReverseBuildTrigger>
   </triggers>
   <concurrentBuild>false</concurrentBuild>
-  <customWorkspace>unm-mobileweb-it</customWorkspace>
+  <customWorkspace>unm-android-testutil</customWorkspace>
   <rootModule>
     <groupId>fr.univmobile</groupId>
-    <artifactId>unm-mobileweb-it</artifactId>
+    <artifactId>unm-android-testutil</artifactId>
   </rootModule>
-  <rootPOM>unm-mobileweb-it/pom.xml</rootPOM>
-  <goals>-U clean site:jar deploy -Dmaven.test.skip=true</goals>
+  <rootPOM>unm-android-testutil/pom.xml</rootPOM>
+  <goals>-U clean site:jar deploy</goals>
+  <mavenOpts>-Djava.awt.headless=true</mavenOpts>
   <aggregatorStyleBuild>true</aggregatorStyleBuild>
   <incrementalBuild>false</incrementalBuild>
   <ignoreUpstremChanges>true</ignoreUpstremChanges>

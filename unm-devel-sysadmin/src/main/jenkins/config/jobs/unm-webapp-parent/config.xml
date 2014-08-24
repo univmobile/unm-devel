@@ -39,7 +39,7 @@ Maven Generated Site: &lt;a&#13;
       <spec>H/5 * * * *</spec>
       <ignorePostCommitHooks>false</ignorePostCommitHooks>
     </hudson.triggers.SCMTrigger>
-  <jenkins.triggers.ReverseBuildTrigger><spec/><upstreamProjects>unm-parent, unm-parent_release_site, unm-parent_site, </upstreamProjects><threshold><name>SUCCESS</name><ordinal>0</ordinal><color>BLUE</color><completeBuild>true</completeBuild></threshold></jenkins.triggers.ReverseBuildTrigger></triggers>
+  <jenkins.triggers.ReverseBuildTrigger><spec/><upstreamProjects>unm-parent, </upstreamProjects><threshold><name>SUCCESS</name><ordinal>0</ordinal><color>BLUE</color><completeBuild>true</completeBuild></threshold></jenkins.triggers.ReverseBuildTrigger></triggers>
   <concurrentBuild>false</concurrentBuild>
   <customWorkspace>unm-webapp-parent</customWorkspace>
   <rootModule>

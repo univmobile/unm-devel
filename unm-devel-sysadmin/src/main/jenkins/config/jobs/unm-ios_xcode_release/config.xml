@@ -1,18 +1,19 @@
-<?xml version="1.0" encoding="UTF-8"?><project>
+<?xml version='1.0' encoding='UTF-8'?>
+<project>
   <actions/>
-  <description>Tableau de bord d’intégration continue :&#13;
-&lt;a href="http://univmobile.vswip.com/job/unm-devel-it/lastSuccessfulBuild/artifact/unm-devel-it/target/unm-ci-dump.html"&gt;&#13;
-  UnivMobile iOS — Intégration continue&#13;
+  <description>Tableau de bord d’intégration continue :&#xd;
+&lt;a href=&quot;http://univmobile.vswip.com/job/unm-devel-it/lastSuccessfulBuild/artifact/unm-devel-it/target/unm-ci-dump.html&quot;&gt;&#xd;
+  UnivMobile iOS — Intégration continue&#xd;
 &lt;/a&gt;</description>
   <keepDependencies>false</keepDependencies>
   <properties>
     <hudson.security.AuthorizationMatrixProperty>
-      <permission>hudson.model.Item.Build:mgauzins</permission>
-      <permission>hudson.model.Item.Build:dummy</permission>
-      <permission>hudson.model.Item.Workspace:mgauzins</permission>
-      <permission>hudson.model.Item.Workspace:dummy</permission>
       <permission>hudson.model.Item.Cancel:mgauzins</permission>
       <permission>hudson.model.Item.Cancel:dummy</permission>
+      <permission>hudson.model.Item.Workspace:mgauzins</permission>
+      <permission>hudson.model.Item.Workspace:dummy</permission>
+      <permission>hudson.model.Item.Build:mgauzins</permission>
+      <permission>hudson.model.Item.Build:dummy</permission>
       <permission>hudson.model.Item.Read:mgauzins</permission>
       <permission>hudson.model.Item.Read:dummy</permission>
     </hudson.security.AuthorizationMatrixProperty>
@@ -40,7 +41,7 @@
   <canRoam>false</canRoam>
   <disabled>false</disabled>
   <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
-  <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
+  <blockBuildWhenUpstreamBuilding>true</blockBuildWhenUpstreamBuilding>
   <jdk>MacOS_iOS6</jdk>
   <triggers/>
   <concurrentBuild>false</concurrentBuild>
@@ -55,6 +56,7 @@
       <latestOnly>false</latestOnly>
       <allowEmptyArchive>false</allowEmptyArchive>
       <onlyIfSuccessful>false</onlyIfSuccessful>
+      <defaultExcludes>true</defaultExcludes>
     </hudson.tasks.ArtifactArchiver>
   </publishers>
   <buildWrappers/>

@@ -1,56 +1,55 @@
 <?xml version="1.0" encoding="UTF-8"?><maven2-moduleset plugin="maven-plugin@2.5">
   <actions/>
-  <description>Main Jenkins Job: &lt;a&#13;
-  href="http://univmobile.vswip.com/job/unm-parent/"&gt;http://univmobile.vswip.com/job/unm-parent/&lt;/a&gt;&#13;
-&lt;p&gt;&#13;
-GitHub: &lt;a href="https://github.com/univmobile/unm-devel/tree/master/unm-parent"&gt;https://github.com/univmobile/unm-devel/tree/master/unm-parent&#13;
-&lt;/a&gt;&#13;
-&lt;p&gt;&#13;
-Maven Generated Site: &lt;a&#13;
-  href="http://univmobile.vswip.com/nexus/content/sites/pub/unm-parent/"&gt;http://univmobile.vswip.com/nexus/content/sites/pub/unm-parent/&lt;/a&gt;&#13;
-&lt;a&#13;
-  href="http://univmobile.vswip.com/nexus/content/sites/pub/unm-parent/0.0.1-SNAPSHOT/"&gt;0.0.1-SNAPSHOT/&lt;/a&gt;&#13;
-</description>
+  <description/>
   <keepDependencies>false</keepDependencies>
   <properties/>
   <scm class="hudson.plugins.git.GitSCM" plugin="git@2.2.2">
     <configVersion>2</configVersion>
     <userRemoteConfigs>
       <hudson.plugins.git.UserRemoteConfig>
-        <url>https://github.com/univmobile/unm-devel.git</url>
+        <url>https://github.com/univmobile/unm-backend.git</url>
       </hudson.plugins.git.UserRemoteConfig>
     </userRemoteConfigs>
     <branches>
       <hudson.plugins.git.BranchSpec>
-        <name>origin/develop</name>
+        <name>origin/master</name>
       </hudson.plugins.git.BranchSpec>
     </branches>
     <doGenerateSubmoduleConfigurations>false</doGenerateSubmoduleConfigurations>
     <submoduleCfg class="list"/>
-    <extensions/>
+    <extensions>
+      <hudson.plugins.git.extensions.impl.CleanBeforeCheckout/>
+    </extensions>
   </scm>
-  <canRoam>true</canRoam>
-  <disabled>true</disabled>
+  <assignedNode>macos_ios6a</assignedNode>
+  <canRoam>false</canRoam>
+  <disabled>false</disabled>
   <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
   <blockBuildWhenUpstreamBuilding>true</blockBuildWhenUpstreamBuilding>
-  <jdk>(Default)</jdk>
+  <jdk>MacOS_iOS6</jdk>
   <triggers>
-    <hudson.triggers.SCMTrigger>
-      <spec>H H * * *</spec>
-      <ignorePostCommitHooks>false</ignorePostCommitHooks>
-    </hudson.triggers.SCMTrigger>
-  <jenkins.triggers.ReverseBuildTrigger><spec/><upstreamProjects/><threshold><name>SUCCESS</name><ordinal>0</ordinal><color>BLUE</color><completeBuild>true</completeBuild></threshold></jenkins.triggers.ReverseBuildTrigger></triggers>
+    <jenkins.triggers.ReverseBuildTrigger>
+      <spec/>
+      <upstreamProjects>unm-backend-it-parent_release, unm-mobileweb-core_release, </upstreamProjects>
+      <threshold>
+        <name>SUCCESS</name>
+        <ordinal>0</ordinal>
+        <color>BLUE</color>
+        <completeBuild>true</completeBuild>
+      </threshold>
+    </jenkins.triggers.ReverseBuildTrigger>
+  </triggers>
   <concurrentBuild>false</concurrentBuild>
-  <customWorkspace>unm-parent</customWorkspace>
+  <customWorkspace>unm-backend-it</customWorkspace>
   <rootModule>
     <groupId>fr.univmobile</groupId>
-    <artifactId>unm-parent</artifactId>
+    <artifactId>unm-backend-it</artifactId>
   </rootModule>
-  <rootPOM>unm-parent/pom.xml</rootPOM>
-  <goals>-U clean site:site site:deploy</goals>
+  <rootPOM>unm-backend-it/pom.xml</rootPOM>
+  <goals>-U clean install</goals>
   <aggregatorStyleBuild>true</aggregatorStyleBuild>
   <incrementalBuild>false</incrementalBuild>
-  <ignoreUpstremChanges>false</ignoreUpstremChanges>
+  <ignoreUpstremChanges>true</ignoreUpstremChanges>
   <archivingDisabled>false</archivingDisabled>
   <siteArchivingDisabled>false</siteArchivingDisabled>
   <fingerprintingDisabled>false</fingerprintingDisabled>
@@ -62,9 +61,21 @@ Maven Generated Site: &lt;a&#13;
   <settings class="jenkins.mvn.DefaultSettingsProvider"/>
   <globalSettings class="jenkins.mvn.DefaultGlobalSettingsProvider"/>
   <reporters/>
-  <publishers/>
+  <publishers>
+    <hudson.tasks.ArtifactArchiver>
+      <artifacts>unm-backend-it/target/screenshots/, unm-backend-it/target/pageSource.html</artifacts>
+      <latestOnly>false</latestOnly>
+      <allowEmptyArchive>false</allowEmptyArchive>
+      <onlyIfSuccessful>false</onlyIfSuccessful>
+      <defaultExcludes>true</defaultExcludes>
+    </hudson.tasks.ArtifactArchiver>
+  </publishers>
   <buildWrappers/>
-  <prebuilders/>
+  <prebuilders>
+    <hudson.tasks.Shell>
+      <command>echo "DISPLAY: ${DISPLAY}"</command>
+    </hudson.tasks.Shell>
+  </prebuilders>
   <postbuilders/>
   <runPostStepsIfResult>
     <name>FAILURE</name>

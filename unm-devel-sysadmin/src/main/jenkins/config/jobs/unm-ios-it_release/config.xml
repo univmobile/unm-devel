@@ -42,7 +42,7 @@ Tableau de bord d’intégration continue :&#13;
   <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
   <blockBuildWhenUpstreamBuilding>true</blockBuildWhenUpstreamBuilding>
   <jdk>MacOS_iOS6</jdk>
-  <triggers><jenkins.triggers.ReverseBuildTrigger><spec/><upstreamProjects>unm-it-parent_release, unm-it-commons_ios6_release, unm-it-commons_ios7_release, unm-it-commons_release, </upstreamProjects><threshold><name>SUCCESS</name><ordinal>0</ordinal><color>BLUE</color><completeBuild>true</completeBuild></threshold></jenkins.triggers.ReverseBuildTrigger></triggers>
+  <triggers><jenkins.triggers.ReverseBuildTrigger><spec/><upstreamProjects>unm-backend-it-parent_release, unm-ios_release, </upstreamProjects><threshold><name>SUCCESS</name><ordinal>0</ordinal><color>BLUE</color><completeBuild>true</completeBuild></threshold></jenkins.triggers.ReverseBuildTrigger></triggers>
   <concurrentBuild>false</concurrentBuild>
   <customWorkspace>unm-ios-it</customWorkspace>
   <rootModule>

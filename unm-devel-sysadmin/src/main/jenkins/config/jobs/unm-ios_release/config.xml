@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><maven2-moduleset plugin="maven-plugin@2.3">
+<?xml version="1.0" encoding="UTF-8"?><maven2-moduleset plugin="maven-plugin@2.5">
   <actions/>
   <description>GitHub: &lt;a href="https://github.com/univmobile/unm-ios"&gt;https://github.com/univmobile/unm-ios&#13;
 &lt;/a&gt;&#13;
@@ -11,9 +11,9 @@ Tableau de bord d’intégration continue :&#13;
   <keepDependencies>false</keepDependencies>
   <properties>
     <hudson.security.AuthorizationMatrixProperty>
-      <permission>hudson.model.Item.Build:mgauzins</permission>
-      <permission>hudson.model.Item.Workspace:mgauzins</permission>
       <permission>hudson.model.Item.Cancel:mgauzins</permission>
+      <permission>hudson.model.Item.Workspace:mgauzins</permission>
+      <permission>hudson.model.Item.Build:mgauzins</permission>
       <permission>hudson.model.Item.Read:mgauzins</permission>
     </hudson.security.AuthorizationMatrixProperty>
   </properties>
@@ -40,9 +40,20 @@ Tableau de bord d’intégration continue :&#13;
   <canRoam>false</canRoam>
   <disabled>false</disabled>
   <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
-  <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
+  <blockBuildWhenUpstreamBuilding>true</blockBuildWhenUpstreamBuilding>
   <jdk>Java 7</jdk>
-  <triggers><jenkins.triggers.ReverseBuildTrigger><spec/><upstreamProjects>unm-parent_release, </upstreamProjects><threshold><name>SUCCESS</name><ordinal>0</ordinal><color>BLUE</color><completeBuild>true</completeBuild></threshold></jenkins.triggers.ReverseBuildTrigger></triggers>
+  <triggers>
+    <jenkins.triggers.ReverseBuildTrigger>
+      <spec/>
+      <upstreamProjects>unm-parent_release, </upstreamProjects>
+      <threshold>
+        <name>SUCCESS</name>
+        <ordinal>0</ordinal>
+        <color>BLUE</color>
+        <completeBuild>true</completeBuild>
+      </threshold>
+    </jenkins.triggers.ReverseBuildTrigger>
+  </triggers>
   <concurrentBuild>false</concurrentBuild>
   <rootModule>
     <groupId>fr.univmobile</groupId>
@@ -54,6 +65,7 @@ Tableau de bord d’intégration continue :&#13;
   <ignoreUpstremChanges>true</ignoreUpstremChanges>
   <archivingDisabled>false</archivingDisabled>
   <siteArchivingDisabled>false</siteArchivingDisabled>
+  <fingerprintingDisabled>false</fingerprintingDisabled>
   <resolveDependencies>false</resolveDependencies>
   <processPlugins>false</processPlugins>
   <mavenValidationLevel>-1</mavenValidationLevel>
