@@ -82,7 +82,7 @@
 		<gitRepository ref="unm-ios"/>.
 	</description>
 	<parent>
-		<artifactId>unm-it-parent</artifactId>
+		<artifactId>unm-backend-it-parent</artifactId>
 	</parent>
 	<dependencies>
 		<dependency>
@@ -139,6 +139,18 @@
 	</description>
 	<parent>
 		<artifactId>unm-parent</artifactId>
+	</parent>
+</project>
+</mavenProject>
+<mavenProject id="unm-backend-it-parent" gitRepository-ref="unm-backend">
+<project>
+	<description>
+		POM parent des projets Maven
+		de tests d’intégration qui ont besoin d’un déploiement local de
+		l’application unm-backend.
+	</description>
+	<parent>
+		<artifactId>unm-it-parent</artifactId>
 	</parent>
 </project>
 </mavenProject>
@@ -203,7 +215,7 @@
 		<gitRepository ref="unm-mobileweb"/>.
 	</description>
 	<parent>
-		<artifactId>unm-it-parent</artifactId>
+		<artifactId>unm-backend-it-parent</artifactId>
 	</parent>
 	<dependencies>
 		<dependency>
@@ -238,7 +250,7 @@
 		<gitRepository ref="unm-android"/>.
 	</description>
 	<parent>
-		<artifactId>unm-it-parent</artifactId>
+		<artifactId>unm-backend-it-parent</artifactId>
 	</parent>
 	<dependencies>
 		<dependency>
@@ -385,7 +397,7 @@
 		<gitRepository ref="unm-backend"/>.
 	</description>
 	<parent>
-		<artifactId>unm-it-parent</artifactId>
+		<artifactId>unm-backend-it-parent</artifactId>
 	</parent>
 	<dependencies>
 		<dependency>
@@ -505,6 +517,29 @@
 	</description>
 	<parent>
 		<artifactId>unm-backend-client</artifactId>
+	</parent>
+</project>
+</mavenProject>
+<mavenProject id="unm-android-testutil" gitRepository-ref="unm-android">
+<project>
+	<description>
+		Utilitaires pour les tests sur l’application Android.
+	</description>
+	<parent>
+		<artifactId>unm-it-parent</artifactId>
+	</parent>
+</project>
+</mavenProject>
+<mavenProject id="unm-webui-devel" gitRepository-ref="unm-devel">
+<project>
+	<description>
+		Outils pour le développements des IHMs web du projet UnivMobile :
+		unm-backend et unm-mobileweb.
+		Outil de récupération des images pour les markers Google Maps :
+		A, B, C, etc. sur fond vert.
+	</description>
+	<parent>
+		<artifactId>unm-parent</artifactId>
 	</parent>
 </project>
 </mavenProject>
