@@ -222,7 +222,7 @@ public abstract class AbstractController {
 			}
 		}
 
-		final Map<Method, String> httpParameterValues = new HashMap<Method, String>();
+		final Map<Method, Object> httpParameterValues = new HashMap<Method, Object>();
 
 		for (final Method method : clazz.getMethods()) {
 
@@ -236,15 +236,18 @@ public abstract class AbstractController {
 				continue;
 			}
 
+			final Class<?> type = method.getReturnType();
+
 			String httpParameterName = httpParameter.value();
 
 			if (isBlank(httpParameterName)) {
 				httpParameterName = method.getName();
 			}
 
-			String httpParameterValue = request.getParameter(httpParameterName);
+			String httpParameterValueStr = request
+					.getParameter(httpParameterName);
 
-			if (httpParameterValue == null) {
+			if (httpParameterValueStr == null) {
 
 				if (required) {
 
@@ -255,7 +258,30 @@ public abstract class AbstractController {
 
 				if (httpParameter.trim()) {
 
-					httpParameterValue = httpParameterValue.trim();
+					httpParameterValueStr = httpParameterValueStr.trim();
+				}
+
+				final Object httpParameterValue;
+
+				if (String.class.equals(type)) {
+
+					httpParameterValue = httpParameterValueStr;
+
+				} else if (int.class.equals(type)) {
+
+					try {
+
+						httpParameterValue = Integer
+								.parseInt(httpParameterValueStr);
+
+					} catch (final NumberFormatException e) {
+						return invalidHttpInputs(clazz);
+					}
+
+				} else {
+
+					throw new RuntimeException("Unknown httpParameter type: "
+							+ type.getClass());
 				}
 
 				httpParameterValues.put(method, httpParameterValue);
@@ -303,7 +329,7 @@ public abstract class AbstractController {
 	}
 
 	private static <T> T validHttpInputs(final Class<T> clazz,
-			final Map<Method, String> httpParameterValues) {
+			final Map<Method, Object> httpParameterValues) {
 
 		checkNotNull(clazz, "clazz");
 		checkNotNull(httpParameterValues, "httpParameterValues");
