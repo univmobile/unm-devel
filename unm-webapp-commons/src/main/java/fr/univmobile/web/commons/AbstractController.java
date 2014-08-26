@@ -31,7 +31,7 @@ public abstract class AbstractController {
 	 * 
 	 * @return the JSP filename, in WEB-INF/jsp/. e.g. "home.jsp"
 	 */
-	public abstract String action() throws IOException;
+	public abstract View action() throws IOException;
 
 	final AbstractController init(final ServletContext servletContext)
 			throws ServletException {

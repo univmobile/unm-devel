@@ -7,7 +7,6 @@ import static org.apache.commons.lang3.StringUtils.substringBeforeLast;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletConfig;
@@ -105,7 +104,7 @@ public abstract class AbstractUnivMobileServlet extends HttpServlet {
 
 		// 2. CONTROLLER
 
-		String jspFilename = null;
+		View view = null;
 
 		for (final AbstractController controller : controllers) {
 
@@ -113,7 +112,7 @@ public abstract class AbstractUnivMobileServlet extends HttpServlet {
 
 				controller.setThreadLocalRequest(request);
 
-				jspFilename = controller.action();
+				view = controller.action();
 
 				break;
 			}
@@ -121,21 +120,27 @@ public abstract class AbstractUnivMobileServlet extends HttpServlet {
 
 		// 3. DISPATCH TO JSP
 
-		if (jspFilename == null) {
+		if (view == null) {
 
 			UnivMobileHttpUtils.sendError404(request, response, uriPath);
 
 			return;
 		}
 
-		final String jspPath = "/WEB-INF/jsp/" + jspFilename;
+		final String jspPath = "/WEB-INF/jsp/" + view.jspFilename;
 
 		final RequestDispatcher rd = request.getRequestDispatcher(jspPath);
 
-		response.setContentType("text/html");
-		response.setCharacterEncoding(UTF_8);
+		response.setContentType(view.contentType);
+
+		if (view.characterEncoding != null) {
+			response.setCharacterEncoding(view.characterEncoding);
+		}
+
 		// response.setHeader("Content-Language", "en");
-		response.setLocale(Locale.ENGLISH);
+		if (view.locale != null) {
+			response.setLocale(view.locale);
+		}
 
 		rd.forward(request, response);
 	}
