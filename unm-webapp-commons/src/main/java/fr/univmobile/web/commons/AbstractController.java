@@ -3,7 +3,6 @@ package fr.univmobile.web.commons;
 import static com.google.common.base.Preconditions.checkNotNull;
 import static org.apache.commons.lang3.StringUtils.isBlank;
 
-import java.io.IOException;
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
@@ -31,7 +30,7 @@ public abstract class AbstractController {
 	 * 
 	 * @return the JSP filename, in WEB-INF/jsp/. e.g. "home.jsp"
 	 */
-	public abstract View action() throws IOException;
+	public abstract View action() throws ControllerException;
 
 	final AbstractController init(final ServletContext servletContext)
 			throws ServletException {
@@ -194,6 +193,16 @@ public abstract class AbstractController {
 		}
 
 		return request;
+	}
+
+	protected final boolean isHttpGet() {
+
+		return "GET".equalsIgnoreCase(checkedRequest().getMethod());
+	}
+
+	protected final boolean isHttpPost() {
+
+		return "POST".equalsIgnoreCase(checkedRequest().getMethod());
 	}
 
 	protected final <T> T getHttpInputs(final Class<T> clazz) {

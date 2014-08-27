@@ -6,8 +6,6 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
-import java.io.IOException;
-
 import javax.servlet.http.HttpServletRequest;
 
 import org.junit.Test;
@@ -22,7 +20,7 @@ public class HttpInputsTest {
 		final AbstractController controller = new AbstractController() {
 
 			@Override
-			public View action() throws IOException {
+			public View action() throws ControllerException {
 
 				httpInputsHolder[0] = getHttpInputs(HttpInputs_String.class);
 
@@ -57,7 +55,7 @@ public class HttpInputsTest {
 		final AbstractController controller = new AbstractController() {
 
 			@Override
-			public View action() throws IOException {
+			public View action() throws ControllerException {
 
 				httpInputsHolder[0] = getHttpInputs(HttpInputs_int.class);
 

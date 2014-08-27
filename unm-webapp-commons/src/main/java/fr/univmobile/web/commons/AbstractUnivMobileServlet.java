@@ -112,7 +112,16 @@ public abstract class AbstractUnivMobileServlet extends HttpServlet {
 
 				controller.setThreadLocalRequest(request);
 
-				view = controller.action();
+				try {
+					
+					view = controller.action();
+					
+				} catch (final ControllerException e) {
+
+					UnivMobileHttpUtils.sendError500(request, response, e);
+					
+					return;
+				}
 
 				break;
 			}

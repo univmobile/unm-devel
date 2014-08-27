@@ -6,6 +6,7 @@ import static org.apache.commons.lang3.StringUtils.substringAfter;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+import javax.annotation.Nullable;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -63,6 +64,33 @@ public abstract class UnivMobileHttpUtils {
 			out.println();
 
 			out.println("requestURI: " + request.getRequestURI());
+
+		} finally {
+			out.flush();
+			out.close();
+		}
+	}
+
+	public static void sendError500(final HttpServletRequest request,
+			final HttpServletResponse response, @Nullable final Throwable e)
+			throws IOException {
+
+		final String message = "500 INTERNAL SERVER ERROR -- cause: " + e;
+
+		log.error(message);
+		
+		response.setContentType("text/plain");
+		response.setCharacterEncoding(UTF_8);
+		response.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
+
+		final PrintWriter out = response.getWriter();
+		try {
+
+			out.println(message);
+
+			out.println();
+
+			e.printStackTrace(out);
 
 		} finally {
 			out.flush();
