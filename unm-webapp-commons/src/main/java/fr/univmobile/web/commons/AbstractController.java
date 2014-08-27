@@ -30,7 +30,7 @@ public abstract class AbstractController {
 	 * 
 	 * @return the JSP filename, in WEB-INF/jsp/. e.g. "home.jsp"
 	 */
-	public abstract View action() throws ControllerException;
+	public abstract View action() throws Exception;
 
 	final AbstractController init(final ServletContext servletContext)
 			throws ServletException {

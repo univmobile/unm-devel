@@ -116,7 +116,7 @@ public abstract class AbstractUnivMobileServlet extends HttpServlet {
 					
 					view = controller.action();
 					
-				} catch (final ControllerException e) {
+				} catch (final Exception e) {
 
 					UnivMobileHttpUtils.sendError500(request, response, e);
 					

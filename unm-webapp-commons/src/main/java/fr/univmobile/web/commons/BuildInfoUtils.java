@@ -7,34 +7,20 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
 
-import javax.annotation.Nullable;
 import javax.servlet.ServletContext;
 
 public abstract class BuildInfoUtils {
 
 	public static BuildInfo loadBuildInfo(final ServletContext servletContext)
-			throws ControllerException {
+			throws IOException {
+
+		final Properties properties = new Properties();
 
 		final InputStream manifestIs = servletContext
 				.getResourceAsStream("META-INF/MANIFEST.MF");
 
 		final InputStream appIs = Thread.currentThread()
 				.getContextClassLoader().getResourceAsStream("app.properties");
-
-		try {
-
-			return loadBuildInfo(manifestIs, appIs);
-
-		} catch (final IOException e) {
-			throw new ControllerException(e);
-		}
-	}
-
-	public static BuildInfo loadBuildInfo(
-			@Nullable final InputStream manifestIs,
-			@Nullable final InputStream appIs) throws IOException {
-
-		final Properties properties = new Properties();
 
 		if (manifestIs == null) {
 			throw new FileNotFoundException("META-INF/MANIFEST.MF");
