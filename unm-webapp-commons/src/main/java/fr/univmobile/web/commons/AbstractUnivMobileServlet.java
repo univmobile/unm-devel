@@ -113,7 +113,7 @@ public abstract class AbstractUnivMobileServlet extends HttpServlet {
 				controller.setThreadLocalRequest(request);
 
 				try {
-
+					
 					view = controller.action();
 
 				} catch (final Exception e) {
@@ -140,7 +140,7 @@ public abstract class AbstractUnivMobileServlet extends HttpServlet {
 
 		final RequestDispatcher rd = request.getRequestDispatcher(jspPath);
 
-		response.setContentType(view.contentType);
+		response.setContentType(view.contentType); // Note: Overwritten if JSP
 
 		if (view.characterEncoding != null) {
 			response.setCharacterEncoding(view.characterEncoding);
