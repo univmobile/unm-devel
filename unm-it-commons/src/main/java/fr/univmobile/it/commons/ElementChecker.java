@@ -2,6 +2,8 @@ package fr.univmobile.it.commons;
 
 import java.io.IOException;
 
+import javax.annotation.Nullable;
+
 public interface ElementChecker {
 
 	void textShouldEqualTo(String ref) throws IOException;
@@ -15,4 +17,7 @@ public interface ElementChecker {
 	void shouldBeHidden() throws IOException;
 
 	void click() throws IOException;
+
+	@Nullable
+	String attr(String attrName) throws IOException;
 }

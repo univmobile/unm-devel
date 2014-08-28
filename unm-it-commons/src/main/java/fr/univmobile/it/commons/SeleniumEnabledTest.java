@@ -3,6 +3,8 @@ package fr.univmobile.it.commons;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
+import com.thoughtworks.selenium.Selenium;
+
 public abstract class SeleniumEnabledTest extends WebDriverEnabledTest {
 
 	@Override
@@ -86,4 +88,9 @@ public abstract class SeleniumEnabledTest extends WebDriverEnabledTest {
 	}
 
 	private static final String DEFAULT_BROWSER = "*firefox";
+
+	protected final Selenium getSelenium() {
+
+		return SeleniumWebDriverUtils.getWrappedSelenium(getDriver());
+	}
 }

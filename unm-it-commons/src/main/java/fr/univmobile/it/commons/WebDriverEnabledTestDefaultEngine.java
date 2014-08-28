@@ -310,4 +310,10 @@ final class WebElementChecker implements ElementChecker {
 
 		element.click();
 	}
+
+	@Override
+	public String attr(final String attrName) {
+
+		return element.getAttribute(attrName);
+	}
 }

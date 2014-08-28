@@ -67,9 +67,6 @@ abstract class SeleniumWebDriverUtils {
 			return null;
 		}
 
-		// WebDriverBackedSelenium
-
-		// seleniumba
 		if (driver instanceof SeleniumBackedWebDriver) {
 
 			return ((SeleniumBackedWebDriver) driver).getWrappedSelenium();
@@ -264,7 +261,16 @@ abstract class SeleniumWebDriverUtils {
 
 			@Override
 			public String getAttribute(final String name) {
-				throw new NotImplementedException();
+
+				if (!selenium.isElementPresent(locator)) {
+					throw new SeleniumException("getAttribute(): element["
+							+ locator + "] is not present");
+				}
+
+				final String script = "window.document.getElementById('"
+						+ calcId(by) + "').getAttribute('" + name + "');";
+
+				return selenium.getEval(script);
 			}
 
 			@Override

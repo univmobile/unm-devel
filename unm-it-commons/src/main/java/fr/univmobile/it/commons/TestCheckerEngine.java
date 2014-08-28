@@ -16,6 +16,8 @@ import javax.annotation.Nullable;
 
 import org.apache.commons.io.FileUtils;
 
+import com.avcompris.lang.NotImplementedException;
+
 public class TestCheckerEngine extends TestPhasedEngine {
 
 	private final ElementCheckObserverStdout stdoutObserver = new ElementCheckObserverStdout();
@@ -205,8 +207,8 @@ class ElementCheckerWithAttributes implements ElementChecker {
 		final String text = attributes.get("text");
 
 		observer.notifyCheck(id + ".text.shouldNotContain: " + ref,
-				text.contains(ref), "expected: !<" + ref + ">, but was: <" + text
-						+ ">");
+				text.contains(ref), "expected: !<" + ref + ">, but was: <"
+						+ text + ">");
 	}
 
 	@Override
@@ -228,5 +230,11 @@ class ElementCheckerWithAttributes implements ElementChecker {
 	public void click() throws IOException {
 
 		observer.notifyAction("click: " + id);
+	}
+
+	@Override
+	public String attr(final String attrName) {
+
+		throw new NotImplementedException();
 	}
 }
