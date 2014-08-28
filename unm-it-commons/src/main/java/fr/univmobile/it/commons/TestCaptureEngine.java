@@ -17,8 +17,6 @@ import org.apache.commons.io.FileUtils;
 import org.joda.time.DateTime;
 import org.openqa.selenium.WebElement;
 
-import com.avcompris.lang.NotImplementedException;
-
 final class TestCaptureEngine extends TestPhasedEngine {
 
 	public TestCaptureEngine(final String platformName, final boolean useSafari) {
@@ -287,6 +285,6 @@ final class WebElementCapturer implements ElementChecker {
 	@Override
 	public String attr(final String attrName) {
 
-		throw new NotImplementedException();
+		return element.getAttribute(attrName);
 	}
 }
