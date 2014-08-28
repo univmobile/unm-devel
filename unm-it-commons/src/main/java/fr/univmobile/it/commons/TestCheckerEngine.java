@@ -16,8 +16,6 @@ import javax.annotation.Nullable;
 
 import org.apache.commons.io.FileUtils;
 
-import com.avcompris.lang.NotImplementedException;
-
 public class TestCheckerEngine extends TestPhasedEngine {
 
 	private final ElementCheckObserverStdout stdoutObserver = new ElementCheckObserverStdout();
@@ -100,7 +98,8 @@ public class TestCheckerEngine extends TestPhasedEngine {
 	}
 
 	@Override
-	public ElementChecker elementById(final String id) throws IOException {
+	public ElementCheckerWithAttributes elementById(final String id)
+			throws IOException {
 
 		final String lineId;
 
@@ -144,7 +143,8 @@ public class TestCheckerEngine extends TestPhasedEngine {
 	}
 
 	@Override
-	public ElementChecker elementByName(final String name) throws IOException {
+	public ElementCheckerWithAttributes elementByName(final String name)
+			throws IOException {
 
 		return elementById("name=" + name);
 	}
@@ -160,81 +160,99 @@ public class TestCheckerEngine extends TestPhasedEngine {
 
 		return stdoutObserver.hasErrors();
 	}
-}
 
-class ElementCheckerWithAttributes implements ElementChecker {
+	private class ElementCheckerWithAttributes implements ElementChecker {
 
-	public ElementCheckerWithAttributes(final ElementCheckObserver observer,
-			final String id) {
+		public ElementCheckerWithAttributes(
+				final ElementCheckObserver observer, final String id) {
 
-		this.observer = checkNotNull(observer, "observer");
-		this.id = checkNotNull(id, "id");
-	}
+			this.observer = checkNotNull(observer, "observer");
+			this.id = checkNotNull(id, "id");
+		}
 
-	private final ElementCheckObserver observer;
-	private final String id;
+		private final ElementCheckObserver observer;
+		private final String id;
 
-	public void addAttribute(final String name, final String value) {
+		public void addAttribute(final String name, final String value) {
 
-		attributes.put(name, value);
-	}
+			attributes.put(name, value);
+		}
 
-	private final Map<String, String> attributes = new HashMap<String, String>();
+		private final Map<String, String> attributes = new HashMap<String, String>();
 
-	@Override
-	public void textShouldEqualTo(final String ref) throws IOException {
+		@Override
+		public void textShouldEqualTo(final String ref) throws IOException {
 
-		final String text = attributes.get("text");
+			final String text = attributes.get("text");
 
-		observer.notifyCheck(id + ".text.shouldEqualTo: " + ref,
-				ref.equals(text), "expected: <" + ref + ">, but was: <" + text
-						+ ">");
-	}
+			observer.notifyCheck(id + ".text.shouldEqualTo: " + ref,
+					ref.equals(text), "expected: <" + ref + ">, but was: <"
+							+ text + ">");
+		}
 
-	@Override
-	public void textShouldContain(final String ref) throws IOException {
+		@Override
+		public void textShouldContain(final String ref) throws IOException {
 
-		final String text = attributes.get("text");
+			final String text = attributes.get("text");
 
-		observer.notifyCheck(id + ".text.shouldContain: " + ref,
-				text.contains(ref), "expected: <..." + ref + "...>, but was: <"
-						+ text + ">");
-	}
+			observer.notifyCheck(id + ".text.shouldContain: " + ref,
+					text.contains(ref), "expected: <..." + ref
+							+ "...>, but was: <" + text + ">");
+		}
 
-	@Override
-	public void textShouldNotContain(final String ref) throws IOException {
+		@Override
+		public void textShouldNotContain(final String ref) throws IOException {
 
-		final String text = attributes.get("text");
+			final String text = attributes.get("text");
 
-		observer.notifyCheck(id + ".text.shouldNotContain: " + ref,
-				text.contains(ref), "expected: !<" + ref + ">, but was: <"
-						+ text + ">");
-	}
+			observer.notifyCheck(id + ".text.shouldNotContain: " + ref,
+					text.contains(ref), "expected: !<" + ref + ">, but was: <"
+							+ text + ">");
+		}
 
-	@Override
-	public void shouldBeVisible() throws IOException {
+		@Override
+		public void shouldBeVisible() throws IOException {
 
-		observer.notifyCheck(id + ".shouldBeVisible",
-				"true".equals(attributes.get("visible")), "Element is hidden.");
-	}
+			observer.notifyCheck(id + ".shouldBeVisible",
+					"true".equals(attributes.get("visible")),
+					"Element is hidden.");
+		}
 
-	@Override
-	public void shouldBeHidden() throws IOException {
+		@Override
+		public void shouldBeHidden() throws IOException {
 
-		observer.notifyCheck(id + ".shouldBeHidden",
-				!"true".equals(attributes.get("visible")),
-				"Element is visible.");
-	}
+			observer.notifyCheck(id + ".shouldBeHidden",
+					!"true".equals(attributes.get("visible")),
+					"Element is visible.");
+		}
 
-	@Override
-	public void click() throws IOException {
+		@Override
+		public void click() throws IOException {
 
-		observer.notifyAction("click: " + id);
-	}
+			observer.notifyAction("click: " + id);
+		}
 
-	@Override
-	public String attr(final String attrName) {
+		@Override
+		public String attr(final String attrName) {
 
-		throw new NotImplementedException();
+			final ElementCheckerWithAttributes element;
+
+			try {
+
+				element = TestCheckerEngine.this.elementById(id); // Reload.
+
+			} catch (final IOException e) {
+				throw new RuntimeException(e);
+			}
+
+			final String attrValue = element.attributes.get(attrName);
+
+			if (attrValue == null) {
+				throw new NullPointerException(
+						"Cannot find value of attribute: " + attrName);
+			}
+
+			return attrValue;
+		}
 	}
 }

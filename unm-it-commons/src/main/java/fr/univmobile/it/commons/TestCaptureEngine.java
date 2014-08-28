@@ -285,6 +285,13 @@ final class WebElementCapturer implements ElementChecker {
 	@Override
 	public String attr(final String attrName) {
 
-		return element.getAttribute(attrName);
+		final String attrValue = element.getAttribute(attrName);
+
+		pw.println(id + ":");
+		pw.println("  " + attrName + ": " + attrValue);
+
+		pw.println();
+	
+		return attrValue;
 	}
 }
