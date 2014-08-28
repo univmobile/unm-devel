@@ -70,7 +70,8 @@ public class MockBackendServlet extends HttpServlet {
 				"listUniversities_unrpcl.json", //
 				"pois.json", //
 				"university_default.json", //
-				"comments1.json" //
+				"comments1.json", //
+				"comments2.json" //
 		}) {
 
 			final String content;
