@@ -32,8 +32,10 @@ public abstract class AbstractController {
 	 */
 	public abstract View action() throws Exception;
 
-	final AbstractController init(final ServletContext servletContext)
-			throws ServletException {
+	final AbstractController init(final String baseURL,
+			final ServletContext servletContext) throws ServletException {
+
+		this.baseURL = checkNotNull(baseURL, "baseURL");
 
 		this.servletContext = checkNotNull(servletContext, "servletContext");
 
@@ -403,4 +405,17 @@ public abstract class AbstractController {
 
 		return !foundErrors;
 	}
+
+	protected final String getBaseURL() {
+
+		if (baseURL == null) {
+			throw new IllegalStateException(
+					"ActionController has not been initialized: baseURL == null: "
+							+ this.getClass());
+		}
+
+		return baseURL;
+	}
+
+	private String baseURL = null;
 }

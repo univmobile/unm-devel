@@ -57,11 +57,6 @@ public abstract class AbstractUnivMobileServlet extends HttpServlet {
 
 		final ServletContext servletContext = getServletContext();
 
-		for (final AbstractController controller : c) {
-
-			controllers.add(controller.init(servletContext));
-		}
-
 		final ServletConfig servletConfig = getServletConfig();
 
 		baseURL = servletConfig.getInitParameter("baseURL");
@@ -86,6 +81,11 @@ public abstract class AbstractUnivMobileServlet extends HttpServlet {
 
 		while (baseURL.endsWith("/")) {
 			baseURL = substringBeforeLast(baseURL, "/");
+		}
+
+		for (final AbstractController controller : c) {
+
+			controllers.add(controller.init(baseURL, servletContext));
 		}
 
 		servletContext.setAttribute("baseURL", baseURL);
@@ -113,13 +113,13 @@ public abstract class AbstractUnivMobileServlet extends HttpServlet {
 				controller.setThreadLocalRequest(request);
 
 				try {
-					
+
 					view = controller.action();
-					
+
 				} catch (final Exception e) {
 
 					UnivMobileHttpUtils.sendError500(request, response, e);
-					
+
 					return;
 				}
 
