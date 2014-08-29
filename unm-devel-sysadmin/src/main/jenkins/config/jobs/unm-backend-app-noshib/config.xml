@@ -1,21 +1,28 @@
-<?xml version="1.0" encoding="UTF-8"?><maven2-moduleset plugin="maven-plugin@2.5">
+<?xml version='1.0' encoding='UTF-8'?>
+<maven2-moduleset plugin="maven-plugin@2.5">
   <actions/>
-  <description>GitHub: &lt;a href="https://github.com/univmobile/unm-backend/tree/develop/unm-backend-app-noshib"&gt;&#13;
-https://github.com/univmobile/unm-backend/tree/develop/unm-backend-app-noshib&#13;
-&lt;/a&gt;&#13;
-&lt;p&gt;&#13;
-Maven Generated Site: &lt;a&#13;
-  href="http://univmobile.vswip.com/nexus/content/sites/pub/unm-backend-app-noshib/"&gt;&#13;
-  http://univmobile.vswip.com/nexus/content/sites/pub/unm-backend-app-noshib/&lt;/a&gt;&#13;
-&lt;a&#13;
-  href="http://univmobile.vswip.com/nexus/content/sites/pub/unm-backend-app-noshib/0.0.1-SNAPSHOT/"&gt;0.0.1-SNAPSHOT/&lt;/a&gt;&#13;
-&lt;p&gt;&#13;
-Maven Artifacts: &lt;a&#13;
-  href="http://univmobile.vswip.com/nexus/content/repositories/snapshots/fr/univmobile/unm-backend-app-noshib/"&gt;&#13;
-  http://univmobile.vswip.com/nexus/content/repositories/snapshots/fr/univmobile/unm-backend-app-noshib/&lt;/a&gt;&#13;
-&lt;a&#13;
-  href="http://univmobile.vswip.com/nexus/content/repositories/snapshots/fr/univmobile/unm-backend-app-noshib/0.0.1-SNAPSHOT/"&gt;0.0.1-SNAPSHOT/&lt;/a&gt;&#13;
+  <description>GitHub: &lt;a href=&quot;https://github.com/univmobile/unm-backend/tree/develop/unm-backend-app-noshib&quot;&gt;&#xd;
+https://github.com/univmobile/unm-backend/tree/develop/unm-backend-app-noshib&#xd;
+&lt;/a&gt;&#xd;
+&lt;p&gt;&#xd;
+Maven Generated Site: &lt;a&#xd;
+  href=&quot;http://univmobile.vswip.com/nexus/content/sites/pub/unm-backend-app-noshib/&quot;&gt;&#xd;
+  http://univmobile.vswip.com/nexus/content/sites/pub/unm-backend-app-noshib/&lt;/a&gt;&#xd;
+&lt;a&#xd;
+  href=&quot;http://univmobile.vswip.com/nexus/content/sites/pub/unm-backend-app-noshib/0.0.1-SNAPSHOT/&quot;&gt;0.0.1-SNAPSHOT/&lt;/a&gt;&#xd;
+&lt;p&gt;&#xd;
+Maven Artifacts: &lt;a&#xd;
+  href=&quot;http://univmobile.vswip.com/nexus/content/repositories/snapshots/fr/univmobile/unm-backend-app-noshib/&quot;&gt;&#xd;
+  http://univmobile.vswip.com/nexus/content/repositories/snapshots/fr/univmobile/unm-backend-app-noshib/&lt;/a&gt;&#xd;
+&lt;a&#xd;
+  href=&quot;http://univmobile.vswip.com/nexus/content/repositories/snapshots/fr/univmobile/unm-backend-app-noshib/0.0.1-SNAPSHOT/&quot;&gt;0.0.1-SNAPSHOT/&lt;/a&gt;&#xd;
 </description>
+  <logRotator class="hudson.tasks.LogRotator">
+    <daysToKeep>-1</daysToKeep>
+    <numToKeep>10</numToKeep>
+    <artifactDaysToKeep>-1</artifactDaysToKeep>
+    <artifactNumToKeep>-1</artifactNumToKeep>
+  </logRotator>
   <keepDependencies>false</keepDependencies>
   <properties/>
   <scm class="hudson.plugins.git.GitSCM" plugin="git@2.2.2">
@@ -41,7 +48,7 @@ Maven Artifacts: &lt;a&#13;
   <jdk>JDK 1.6.0_31</jdk>
   <triggers>
     <jenkins.triggers.ReverseBuildTrigger>
-      <spec/>
+      <spec></spec>
       <upstreamProjects>unm-backend-parent, unm-backend-app, unm-backend-filter-noshib, </upstreamProjects>
       <threshold>
         <name>SUCCESS</name>
@@ -62,7 +69,7 @@ Maven Artifacts: &lt;a&#13;
     <artifactId>unm-backend-app-noshib</artifactId>
   </rootModule>
   <rootPOM>unm-backend-app-noshib/pom.xml</rootPOM>
-  <goals>-U clean deploy -DGIT_COMMIT="${GIT_COMMIT}" -DBUILD_ID="${BUILD_ID}" -DBUILD_NUMBER="${BUILD_NUMBER}" -DBUILD_DISPLAY_NAME="${BUILD_DISPLAY_NAME}"</goals>
+  <goals>-U clean deploy -DGIT_COMMIT=&quot;${GIT_COMMIT}&quot; -DBUILD_ID=&quot;${BUILD_ID}&quot; -DBUILD_NUMBER=&quot;${BUILD_NUMBER}&quot; -DBUILD_DISPLAY_NAME=&quot;${BUILD_DISPLAY_NAME}&quot;</goals>
   <aggregatorStyleBuild>true</aggregatorStyleBuild>
   <incrementalBuild>false</incrementalBuild>
   <ignoreUpstremChanges>false</ignoreUpstremChanges>
