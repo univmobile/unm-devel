@@ -18,7 +18,8 @@ final class AppiumEnabledTestDefaultEngine_Android extends
 		WebDriverEnabledTestDefaultEngine {
 
 	private static final File app = // new File("apk/UnivMobile-debug.apk");
-	new File("target", "UnivMobile_localhost.apk");
+	// new File("target", "UnivMobile_localhost.apk");
+	new File("apk/UnivMobile-release.apk");
 
 	public AppiumEnabledTestDefaultEngine_Android() {
 
