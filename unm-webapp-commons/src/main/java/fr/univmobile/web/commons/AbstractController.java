@@ -14,9 +14,6 @@ import java.util.Map;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
-
-import net.avcompris.binding.helper.BinderUtils;
 
 import org.apache.commons.lang3.NotImplementedException;
 
@@ -35,6 +32,14 @@ public abstract class AbstractController {
 	 * @return the JSP filename, in WEB-INF/jsp/. e.g. "home.jsp"
 	 */
 	public abstract View action() throws Exception;
+
+	public final AbstractController init(final AbstractUnivMobileServlet servlet)
+			throws ServletException {
+
+		checkNotNull(servlet, "servlet");
+
+		return servlet.initController(this);
+	}
 
 	final AbstractController init(final String baseURL,
 			final ServletContext servletContext) throws ServletException {
@@ -166,27 +171,63 @@ public abstract class AbstractController {
 		final String uriPath = UnivMobileHttpUtils
 				.extractUriPath(checkedRequest());
 
-		String pattern = null;
-
-		for (final String p : checkedPaths()) {
-
-			if (pathMatches(p, uriPath)) {
-
-				pattern = p;
-
-				break;
-			}
-		}
-
-		if (pattern == null) {
-			throw new IllegalStateException(
-					"Cannot find matching pattern for uriPath: " + uriPath);
-		}
+		final String pattern = getPatternForUriPath(uriPath);
 
 		return getPathIntVariable(uriPath, pattern, pathVariable);
 	}
 
+	private String getPatternForUriPath(final String uriPath) {
+
+		for (final String pattern : checkedPaths()) {
+
+			if (pathMatches(pattern, uriPath)) {
+
+				return pattern;
+			}
+		}
+
+		throw new IllegalStateException(
+				"Cannot find matching pattern for uriPath: " + uriPath);
+	}
+
+	/**
+	 * @param pathVariable
+	 *            e.g. <code>"${id}"</tt>
+	 * if the {@link Paths} annotation declared some path such as
+	 * <code>"pois/${id}"</code>.
+	 */
+	protected final String getPathStringVariable(final String pathVariable) {
+
+		final String uriPath = UnivMobileHttpUtils
+				.extractUriPath(checkedRequest());
+
+		final String pattern = getPatternForUriPath(uriPath);
+
+		return getPathStringVariable(uriPath, pattern, pathVariable);
+	}
+
 	static int getPathIntVariable(final String uriPath,
+			final String pathPattern, final String pathVariable) {
+
+		final String extracted = getPathStringVariable(uriPath, pathPattern,
+				pathVariable);
+
+		final int value;
+
+		try {
+
+			value = Integer.parseInt(extracted);
+
+		} catch (final NumberFormatException e) {
+			throw new NumberFormatException("Cannot parse int \""
+					+ pathVariable + "\" applying pattern \"" + pathPattern
+					+ "\" to uriPath: " + uriPath);
+		}
+
+		return value;
+	}
+
+	static String getPathStringVariable(final String uriPath,
 			final String pathPattern, final String pathVariable) {
 
 		checkNotNull(uriPath, "uriPath");
@@ -205,19 +246,13 @@ public abstract class AbstractController {
 		final String extracted = uriPath.substring(before.length(),
 				uriPath.length() - after.length());
 
-		final int value;
-
-		try {
-
-			value = Integer.parseInt(extracted);
-
-		} catch (final NumberFormatException e) {
-			throw new NumberFormatException("Cannot parse int \""
-					+ pathVariable + "\" applying pattern \"" + pathPattern
-					+ "\" to uriPath: " + uriPath);
+		if (isBlank(extracted)) {
+			throw new IllegalArgumentException(
+					"No variable can be extracted from uriPath: " + uriPath
+							+ ", applying pattern: " + pathPattern);
 		}
 
-		return value;
+		return extracted;
 	}
 
 	private final ThreadLocal<HttpServletRequest> threadLocalRequest = new ThreadLocal<HttpServletRequest>();
@@ -229,83 +264,12 @@ public abstract class AbstractController {
 		threadLocalRequest.set(request);
 	}
 
-	/**
-	 * Set an attribute into the underlying {@link HttpServletRequest} object.
-	 */
-	protected final void setAttribute(final String name, final Object value) {
-
-		checkNotNull(name, "name");
-		checkNotNull(value, "value");
-
-		checkedRequest().setAttribute(name, value);
-	}
-
-	/**
-	 * Set an attribute into the underlying {@link HttpSession} object.
-	 */
-	protected final void setSessionAttribute(final String name,
-			final Object value) {
-
-		checkNotNull(name, "name");
-		checkNotNull(value, "value");
-
-		checkedRequest().getSession().setAttribute(name,
-				BinderUtils.detach(value));
-	}
-
-	protected final void removeSessionAttribute(final String name) {
-
-		checkNotNull(name, "name");
-
-		checkedRequest().getSession().removeAttribute(name);
-	}
-
-	protected final <T> T getSessionAttribute(final String name,
-			final Class<T> clazz) {
-
-		checkNotNull(name, "name");
-		checkNotNull(clazz, "clazz");
-
-		final Object value = checkedRequest().getSession().getAttribute(name);
-
-		if (value == null) {
-			throw new IllegalStateException("Session attribute is null: "
-					+ name);
-		}
-
-		return clazz.cast(value);
-	}
-
-	protected final boolean hasSessionAttribute(final String name) {
-
-		checkNotNull(name, "name");
-
-		return checkedRequest().getSession().getAttribute(name) != null;
-	}
-
-	/**
-	 * Get an attribute from the underlying {@link HttpServletRequest} object.
-	 */
-	protected final <T> T getAttribute(final String name, final Class<T> clazz) {
-
-		checkNotNull(name, "name");
-
-		final Object value = checkedRequest().getAttribute(name);
-
-		if (value == null) {
-			throw new IllegalStateException("Request attribute is null: "
-					+ name);
-		}
-
-		return clazz.cast(value);
-	}
-
 	protected final String getRemoteUser() {
 
 		return checkedRequest().getRemoteUser();
 	}
 
-	private HttpServletRequest checkedRequest() {
+	final HttpServletRequest checkedRequest() {
 
 		final HttpServletRequest request = threadLocalRequest.get();
 

@@ -85,10 +85,18 @@ public abstract class AbstractUnivMobileServlet extends HttpServlet {
 
 		for (final AbstractController controller : c) {
 
-			controllers.add(controller.init(baseURL, servletContext));
+			controllers.add(initController(controller));
 		}
 
 		servletContext.setAttribute("baseURL", baseURL);
+	}
+
+	final AbstractController initController(final AbstractController controller)
+			throws ServletException {
+
+		controller.init(baseURL, getServletContext());
+
+		return controller;
 	}
 
 	@Override
@@ -110,15 +118,16 @@ public abstract class AbstractUnivMobileServlet extends HttpServlet {
 
 			if (controller.hasPath(uriPath)) {
 
-				controller.setThreadLocalRequest(request);
+				setThreadLocal(controller, request);
 
 				try {
-					
+
 					view = controller.action();
 
 				} catch (final PageNotFoundException e) {
 
-					UnivMobileHttpUtils.sendError404(request, response, uriPath);
+					UnivMobileHttpUtils
+							.sendError404(request, response, uriPath);
 
 					return;
 
@@ -158,5 +167,11 @@ public abstract class AbstractUnivMobileServlet extends HttpServlet {
 		}
 
 		rd.forward(request, response);
+	}
+
+	protected final void setThreadLocal(final AbstractController controller,
+			final HttpServletRequest request) {
+
+		controller.setThreadLocalRequest(request);
 	}
 }

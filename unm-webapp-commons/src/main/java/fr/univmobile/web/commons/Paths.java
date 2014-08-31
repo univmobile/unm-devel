@@ -6,7 +6,7 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * The URI paths the {@link AbstractController} class will handle. e.g.
+ * The URI paths the {@link AbstractJspController} class will handle. e.g.
  * <code>"about"</code>, <code>"about/"</code>, 
  * <code>"regions/"</code>, <code>"pois/${id}"</code>, etc.
  */

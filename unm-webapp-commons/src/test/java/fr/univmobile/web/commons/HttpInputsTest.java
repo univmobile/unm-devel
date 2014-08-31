@@ -19,7 +19,7 @@ public class HttpInputsTest {
 
 		final HttpInputs_String[] httpInputsHolder = new HttpInputs_String[1];
 
-		final AbstractController controller = new AbstractController() {
+		final AbstractJspController controller = new AbstractJspController() {
 
 			@Override
 			public View action() throws IOException {
@@ -54,7 +54,7 @@ public class HttpInputsTest {
 
 		final HttpInputs_int[] httpInputsHolder = new HttpInputs_int[1];
 
-		final AbstractController controller = new AbstractController() {
+		final AbstractJspController controller = new AbstractJspController() {
 
 			@Override
 			public View action() throws IOException {

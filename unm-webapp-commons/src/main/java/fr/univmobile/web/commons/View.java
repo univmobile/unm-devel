@@ -9,7 +9,7 @@ import javax.annotation.Nullable;
 
 /**
  * holder for the JSP filename returned by subclasses of
- * {@link AbstractController}.
+ * {@link AbstractJspController}.
  */
 public class View {
 
