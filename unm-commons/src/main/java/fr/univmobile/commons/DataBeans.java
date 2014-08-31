@@ -396,8 +396,25 @@ public abstract class DataBeans {
 
 					properties.remove(propertyName);
 
-				} else {
+				} else if (value.getClass().isArray()) {
 
+					// Array -> List
+					
+					final List<Object> list = new ArrayList<Object>();
+
+					final int length = Array.getLength(value);
+					
+					for (int i = 0; i < length; ++i) {
+						
+						final Object item = Array.get(value, i);
+						
+						list.add(item);
+					}
+					
+					properties.put(propertyName, list);
+
+				} else {
+					
 					properties.put(propertyName, value);
 				}
 

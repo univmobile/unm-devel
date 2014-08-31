@@ -20,7 +20,8 @@ public class DataBeansTest {
 
 		assertNull(person.getFirstName());
 
-		assertEquals("{firstName: null, lastName: null}", person.toString());
+		assertEquals("{bookTitles: null, firstName: null, lastName: null}",
+				person.toString());
 
 		assertSame(person, person);
 
@@ -30,7 +31,8 @@ public class DataBeansTest {
 
 		assertEquals("David", person.getFirstName());
 
-		assertEquals("{firstName: David, lastName: null}", person.toString());
+		assertEquals("{bookTitles: null, firstName: David, lastName: null}",
+				person.toString());
 
 		assertEquals(person, person);
 	}
@@ -104,7 +106,8 @@ public class DataBeansTest {
 
 		assertEquals("David", person.getFirstName());
 
-		assertEquals("{firstName: David, lastName: null}", person.toString());
+		assertEquals("{bookTitles: null, firstName: David, lastName: null}",
+				person.toString());
 
 		assertEquals(person, person);
 	}
@@ -150,6 +153,22 @@ public class DataBeansTest {
 		assertEquals("20 street", person.getAddresses()[0].getText());
 		assertEquals("40 avenue", person.getAddresses()[1].getText());
 	}
+
+	@Test
+	public void test_instantiatePerson_setArray() throws Exception {
+
+		final Person person = DataBeans.instantiate(Person.class);
+
+		assertEquals(0, person.getBookTitles().length);
+
+		final Person p = person
+				.setBookTitles(new String[] { "Treasure Island" });
+
+		assertSame(person, p);
+
+		assertEquals(1, person.getBookTitles().length);
+		assertEquals("Treasure Island", person.getBookTitles()[0]);
+	}
 }
 
 interface Person {
@@ -162,6 +181,10 @@ interface Person {
 	Person setFirstName(@Nullable String firstName);
 
 	void setLastName(String lastName);
+
+	String[] getBookTitles();
+
+	Person setBookTitles(String[] bookTitles);
 }
 
 interface PersonWithAddress {
