@@ -2,6 +2,8 @@ package fr.univmobile.web.commons;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 import static org.apache.commons.lang3.StringUtils.isBlank;
+import static org.apache.commons.lang3.StringUtils.substringAfter;
+import static org.apache.commons.lang3.StringUtils.substringBefore;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
@@ -15,6 +17,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import net.avcompris.binding.helper.BinderUtils;
+
+import org.apache.commons.lang3.NotImplementedException;
 
 /**
  * The superclass for controllers. In addition to the abstract methods, each
@@ -90,15 +94,130 @@ public abstract class AbstractController {
 
 		checkNotNull(path, "path");
 
-		for (final String p : checkedPaths()) {
+		for (final String pattern : checkedPaths()) {
 
-			if (path.equals(p)) {
+			if (pathMatches(pattern, path)) {
 
 				return true;
 			}
 		}
 
 		return false;
+	}
+
+	static boolean pathMatches(final String pattern, final String path) {
+
+		checkNotNull(path, "path");
+		checkNotNull(pattern, "pattern");
+
+		if (path.equals(pattern) && !pattern.contains("${")) {
+			return true;
+		}
+
+		if (!pattern.contains("${")) {
+			return false;
+		}
+
+		// TODO: Use StringUtils.split("/")
+
+		final String before = substringBefore(pattern, "${");
+		final String after = substringAfter(pattern, "}");
+
+		if (after.contains("${")) {
+			throw new NotImplementedException("path: " + path);
+		}
+
+		final int beforeLength = before.length();
+		final int afterLength = after.length();
+		final int pathLength = path.length();
+
+		if (pathLength < beforeLength || pathLength < afterLength) {
+			return false;
+		}
+
+		if (before.equals(path.substring(0, beforeLength))
+				&& after.equals(path.substring(pathLength - afterLength))) {
+
+			final String extracted = path.substring(beforeLength, pathLength
+					- afterLength);
+
+			if (isBlank(extracted)) { // Forbid empty values
+				return false;
+			}
+
+			if (extracted.contains("/")) { // TODO: Use StringUtils.split("/")
+				return false;
+			}
+
+			return true;
+		}
+
+		return false;
+	}
+
+	/**
+	 * @param pathVariable
+	 *            e.g. <code>"${id}"</tt>
+	 * if the {@link Paths} annotation declared some path such as
+	 * <code>"pois/${id}"</code>.
+	 */
+	protected final int getPathIntVariable(final String pathVariable) {
+
+		final String uriPath = UnivMobileHttpUtils
+				.extractUriPath(checkedRequest());
+
+		String pattern = null;
+
+		for (final String p : checkedPaths()) {
+
+			if (pathMatches(p, uriPath)) {
+
+				pattern = p;
+
+				break;
+			}
+		}
+
+		if (pattern == null) {
+			throw new IllegalStateException(
+					"Cannot find matching pattern for uriPath: " + uriPath);
+		}
+
+		return getPathIntVariable(uriPath, pattern, pathVariable);
+	}
+
+	static int getPathIntVariable(final String uriPath,
+			final String pathPattern, final String pathVariable) {
+
+		checkNotNull(uriPath, "uriPath");
+		checkNotNull(pathPattern, "pathPattern");
+		checkNotNull(pathVariable, "pathVariable");
+
+		if (!pathVariable.startsWith("${") || !pathVariable.endsWith("}")) {
+			throw new IllegalArgumentException(
+					"pathVariable should be of the form \"${...}\": "
+							+ pathVariable);
+		}
+
+		final String before = substringBefore(pathPattern, pathVariable);
+		final String after = substringAfter(pathPattern, pathVariable);
+
+		final String extracted = uriPath.substring(before.length(),
+				uriPath.length() - after.length());
+
+		final int value;
+
+		try {
+
+			value = Integer.parseInt(extracted);
+
+		} catch (final NumberFormatException e) {
+			throw new NumberFormatException("Cannot parse int \""
+					+ pathVariable + "\" applying pattern \"" + pathPattern
+					+ "\" to uriPath: " + uriPath);
+		}
+
+		return value;
 	}
 
 	private final ThreadLocal<HttpServletRequest> threadLocalRequest = new ThreadLocal<HttpServletRequest>();

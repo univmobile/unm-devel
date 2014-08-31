@@ -7,7 +7,8 @@ import java.lang.annotation.Target;
 
 /**
  * The URI paths the {@link AbstractController} class will handle. e.g.
- * "about", "about/", "regions/", etc.
+ * <code>"about"</code>, <code>"about/"</code>, 
+ * <code>"regions/"</code>, <code>"pois/${id}"</code>, etc.
  */
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.TYPE)

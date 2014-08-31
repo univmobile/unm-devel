@@ -116,6 +116,12 @@ public abstract class AbstractUnivMobileServlet extends HttpServlet {
 					
 					view = controller.action();
 
+				} catch (final PageNotFoundException e) {
+
+					UnivMobileHttpUtils.sendError404(request, response, uriPath);
+
+					return;
+
 				} catch (final Exception e) {
 
 					UnivMobileHttpUtils.sendError500(request, response, e);
