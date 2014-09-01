@@ -134,6 +134,21 @@ abstract class WebDriverEnabledTestDefaultEngine implements
 	}
 
 	@Override
+	public final WebElement findElementByXPath(final String xpath)
+			throws IOException {
+
+		try {
+
+			return (WebElement) driver.findElement(By.xpath(xpath));
+
+		} catch (final NoSuchElementException e) {
+
+			throw new NoSuchElementException(
+					"Could not find element for xpath: " + xpath, e);
+		}
+	}
+
+	@Override
 	public final void waitForElementById(final int seconds, final String id)
 			throws IOException {
 
@@ -157,7 +172,15 @@ abstract class WebDriverEnabledTestDefaultEngine implements
 	public final ElementChecker elementByName(final String name)
 			throws IOException {
 
-		return new WebElementChecker("name=" + name, findElementById(name));
+		return new WebElementChecker("name=" + name, findElementByName(name));
+	}
+
+	@Override
+	public final ElementChecker elementByXPath(final String xpath)
+			throws IOException {
+
+		return new WebElementChecker("xpath=" + xpath,
+				findElementByXPath(xpath));
 	}
 
 	@Override

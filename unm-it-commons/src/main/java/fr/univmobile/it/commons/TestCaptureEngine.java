@@ -111,6 +111,12 @@ final class TestCaptureEngine extends TestPhasedEngine {
 	}
 
 	@Override
+	public ElementChecker elementByXPath(final String xpath) throws IOException {
+
+		return new WebElementCapturer(pw, "xpath="+xpath, defaultEngine.findElementByXPath(xpath));
+	}
+
+	@Override
 	public ElementChecker elementByName(final String name) throws IOException {
 
 		return new WebElementCapturer(pw, "name=" + name,

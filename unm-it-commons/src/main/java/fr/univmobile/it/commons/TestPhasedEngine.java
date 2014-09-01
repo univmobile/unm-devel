@@ -29,8 +29,17 @@ public abstract class TestPhasedEngine implements
 			throws IOException {
 
 		throw new IllegalStateException(
-				"Because it’s using a phased engine, a scenario test should not call findElementById(): "
+				"Because it’s using a phased engine, a scenario test should not call findElementByName(): "
 						+ name);
+	}
+
+	@Override
+	public final WebElement findElementByXPath(String xpath)
+			throws IOException {
+
+		throw new IllegalStateException(
+				"Because it’s using a phased engine, a scenario test should not call findElementByXPath(): "
+						+ xpath);
 	}
 
 	@Override

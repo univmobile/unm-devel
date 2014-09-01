@@ -26,6 +26,8 @@ interface WebDriverEnabledTestEngine {
 
 	WebElement findElementByName(String name) throws IOException;
 
+	WebElement findElementByXPath(String xpath) throws IOException;
+
 	void waitForElementById(int seconds, String id) throws IOException;
 
 	void get(String url) throws IOException;
@@ -33,6 +35,8 @@ interface WebDriverEnabledTestEngine {
 	ElementChecker elementById(String id) throws IOException;
 
 	ElementChecker elementByName(String name) throws IOException;
+
+	ElementChecker elementByXPath(String xpath) throws IOException;
 
 	WebDriver getDriver();
 

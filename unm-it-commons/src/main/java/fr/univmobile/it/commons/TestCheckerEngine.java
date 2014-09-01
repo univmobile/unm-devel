@@ -143,6 +143,13 @@ public class TestCheckerEngine extends TestPhasedEngine {
 	}
 
 	@Override
+	public ElementCheckerWithAttributes elementByXPath(final String xpath)
+			throws IOException {
+
+		return elementById("xpath=" + xpath);
+	}
+
+	@Override
 	public ElementCheckerWithAttributes elementByName(final String name)
 			throws IOException {
 
