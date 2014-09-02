@@ -115,6 +115,13 @@ public abstract class WebDriverEnabledTest implements
 	}
 
 	@Override
+	public final WebElement findElementByXPath(final String xpath)
+			throws IOException {
+
+		return checkedEngine().findElementByXPath(xpath);
+	}
+
+	@Override
 	public final ElementChecker elementById(final String id) throws IOException {
 
 		return checkedEngine().elementById(id);
