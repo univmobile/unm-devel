@@ -1,6 +1,7 @@
-<?xml version="1.0" encoding="UTF-8"?><maven2-moduleset plugin="maven-plugin@2.5">
+<?xml version='1.0' encoding='UTF-8'?>
+<maven2-moduleset plugin="maven-plugin@2.5">
   <actions/>
-  <description/>
+  <description></description>
   <keepDependencies>false</keepDependencies>
   <properties>
     <hudson.security.AuthorizationMatrixProperty>
@@ -37,8 +38,8 @@
   <jdk>Java 7</jdk>
   <triggers>
     <jenkins.triggers.ReverseBuildTrigger>
-      <spec/>
-      <upstreamProjects>unm-backend-it-parent, unm-android-testutil, </upstreamProjects>
+      <spec></spec>
+      <upstreamProjects>unm-backend-it-parent,unm-android-testutil, Android-UnivMobile, Android-UnivMobile_gradle, Android-UnivMobile_gradle_localhost, Android-UnivMobile_localhost, </upstreamProjects>
       <threshold>
         <name>SUCCESS</name>
         <ordinal>0</ordinal>
@@ -86,9 +87,8 @@
   <buildWrappers/>
   <prebuilders>
     <hudson.tasks.Shell>
-      <command># mkdir -p unm-android-it/apk/
-# wget -O unm-android-it/apk/UnivMobile-debug.apk http://univmobile.vswip.com/job/Android-UnivMobile
-# /lastSuccessfulBuild/artifact/UnivMobile/bin/UnivMobile-debug.apk
+      <command>mkdir -p unm-android-it/apk/
+wget -O unm-android-it/apk/UnivMobile-release.apk http://univmobile.vswip.com/job/Android-UnivMobile_localhost/lastSuccessfulBuild/artifact/UnivMobile/bin/UnivMobile-release.apk
 # Or, in: http://univmobile.vswip.com/nexus/content/repositories/snapshots/fr/univmobile/UnivMobile/...</command>
     </hudson.tasks.Shell>
   </prebuilders>

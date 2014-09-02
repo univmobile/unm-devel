@@ -1,6 +1,7 @@
-<?xml version="1.0" encoding="UTF-8"?><maven2-moduleset plugin="maven-plugin@2.5">
+<?xml version='1.0' encoding='UTF-8'?>
+<maven2-moduleset plugin="maven-plugin@2.5">
   <actions/>
-  <description/>
+  <description></description>
   <keepDependencies>false</keepDependencies>
   <properties/>
   <scm class="hudson.plugins.git.GitSCM" plugin="git@2.2.2">
@@ -27,8 +28,8 @@
   <jdk>MacOS_iOS6</jdk>
   <triggers>
     <jenkins.triggers.ReverseBuildTrigger>
-      <spec/>
-      <upstreamProjects>unm-backend-it-parent, unm-mobileweb-core, </upstreamProjects>
+      <spec></spec>
+      <upstreamProjects>unm-backend-it-parent,unm-mobileweb-core,</upstreamProjects>
       <threshold>
         <name>SUCCESS</name>
         <ordinal>0</ordinal>
@@ -75,7 +76,7 @@
   <buildWrappers/>
   <prebuilders>
     <hudson.tasks.Shell>
-      <command>echo "DISPLAY: ${DISPLAY}"</command>
+      <command>echo &quot;DISPLAY: ${DISPLAY}&quot;</command>
     </hudson.tasks.Shell>
   </prebuilders>
   <postbuilders/>

@@ -27,13 +27,13 @@
     <configVersion>2</configVersion>
     <userRemoteConfigs>
       <hudson.plugins.git.UserRemoteConfig>
-        <name>origin</name>
+        <name>UnivMobile</name>
         <url>https://github.com/univmobile/unm-android</url>
       </hudson.plugins.git.UserRemoteConfig>
     </userRemoteConfigs>
     <branches>
       <hudson.plugins.git.BranchSpec>
-        <name>origin/develop</name>
+        <name>UnivMobile/develop</name>
       </hudson.plugins.git.BranchSpec>
     </branches>
     <doGenerateSubmoduleConfigurations>false</doGenerateSubmoduleConfigurations>
@@ -54,31 +54,35 @@
   </triggers>
   <concurrentBuild>false</concurrentBuild>
   <builders>
+    <hudson.tasks.Shell>
+      <command>cp UnivMobile/AndroidManifest_localhost.xml UnivMobile/AndroidManifest.xml
+cp UnivMobile/local.properties_jenkins_localhost UnivMobile/local.properties
+cp google-play-services/google-play-services_lib/local.properties_jenkins google-play-services/google-play-services_lib/local.properties</command>
+    </hudson.tasks.Shell>
     <hudson.tasks.Ant plugin="ant@1.2">
-      <targets>add-variables</targets>
+      <targets>add-variables
+clean-all
+release -propertyfile /opt/android-sdk-linux/keystore.properties</targets>
       <antName>Ant 1.9.4</antName>
       <buildFile>UnivMobile/build.xml</buildFile>
-      <properties>GIT_COMMIT=${GIT_COMMIT}
+      <properties>sdk.dir=/opt/android-sdk-linux/
+project.build.directory=UnivMobile
+GIT_COMMIT=${GIT_COMMIT}
 BUILD_ID=${BUILD_ID}
 BUILD_DISPLAY_NAME=${BUILD_DISPLAY_NAME}</properties>
     </hudson.tasks.Ant>
-    <hudson.tasks.Shell>
-      <command>cd UnivMobile
-cp local.properties_jenkins_localhost local.properties
-</command>
-    </hudson.tasks.Shell>
-    <hudson.plugins.gradle.Gradle plugin="gradle@1.24">
-      <description></description>
-      <switches></switches>
-      <tasks>clean build generateReleaseJavadoc uploadArchives</tasks>
-      <rootBuildScriptDir></rootBuildScriptDir>
-      <buildFile>UnivMobile/build.gradle</buildFile>
-      <gradleName>(Default)</gradleName>
-      <useWrapper>true</useWrapper>
-      <makeExecutable>false</makeExecutable>
-      <fromRootBuildScriptDir>true</fromRootBuildScriptDir>
-      <useWorkspaceAsHome>false</useWorkspaceAsHome>
-    </hudson.plugins.gradle.Gradle>
+    <hudson.tasks.Ant plugin="ant@1.2">
+      <targets>add-variables
+clean-classes
+debug</targets>
+      <antName>Ant 1.9.4</antName>
+      <buildFile>UnivMobile/build.xml</buildFile>
+      <properties>sdk.dir=/opt/android-sdk-linux/
+project.build.directory=UnivMobile
+GIT_COMMIT=${GIT_COMMIT}
+BUILD_ID=${BUILD_ID}
+BUILD_DISPLAY_NAME=${BUILD_DISPLAY_NAME}</properties>
+    </hudson.tasks.Ant>
   </builders>
   <publishers>
     <hudson.tasks.ArtifactArchiver>

@@ -1,6 +1,7 @@
-<?xml version="1.0" encoding="UTF-8"?><maven2-moduleset plugin="maven-plugin@2.5">
+<?xml version='1.0' encoding='UTF-8'?>
+<maven2-moduleset plugin="maven-plugin@2.5">
   <actions/>
-  <description/>
+  <description></description>
   <keepDependencies>false</keepDependencies>
   <properties/>
   <scm class="hudson.plugins.git.GitSCM" plugin="git@2.2.2">
@@ -28,8 +29,8 @@
   <jdk>Java 7</jdk>
   <triggers>
     <jenkins.triggers.ReverseBuildTrigger>
-      <spec/>
-      <upstreamProjects>unm-webapp-parent_release, unm-mobileweb-app_release, </upstreamProjects>
+      <spec></spec>
+      <upstreamProjects>unm-webapp-parent_release,unm-mobileweb-app_release,</upstreamProjects>
       <threshold>
         <name>SUCCESS</name>
         <ordinal>0</ordinal>
@@ -45,7 +46,7 @@
     <artifactId>unm-mobileweb-app-local</artifactId>
   </rootModule>
   <rootPOM>unm-mobileweb-app-local/pom.xml</rootPOM>
-  <goals>-U clean site:jar deploy -DGIT_COMMIT="${GIT_COMMIT}" -DBUILD_ID="${BUILD_ID}" -DBUILD_NUMBER="${BUILD_NUMBER}" -DBUILD_DISPLAY_NAME="${BUILD_DISPLAY_NAME}"</goals>
+  <goals>-U clean site:jar deploy -DGIT_COMMIT=&quot;${GIT_COMMIT}&quot; -DBUILD_ID=&quot;${BUILD_ID}&quot; -DBUILD_NUMBER=&quot;${BUILD_NUMBER}&quot; -DBUILD_DISPLAY_NAME=&quot;${BUILD_DISPLAY_NAME}&quot;</goals>
   <aggregatorStyleBuild>true</aggregatorStyleBuild>
   <incrementalBuild>false</incrementalBuild>
   <ignoreUpstremChanges>true</ignoreUpstremChanges>

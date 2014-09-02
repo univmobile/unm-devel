@@ -1,6 +1,7 @@
-<?xml version="1.0" encoding="UTF-8"?><maven2-moduleset plugin="maven-plugin@2.5">
+<?xml version='1.0' encoding='UTF-8'?>
+<maven2-moduleset plugin="maven-plugin@2.5">
   <actions/>
-  <description/>
+  <description></description>
   <keepDependencies>false</keepDependencies>
   <properties/>
   <scm class="hudson.plugins.git.GitSCM" plugin="git@2.2.2">
@@ -26,12 +27,12 @@
   <jdk>Java 7</jdk>
   <triggers>
     <jenkins.triggers.ReverseBuildTrigger>
-      <spec/>
-      <upstreamProjects>unm-it-parent, unm-ios-ut-results, </upstreamProjects>
+      <spec></spec>
+      <upstreamProjects>unm-it-parent,unm-ios-ut-results,unm-backend-it,unm-backend-it_macos,unm-mobileweb-it_ios6,unm-mobileweb-it_ios7,unm-ios-it,unm-ios-it_ios6,unm-android-it,</upstreamProjects>
       <threshold>
-        <name>SUCCESS</name>
-        <ordinal>0</ordinal>
-        <color>BLUE</color>
+        <name>UNSTABLE</name>
+        <ordinal>1</ordinal>
+        <color>YELLOW</color>
         <completeBuild>true</completeBuild>
       </threshold>
     </jenkins.triggers.ReverseBuildTrigger>

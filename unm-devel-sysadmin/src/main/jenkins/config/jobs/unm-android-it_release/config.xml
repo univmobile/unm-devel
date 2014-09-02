@@ -1,6 +1,7 @@
-<?xml version="1.0" encoding="UTF-8"?><maven2-moduleset plugin="maven-plugin@2.5">
+<?xml version='1.0' encoding='UTF-8'?>
+<maven2-moduleset plugin="maven-plugin@2.5">
   <actions/>
-  <description/>
+  <description></description>
   <keepDependencies>false</keepDependencies>
   <properties>
     <hudson.security.AuthorizationMatrixProperty>
@@ -37,7 +38,18 @@
   <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
   <blockBuildWhenUpstreamBuilding>true</blockBuildWhenUpstreamBuilding>
   <jdk>Java 7</jdk>
-  <triggers><jenkins.triggers.ReverseBuildTrigger><spec/><upstreamProjects>unm-backend-it-parent_release, unm-android-testutil_release, </upstreamProjects><threshold><name>SUCCESS</name><ordinal>0</ordinal><color>BLUE</color><completeBuild>true</completeBuild></threshold></jenkins.triggers.ReverseBuildTrigger></triggers>
+  <triggers>
+    <jenkins.triggers.ReverseBuildTrigger>
+      <spec></spec>
+      <upstreamProjects>unm-backend-it-parent_release,unm-android-testutil_release,</upstreamProjects>
+      <threshold>
+        <name>SUCCESS</name>
+        <ordinal>0</ordinal>
+        <color>BLUE</color>
+        <completeBuild>true</completeBuild>
+      </threshold>
+    </jenkins.triggers.ReverseBuildTrigger>
+  </triggers>
   <concurrentBuild>false</concurrentBuild>
   <customWorkspace>unm-android-it</customWorkspace>
   <rootModule>
@@ -66,7 +78,9 @@
   <prebuilders>
     <hudson.tasks.Shell>
       <command>mkdir -p unm-android-it/apk/
-wget -O unm-android-it/apk/UnivMobile-debug.apk http://univmobile.vswip.com/job/Android-UnivMobile/lastSuccessfulBuild/artifact/UnivMobile/bin/UnivMobile-debug.apk</command>
+wget -O unm-android-it/apk/UnivMobile-debug.apk http://univmobile.vswip.com/job/Android-UnivMobile/lastSuccessfulBuild/artifact/UnivMobile/bin/UnivMobile-debug.apk
+wget -O unm-android-it/apk/UnivMobile-release.apk http://univmobile.vswip.com/job/Android-UnivMobile_localhost_release/lastSuccessfulBuild/artifact/UnivMobile/bin/UnivMobile-release.apk
+</command>
     </hudson.tasks.Shell>
   </prebuilders>
   <postbuilders/>
