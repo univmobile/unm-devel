@@ -1,9 +1,8 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<maven2-moduleset plugin="maven-plugin@2.3">
+<?xml version="1.0" encoding="UTF-8"?><maven2-moduleset plugin="maven-plugin@2.5">
   <actions/>
-  <description>Tableau de bord d’intégration continue :&#xd;
-&lt;a href=&quot;http://univmobile.vswip.com/job/unm-devel-it/lastSuccessfulBuild/artifact/unm-devel-it/target/unm-ci-dump.html&quot;&gt;&#xd;
-  UnivMobile iOS — Intégration continue&#xd;
+  <description>Tableau de bord d’intégration continue :&#13;
+&lt;a href="http://univmobile.vswip.com/job/unm-devel-it/lastSuccessfulBuild/artifact/unm-devel-it/target/unm-ci-dump.html"&gt;&#13;
+  UnivMobile iOS — Intégration continue&#13;
 &lt;/a&gt;</description>
   <keepDependencies>false</keepDependencies>
   <properties/>
@@ -27,12 +26,12 @@
   <canRoam>false</canRoam>
   <disabled>false</disabled>
   <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
-  <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
+  <blockBuildWhenUpstreamBuilding>true</blockBuildWhenUpstreamBuilding>
   <jdk>JDK 1.6.0_31</jdk>
   <triggers>
     <jenkins.triggers.ReverseBuildTrigger>
-      <spec></spec>
-      <upstreamProjects>unm-ios-ut-results</upstreamProjects>
+      <spec/>
+      <upstreamProjects>unm-it-parent, unm-ios-ut-results, unm-it-commons, </upstreamProjects>
       <threshold>
         <name>SUCCESS</name>
         <ordinal>0</ordinal>
@@ -61,6 +60,7 @@
   <ignoreUpstremChanges>false</ignoreUpstremChanges>
   <archivingDisabled>false</archivingDisabled>
   <siteArchivingDisabled>false</siteArchivingDisabled>
+  <fingerprintingDisabled>false</fingerprintingDisabled>
   <resolveDependencies>false</resolveDependencies>
   <processPlugins>false</processPlugins>
   <mavenValidationLevel>-1</mavenValidationLevel>

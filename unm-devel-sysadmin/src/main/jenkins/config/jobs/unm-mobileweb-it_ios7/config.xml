@@ -1,15 +1,14 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<maven2-moduleset plugin="maven-plugin@2.3">
+<?xml version="1.0" encoding="UTF-8"?><maven2-moduleset plugin="maven-plugin@2.5">
   <actions/>
-  <description>GitHub: &lt;a href=&quot;https://github.com/univmobile/unm-mobileweb/tree/develop/unm-mobileweb-it&quot;&gt;&#xd;
-https://github.com/univmobile/unm-mobileweb/tree/develop/unm-mobileweb-it&#xd;
-&lt;/a&gt;&#xd;
-&lt;p&gt;&#xd;
-Maven Generated Site: &lt;a&#xd;
-  href=&quot;http://univmobile.vswip.com/nexus/content/sites/pub/unm-mobileweb-it/&quot;&gt;&#xd;
-  http://univmobile.vswip.com/nexus/content/sites/pub/unm-mobileweb-it/&lt;/a&gt;&#xd;
-&lt;a&#xd;
-  href=&quot;http://univmobile.vswip.com/nexus/content/sites/pub/unm-mobileweb-it/0.0.1-SNAPSHOT/&quot;&gt;0.0.1-SNAPSHOT/&lt;/a&gt;&#xd;
+  <description>GitHub: &lt;a href="https://github.com/univmobile/unm-mobileweb/tree/develop/unm-mobileweb-it"&gt;&#13;
+https://github.com/univmobile/unm-mobileweb/tree/develop/unm-mobileweb-it&#13;
+&lt;/a&gt;&#13;
+&lt;p&gt;&#13;
+Maven Generated Site: &lt;a&#13;
+  href="http://univmobile.vswip.com/nexus/content/sites/pub/unm-mobileweb-it/"&gt;&#13;
+  http://univmobile.vswip.com/nexus/content/sites/pub/unm-mobileweb-it/&lt;/a&gt;&#13;
+&lt;a&#13;
+  href="http://univmobile.vswip.com/nexus/content/sites/pub/unm-mobileweb-it/0.0.1-SNAPSHOT/"&gt;0.0.1-SNAPSHOT/&lt;/a&gt;&#13;
 </description>
   <keepDependencies>false</keepDependencies>
   <properties/>
@@ -33,12 +32,12 @@ Maven Generated Site: &lt;a&#xd;
   <canRoam>false</canRoam>
   <disabled>false</disabled>
   <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
-  <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
+  <blockBuildWhenUpstreamBuilding>true</blockBuildWhenUpstreamBuilding>
   <jdk>MacOS_iOS6</jdk>
   <triggers>
     <jenkins.triggers.ReverseBuildTrigger>
-      <spec></spec>
-      <upstreamProjects>unm-mobileweb-app</upstreamProjects>
+      <spec/>
+      <upstreamProjects>unm-backend-it-parent, unm-mobileweb-app, unm-backend-app, </upstreamProjects>
       <threshold>
         <name>SUCCESS</name>
         <ordinal>0</ordinal>
@@ -64,6 +63,7 @@ Maven Generated Site: &lt;a&#xd;
   <ignoreUpstremChanges>false</ignoreUpstremChanges>
   <archivingDisabled>false</archivingDisabled>
   <siteArchivingDisabled>false</siteArchivingDisabled>
+  <fingerprintingDisabled>false</fingerprintingDisabled>
   <resolveDependencies>false</resolveDependencies>
   <processPlugins>false</processPlugins>
   <mavenValidationLevel>-1</mavenValidationLevel>
@@ -78,6 +78,7 @@ Maven Generated Site: &lt;a&#xd;
       <latestOnly>false</latestOnly>
       <allowEmptyArchive>false</allowEmptyArchive>
       <onlyIfSuccessful>false</onlyIfSuccessful>
+      <defaultExcludes>true</defaultExcludes>
     </hudson.tasks.ArtifactArchiver>
   </publishers>
   <buildWrappers/>

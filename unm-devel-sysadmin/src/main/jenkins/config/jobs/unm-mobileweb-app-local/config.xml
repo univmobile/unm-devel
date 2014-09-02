@@ -1,0 +1,99 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<maven2-moduleset plugin="maven-plugin@2.5">
+  <actions/>
+  <description>GitHub: &lt;a href=&quot;https://github.com/univmobile/unm-mobileweb/tree/develop/unm-mobileweb-app-local&quot;&gt;&#xd;
+https://github.com/univmobile/unm-mobileweb/tree/develop/unm-mobileweb-app-local&#xd;
+&lt;/a&gt;&#xd;
+&lt;p&gt;&#xd;
+Maven Generated Site: &lt;a&#xd;
+  href=&quot;http://univmobile.vswip.com/nexus/content/sites/pub/unm-mobileweb-app-local/&quot;&gt;&#xd;
+  http://univmobile.vswip.com/nexus/content/sites/pub/unm-mobileweb-app-local/&lt;/a&gt;&#xd;
+&lt;a&#xd;
+  href=&quot;http://univmobile.vswip.com/nexus/content/sites/pub/unm-mobileweb-app-local/0.0.1-SNAPSHOT/&quot;&gt;&#xd;
+    0.0.1-SNAPSHOT/&lt;/a&gt;&#xd;
+&lt;p&gt;&#xd;
+Maven Artifacts: &lt;a&#xd;
+  href=&quot;http://univmobile.vswip.com/nexus/content/repositories/snapshots/fr/univmobile/unm-mobileweb-app-local/&quot;&gt;&#xd;
+  http://univmobile.vswip.com/nexus/content/repositories/snapshots/fr/univmobile/unm-mobileweb-app-local/&lt;/a&gt;&#xd;
+&lt;a&#xd;
+  href=&quot;http://univmobile.vswip.com/nexus/content/repositories/snapshots/fr/univmobile/unm-mobileweb-app-local/0.0.1-SNAPSHOT/&quot;&gt;&#xd;
+  0.0.1-SNAPSHOT/&lt;/a&gt;&#xd;
+</description>
+  <logRotator class="hudson.tasks.LogRotator">
+    <daysToKeep>-1</daysToKeep>
+    <numToKeep>10</numToKeep>
+    <artifactDaysToKeep>-1</artifactDaysToKeep>
+    <artifactNumToKeep>-1</artifactNumToKeep>
+  </logRotator>
+  <keepDependencies>false</keepDependencies>
+  <properties/>
+  <scm class="hudson.plugins.git.GitSCM" plugin="git@2.2.2">
+    <configVersion>2</configVersion>
+    <userRemoteConfigs>
+      <hudson.plugins.git.UserRemoteConfig>
+        <url>https://github.com/univmobile/unm-mobileweb.git</url>
+      </hudson.plugins.git.UserRemoteConfig>
+    </userRemoteConfigs>
+    <branches>
+      <hudson.plugins.git.BranchSpec>
+        <name>origin/develop</name>
+      </hudson.plugins.git.BranchSpec>
+    </branches>
+    <doGenerateSubmoduleConfigurations>false</doGenerateSubmoduleConfigurations>
+    <submoduleCfg class="list"/>
+    <extensions/>
+  </scm>
+  <canRoam>true</canRoam>
+  <disabled>false</disabled>
+  <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
+  <blockBuildWhenUpstreamBuilding>true</blockBuildWhenUpstreamBuilding>
+  <jdk>Java 7</jdk>
+  <triggers>
+    <jenkins.triggers.ReverseBuildTrigger>
+      <spec></spec>
+      <upstreamProjects>unm-webapp-parent, unm-mobileweb-app, </upstreamProjects>
+      <threshold>
+        <name>SUCCESS</name>
+        <ordinal>0</ordinal>
+        <color>BLUE</color>
+        <completeBuild>true</completeBuild>
+      </threshold>
+    </jenkins.triggers.ReverseBuildTrigger>
+    <hudson.triggers.SCMTrigger>
+      <spec>H/5 * * * *</spec>
+      <ignorePostCommitHooks>false</ignorePostCommitHooks>
+    </hudson.triggers.SCMTrigger>
+  </triggers>
+  <concurrentBuild>false</concurrentBuild>
+  <customWorkspace>unm-mobileweb-app-local</customWorkspace>
+  <rootModule>
+    <groupId>fr.univmobile</groupId>
+    <artifactId>unm-mobileweb-app-local</artifactId>
+  </rootModule>
+  <rootPOM>unm-mobileweb-app-local/pom.xml</rootPOM>
+  <goals>-U clean deploy -DGIT_COMMIT=&quot;${GIT_COMMIT}&quot; -DBUILD_ID=&quot;${BUILD_ID}&quot; -DBUILD_NUMBER=&quot;${BUILD_NUMBER}&quot; -DBUILD_DISPLAY_NAME=&quot;${BUILD_DISPLAY_NAME}&quot;</goals>
+  <aggregatorStyleBuild>true</aggregatorStyleBuild>
+  <incrementalBuild>false</incrementalBuild>
+  <ignoreUpstremChanges>false</ignoreUpstremChanges>
+  <archivingDisabled>false</archivingDisabled>
+  <siteArchivingDisabled>false</siteArchivingDisabled>
+  <fingerprintingDisabled>false</fingerprintingDisabled>
+  <resolveDependencies>false</resolveDependencies>
+  <processPlugins>false</processPlugins>
+  <mavenValidationLevel>-1</mavenValidationLevel>
+  <runHeadless>false</runHeadless>
+  <disableTriggerDownstreamProjects>false</disableTriggerDownstreamProjects>
+  <settings class="jenkins.mvn.DefaultSettingsProvider"/>
+  <globalSettings class="jenkins.mvn.DefaultGlobalSettingsProvider"/>
+  <reporters/>
+  <publishers/>
+  <buildWrappers/>
+  <prebuilders/>
+  <postbuilders/>
+  <runPostStepsIfResult>
+    <name>FAILURE</name>
+    <ordinal>2</ordinal>
+    <color>RED</color>
+    <completeBuild>true</completeBuild>
+  </runPostStepsIfResult>
+</maven2-moduleset>

@@ -1,20 +1,19 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<maven2-moduleset plugin="maven-plugin@2.3">
+<?xml version="1.0" encoding="UTF-8"?><maven2-moduleset plugin="maven-plugin@2.5">
   <actions/>
-  <description>GitHub: &lt;a href=&quot;https://github.com/univmobile/unm-ios&quot;&gt;https://github.com/univmobile/unm-ios&#xd;
-&lt;/a&gt;&#xd;
-&lt;p/&gt;&#xd;
-Tableau de bord d’intégration continue :&#xd;
-&lt;a href=&quot;http://univmobile.vswip.com/job/unm-devel-it/lastSuccessfulBuild/artifact/unm-devel-it/target/unm-ci-dump.html&quot;&gt;&#xd;
-  UnivMobile iOS — Intégration continue&#xd;
-&lt;/a&gt;&#xd;
+  <description>GitHub: &lt;a href="https://github.com/univmobile/unm-ios"&gt;https://github.com/univmobile/unm-ios&#13;
+&lt;/a&gt;&#13;
+&lt;p/&gt;&#13;
+Tableau de bord d’intégration continue :&#13;
+&lt;a href="http://univmobile.vswip.com/job/unm-devel-it/lastSuccessfulBuild/artifact/unm-devel-it/target/unm-ci-dump.html"&gt;&#13;
+  UnivMobile iOS — Intégration continue&#13;
+&lt;/a&gt;&#13;
 </description>
   <keepDependencies>false</keepDependencies>
   <properties>
     <hudson.security.AuthorizationMatrixProperty>
-      <permission>hudson.model.Item.Build:mgauzins</permission>
-      <permission>hudson.model.Item.Workspace:mgauzins</permission>
       <permission>hudson.model.Item.Cancel:mgauzins</permission>
+      <permission>hudson.model.Item.Workspace:mgauzins</permission>
+      <permission>hudson.model.Item.Build:mgauzins</permission>
       <permission>hudson.model.Item.Read:mgauzins</permission>
     </hudson.security.AuthorizationMatrixProperty>
   </properties>
@@ -38,12 +37,12 @@ Tableau de bord d’intégration continue :&#xd;
   <canRoam>false</canRoam>
   <disabled>false</disabled>
   <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
-  <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
+  <blockBuildWhenUpstreamBuilding>true</blockBuildWhenUpstreamBuilding>
   <jdk>MacOS_iOS6</jdk>
   <triggers>
     <jenkins.triggers.ReverseBuildTrigger>
-      <spec></spec>
-      <upstreamProjects>unm-ios_xcode</upstreamProjects>
+      <spec/>
+      <upstreamProjects>unm-backend-it-parent, unm-ios, </upstreamProjects>
       <threshold>
         <name>SUCCESS</name>
         <ordinal>0</ordinal>
@@ -63,13 +62,14 @@ Tableau de bord d’intégration continue :&#xd;
     <artifactId>unm-ios-it</artifactId>
   </rootModule>
   <rootPOM>unm-ios-it/pom.xml</rootPOM>
-  <goals>-U clean deploy -DappCommitId=8461a10b3cb25efbf56c9930258eca7f79a9ceb0</goals>
+  <goals>-U clean deploy</goals>
   <mavenOpts>-Djava.awt.headless=true</mavenOpts>
   <aggregatorStyleBuild>true</aggregatorStyleBuild>
   <incrementalBuild>false</incrementalBuild>
   <ignoreUpstremChanges>false</ignoreUpstremChanges>
   <archivingDisabled>false</archivingDisabled>
   <siteArchivingDisabled>false</siteArchivingDisabled>
+  <fingerprintingDisabled>false</fingerprintingDisabled>
   <resolveDependencies>false</resolveDependencies>
   <processPlugins>false</processPlugins>
   <mavenValidationLevel>-1</mavenValidationLevel>
@@ -84,6 +84,7 @@ Tableau de bord d’intégration continue :&#xd;
       <latestOnly>false</latestOnly>
       <allowEmptyArchive>false</allowEmptyArchive>
       <onlyIfSuccessful>false</onlyIfSuccessful>
+      <defaultExcludes>true</defaultExcludes>
     </hudson.tasks.ArtifactArchiver>
   </publishers>
   <buildWrappers/>

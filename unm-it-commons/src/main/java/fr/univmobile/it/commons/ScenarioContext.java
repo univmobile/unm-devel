@@ -7,9 +7,9 @@ import java.lang.reflect.Method;
 public class ScenarioContext {
 
 	ScenarioContext(final String deviceName, //
-			final Class<? extends AppiumEnabledTest> scenariosClass, //
+			final Class<? extends WebDriverEnabledTest> scenariosClass, //
 			final Method scenarioMethod, //
-			final AppiumEnabledTestPhasedEngine engine) {
+			final TestPhasedEngine engine) {
 
 		this.deviceName = checkNotNull(deviceName, "deviceName");
 		this.normalizedDeviceName = normalizeDeviceName(deviceName);
@@ -29,27 +29,38 @@ public class ScenarioContext {
 
 	final String normalizedDeviceName;
 	final String deviceName;
-	final Class<? extends AppiumEnabledTest> scenariosClass;
+	final Class<? extends WebDriverEnabledTest> scenariosClass;
 	final Method scenarioMethod;
-	final AppiumEnabledTestPhasedEngine engine;
+	final TestPhasedEngine engine;
 
-	public static String normalizeDeviceName(final String deviceName) {
+	public static String normalizePlatformName(final String platformName,
+			final String platformVersion) {
+
+		return normalizeName(platformName + "_" + platformVersion);
+	}
+
+	private static String normalizeName(final String name) {
 
 		// e.g. "iPhone Retina (3.5-inch)" -> "iPhone_Retina_3.5-inch"
 
-		String normalizedDeviceName = deviceName.replace(' ', '_') //
+		String normalizedName = name.replace(' ', '_') //
 				.replace('(', '_').replace(')', '_') //
 				.replace("__", "_");
 
-		if (normalizedDeviceName.startsWith("_")) {
-			normalizedDeviceName = normalizedDeviceName.substring(1);
+		if (normalizedName.startsWith("_")) {
+			normalizedName = normalizedName.substring(1);
 		}
 
-		if (normalizedDeviceName.endsWith("_")) {
-			normalizedDeviceName = normalizedDeviceName.substring(0,
-					normalizedDeviceName.length() - 1);
+		if (normalizedName.endsWith("_")) {
+			normalizedName = normalizedName.substring(0,
+					normalizedName.length() - 1);
 		}
 
-		return normalizedDeviceName;
+		return normalizedName;
+	}
+
+	public static String normalizeDeviceName(final String deviceName) {
+
+		return normalizeName(deviceName);
 	}
 }

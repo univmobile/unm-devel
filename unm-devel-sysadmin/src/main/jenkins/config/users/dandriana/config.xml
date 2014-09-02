@@ -15,7 +15,7 @@
     <jenkins.security.ApiTokenProperty>
       <apiToken>ETreFCO01qBNVTu6+y8/CIBPpV17p6gqQ1BXDNL2ogfgwvGvGqDHoHg1kVmnSfCP</apiToken>
     </jenkins.security.ApiTokenProperty>
-    <com.cloudbees.plugins.credentials.UserCredentialsProvider_-UserCredentialsProperty plugin="credentials@1.14">
+    <com.cloudbees.plugins.credentials.UserCredentialsProvider_-UserCredentialsProperty plugin="credentials@1.15">
       <domainCredentialsMap class="hudson.util.CopyOnWriteMap$Hash">
         <entry>
           <com.cloudbees.plugins.credentials.domains.Domain>
@@ -25,7 +25,7 @@
         </entry>
       </domainCredentialsMap>
     </com.cloudbees.plugins.credentials.UserCredentialsProvider_-UserCredentialsProperty>
-    <hudson.tasks.Mailer_-UserProperty plugin="mailer@1.8">
+    <hudson.tasks.Mailer_-UserProperty plugin="mailer@1.9">
       <emailAddress>david.andriana@viewniverse-studio.com</emailAddress>
     </hudson.tasks.Mailer_-UserProperty>
     <hudson.model.MyViewsProperty>

@@ -1,0 +1,25 @@
+<init-params>
+	<init-param>
+		<param-name>inject-packages</param-name>
+		<param-value>
+			fr.univmobile.commons
+			fr.univmobile.commons.test
+		</param-value>
+	</init-param>
+	<init-param>
+		<param-name>inject:MyApi into:DependencyInjectionTest</param-name>
+		<param-value>MyApiImpl</param-value>
+	</init-param>
+	<init-param>
+		<param-name>inject:MyHandler into:MyApiImpl</param-name>
+		<param-value>factory:MyFileHandlerFactory</param-value>
+	</init-param>
+	<init-param>
+		<param-name>inject:File into:factory:MyFileHandlerFactory</param-name>
+		<param-value>${ref:pomy}</param-value>
+	</init-param>
+	<init-param>
+		<param-name>inject:File ref:pomy</param-name>
+		<param-value>pom.xml</param-value>
+	</init-param>
+</init-params>

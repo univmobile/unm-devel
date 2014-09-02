@@ -7,7 +7,7 @@
 	<parent>
 		<groupId>fr.univmobile</groupId>
 		<artifactId>unm-it-parent</artifactId>
-		<version>0.0.3</version>
+		<version>0.0.4-SNAPSHOT</version>
 		<relativePath />
 	</parent>
 
@@ -23,7 +23,7 @@
 		Common classes used by integration tests in the UnivMobile iOS project.
 	</description>
 	<url>
-        http://univmobile.vswip.com/nexus/content/sites/pub/${project.artifactId}/${project.version}
+        http://univmobile.vswip.com/nexus/content/sites/pub/${project.artifactId}/${project.version}/
     </url>
     
     <build>

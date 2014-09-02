@@ -7,16 +7,23 @@
 	<parent>
 		<groupId>fr.univmobile</groupId>
 		<artifactId>unm-webapp-parent</artifactId>
-		<version>0.0.3</version>
+		<version>0.0.4-SNAPSHOT</version>
 		<relativePath />
 	</parent>
+	
+	<dependencies>
+		<dependency>
+			<groupId>fr.univmobile</groupId>
+			<artifactId>unm-commons</artifactId>
+		</dependency>
+	</dependencies>
 
 	<name>unm-webapp-commons</name>
 	<description>
-		Common classes used by webapps in the UnivMobile iOS project.
+		Common classes used by webapps in the UnivMobile project.
 	</description>
 	<url>
-        http://univmobile.vswip.com/nexus/content/sites/pub/${project.artifactId}/${project.version}
+        http://univmobile.vswip.com/nexus/content/sites/pub/${project.artifactId}/${project.version}/
     </url>
     
     <build>

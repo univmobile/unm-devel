@@ -1,21 +1,20 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<maven2-moduleset plugin="maven-plugin@2.3">
+<?xml version="1.0" encoding="UTF-8"?><maven2-moduleset plugin="maven-plugin@2.5">
   <actions/>
-  <description>GitHub: &lt;a href=&quot;https://github.com/univmobile/unm-mobileweb/tree/master/unm-mobileweb-app&quot;&gt;&#xd;
-https://github.com/univmobile/unm-mobileweb/tree/master/unm-mobileweb-app&#xd;
-&lt;/a&gt;&#xd;
-&lt;p&gt;&#xd;
-Maven Generated Site: &lt;a&#xd;
-  href=&quot;http://univmobile.vswip.com/nexus/content/sites/pub/unm-mobileweb-app/&quot;&gt;&#xd;
-  http://univmobile.vswip.com/nexus/content/sites/pub/unm-mobileweb-app/&lt;/a&gt;&#xd;
-&lt;a&#xd;
-  href=&quot;http://univmobile.vswip.com/nexus/content/sites/pub/unm-mobileweb-app/0.0.1/&quot;&gt;0.0.1/&lt;/a&gt;&#xd;
-&lt;p&gt;&#xd;
-Maven Artifacts: &lt;a&#xd;
-  href=&quot;http://univmobile.vswip.com/nexus/content/repositories/releases/fr/univmobile/unm-mobileweb-app/&quot;&gt;&#xd;
-  http://univmobile.vswip.com/nexus/content/repositories/releases/fr/univmobile/unm-mobileweb-app/&lt;/a&gt;&#xd;
-&lt;a&#xd;
-  href=&quot;http://univmobile.vswip.com/nexus/content/repositories/releases/fr/univmobile/unm-mobileweb-app/0.0.1/&quot;&gt;0.0.1/&lt;/a&gt;&#xd;
+  <description>GitHub: &lt;a href="https://github.com/univmobile/unm-mobileweb/tree/master/unm-mobileweb-app"&gt;&#13;
+https://github.com/univmobile/unm-mobileweb/tree/master/unm-mobileweb-app&#13;
+&lt;/a&gt;&#13;
+&lt;p&gt;&#13;
+Maven Generated Site: &lt;a&#13;
+  href="http://univmobile.vswip.com/nexus/content/sites/pub/unm-mobileweb-app/"&gt;&#13;
+  http://univmobile.vswip.com/nexus/content/sites/pub/unm-mobileweb-app/&lt;/a&gt;&#13;
+&lt;a&#13;
+  href="http://univmobile.vswip.com/nexus/content/sites/pub/unm-mobileweb-app/0.0.1/"&gt;0.0.1/&lt;/a&gt;&#13;
+&lt;p&gt;&#13;
+Maven Artifacts: &lt;a&#13;
+  href="http://univmobile.vswip.com/nexus/content/repositories/releases/fr/univmobile/unm-mobileweb-app/"&gt;&#13;
+  http://univmobile.vswip.com/nexus/content/repositories/releases/fr/univmobile/unm-mobileweb-app/&lt;/a&gt;&#13;
+&lt;a&#13;
+  href="http://univmobile.vswip.com/nexus/content/repositories/releases/fr/univmobile/unm-mobileweb-app/0.0.1/"&gt;0.0.1/&lt;/a&gt;&#13;
 </description>
   <keepDependencies>false</keepDependencies>
   <properties/>
@@ -40,9 +39,20 @@ Maven Artifacts: &lt;a&#xd;
   <canRoam>true</canRoam>
   <disabled>false</disabled>
   <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
-  <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
+  <blockBuildWhenUpstreamBuilding>true</blockBuildWhenUpstreamBuilding>
   <jdk>Java 7</jdk>
-  <triggers/>
+  <triggers>
+    <jenkins.triggers.ReverseBuildTrigger>
+      <spec/>
+      <upstreamProjects>unm-webapp-parent_release, unm-webapp-commons_release, unm-mobileweb-core_release, </upstreamProjects>
+      <threshold>
+        <name>SUCCESS</name>
+        <ordinal>0</ordinal>
+        <color>BLUE</color>
+        <completeBuild>true</completeBuild>
+      </threshold>
+    </jenkins.triggers.ReverseBuildTrigger>
+  </triggers>
   <concurrentBuild>false</concurrentBuild>
   <customWorkspace>unm-mobileweb-app</customWorkspace>
   <rootModule>
@@ -50,12 +60,13 @@ Maven Artifacts: &lt;a&#xd;
     <artifactId>unm-mobileweb-app</artifactId>
   </rootModule>
   <rootPOM>unm-mobileweb-app/pom.xml</rootPOM>
-  <goals>-U clean site:jar deploy -DGIT_COMMIT=&quot;${GIT_COMMIT}&quot; -DBUILD_ID=&quot;${BUILD_ID}&quot; -DBUILD_NUMBER=&quot;${BUILD_NUMBER}&quot; -DBUILD_DISPLAY_NAME=&quot;${BUILD_DISPLAY_NAME}&quot;</goals>
+  <goals>-U clean site:jar deploy -DGIT_COMMIT="${GIT_COMMIT}" -DBUILD_ID="${BUILD_ID}" -DBUILD_NUMBER="${BUILD_NUMBER}" -DBUILD_DISPLAY_NAME="${BUILD_DISPLAY_NAME}"</goals>
   <aggregatorStyleBuild>true</aggregatorStyleBuild>
   <incrementalBuild>false</incrementalBuild>
   <ignoreUpstremChanges>true</ignoreUpstremChanges>
   <archivingDisabled>false</archivingDisabled>
   <siteArchivingDisabled>false</siteArchivingDisabled>
+  <fingerprintingDisabled>false</fingerprintingDisabled>
   <resolveDependencies>false</resolveDependencies>
   <processPlugins>false</processPlugins>
   <mavenValidationLevel>-1</mavenValidationLevel>

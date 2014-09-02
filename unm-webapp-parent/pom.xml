@@ -8,7 +8,7 @@
 	<parent>
 		<groupId>fr.univmobile</groupId>
 		<artifactId>unm-parent</artifactId>
-		<version>0.0.3</version>
+		<version>0.0.4-SNAPSHOT</version>
 		<relativePath />
 	</parent>
 
@@ -69,7 +69,23 @@
 			<dependency>
 				<groupId>fr.univmobile</groupId>
 				<artifactId>unm-webapp-commons</artifactId>
-				<version>0.0.3</version>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>fr.univmobile</groupId>
+				<artifactId>unm-backend-core</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>fr.univmobile</groupId>
+				<artifactId>unm-mobileweb-core</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>fr.univmobile</groupId>
+				<artifactId>unm-mobileweb-app</artifactId>
+				<type>war</type>
+				<version>${project.version}</version>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
@@ -83,6 +99,33 @@
 				</plugin>
 			</plugins>
 		</pluginManagement>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-javadoc-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>xmldoclet</id>
+						<phase>prepare-package</phase>
+						<goals>
+							<goal>javadoc</goal>
+						</goals>
+						<configuration>
+							<doclet>fr.univmobile.devel.xmldoclet.XMLDoclet</doclet>
+							<docletArtifact>
+								<groupId>fr.univmobile</groupId>
+								<artifactId>unm-devel-xmldoclet</artifactId>
+								<version>0.0.4-SNAPSHOT</version>
+							</docletArtifact>
+							<useStandardDocletOptions>false</useStandardDocletOptions>
+							<!--
+							<additionalparam>-Dtarget/xmldoclet.xml</additionalparam>
+							-->
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
 	</build>
 
 	<name>unm-webapp-parent</name>
@@ -90,7 +133,7 @@
 		Parent POM for UnivMobile webapp projects.
     </description>
 	<url>
-        http://univmobile.vswip.com/nexus/content/sites/pub/${project.artifactId}/${project.version}
+        http://univmobile.vswip.com/nexus/content/sites/pub/${project.artifactId}/${project.version}/
     </url>
 
 	<scm>

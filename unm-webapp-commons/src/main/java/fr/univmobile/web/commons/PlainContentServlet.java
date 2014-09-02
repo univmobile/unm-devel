@@ -14,12 +14,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.io.IOUtils;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 
 import com.avcompris.lang.NotImplementedException;
 
-import fr.univmobile.web.commons.UnivMobileHttpUtils;
-
 public class PlainContentServlet extends HttpServlet {
+
+	private static final Log log = LogFactory.getLog(PlainContentServlet.class);
 
 	/**
 	 * for serialization.
@@ -35,7 +37,7 @@ public class PlainContentServlet extends HttpServlet {
 
 		request.setCharacterEncoding(UTF_8);
 
-		final String uriPath = UnivMobileHttpUtils.extractUriPath(request); 
+		final String uriPath = UnivMobileHttpUtils.extractUriPath(request);
 
 		// 2. VALIDATION
 
@@ -43,7 +45,11 @@ public class PlainContentServlet extends HttpServlet {
 				&& !uriPath.equals("css") //
 				&& !uriPath.startsWith("js/") //
 				&& !uriPath.equals("js") //
+				&& !uriPath.startsWith("img/") //
+				&& !uriPath.equals("img") //
 		) {
+			
+			log.error("Unknown scheme for uriPath: " + uriPath);
 
 			UnivMobileHttpUtils.sendError404(request, response, uriPath);
 
@@ -62,12 +68,30 @@ public class PlainContentServlet extends HttpServlet {
 
 				if (uriPath.startsWith("css/")) {
 					contentType = "text/css";
+				} else if (uriPath.startsWith("img/")) {
+
+					if (uriPath.endsWith(".png")) {
+						contentType = "image/png";
+					} else {
+
+						log.error("Unknown img file extension in uriPath: "
+								+ uriPath);
+
+						UnivMobileHttpUtils.sendError404(request, response,
+								uriPath);
+
+						return;
+					}
+
 				} else {
 					contentType = "text/plain";
 				}
 
 				response.setContentType(contentType);
-				response.setCharacterEncoding(UTF_8);
+
+				if (contentType.startsWith("text/")) {
+					response.setCharacterEncoding(UTF_8);
+				}
 
 				final OutputStream os = response.getOutputStream();
 				try {

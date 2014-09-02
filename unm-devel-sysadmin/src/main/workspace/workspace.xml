@@ -82,7 +82,7 @@
 		<gitRepository ref="unm-ios"/>.
 	</description>
 	<parent>
-		<artifactId>unm-it-parent</artifactId>
+		<artifactId>unm-backend-it-parent</artifactId>
 	</parent>
 	<dependencies>
 		<dependency>
@@ -139,6 +139,18 @@
 	</description>
 	<parent>
 		<artifactId>unm-parent</artifactId>
+	</parent>
+</project>
+</mavenProject>
+<mavenProject id="unm-backend-it-parent" gitRepository-ref="unm-backend">
+<project>
+	<description>
+		POM parent des projets Maven
+		de tests d’intégration qui ont besoin d’un déploiement local de
+		l’application unm-backend.
+	</description>
+	<parent>
+		<artifactId>unm-it-parent</artifactId>
 	</parent>
 </project>
 </mavenProject>
@@ -203,6 +215,25 @@
 		<gitRepository ref="unm-mobileweb"/>.
 	</description>
 	<parent>
+		<artifactId>unm-backend-it-parent</artifactId>
+	</parent>
+	<dependencies>
+		<dependency>
+			<artifactId>unm-testutil</artifactId>
+		</dependency>
+	</dependencies>
+</project>
+</mavenProject>
+<mavenProject id="unm-mobileweb-app-local-it" gitRepository-ref="unm-mobileweb">
+<project>
+	<description>
+		Tests d’intégration, avec Appium, de l’application mobile web 
+		UnivMobile
+		<gitRepository ref="unm-mobileweb-app-local"/>,
+		repackagée pour ne pas avoir à faire de communication avec les web
+		services HTTP.
+	</description>
+	<parent>
 		<artifactId>unm-it-parent</artifactId>
 	</parent>
 	<dependencies>
@@ -219,7 +250,7 @@
 		<gitRepository ref="unm-android"/>.
 	</description>
 	<parent>
-		<artifactId>unm-it-parent</artifactId>
+		<artifactId>unm-backend-it-parent</artifactId>
 	</parent>
 	<dependencies>
 		<dependency>
@@ -238,7 +269,7 @@
 		qui dit si tous les tests ont eu leurs logs analysés.
 	</description>
 	<parent>
-		<artifactId>unm-parent</artifactId>
+		<artifactId>unm-it-parent</artifactId>
 	</parent>
 </project>
 </mavenProject>
@@ -250,7 +281,7 @@
 		qui dit si tous les tests ont eu leurs logs analysés.
 	</description>
 	<parent>
-		<artifactId>unm-parent</artifactId>
+		<artifactId>unm-it-parent</artifactId>
 	</parent>
 </project>
 </mavenProject>
@@ -303,6 +334,20 @@
 	</parent>
 </project>
 </mavenProject>
+<mavenProject id="unm-mobileweb-app-local" gitRepository-ref="unm-mobileweb">
+<project>
+	<description>
+		Application J2EE mobile web
+		<mavenProject ref="unm-mobileweb-app"/>,
+		repackagée avec une configuration locale
+		pour les tests d’intégration
+		sans accès HTTP à des web services. 
+	</description>
+	<parent>
+		<artifactId>unm-webapp-parent</artifactId>
+	</parent>
+</project>
+</mavenProject>
 <mavenProject id="unm-backend-filter-noshib" gitRepository-ref="unm-backend">
 <project>
 	<description>
@@ -326,6 +371,22 @@
 	<parent>
 		<artifactId>unm-parent</artifactId>
 	</parent>
+	<dependencies>
+		<dependency>
+			<artifactId>unm-commons-datasource</artifactId>
+		</dependency>
+	</dependencies>
+</project>
+</mavenProject>
+<mavenProject id="unm-commons-datasource" gitRepository-ref="unm-backend">
+<project>
+	<description>
+		Framework d’accès aux données utilisé par
+		<mavenProject ref="unm-backend-core"/>.
+	</description>
+	<parent>
+		<artifactId>unm-parent</artifactId>
+	</parent>
 </project>
 </mavenProject>
 <mavenProject id="unm-backend-it" gitRepository-ref="unm-backend">
@@ -336,13 +397,150 @@
 		<gitRepository ref="unm-backend"/>.
 	</description>
 	<parent>
-		<artifactId>unm-it-parent</artifactId>
+		<artifactId>unm-backend-it-parent</artifactId>
 	</parent>
 	<dependencies>
 		<dependency>
 			<artifactId>unm-testutil</artifactId>
 		</dependency>
 	</dependencies>
+</project>
+</mavenProject>
+<mavenProject id="unm-backend-client" gitRepository-ref="unm-backend">
+<project>
+	<description>
+		Classes de communication JSON / HTTP pour l’API du backend. 
+	</description>
+	<parent>
+		<artifactId>unm-parent</artifactId>
+	</parent>
+	<dependencies>
+		<dependency>
+			<artifactId>unm-testutil</artifactId>
+		</dependency>
+	</dependencies>
+</project>
+</mavenProject>
+<mavenProject id="unm-commons" gitRepository-ref="unm-devel">
+<project>
+	<description>
+		Classes communes aux projets Maven UnivMobile. 
+	</description>
+	<parent>
+		<artifactId>unm-parent</artifactId>
+	</parent>
+	<dependencies>
+		<dependency>
+			<artifactId>unm-testutil</artifactId>
+		</dependency>
+	</dependencies>
+</project>
+</mavenProject>
+<mavenProject id="unm-backend-it-data" gitRepository-ref="unm-backend">
+<project>
+	<description>
+		Ressources communes aux projets de tests d’intégration qui font
+		intervenir les données sous forme de fichiers XML :
+		unm-backend-it, unm-mobileweb-it, unm-mobileweb-app-local-it,
+		unm-ios-it et unm-android-it. 
+	</description>
+	<parent>
+		<artifactId>unm-it-parent</artifactId>
+	</parent>
+</project>
+</mavenProject>
+<mavenProject id="unm-devel-xmldoclet" gitRepository-ref="unm-devel">
+<project>
+	<description>
+		Doclet javadoc qui produit un dump XML des informations extraites des
+		fichiers sources à partir de l’outil javadoc de Sun.
+	</description>
+	<parent>
+		<artifactId>unm-parent</artifactId>
+	</parent>
+</project>
+</mavenProject>
+<mavenProject id="unm-mobileweb-core" gitRepository-ref="unm-mobileweb">
+<project>
+	<description>
+		Client HTTP+JSON vers l’application J2EE unm-backend.
+	</description>
+	<parent>
+		<artifactId>unm-webapp-parent</artifactId>
+	</parent>
+</project>
+</mavenProject>
+<mavenProject id="unm-backend-client-api" gitRepository-ref="unm-backend">
+<project>
+	<description>
+		API applicative du client unm-backend-client.
+	</description>
+	<parent>
+		<artifactId>unm-backend-client</artifactId>
+	</parent>
+</project>
+</mavenProject>
+<mavenProject id="unm-backend-client-jsonapi" gitRepository-ref="unm-backend">
+<project>
+	<description>
+		API JSON du client unm-backend-client.
+	</description>
+	<parent>
+		<artifactId>unm-backend-client</artifactId>
+	</parent>
+</project>
+</mavenProject>
+<mavenProject id="unm-backend-client-local" gitRepository-ref="unm-backend">
+<project>
+	<description>
+		Implémentation locale du client unm-backend-client.
+	</description>
+	<parent>
+		<artifactId>unm-backend-client</artifactId>
+	</parent>
+</project>
+</mavenProject>
+<mavenProject id="unm-backend-client-jsonlocal" gitRepository-ref="unm-backend">
+<project>
+	<description>
+		Implémentation locale du client JSON unm-backend-client.
+	</description>
+	<parent>
+		<artifactId>unm-backend-client</artifactId>
+	</parent>
+</project>
+</mavenProject>
+<mavenProject id="unm-backend-client-json" gitRepository-ref="unm-backend">
+<project>
+	<description>
+		Implémentation du client unm-backend-client qui lit du JSON.
+	</description>
+	<parent>
+		<artifactId>unm-backend-client</artifactId>
+	</parent>
+</project>
+</mavenProject>
+<mavenProject id="unm-android-testutil" gitRepository-ref="unm-android">
+<project>
+	<description>
+		Utilitaires pour les tests sur l’application Android.
+	</description>
+	<parent>
+		<artifactId>unm-it-parent</artifactId>
+	</parent>
+</project>
+</mavenProject>
+<mavenProject id="unm-webui-devel" gitRepository-ref="unm-devel">
+<project>
+	<description>
+		Outils pour le développements des IHMs web du projet UnivMobile :
+		unm-backend et unm-mobileweb.
+		Outil de récupération des images pour les markers Google Maps :
+		A, B, C, etc. sur fond vert.
+	</description>
+	<parent>
+		<artifactId>unm-parent</artifactId>
+	</parent>
 </project>
 </mavenProject>
 </mavenProjects>

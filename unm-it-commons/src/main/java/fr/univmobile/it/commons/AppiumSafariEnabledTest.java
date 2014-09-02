@@ -1,6 +1,5 @@
 package fr.univmobile.it.commons;
 
-
-public abstract class AppiumSafariEnabledTest extends AppiumEnabledTest {
+public abstract class AppiumSafariEnabledTest extends AppiumIOSEnabledTest {
 
 }

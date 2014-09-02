@@ -69,7 +69,9 @@ public class MockBackendServlet extends HttpServlet {
 				"listUniversities_ile_de_france.json", //
 				"listUniversities_unrpcl.json", //
 				"pois.json", //
-				"university_default.json" //
+				"university_default.json", //
+				"comments1.json", //
+				"comments2.json" //
 		}) {
 
 			final String content;
@@ -236,7 +238,7 @@ public class MockBackendServlet extends HttpServlet {
 
 				// JSON stream: Saved path
 
-				response.setContentType("text/plain");
+				response.setContentType("application/json");
 				response.setCharacterEncoding(UTF_8);
 
 				final PrintWriter out = response.getWriter();

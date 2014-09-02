@@ -8,7 +8,7 @@
 	<parent>
 		<groupId>fr.univmobile</groupId>
 		<artifactId>unm-parent</artifactId>
-		<version>0.0.3</version>
+		<version>0.0.4-SNAPSHOT</version>
 		<relativePath />
 	</parent>
 
@@ -21,7 +21,7 @@
 		<dependency>
 			<groupId>fr.univmobile</groupId>
 			<artifactId>unm-testutil</artifactId>
-			<version>0.0.3</version>
+			<version>${project.version}</version>
 		</dependency>
 		<dependency>
 			<artifactId>httpclient</artifactId>
@@ -64,25 +64,57 @@
 			<dependency>
 				<groupId>fr.univmobile</groupId>
 				<artifactId>unm-it-commons</artifactId>
-				<version>0.0.3</version>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>fr.univmobile</groupId>
+				<artifactId>unm-backend-it-data</artifactId>
+				<version>${project.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>fr.univmobile</groupId>
 				<artifactId>unm-mobileweb-app</artifactId>
-				<version>0.0.3</version>
+				<version>${project.version}</version>
 				<type>war</type>
 			</dependency>
 			<dependency>
 				<groupId>fr.univmobile</groupId>
 				<artifactId>unm-backend-app</artifactId>
-				<version>0.0.3</version>
+				<version>${project.version}</version>
 				<type>war</type>
 			</dependency>
 			<dependency>
 				<groupId>fr.univmobile</groupId>
 				<artifactId>unm-backend-app-noshib</artifactId>
-				<version>0.0.3</version>
+				<version>${project.version}</version>
 				<type>war</type>
+			</dependency>
+			<dependency>
+				<groupId>fr.univmobile</groupId>
+				<artifactId>unm-mobileweb-core</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>fr.univmobile</groupId>
+				<artifactId>unm-mobileweb-app-local</artifactId>
+				<type>war</type>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>fr.univmobile</groupId>
+				<artifactId>unm-ios</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>fr.univmobile</groupId>
+				<artifactId>unm-android-testutil</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>fr.univmobile.localhost</groupId>
+				<artifactId>UnivMobile</artifactId>
+				<type>apk</type>
+				<version>${project.version}</version>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
@@ -101,6 +133,33 @@
 				</plugin>				
 			</plugins>
 		</pluginManagement>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-javadoc-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>xmldoclet</id>
+						<phase>prepare-package</phase>
+						<goals>
+							<goal>javadoc</goal>
+						</goals>
+						<configuration>
+							<doclet>fr.univmobile.devel.xmldoclet.XMLDoclet</doclet>
+							<docletArtifact>
+								<groupId>fr.univmobile</groupId>
+								<artifactId>unm-devel-xmldoclet</artifactId>
+								<version>0.0.4-SNAPSHOT</version>
+							</docletArtifact>
+							<useStandardDocletOptions>false</useStandardDocletOptions>
+							<!--  
+							<additionalparam>-Dd=target/xmldoclet.xml</additionalparam>
+							-->
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
 	</build>
 
 	<name>unm-it-parent</name>
@@ -108,7 +167,7 @@
 		Parent POM for UnivMobile integration tests projects.
 	</description>
 	<url>
-        http://univmobile.vswip.com/nexus/content/sites/pub/${project.artifactId}/${project.version}
+        http://univmobile.vswip.com/nexus/content/sites/pub/${project.artifactId}/${project.version}/
     </url>
 
 	<scm>

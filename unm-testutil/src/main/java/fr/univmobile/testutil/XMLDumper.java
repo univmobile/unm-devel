@@ -53,7 +53,10 @@ public class XMLDumper implements Dumper {
 			pw.print(">");
 		}
 
-		pw.print(characters);
+		pw.print(characters //
+				.replace("&", "&amp;") //
+				.replace("<", "&lt;") //
+				.replace(">", "&gt;"));
 
 		return this;
 	}
@@ -164,7 +167,7 @@ public class XMLDumper implements Dumper {
 		private XMLRootDumper(final String rootElementName, final File outFile)
 				throws IOException {
 
-			FileUtils.forceMkdir(outFile.getParentFile());
+			FileUtils.forceMkdir(outFile.getCanonicalFile().getParentFile());
 
 			os = new FileOutputStream(outFile);
 

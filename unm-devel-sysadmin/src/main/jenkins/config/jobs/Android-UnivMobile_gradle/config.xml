@@ -1,7 +1,6 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<project>
+<?xml version="1.0" encoding="UTF-8"?><project>
   <actions/>
-  <description></description>
+  <description/>
   <logRotator class="hudson.tasks.LogRotator">
     <daysToKeep>-1</daysToKeep>
     <numToKeep>-1</numToKeep>
@@ -11,15 +10,15 @@
   <keepDependencies>false</keepDependencies>
   <properties>
     <hudson.security.AuthorizationMatrixProperty>
-      <permission>hudson.scm.SCM.Tag:mgauzins</permission>
-      <permission>hudson.model.Item.Build:mgauzins</permission>
-      <permission>hudson.model.Run.Delete:mgauzins</permission>
-      <permission>hudson.model.Item.Workspace:mgauzins</permission>
-      <permission>hudson.model.Run.Update:mgauzins</permission>
       <permission>hudson.model.Item.Cancel:mgauzins</permission>
+      <permission>hudson.model.Item.Workspace:mgauzins</permission>
+      <permission>hudson.model.Item.Build:mgauzins</permission>
+      <permission>hudson.model.Item.Read:mgauzins</permission>
+      <permission>hudson.model.Run.Delete:mgauzins</permission>
       <permission>hudson.model.Item.Discover:mgauzins</permission>
       <permission>hudson.model.Item.Configure:mgauzins</permission>
-      <permission>hudson.model.Item.Read:mgauzins</permission>
+      <permission>hudson.scm.SCM.Tag:mgauzins</permission>
+      <permission>hudson.model.Run.Update:mgauzins</permission>
       <permission>hudson.model.Item.Delete:mgauzins</permission>
     </hudson.security.AuthorizationMatrixProperty>
   </properties>
@@ -44,7 +43,7 @@
   <canRoam>false</canRoam>
   <disabled>false</disabled>
   <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
-  <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
+  <blockBuildWhenUpstreamBuilding>true</blockBuildWhenUpstreamBuilding>
   <jdk>Java 7</jdk>
   <triggers>
     <hudson.triggers.SCMTrigger>
@@ -60,10 +59,10 @@ cp local.properties_jenkins local.properties
 </command>
     </hudson.tasks.Shell>
     <hudson.plugins.gradle.Gradle plugin="gradle@1.24">
-      <description></description>
-      <switches></switches>
-      <tasks>clean build</tasks>
-      <rootBuildScriptDir></rootBuildScriptDir>
+      <description/>
+      <switches/>
+      <tasks>clean build generateReleaseJavadoc uploadArchives</tasks>
+      <rootBuildScriptDir/>
       <buildFile>UnivMobile/build.gradle</buildFile>
       <gradleName>(Default)</gradleName>
       <useWrapper>true</useWrapper>
@@ -78,6 +77,7 @@ cp local.properties_jenkins local.properties
       <latestOnly>false</latestOnly>
       <allowEmptyArchive>false</allowEmptyArchive>
       <onlyIfSuccessful>false</onlyIfSuccessful>
+      <defaultExcludes>true</defaultExcludes>
     </hudson.tasks.ArtifactArchiver>
   </publishers>
   <buildWrappers/>

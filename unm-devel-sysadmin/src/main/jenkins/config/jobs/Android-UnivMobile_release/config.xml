@@ -1,7 +1,6 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<project>
+<?xml version="1.0" encoding="UTF-8"?><project>
   <actions/>
-  <description></description>
+  <description/>
   <logRotator class="hudson.tasks.LogRotator">
     <daysToKeep>-1</daysToKeep>
     <numToKeep>-1</numToKeep>
@@ -11,15 +10,15 @@
   <keepDependencies>false</keepDependencies>
   <properties>
     <hudson.security.AuthorizationMatrixProperty>
-      <permission>hudson.scm.SCM.Tag:mgauzins</permission>
-      <permission>hudson.model.Item.Build:mgauzins</permission>
-      <permission>hudson.model.Run.Delete:mgauzins</permission>
-      <permission>hudson.model.Item.Workspace:mgauzins</permission>
-      <permission>hudson.model.Run.Update:mgauzins</permission>
       <permission>hudson.model.Item.Cancel:mgauzins</permission>
+      <permission>hudson.model.Item.Workspace:mgauzins</permission>
+      <permission>hudson.model.Item.Build:mgauzins</permission>
+      <permission>hudson.model.Item.Read:mgauzins</permission>
+      <permission>hudson.model.Run.Delete:mgauzins</permission>
       <permission>hudson.model.Item.Discover:mgauzins</permission>
       <permission>hudson.model.Item.Configure:mgauzins</permission>
-      <permission>hudson.model.Item.Read:mgauzins</permission>
+      <permission>hudson.scm.SCM.Tag:mgauzins</permission>
+      <permission>hudson.model.Run.Update:mgauzins</permission>
       <permission>hudson.model.Item.Delete:mgauzins</permission>
     </hudson.security.AuthorizationMatrixProperty>
   </properties>
@@ -33,7 +32,7 @@
     </userRemoteConfigs>
     <branches>
       <hudson.plugins.git.BranchSpec>
-        <name>origin/master</name>
+        <name>UnivMobile/master</name>
       </hudson.plugins.git.BranchSpec>
     </branches>
     <doGenerateSubmoduleConfigurations>false</doGenerateSubmoduleConfigurations>
@@ -46,7 +45,7 @@
   <canRoam>false</canRoam>
   <disabled>false</disabled>
   <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
-  <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
+  <blockBuildWhenUpstreamBuilding>true</blockBuildWhenUpstreamBuilding>
   <jdk>Java 7</jdk>
   <triggers/>
   <concurrentBuild>false</concurrentBuild>
@@ -86,6 +85,7 @@ BUILD_DISPLAY_NAME=${BUILD_DISPLAY_NAME}</properties>
       <latestOnly>false</latestOnly>
       <allowEmptyArchive>false</allowEmptyArchive>
       <onlyIfSuccessful>false</onlyIfSuccessful>
+      <defaultExcludes>true</defaultExcludes>
     </hudson.tasks.ArtifactArchiver>
   </publishers>
   <buildWrappers/>

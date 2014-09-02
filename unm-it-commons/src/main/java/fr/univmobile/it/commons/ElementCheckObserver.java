@@ -9,9 +9,6 @@ import java.util.List;
 
 import org.joda.time.DateTime;
 
-import fr.univmobile.it.commons.EnvironmentUtils;
-import fr.univmobile.it.commons.Scenario;
-import fr.univmobile.it.commons.Scenarios;
 import fr.univmobile.testutil.Dumper;
 import fr.univmobile.testutil.XMLDumper;
 
@@ -129,15 +126,15 @@ class ElementCheckObserverStdout implements ElementCheckObserver {
 class ElementCheckObserverXMLDump implements ElementCheckObserver {
 
 	public void init(final String deviceName,
-			final Class<? extends AppiumEnabledTest> scenariosClass, //
+			final Class<? extends WebDriverEnabledTest> scenariosClass, //
 			final Method scenarioMethod, final File outFile) throws IOException {
 
 		// close(); // close the previous use
 
-		final String platformName = AppiumEnabledTestDefaultEngine
+		final String platformName = WebDriverEnabledTestDefaultEngine
 				.getCurrentPlatformName();
 		final String platformVersion = EnvironmentUtils
-				.getCurrentPlatformVersion();
+				.getCurrentPlatformVersion(platformName);
 
 		dumper = XMLDumper.newXMLDumper("scenario", outFile) //
 				.addAttribute("date", new DateTime()) //

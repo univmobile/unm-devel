@@ -6,7 +6,7 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * The methods allowd for a given {@link HttpInputs} annotated sub-interface.
+ * The methods allows for a given {@link HttpInputs} annotated sub-interface.
  */
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.TYPE)

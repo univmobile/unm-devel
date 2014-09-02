@@ -1,19 +1,18 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<maven2-moduleset plugin="maven-plugin@2.3">
+<?xml version="1.0" encoding="UTF-8"?><maven2-moduleset plugin="maven-plugin@2.5">
   <actions/>
-  <description>GitHub: &lt;a href=&quot;https://github.com/univmobile/unm-devel/tree/master/unm-backend-mock&quot;&gt;https://github.com/univmobile/unm-devel/tree/master/unm-backend-mock&#xd;
-&lt;/a&gt;&#xd;
-&lt;p&gt;&#xd;
-Maven Generated Site: &lt;a&#xd;
-  href=&quot;http://univmobile.vswip.com/nexus/content/sites/pub/unm-backend-mock/&quot;&gt;http://univmobile.vswip.com/nexus/content/sites/pub/unm-backend-mock/&lt;/a&gt;&#xd;
-&lt;a&#xd;
-  href=&quot;http://univmobile.vswip.com/nexus/content/sites/pub/unm-backend-mock/0.0.1/&quot;&gt;0.0.1-/&lt;/a&gt;&#xd;
-&lt;p&gt;&#xd;
-Maven Artifacts: &lt;a&#xd;
-  href=&quot;http://univmobile.vswip.com/nexus/content/repositories/releases/fr/univmobile/unm-backend-mock/&quot;&gt;&#xd;
-  http://univmobile.vswip.com/nexus/content/repositories/releases/fr/univmobile/unm-backend-mock/&lt;/a&gt;&#xd;
-&lt;a&#xd;
-  href=&quot;http://univmobile.vswip.com/nexus/content/repositories/releases/fr/univmobile/unm-backend-mock/0.0.1/&quot;&gt;0.0.1/&lt;/a&gt;&#xd;
+  <description>GitHub: &lt;a href="https://github.com/univmobile/unm-devel/tree/master/unm-backend-mock"&gt;https://github.com/univmobile/unm-devel/tree/master/unm-backend-mock&#13;
+&lt;/a&gt;&#13;
+&lt;p&gt;&#13;
+Maven Generated Site: &lt;a&#13;
+  href="http://univmobile.vswip.com/nexus/content/sites/pub/unm-backend-mock/"&gt;http://univmobile.vswip.com/nexus/content/sites/pub/unm-backend-mock/&lt;/a&gt;&#13;
+&lt;a&#13;
+  href="http://univmobile.vswip.com/nexus/content/sites/pub/unm-backend-mock/0.0.1/"&gt;0.0.1-/&lt;/a&gt;&#13;
+&lt;p&gt;&#13;
+Maven Artifacts: &lt;a&#13;
+  href="http://univmobile.vswip.com/nexus/content/repositories/releases/fr/univmobile/unm-backend-mock/"&gt;&#13;
+  http://univmobile.vswip.com/nexus/content/repositories/releases/fr/univmobile/unm-backend-mock/&lt;/a&gt;&#13;
+&lt;a&#13;
+  href="http://univmobile.vswip.com/nexus/content/repositories/releases/fr/univmobile/unm-backend-mock/0.0.1/"&gt;0.0.1/&lt;/a&gt;&#13;
 </description>
   <keepDependencies>false</keepDependencies>
   <properties/>
@@ -38,9 +37,9 @@ Maven Artifacts: &lt;a&#xd;
   <canRoam>true</canRoam>
   <disabled>false</disabled>
   <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
-  <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
+  <blockBuildWhenUpstreamBuilding>true</blockBuildWhenUpstreamBuilding>
   <jdk>Java 7</jdk>
-  <triggers/>
+  <triggers><jenkins.triggers.ReverseBuildTrigger><spec/><upstreamProjects>unm-webapp-parent_release, </upstreamProjects><threshold><name>SUCCESS</name><ordinal>0</ordinal><color>BLUE</color><completeBuild>true</completeBuild></threshold></jenkins.triggers.ReverseBuildTrigger></triggers>
   <concurrentBuild>false</concurrentBuild>
   <customWorkspace>unm-backend-mock</customWorkspace>
   <rootModule>
@@ -54,6 +53,7 @@ Maven Artifacts: &lt;a&#xd;
   <ignoreUpstremChanges>true</ignoreUpstremChanges>
   <archivingDisabled>false</archivingDisabled>
   <siteArchivingDisabled>false</siteArchivingDisabled>
+  <fingerprintingDisabled>false</fingerprintingDisabled>
   <resolveDependencies>false</resolveDependencies>
   <processPlugins>false</processPlugins>
   <mavenValidationLevel>-1</mavenValidationLevel>
