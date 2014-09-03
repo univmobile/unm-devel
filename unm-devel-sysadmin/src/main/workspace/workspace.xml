@@ -543,6 +543,18 @@
 	</parent>
 </project>
 </mavenProject>
+<mavenProject id="unm-backend-sysadmin" gitRepository-ref="unm-backend">
+<project>
+	<description>
+		Projet qui contiendra les outils d’admnistration système du backend
+		UnivMobile, en particulier ceux servant aux interventions sur les
+		bases de données.
+	</description>
+	<parent>
+		<artifactId>unm-parent</artifactId>
+	</parent>
+</project>
+</mavenProject>
 </mavenProjects>
 	
 </workspace>
