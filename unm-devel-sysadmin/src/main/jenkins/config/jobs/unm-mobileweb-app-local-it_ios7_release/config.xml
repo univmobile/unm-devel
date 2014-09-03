@@ -24,7 +24,7 @@
   </scm>
   <assignedNode>macos_ios7a</assignedNode>
   <canRoam>false</canRoam>
-  <disabled>true</disabled>
+  <disabled>false</disabled>
   <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
   <blockBuildWhenUpstreamBuilding>true</blockBuildWhenUpstreamBuilding>
   <jdk>MacOS_iOS6</jdk>
@@ -47,7 +47,7 @@
     <artifactId>unm-mobileweb-app-local-it</artifactId>
   </rootModule>
   <rootPOM>unm-mobileweb-app-local-it/pom.xml</rootPOM>
-  <goals>-U clean install</goals>
+  <goals>-U clean site:jar deploy -Dmaven.test.skip=true</goals>
   <aggregatorStyleBuild>true</aggregatorStyleBuild>
   <incrementalBuild>false</incrementalBuild>
   <ignoreUpstremChanges>true</ignoreUpstremChanges>
@@ -62,15 +62,7 @@
   <settings class="jenkins.mvn.DefaultSettingsProvider"/>
   <globalSettings class="jenkins.mvn.DefaultGlobalSettingsProvider"/>
   <reporters/>
-  <publishers>
-    <hudson.tasks.ArtifactArchiver>
-      <artifacts>unm-mobileweb-app-local-it/target/screenshots/</artifacts>
-      <latestOnly>false</latestOnly>
-      <allowEmptyArchive>false</allowEmptyArchive>
-      <onlyIfSuccessful>false</onlyIfSuccessful>
-      <defaultExcludes>true</defaultExcludes>
-    </hudson.tasks.ArtifactArchiver>
-  </publishers>
+  <publishers/>
   <buildWrappers/>
   <prebuilders/>
   <postbuilders/>

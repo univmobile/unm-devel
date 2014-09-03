@@ -73,7 +73,15 @@
   <settings class="jenkins.mvn.DefaultSettingsProvider"/>
   <globalSettings class="jenkins.mvn.DefaultGlobalSettingsProvider"/>
   <reporters/>
-  <publishers/>
+  <publishers>
+    <hudson.tasks.ArtifactArchiver>
+      <artifacts>unm-android-it/target/screenshots/</artifacts>
+      <latestOnly>false</latestOnly>
+      <allowEmptyArchive>false</allowEmptyArchive>
+      <onlyIfSuccessful>false</onlyIfSuccessful>
+      <defaultExcludes>true</defaultExcludes>
+    </hudson.tasks.ArtifactArchiver>
+  </publishers>
   <buildWrappers/>
   <prebuilders>
     <hudson.tasks.Shell>

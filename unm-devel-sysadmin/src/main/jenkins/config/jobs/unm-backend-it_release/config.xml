@@ -46,7 +46,7 @@
     <artifactId>unm-backend-it</artifactId>
   </rootModule>
   <rootPOM>unm-backend-it/pom.xml</rootPOM>
-  <goals>-U clean site:jar deploy</goals>
+  <goals>-U dependency:purge-local-repository -DactTransitively=false clean site:jar deploy</goals>
   <aggregatorStyleBuild>true</aggregatorStyleBuild>
   <incrementalBuild>false</incrementalBuild>
   <ignoreUpstremChanges>true</ignoreUpstremChanges>
@@ -61,7 +61,15 @@
   <settings class="jenkins.mvn.DefaultSettingsProvider"/>
   <globalSettings class="jenkins.mvn.DefaultGlobalSettingsProvider"/>
   <reporters/>
-  <publishers/>
+  <publishers>
+    <hudson.tasks.ArtifactArchiver>
+      <artifacts>unm-backend-it/target/screenshots/, unm-backend-it/target/pageSource.html</artifacts>
+      <latestOnly>false</latestOnly>
+      <allowEmptyArchive>false</allowEmptyArchive>
+      <onlyIfSuccessful>false</onlyIfSuccessful>
+      <defaultExcludes>true</defaultExcludes>
+    </hudson.tasks.ArtifactArchiver>
+  </publishers>
   <buildWrappers/>
   <prebuilders/>
   <postbuilders/>

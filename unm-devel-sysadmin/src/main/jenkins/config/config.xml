@@ -502,6 +502,7 @@ Tableau de bord d’intégration continue :&#xd;
         <string>unm-ios-it_ios6_release</string>
         <string>unm-ios-it_release</string>
         <string>unm-ios_release</string>
+        <string>unm-ios_xcode_integration_release</string>
         <string>unm-mobileweb-app-local-it_ios6_release</string>
         <string>unm-mobileweb-app-local-it_ios7_release</string>
         <string>unm-mobileweb-app-local_release</string>

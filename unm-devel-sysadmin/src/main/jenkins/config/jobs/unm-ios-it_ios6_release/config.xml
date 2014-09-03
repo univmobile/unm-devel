@@ -12,10 +12,10 @@ Tableau de bord d’intégration continue :&#xd;
   <keepDependencies>false</keepDependencies>
   <properties>
     <hudson.security.AuthorizationMatrixProperty>
-      <permission>hudson.model.Item.Read:mgauzins</permission>
-      <permission>hudson.model.Item.Build:mgauzins</permission>
-      <permission>hudson.model.Item.Workspace:mgauzins</permission>
       <permission>hudson.model.Item.Cancel:mgauzins</permission>
+      <permission>hudson.model.Item.Workspace:mgauzins</permission>
+      <permission>hudson.model.Item.Build:mgauzins</permission>
+      <permission>hudson.model.Item.Read:mgauzins</permission>
     </hudson.security.AuthorizationMatrixProperty>
   </properties>
   <scm class="hudson.plugins.git.GitSCM" plugin="git@2.2.2">
@@ -61,7 +61,7 @@ Tableau de bord d’intégration continue :&#xd;
     <artifactId>unm-ios-it</artifactId>
   </rootModule>
   <rootPOM>unm-ios-it/pom.xml</rootPOM>
-  <goals>-U clean install -DappCommitId=e56987ada044f659f726deda90a078a191ce0f03</goals>
+  <goals>-U clean install -DappCommitId=36e3605cffd1db585ace014ce6e24895370ca1fb</goals>
   <mavenOpts>-Djava.awt.headless=true</mavenOpts>
   <aggregatorStyleBuild>true</aggregatorStyleBuild>
   <incrementalBuild>false</incrementalBuild>
