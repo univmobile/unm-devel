@@ -46,6 +46,11 @@
   <triggers/>
   <concurrentBuild>false</concurrentBuild>
   <builders>
+    <hudson.tasks.Ant plugin="ant@1.2">
+      <targets>update-plist</targets>
+      <antName>MacOS</antName>
+      <properties>jsonBaseURL=https://univmobile-dev.univ-paris1.fr/json/</properties>
+    </hudson.tasks.Ant>
     <hudson.tasks.Shell>
       <command>src/main/shell/xcodebuild_archive.sh</command>
     </hudson.tasks.Shell>

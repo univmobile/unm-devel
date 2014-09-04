@@ -611,6 +611,7 @@ Captures d’écrans des tests d’intégration :&#xd;
       <properties class="hudson.model.View$PropertyList"/>
       <jobNames>
         <comparator class="hudson.util.CaseInsensitiveComparator"/>
+        <string>Android-UnivMobile_integration</string>
         <string>Android-UnivMobile_localhost</string>
         <string>unm-android-testutil</string>
         <string>unm-backend-it-data</string>
