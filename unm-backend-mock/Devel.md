@@ -1,5 +1,7 @@
 # Développement : unm-backend-mock
 
+Documentation parente : [README.md](README.md "Documentation parente : unm-backend-mock/README.md")
+
 ### Installation sur un poste de développement
 
 Testé avec : 
@@ -10,7 +12,7 @@ Testé avec :
   
 Vérifier que le poste a accès aux repositories Nexus suivants :
 
-  * [univmobile.vswip.com/nexus/content/repositories/](univmobile.vswip.com/nexus/content/repositories/)
+  * [http://univmobile.vswip.com/nexus/content/repositories/](http://univmobile.vswip.com/nexus/content/repositories/)
   * [http://repo.avcompris.net/content/repositories/](http://repo.avcompris.net/content/repositories/)
   
 En ligne de commande :

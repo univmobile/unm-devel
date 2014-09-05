@@ -1,7 +1,9 @@
 unm-devel-sysadmin
 ==================
 
-Fichiers système qui aident au développement du projet UnivMobile 2014, UNPIdF.
+_Fichiers système qui aident au développement du projet UnivMobile_
+
+Documentation parente : [unm-devel](../README.md "Documentation parente : unm-devel/README.md")
 
 ### Sauvegarde de la configuration de Jenkins
  
