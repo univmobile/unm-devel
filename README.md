@@ -31,7 +31,7 @@ Projets Maven parents et communs ou utilitaires pour les webapps :
 
   * [unm-webapp-parent](https://github.com/univmobile/unm-devel/tree/develop/unm-webapp-parent "Projet unm-webapp-parent dans GitHub")
   * [unm-webapp-commons](https://github.com/univmobile/unm-devel/tree/develop/unm-webapp-commons "Projet unm-webapp-commons dans GitHub")
-  * [unm-webui-commons](https://github.com/univmobile/unm-devel/tree/develop/unm-webui-commons "Projet unm-webui-commons dans GitHub")
+  * unm-webui-commons (vide)
   * [unm-webui-devel](https://github.com/univmobile/unm-devel/tree/develop/unm-webui-devel "Projet unm-webui-devel dans GitHub")
 
 Projets Maven parents et communs ou utilitaires pour les tests d’intégration :
