@@ -100,3 +100,50 @@ Un fichier « keystore.properties », local à l’environnement d’exécutio
 
 Ensuite, le job Android-UnivMobile dans Jenkins est configuré pour lancer Ant avec la target : release -propertyfile /local/path/to/keystore.properties
 
+### Cargo + Tomcat  + MySQL
+ 
+Les projets Maven qui héritent d’unm-backend-it-parent ont en commun 
+de déployer l’application web unm-backend.war
+— en fait unm-backend-app-noshib, c’est-à-dire avec le filtre
+qui simule la présence de Shibboleth —
+dans un serveur Tomcat local
+démarré par Cargo.
+
+Ce sont les projets suivants :
+
+  * unm-backend-it
+  * unm-ios-it
+  * unm-android-it
+  * unm-mobileweb-it
+  
+En plus de fichiers XML de données locaux,
+l’application web J2EE unm-backend a besoin d’une DataSource MySQL
+pour l’indexation des données,
+il faut donc déclarer cette DataSource dans le Tomcat local.
+
+Pour la description générale
+des différents points de configurations : [J2EE.md](J2EE.md)
+
+En intégration continue, pour que la DataSource soit bien utilisable pendant les tests
+déployés, il faut :
+
+  * que le \<container/\> Cargo « tomcat7x » soit déclaré en tant 
+    que \<type\>installed\</type\> dans pom.xml
+  * qu’un fichier local au projet src/test/conf/context.xml contienne la ligne \<ResourceLink/\> adéquate (voir [J2EE.md](J2EE.md))
+  * que ce fichier soit copié dans le répertoire conf/ de Tomcat
+  * que l’installation locale de Tomcat, qui servira de base à Cargo,
+    contienne le driver JDBC
+    (exemple : mysql-connector-java-5.1.32-bin.jar)
+    dans lib/
+  * que l’installation locale de Tomcat
+    contienne aussi
+    la déclaration \<Resource/\> de la DataSource dans conf/server.xml (ce fichier sera copié
+    par défaut Cargo, contrairement à conf/context.xml)
+  * que le web.xml de la webapp contienne une ligne \<resource-ref/\> correspondant.
+
+Ne pas oublier de déclarer les properties suivantes pour le Maven profile actif :
+
+  * mysqlUrl
+  * mysqlUsername
+  * mysqlPassword (préférer déclarer celui-ci dans ~/.m2/settings.xml)
+  
