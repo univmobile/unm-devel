@@ -63,6 +63,11 @@
 			</dependency>
 			<dependency>
 				<groupId>net.avcompris.commons</groupId>
+				<artifactId>avc-binding-yaml</artifactId>
+				<version>0.1.1-SNAPSHOT</version>
+			</dependency>
+			<dependency>
+				<groupId>net.avcompris.commons</groupId>
 				<artifactId>avc-binding-json</artifactId>
 				<version>0.1.1</version>
 			</dependency>
@@ -175,6 +180,11 @@
 				<groupId>com.sun</groupId>
 				<artifactId>tools</artifactId>
 				<version>1.7.0</version>
+			</dependency>
+			<dependency>
+				<groupId>com.h2database</groupId>
+				<artifactId>h2</artifactId>
+				<version>1.4.181</version>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
