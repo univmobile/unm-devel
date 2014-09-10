@@ -1,6 +1,7 @@
 package fr.univmobile.testutil;
 
 import static com.google.common.base.Preconditions.checkNotNull;
+import static org.apache.commons.lang3.StringUtils.isBlank;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -8,9 +9,19 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
 
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.xpath.XPathExpression;
+import javax.xml.xpath.XPathExpressionException;
+import javax.xml.xpath.XPathFactory;
+
 import net.avcompris.binding.annotation.Namespaces;
 import net.avcompris.binding.annotation.XPath;
 import net.avcompris.binding.dom.helper.DomBinderUtils;
+
+import org.w3c.dom.Document;
+import org.xml.sax.SAXException;
 
 public class PropertiesUtils {
 
@@ -29,7 +40,7 @@ public class PropertiesUtils {
 		final Properties properties = new Properties();
 
 		final InputStream is = // PropertiesUtils.class.getClassLoader()
-				Thread.currentThread().getContextClassLoader()
+		Thread.currentThread().getContextClassLoader()
 				.getResourceAsStream(FILENAME);
 
 		if (is == null) {
@@ -53,12 +64,12 @@ public class PropertiesUtils {
 		}
 
 		if (value.contains("${")) {
-			
+
 			System.err.println("Property: " + propertyName + "=" + value
 					+ " is not filtered in property file: " + FILENAME);
-			
+
 		} else {
-			
+
 			return value;
 		}
 
@@ -90,9 +101,57 @@ public class PropertiesUtils {
 		System.err.println("Found fallback property: " + propertyName
 				+ " in POM file: " + pomFile.getName() + " for profile: "
 				+ USER + ":");
-		System.out.println( fallbackValue);
+		System.out.println(fallbackValue);
 
 		return fallbackValue;
+	}
+
+	/**
+	 * Get the property located in the local
+	 * Maven Settings File (~/.m2/settings.xml) by a XPath
+	 * expression, which is the
+	 * value of a property in src/test/resources/test.properties
+	 * filtered by Maven according to active
+	 * profile(s).
+	 * <p>
+	 * This method is implemented as follows:
+	 * <ol>
+	 * <li> 
+	 * </ol>
+	 */
+	public static String getSettingsTestRefProperty(final String refPropertyName)
+			throws IOException, ParserConfigurationException, SAXException,
+			XPathExpressionException {
+
+		return getSettingsTestRefProperty(refPropertyName,
+				new File(System.getProperty("user.home"), ".m2/settings.xml"));
+	}
+
+	static String getSettingsTestRefProperty(final String refPropertyName,
+			final File settingsFile) throws IOException,
+			ParserConfigurationException, SAXException,
+			XPathExpressionException {
+
+		final String xpathExpression = getTestProperty(refPropertyName);
+
+		final DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory
+				.newInstance();
+		final DocumentBuilder documentBuilder = documentBuilderFactory
+				.newDocumentBuilder();
+		final Document document = documentBuilder.parse(settingsFile);
+		final XPathFactory xpathFactory = XPathFactory.newInstance();
+		final javax.xml.xpath.XPath xpath = xpathFactory.newXPath();
+		final XPathExpression xe = xpath.compile(xpathExpression);
+
+		final String value = xe.evaluate(document);
+
+		if (isBlank(value)) {
+			throw new NullPointerException("Cannot evaluate XPath expression: "
+					+ xpathExpression + " on file: "
+					+ settingsFile.getCanonicalPath());
+		}
+
+		return value;
 	}
 
 	@XPath("/pom:project")

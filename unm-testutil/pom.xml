@@ -31,6 +31,15 @@
         http://univmobile.vswip.com/nexus/content/sites/pub/${project.artifactId}/${project.version}/
     </url>
 
+	<build>
+		<testResources>
+			<testResource>
+				<directory>src/test/resources</directory>
+				<filtering>true</filtering>
+			</testResource>
+		</testResources>
+	</build>
+	
 	<scm>
 		<connection>
             scm:git:https://github.com/univmobile/unm-devel.git
@@ -103,5 +112,10 @@
 			</snapshots>
 		</repository>
 	</repositories>
+	
+	<properties>
+		<toto>Hello World!</toto>
+		<toto.password.ref>/settings/*/server[id = 'mysql']/password</toto.password.ref>
+	</properties>
 
 </project>

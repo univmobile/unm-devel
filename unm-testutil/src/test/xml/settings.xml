@@ -1,0 +1,9 @@
+<settings>
+<servers>
+<server>
+        <id>mysql</id>
+        <username>root</username>
+        <password>myrootpassword</password>
+</server>
+</servers>
+</settings>
