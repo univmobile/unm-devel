@@ -116,7 +116,17 @@ public class PropertiesUtils {
 	 * <p>
 	 * This method is implemented as follows:
 	 * <ol>
-	 * <li> 
+	 * <li> Generally, the <code>refPropertyName</code> parameter is a name
+	 * ending with “.ref”. e.g. “mysql.password.ref”.
+	 * <li> Read the property from the test.properties file. Usually, this
+	 * property values in this file are filtered out by Maven,
+	 * taking into account the active profile and the current POM file.
+	 * <li> The (filtered) property value must be a valid XPath expression.
+	 * e.g. “/settings/servers/server[id = 'mysql']/password”
+	 * <li> Evaluate the XPath expression against the
+	 * local Maven Settings File (~/.m2/settings.xml). 
+	 * e.g. with a value of “/settings/servers/server[id = 'mysql']/password”,
+	 * the evaluation would give the local password  
 	 * </ol>
 	 */
 	public static String getSettingsTestRefProperty(final String refPropertyName)
