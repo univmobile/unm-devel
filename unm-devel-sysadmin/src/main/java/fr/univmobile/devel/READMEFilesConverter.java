@@ -42,8 +42,8 @@ public class READMEFilesConverter {
 								"Markdown file should be at same level as pom.xml: "
 										+ file.getCanonicalPath());
 					}
+					
 					/*
-					 * 
 					 * final String aptFilename = "README.md".equals(filename)
 					 * // ? "index.apt" : filename.replace(".md", ".apt");
 					 * 
@@ -85,6 +85,7 @@ public class READMEFilesConverter {
 		}
 	}
 
+	@SuppressWarnings("unused")
 	private static void md2apt(final File markdownFile, final File aptFile)
 			throws Exception {
 
@@ -92,6 +93,7 @@ public class READMEFilesConverter {
 				new File("src/main/xslt/markdown.apt.xsl"));
 	}
 
+	@SuppressWarnings("unused")
 	private static void md2confluence(final File markdownFile,
 			final File aptFile) throws Exception {
 

@@ -159,7 +159,7 @@ public abstract class MarkdownToXHTMLConverter {
 
 		// 9. END
 
-		System.out.println(processed);
+		// System.out.println(processed);
 
 		return processed;
 	}
