@@ -9,36 +9,22 @@
 		<groupId>fr.univmobile</groupId>
 		<artifactId>unm-parent</artifactId>
 		<version>0.0.5-SNAPSHOT</version>
-		<relativePath/>
+		<relativePath>unm-parent</relativePath>
 	</parent>
-
-	<dependencies>
-		<dependency>
-			<groupId>fr.univmobile</groupId>
-			<artifactId>unm-commons</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>fr.univmobile</groupId>
-			<artifactId>unm-backend-mock</artifactId>
-			<type>war</type>
-		</dependency>
-		<dependency>
-			<groupId>fr.univmobile</groupId>
-			<artifactId>unm-devel-xmldoclet</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>fr.univmobile</groupId>
-			<artifactId>unm-it-commons</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>fr.univmobile</groupId>
-			<artifactId>unm-testutil</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>fr.univmobile</groupId>
-			<artifactId>unm-webapp-commons</artifactId>
-		</dependency>
-	</dependencies>
+	
+	<modules>
+		<module>unm-parent</module>
+		<module>unm-commons</module>
+		<module>unm-testutil</module>
+		<module>unm-devel-xmldoclet</module>
+		<module>unm-devel-sysadmin</module>
+		<module>unm-it-parent</module>
+		<module>unm-it-commons</module>
+		<module>unm-webapp-parent</module>
+		<module>unm-backend-mock</module>
+		<module>unm-webapp-commons</module>
+		<module>unm-webui-devel</module>
+	</modules>
 
 	<name>unm-devel</name>
 	<description>

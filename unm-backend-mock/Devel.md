@@ -1,6 +1,6 @@
 # Développement : unm-backend-mock
 
-Documentation parente : [README.md](README.md "Documentation parente : unm-backend-mock/README.md")
+Documentation parente : [README](README.md "Documentation parente : unm-backend-mock/README.md")
 
 ### Installation sur un poste de développement
 

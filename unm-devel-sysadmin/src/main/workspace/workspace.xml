@@ -165,6 +165,16 @@
 	</parent>
 </project>
 </mavenProject>
+<mavenProject id="unm-devel" gitRepository-ref="unm-devel">
+<project>
+	<description>
+		Points d’entrée vers la documentation du projet UnivMobile.
+	</description>
+	<parent>
+		<artifactId>unm-parent</artifactId>
+	</parent>
+</project>
+</mavenProject>
 <mavenProject id="unm-webapp-commons" gitRepository-ref="unm-devel">
 <project>
 	<description>

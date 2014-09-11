@@ -4,12 +4,8 @@
 	<body>
 
 		<menu name="Workspace">
-			<item href="http://univmobile.vswip.com/job/unm-devel"
+			<item href="http://univmobile.vswip.com/job/unm-devel-xmldoclet"
 				name="Job Jenkins" />
-		</menu>
-
-		<menu name="Documentation">
-			<item href="index.html" name="README"/>
 		</menu>
 
 		<menu ref="parent" />

@@ -5,9 +5,14 @@
 
 		<menu name="Workspace">
 			<item href="http://univmobile.vswip.com/job/unm-backend-mock"
-				name="Jenkins" />
+				name="Job Jenkins" />
 		</menu>
 
+		<menu name="Documentation">
+			<item href="index.html" name="README"/>
+			<item href="Devel.html" name="Développement"/>
+		</menu>
+		
 		<menu ref="parent" />
 
 		<menu ref="modules" />
