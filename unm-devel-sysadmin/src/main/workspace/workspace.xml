@@ -319,6 +319,26 @@
 	</parent>
 </project>
 </mavenProject>
+<mavenProject id="unm-mobileweb" gitRepository-ref="unm-mobileweb" path=".">
+<project>
+	<description>
+		Projets Maven pour l’application UnivMobile Mobile web.
+	</description>
+	<parent>
+		<artifactId>unm-parent</artifactId>
+	</parent>
+</project>
+</mavenProject>
+<mavenProject id="unm-android" gitRepository-ref="unm-android" path=".">
+<project>
+	<description>
+		Projets Maven pour l’application Android UnivMobile.
+	</description>
+	<parent>
+		<artifactId>unm-parent</artifactId>
+	</parent>
+</project>
+</mavenProject>
 <mavenProject id="unm-backend-app" gitRepository-ref="unm-backend">
 <project>
 	<description>
