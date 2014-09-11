@@ -53,9 +53,9 @@ M: Maven Generated Site — D: Doxygen — J: JavaDocs — TJ: Test JavaDocs
 
 Repository GitHub : [unm-devel](https://github.com/univmobile/unm-devel "Repository GitHub : unm-devel") — _Éléments transverses aux composants du projet UnivMobile_
 
-  * [README.md](https://github.com/univmobile/unm-devel/blob/develop//README.md "README.md")
+  * [README.md](https://github.com/univmobile/unm-devel/blob/develop/README.md "README.md")
   * **unm-backend-mock** —  [M](http://univmobile.vswip.com/nexus/content/sites/pub/unm-backend-mock/0.0.4/ "Maven Generated Site: unm-backend-mock:0.0.4") [J](http://univmobile.vswip.com/nexus/content/sites/pub/unm-backend-mock/0.0.4/apidocs/ "JavaDocs: unm-backend-mock:0.0.4") — _Webapp bouchon qui sert des flux JSON en dur_
-    * [README.md](https://github.com/univmobile/unm-devel/blob/develop/unm-backend-mock/README.md "README.md") — [Développement : unm-backend-mock](https://github.com/univmobile/unm-devel/blob/develop/unm-backend-mock/Devel.md "Devel.md")
+    * [README.md](https://github.com/univmobile/unm-devel/blob/develop/unm-backend-mock/README.md "README.md") — [Développement : unm-backend-mock](https://github.com/univmobile/unm-devel/blob/develop/unm-backend-mock/src/site/markdown/Devel.md "Devel.md")
   * **unm-commons** —  [M](http://univmobile.vswip.com/nexus/content/sites/pub/unm-commons/0.0.4/ "Maven Generated Site: unm-commons:0.0.4") [J](http://univmobile.vswip.com/nexus/content/sites/pub/unm-commons/0.0.4/apidocs/ "JavaDocs: unm-commons:0.0.4") [TJ](http://univmobile.vswip.com/nexus/content/sites/pub/unm-commons/0.0.4/testapidocs/ "Test JavaDocs: unm-commons: 0.0.4")
   * **unm-devel-sysadmin** — _Fichiers système qui aident au développement du projet UnivMobile_
     * [README.md](https://github.com/univmobile/unm-devel/blob/develop/unm-devel-sysadmin/README.md "README.md")
@@ -70,21 +70,21 @@ Repository GitHub : [unm-devel](https://github.com/univmobile/unm-devel "Reposi
 
 Repository GitHub : [unm-ios](https://github.com/univmobile/unm-ios "Repository GitHub : unm-ios") —  [M](http://univmobile.vswip.com/nexus/content/sites/pub/unm-ios/0.0.4/ "Maven Generated Site: unm-ios:0.0.4") [D](http://univmobile.vswip.com/nexus/content/sites/pub/unm-ios/0.0.4/doxygen/html/ "Doxygen: unm-ios:0.0.4") — _Application iOS UnivMobile_
 
-  * [README.md](https://github.com/univmobile/unm-ios/blob/develop//README.md "README.md") — [Développement : unm-ios](https://github.com/univmobile/unm-ios/blob/develop//Devel.md "Devel.md")
+  * [README.md](https://github.com/univmobile/unm-ios/blob/develop/README.md "README.md") — [Développement : unm-ios](https://github.com/univmobile/unm-ios/blob/develop/src/site/markdown/Devel.md "Devel.md")
   * **unm-ios-it** —  [M](http://univmobile.vswip.com/nexus/content/sites/pub/unm-ios-it/0.0.4/ "Maven Generated Site: unm-ios-it:0.0.4") [TJ](http://univmobile.vswip.com/nexus/content/sites/pub/unm-ios-it/0.0.4/testapidocs/ "Test JavaDocs: unm-ios-it: 0.0.4") — _Tests d’intégration de l’application iOS UnivMobile_
-    * [README.md](https://github.com/univmobile/unm-ios/blob/develop/unm-ios-it/README.md "README.md") — [Développement : unm-ios-it](https://github.com/univmobile/unm-ios/blob/develop/unm-ios-it/Devel.md "Devel.md")
+    * [README.md](https://github.com/univmobile/unm-ios/blob/develop/unm-ios-it/README.md "README.md") — [Développement : unm-ios-it](https://github.com/univmobile/unm-ios/blob/develop/unm-ios-it/src/site/markdown/Devel.md "Devel.md")
 
 Repository GitHub : [unm-android](https://github.com/univmobile/unm-android "Repository GitHub : unm-android") —  [J](http://univmobile.vswip.com/nexus/content/sites/pub/unm-android/0.0.4/ "JavaDocs: unm-android:0.0.4")
 
-  * [README.md](https://github.com/univmobile/unm-android/blob/develop//README.md "README.md")
+  * [README.md](https://github.com/univmobile/unm-android/blob/develop/README.md "README.md")
   * **UnivMobile** — Application Android du projet UnivMobile.
-    * [README.md](https://github.com/univmobile/unm-android/blob/develop/UnivMobile/README.md "README.md") — [Développement Android UnivMobile](https://github.com/univmobile/unm-android/blob/develop/UnivMobile/Devel.md "Devel.md")
+    * [README.md](https://github.com/univmobile/unm-android/blob/develop/UnivMobile/README.md "README.md") — [Développement Android UnivMobile](https://github.com/univmobile/unm-android/blob/develop/UnivMobile/src/site/markdown/Devel.md "Devel.md")
   * **unm-android-it** —  [M](http://univmobile.vswip.com/nexus/content/sites/pub/unm-android-it/0.0.4/ "Maven Generated Site: unm-android-it:0.0.4") [TJ](http://univmobile.vswip.com/nexus/content/sites/pub/unm-android-it/0.0.4/testapidocs/ "Test JavaDocs: unm-android-it: 0.0.4")
   * **unm-android-testutil** —  [M](http://univmobile.vswip.com/nexus/content/sites/pub/unm-android-testutil/0.0.4/ "Maven Generated Site: unm-android-testutil:0.0.4") [J](http://univmobile.vswip.com/nexus/content/sites/pub/unm-android-testutil/0.0.4/apidocs/ "JavaDocs: unm-android-testutil:0.0.4") [TJ](http://univmobile.vswip.com/nexus/content/sites/pub/unm-android-testutil/0.0.4/testapidocs/ "Test JavaDocs: unm-android-testutil: 0.0.4")
 
 Repository GitHub : [unm-mobileweb](https://github.com/univmobile/unm-mobileweb "Repository GitHub : unm-mobileweb")
 
-  * [README.md](https://github.com/univmobile/unm-mobileweb/blob/develop//README.md "README.md")
+  * [README.md](https://github.com/univmobile/unm-mobileweb/blob/develop/README.md "README.md")
   * **unm-mobileweb-app** —  [M](http://univmobile.vswip.com/nexus/content/sites/pub/unm-mobileweb-app/0.0.4/ "Maven Generated Site: unm-mobileweb-app:0.0.4") [J](http://univmobile.vswip.com/nexus/content/sites/pub/unm-mobileweb-app/0.0.4/apidocs/ "JavaDocs: unm-mobileweb-app:0.0.4") [TJ](http://univmobile.vswip.com/nexus/content/sites/pub/unm-mobileweb-app/0.0.4/testapidocs/ "Test JavaDocs: unm-mobileweb-app: 0.0.4")
   * **unm-mobileweb-app-local** —  [M](http://univmobile.vswip.com/nexus/content/sites/pub/unm-mobileweb-app-local/0.0.4/ "Maven Generated Site: unm-mobileweb-app-local:0.0.4")
   * **unm-mobileweb-app-local-it** —  [M](http://univmobile.vswip.com/nexus/content/sites/pub/unm-mobileweb-app-local-it/0.0.4/ "Maven Generated Site: unm-mobileweb-app-local-it:0.0.4") [TJ](http://univmobile.vswip.com/nexus/content/sites/pub/unm-mobileweb-app-local-it/0.0.4/testapidocs/ "Test JavaDocs: unm-mobileweb-app-local-it: 0.0.4")
@@ -93,7 +93,7 @@ Repository GitHub : [unm-mobileweb](https://github.com/univmobile/unm-mobileweb
 
 Repository GitHub : [unm-backend](https://github.com/univmobile/unm-backend "Repository GitHub : unm-backend") —  [M](http://univmobile.vswip.com/nexus/content/sites/pub/unm-backend/0.0.4/ "Maven Generated Site: unm-backend:0.0.4") — _Back end du projet UnivMobile_
 
-  * [README.md](https://github.com/univmobile/unm-backend/blob/develop//README.md "README.md") — [Architecture d’unm-backend](https://github.com/univmobile/unm-backend/blob/develop//Arch.md "Arch.md") — [Développement d’unm-backend](https://github.com/univmobile/unm-backend/blob/develop//Devel.md "Devel.md") — [Flux JSON](https://github.com/univmobile/unm-backend/blob/develop//JSON.md "JSON.md") — [Intégration avec Shibboleth](https://github.com/univmobile/unm-backend/blob/develop//Shibboleth.md "Shibboleth.md") — [Données de tests](https://github.com/univmobile/unm-backend/blob/develop//Tests.md "Tests.md") — [UnivMobile — Liste des universités](https://github.com/univmobile/unm-backend/blob/develop//Universities.md "Universities.md") — [unm-backend-app](https://github.com/univmobile/unm-backend/blob/develop//unm-backend-app.md "unm-backend-app.md")
+  * [README.md](https://github.com/univmobile/unm-backend/blob/develop/README.md "README.md") — [Architecture d’unm-backend](https://github.com/univmobile/unm-backend/blob/develop/src/site/markdown/Arch.md "Arch.md") — [Développement d’unm-backend](https://github.com/univmobile/unm-backend/blob/develop/src/site/markdown/Devel.md "Devel.md") — [Flux JSON](https://github.com/univmobile/unm-backend/blob/develop/src/site/markdown/JSON.md "JSON.md") — [Intégration avec Shibboleth](https://github.com/univmobile/unm-backend/blob/develop/src/site/markdown/Shibboleth.md "Shibboleth.md") — [Données de tests](https://github.com/univmobile/unm-backend/blob/develop/src/site/markdown/Tests.md "Tests.md") — [UnivMobile — Liste des universités](https://github.com/univmobile/unm-backend/blob/develop/src/site/markdown/Universities.md "Universities.md") — [unm-backend-app](https://github.com/univmobile/unm-backend/blob/develop/src/site/markdown/unm-backend-app.md "unm-backend-app.md")
   * **unm-backend-app** —  [M](http://univmobile.vswip.com/nexus/content/sites/pub/unm-backend-app/0.0.4/ "Maven Generated Site: unm-backend-app:0.0.4") [J](http://univmobile.vswip.com/nexus/content/sites/pub/unm-backend-app/0.0.4/apidocs/ "JavaDocs: unm-backend-app:0.0.4") [TJ](http://univmobile.vswip.com/nexus/content/sites/pub/unm-backend-app/0.0.4/testapidocs/ "Test JavaDocs: unm-backend-app: 0.0.4")
   * **unm-backend-app-noshib** —  [M](http://univmobile.vswip.com/nexus/content/sites/pub/unm-backend-app-noshib/0.0.4/ "Maven Generated Site: unm-backend-app-noshib:0.0.4")
   * **unm-backend-client** —  [M](http://univmobile.vswip.com/nexus/content/sites/pub/unm-backend-client/0.0.4/ "Maven Generated Site: unm-backend-client:0.0.4") — unm-backend-client
@@ -115,7 +115,7 @@ Repository GitHub : [unm-backend](https://github.com/univmobile/unm-backend "Re
 
 Repository GitHub : [unm-integration](https://github.com/univmobile/unm-integration "Repository GitHub : unm-integration") — Ressources d’intégration du projet UnivMobile iOS, Android et web apps.
 
-  * [README.md](https://github.com/univmobile/unm-integration/blob/develop//README.md "README.md")
+  * [README.md](https://github.com/univmobile/unm-integration/blob/develop/README.md "README.md")
   * **unm-devel-it** —  [M](http://univmobile.vswip.com/nexus/content/sites/pub/unm-devel-it/0.0.4/ "Maven Generated Site: unm-devel-it:0.0.4") [J](http://univmobile.vswip.com/nexus/content/sites/pub/unm-devel-it/0.0.4/apidocs/ "JavaDocs: unm-devel-it:0.0.4") [TJ](http://univmobile.vswip.com/nexus/content/sites/pub/unm-devel-it/0.0.4/testapidocs/ "Test JavaDocs: unm-devel-it: 0.0.4")
   * **unm-ios-ut-results** —  [M](http://univmobile.vswip.com/nexus/content/sites/pub/unm-ios-ut-results/0.0.4/ "Maven Generated Site: unm-ios-ut-results:0.0.4") [J](http://univmobile.vswip.com/nexus/content/sites/pub/unm-ios-ut-results/0.0.4/apidocs/ "JavaDocs: unm-ios-ut-results:0.0.4") [TJ](http://univmobile.vswip.com/nexus/content/sites/pub/unm-ios-ut-results/0.0.4/testapidocs/ "Test JavaDocs: unm-ios-ut-results: 0.0.4") — Résultats des tests unitaires (XCTest) du projet UnivMobile iOS unm-ios.
     * [README.md](https://github.com/univmobile/unm-integration/blob/develop/unm-ios-ut-results/README.md "README.md")
