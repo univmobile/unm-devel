@@ -1,10 +1,14 @@
 package fr.univmobile.devel;
 
 import static org.apache.commons.lang3.CharEncoding.UTF_8;
+import static org.apache.commons.lang3.StringUtils.substringAfter;
+import static org.apache.commons.lang3.StringUtils.substringBetween;
 
 import java.io.File;
 import java.io.IOException;
 import java.io.StringReader;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -43,11 +47,15 @@ public abstract class MarkdownToXHTMLConverter {
 	/**
 	 * Convert a Markdown stream into a XHTML stream, using txtmark.
 	 */
-	public static String convert(final String markdown) {
+	public static String convert(final String markdown) throws IOException {
 
 		String prep = markdown; // Prepare the Markdown stream for conversion
 
+		// 1. [<] AND [>]
+
 		prep = prep.replace("\\<", "&lt;").replace("\\>", "&gt;");
+
+		// 2. UNDERSCORES
 
 		boolean inEmphasis = false;
 
@@ -68,26 +76,90 @@ public abstract class MarkdownToXHTMLConverter {
 
 			} else {
 
-				if (i + 1 < prep.length() && Character.isWhitespace(prep.charAt(i + 1))) {
+				if (i + 1 < prep.length()
+						&& Character.isWhitespace(prep.charAt(i + 1))) {
 					inEmphasis = false;
 					continue;
 				}
 
 				continue; // still in emphasis
 			}
-			
+
 			if (prep.charAt(i - 1) != '\\') {
 				prep = prep.substring(0, i) + '\\' + prep.substring(i);
 				++i;
 			}
 		}
 
+		// 3. IMAGE SRCS AND WIDTHS
+
+		final Map<String, Integer> imageWidths = new HashMap<String, Integer>();
+
+		for (int i = 0; i < prep.length(); ++i) {
+
+			i = prep.indexOf("![", i);
+
+			if (i == -1) {
+				break;
+			}
+
+			final int end = prep.indexOf(")", i);
+
+			final String image = prep.substring(i, end + 1);
+
+			final int equals = prep.indexOf(" =", i);
+
+			final int quote = prep.indexOf("\"", i);
+
+			if (quote == -1 || quote > end) {
+				throw new IOException("Markdown should have a title: " + image);
+			}
+
+			final String width = (equals == -1 || equals > end) ? null
+					: substringBetween(image, " =", "x");
+
+			final int brack = prep.indexOf("](",i);
+
+			String src = prep.substring(brack + 2,
+					equals == -1 || equals > end ? quote : equals).trim();
+
+			if (width != null) {
+				prep = prep.substring(0, equals) + ' ' + prep.substring(quote);
+			}
+
+			if (src.contains("src/site/resources/images/")) {
+				src = //"../" + 
+			substringAfter(src, "src/site/resources/");
+				prep = prep.substring(0, brack) + "](" + src
+						+ prep.substring(prep.indexOf(' ', brack));
+			}
+
+			if (width != null) {
+				imageWidths.put(src, Integer.parseInt(width));
+			}
+		}
+
+		// 5. CONVERSION
+
 		final Configuration configuration = // Configuration.DEFAULT_SAFE;
 		Configuration.builder().setSafeMode(true).build();
 
-		final String processed = Processor.process(prep, configuration);
+		String processed = Processor.process(prep, configuration);
 
-		// System.out.println(processed);
+		// 6. IMAGE WIDTHS
+
+		for (final Map.Entry<String, Integer> entry : imageWidths.entrySet()) {
+
+			final String src = entry.getKey();
+			final int width = entry.getValue();
+
+			processed = processed.replace("src=\"" + src + "\"", //
+					"src=\"" + src + "\" width=\"" + width + "px\"");
+		}
+
+		// 9. END
+
+		System.out.println(processed);
 
 		return processed;
 	}

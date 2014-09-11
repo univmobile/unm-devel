@@ -8,6 +8,7 @@ import static org.junit.Assert.assertTrue;
 
 import java.io.File;
 
+import org.junit.Ignore;
 import org.junit.Test;
 
 public class MarkdownToXHTMLConverterTest {
@@ -120,5 +121,69 @@ public class MarkdownToXHTMLConverterTest {
 				.trim();
 
 		assertEquals("<p>il lance _job-xcodebuild_</p>", processed);
+	}
+
+	@Test
+	@Ignore
+	public void testImage() throws Exception {
+
+		final String processed = convert(
+				"![](src/site/images/backend-mock.png)").trim();
+
+		assertEquals("", processed);
+	}
+
+	@Test
+	public void testImage_title() throws Exception {
+
+		final String processed = convert(
+				"![](src/site/images/backend-mock.png \"Hello World!\")")
+				.trim();
+
+		assertEquals(
+				"<p><img src=\"src/site/images/backend-mock.png\" alt=\"\" title=\"Hello World!\" /></p>",
+				processed);
+	}
+
+	@Test
+	@Ignore
+	public void testImage_alt() throws Exception {
+
+		final String processed = convert(
+				"![toto](src/site/images/backend-mock.png").trim();
+
+		assertEquals("", processed);
+	}
+
+	@Test
+	@Ignore
+	public void testImage_raw() throws Exception {
+
+		final String processed = convert(
+				"![](src/site/images/backend-mock.png?raw=true)").trim();
+
+		assertEquals("", processed);
+	}
+
+	@Test
+	public void testImage_raw_title() throws Exception {
+
+		final String processed = convert(
+				"![](src/site/images/backend-mock.png?raw=true \"Hi\")").trim();
+
+		assertEquals(
+				"<p><img src=\"src/site/images/backend-mock.png?raw=true\" alt=\"\" title=\"Hi\" /></p>",
+				processed);
+	}
+
+	@Test
+	public void testImage_raw_width_title() throws Exception {
+
+		final String processed = convert(
+				"![](src/site/images/backend-mock.png?raw=true =600x \"Hi\")").trim();
+
+		assertEquals(
+				"<p><img src=\"images/backend-mock.png?raw=true\" width=\"600px\" alt=\"\" title=\"Hi\" /></p>",
+				processed);
 	}
 }

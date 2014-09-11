@@ -15,7 +15,7 @@ Autres documentations :
 
 ### Manuel d’utilisation
 
-![](src/site/images/backend-mock.png?raw=true =600x)
+![](src/site/resources/images/backend-mock.png?raw=true =500x "Screenshot")
 
 Se connecter à la webapp déployée en développpement, en général :
 [http://univmobile.vswip.com/unm-backend-mock/](http://univmobile.vswip.com/unm-backend-mock/)

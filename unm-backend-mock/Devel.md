@@ -23,8 +23,11 @@ En ligne de commande :
     
 Note : l’option « -U » (--update-snapshots) permet de forcer la récupération des mises à jour des dépendances snapshots auprès des repositories Nexus, même s’il s’agit du POM parent.
 
-Pour permettre à Eclipse d’ouvrir le projet :
+Pour permettre à Eclipse d’ouvrir le projet, utiliser Maven pour produire
+le fichier « .project » :
 
     > mvn eclipse:eclipse
-    
-… ou ouvrir le projet dans Eclipse avec les plugins adéquats.
+
+puis importer le projet dans Eclipse.
+
+Autre méthode : ouvrir le projet dans Eclipse à l’aide des plugins adéquats.

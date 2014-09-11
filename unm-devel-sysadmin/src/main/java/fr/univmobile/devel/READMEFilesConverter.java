@@ -33,11 +33,34 @@ public class READMEFilesConverter {
 			@Override
 			public void handleFile(final File file) throws Exception {
 
-				if ("README.md".equals(file.getName())
-						&& new File(file.getParentFile(), "pom.xml").isFile()) {
+				final String filename = file.getName();
 
-					convert(file, new File(file.getParentFile(),
-							"src/site/apt/index.apt"));
+				if (filename.endsWith(".md")) {
+
+					if (!new File(file.getParentFile(), "pom.xml").isFile()) {
+						throw new IOException(
+								"Markdown file should be at same level as pom.xml: "
+										+ file.getCanonicalPath());
+					}
+					/*
+					 * 
+					 * final String aptFilename = "README.md".equals(filename)
+					 * // ? "index.apt" : filename.replace(".md", ".apt");
+					 * 
+					 * final String confluenceFilename = "README.md"
+					 * .equals(filename) // ? "index.confluence" :
+					 * filename.replace(".md", ".confluence");
+					 * 
+					 * md2confluence(file, new File(file.getParentFile(),
+					 * "src/site/confluence/" + confluenceFilename));
+					 */
+
+					final String xhtmlFilename = "README.md".equals(filename) //
+					? "index.xhtml"
+							: filename.replace(".md", ".xhtml");
+
+					md2xhtml(file, new File(file.getParentFile(),
+							"src/site/xhtml/" + xhtmlFilename));
 				}
 			}
 		};
@@ -62,11 +85,32 @@ public class READMEFilesConverter {
 		}
 	}
 
-	private static void convert(final File markdownFile, final File aptFile)
+	private static void md2apt(final File markdownFile, final File aptFile)
 			throws Exception {
 
-		final File destDir=aptFile.getParentFile();
-		
+		md2xxx(markdownFile, aptFile,
+				new File("src/main/xslt/markdown.apt.xsl"));
+	}
+
+	private static void md2confluence(final File markdownFile,
+			final File aptFile) throws Exception {
+
+		md2xxx(markdownFile, aptFile, new File(
+				"src/main/xslt/markdown.confluence.xsl"));
+	}
+
+	private static void md2xhtml(final File markdownFile,
+			final File aptFile) throws Exception {
+
+		md2xxx(markdownFile, aptFile, new File(
+				"src/main/xslt/markdown.xhtml.xsl"));
+	}
+
+	private static void md2xxx(final File markdownFile, final File destFile,
+			final File xsltFile) throws Exception {
+
+		final File destDir = destFile.getParentFile();
+
 		if (!destDir.exists()) {
 			FileUtils.forceMkdir(destDir);
 		}
@@ -78,10 +122,9 @@ public class READMEFilesConverter {
 				.newInstance();
 
 		final Transformer transformer = transformerFactory
-				.newTransformer(new StreamSource(new File(
-						"src/main/xslt/markdown.apt.xsl")));
+				.newTransformer(new StreamSource(xsltFile));
 
-		System.out.println("Transforming to: " + aptFile.getCanonicalPath());
+		System.out.println("Transforming to: " + destFile.getCanonicalPath());
 
 		transformer.setParameter("currentGitHubRepository",
 				getGitHubRepository(markdownFile));
@@ -89,8 +132,8 @@ public class READMEFilesConverter {
 		transformer.setParameter("projectVersion",
 				getProjectVersion(markdownFile));
 
-		transformer.transform(new DOMSource(document),
-				new StreamResult(aptFile));
+		transformer.transform(new DOMSource(document), new StreamResult(
+				destFile));
 	}
 
 	private static String getProjectVersion(final File file) throws IOException {
@@ -206,7 +249,7 @@ public class READMEFilesConverter {
 				final String filename = file.getName();
 
 				if ("bin".equals(filename) || "target".equals(filename)
-						|| "build".equals(filename)) {
+						|| "build".equals(filename) || "Pods".equals(filename)) {
 					continue;
 				}
 
