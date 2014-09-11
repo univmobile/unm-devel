@@ -555,6 +555,16 @@
 	</parent>
 </project>
 </mavenProject>
+<mavenProject id="unm-devel-sysadmin" gitRepository-ref="unm-devel">
+<project>
+	<description>
+		Utilitaires aidant au développement du projet UnivMobile.
+	</description>
+	<parent>
+		<artifactId>unm-parent</artifactId>
+	</parent>
+</project>
+</mavenProject>
 </mavenProjects>
 	
 </workspace>

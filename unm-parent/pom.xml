@@ -113,6 +113,27 @@
 			</dependency>
 			<dependency>
 				<groupId>fr.univmobile</groupId>
+				<artifactId>unm-backend-mock</artifactId>
+				<version>${project.version}</version>
+				<type>war</type>
+			</dependency>
+			<dependency>
+				<groupId>fr.univmobile</groupId>
+				<artifactId>unm-it-commons</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>fr.univmobile</groupId>
+				<artifactId>unm-webapp-commons</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>fr.univmobile</groupId>
+				<artifactId>unm-devel-xmldoclet</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>fr.univmobile</groupId>
 				<artifactId>unm-backend-core</artifactId>
 				<version>${project.version}</version>
 			</dependency>
