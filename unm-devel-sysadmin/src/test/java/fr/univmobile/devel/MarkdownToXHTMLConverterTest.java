@@ -180,7 +180,7 @@ public class MarkdownToXHTMLConverterTest {
 	public void testImage_raw_width_title() throws Exception {
 
 		final String processed = convert(
-				"![](src/site/images/backend-mock.png?raw=true =600x \"Hi\")").trim();
+				"![](src/site/resources/images/backend-mock.png?raw=true =600x \"Hi\")").trim();
 
 		assertEquals(
 				"<p><img src=\"images/backend-mock.png?raw=true\" width=\"600px\" alt=\"\" title=\"Hi\" /></p>",
