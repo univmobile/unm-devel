@@ -10,6 +10,9 @@ release.properties
 .DS_Store
 bin/
 /bin
+src/site/apt/index.apt
+src/site/apt/
+apt/
 
 unm-backend-mock/.classpath
 unm-backend-mock/.project
