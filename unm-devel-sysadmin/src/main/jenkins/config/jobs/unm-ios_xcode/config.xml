@@ -5,17 +5,23 @@
 &lt;a href=&quot;http://univmobile.vswip.com/job/unm-devel-it/lastSuccessfulBuild/artifact/unm-devel-it/target/unm-ci-dump.html&quot;&gt;&#xd;
   UnivMobile iOS — Intégration continue&#xd;
 &lt;/a&gt;</description>
+  <logRotator class="hudson.tasks.LogRotator">
+    <daysToKeep>-1</daysToKeep>
+    <numToKeep>30</numToKeep>
+    <artifactDaysToKeep>-1</artifactDaysToKeep>
+    <artifactNumToKeep>-1</artifactNumToKeep>
+  </logRotator>
   <keepDependencies>false</keepDependencies>
   <properties>
     <hudson.security.AuthorizationMatrixProperty>
-      <permission>hudson.model.Item.Cancel:mgauzins</permission>
-      <permission>hudson.model.Item.Cancel:dummy</permission>
+      <permission>hudson.model.Item.Read:mgauzins</permission>
+      <permission>hudson.model.Item.Read:dummy</permission>
       <permission>hudson.model.Item.Workspace:mgauzins</permission>
       <permission>hudson.model.Item.Workspace:dummy</permission>
       <permission>hudson.model.Item.Build:mgauzins</permission>
       <permission>hudson.model.Item.Build:dummy</permission>
-      <permission>hudson.model.Item.Read:mgauzins</permission>
-      <permission>hudson.model.Item.Read:dummy</permission>
+      <permission>hudson.model.Item.Cancel:mgauzins</permission>
+      <permission>hudson.model.Item.Cancel:dummy</permission>
     </hudson.security.AuthorizationMatrixProperty>
   </properties>
   <scm class="hudson.plugins.git.GitSCM" plugin="git@2.2.2">
@@ -63,9 +69,9 @@
   <publishers>
     <hudson.tasks.ArtifactArchiver>
       <artifacts>build/UnivMobile.ipa</artifacts>
-      <latestOnly>false</latestOnly>
       <allowEmptyArchive>false</allowEmptyArchive>
       <onlyIfSuccessful>false</onlyIfSuccessful>
+      <fingerprint>false</fingerprint>
       <defaultExcludes>true</defaultExcludes>
     </hudson.tasks.ArtifactArchiver>
   </publishers>

@@ -74,9 +74,9 @@ Maven Generated Site: &lt;a&#xd;
   <publishers>
     <hudson.tasks.ArtifactArchiver>
       <artifacts>unm-mobileweb-it/target/screenshots/</artifacts>
-      <latestOnly>false</latestOnly>
       <allowEmptyArchive>false</allowEmptyArchive>
       <onlyIfSuccessful>false</onlyIfSuccessful>
+      <fingerprint>false</fingerprint>
       <defaultExcludes>true</defaultExcludes>
     </hudson.tasks.ArtifactArchiver>
   </publishers>

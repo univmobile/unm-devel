@@ -547,7 +547,7 @@ Tableau de bord d’intégration continue :&#xd;
     <listView>
       <owner class="hudson" reference="../../.."/>
       <name>develop</name>
-      <description>&lt;h2&gt;Jobs Jenkins sur le projet UnivMobile&lt;/h2&gt;&#xd;
+      <description>&lt;h2&gt;Intégration continue sur le projet UnivMobile&lt;/h2&gt;&#xd;
 UnivMobile iOS :&#xd;
 &lt;ul&gt;&#xd;
 &lt;li&gt;Tableau de bord d’intégration continue :&#xd;
@@ -577,6 +577,11 @@ Captures d’écrans des tests d’intégration :&#xd;
 &lt;a href=&quot;http://univmobile.vswip.com/job/unm-devel-it/lastSuccessfulBuild/artifact/unm-devel-it/target/unm-android-it-scenarios-dump.html&quot;&gt;&#xd;
   UnivMobile Android — Scénarios&#xd;
 &lt;/a&gt;&#xd;
+&lt;li&gt;&#xd;
+Application mobile en test :&#xd;
+&lt;a href=&quot;http://univmobile.vswip.com/android/&quot;&gt;&#xd;
+  UnivMobile Android — Installations ad hoc&#xd;
+&lt;/a&gt;&#xd;
 &lt;/ul&gt;&#xd;
 &#xd;
 UnivMobile mobile web :&#xd;
@@ -590,6 +595,11 @@ Captures d’écrans des tests d’intégration :&#xd;
 &lt;a href=&quot;http://univmobile.vswip.com/job/unm-devel-it/lastSuccessfulBuild/artifact/unm-devel-it/target/unm-mobileweb-it-scenarios-dump.html&quot;&gt;&#xd;
   UnivMobile mobile web — Scénarios&#xd;
 &lt;/a&gt;&#xd;
+&lt;li&gt;&#xd;
+Application mobile en test :&#xd;
+&lt;a href=&quot;http://univmobile-dev.univ-paris1.fr/unm-mobileweb-app-0.0.4/&quot;&gt;&#xd;
+  UnivMobile&#xd;
+&lt;/a&gt;&#xd;
 &lt;/ul&gt;&#xd;
 &#xd;
 UnivMobile backend :&#xd;
@@ -602,6 +612,20 @@ UnivMobile backend :&#xd;
 Captures d’écrans des tests d’intégration :&#xd;
 &lt;a href=&quot;http://univmobile.vswip.com/job/unm-devel-it/lastSuccessfulBuild/artifact/unm-devel-it/target/unm-backend-it-scenarios-dump.html&quot;&gt;&#xd;
   UnivMobile backend — Scénarios&#xd;
+&lt;/a&gt;&#xd;
+&lt;li&gt;&#xd;
+Application en test :&#xd;
+&lt;a href=&quot;https://univmobile-dev.univ-paris1.fr/testSP/&quot;&gt;&#xd;
+  UnivMobile Admin&#xd;
+&lt;/a&gt;&#xd;
+&lt;li&gt;&#xd;
+Flux JSON en test :&#xd;
+&lt;a href=&quot;https://univmobile-dev.univ-paris1.fr/json&quot;&gt;&#xd;
+  JSON&#xd;
+&lt;/a&gt;&#xd;
+  —&#xd;
+&lt;a href=&quot;https://univmobile-dev.univ-paris1.fr/json?html&quot;&gt;&#xd;
+  JSON?html&#xd;
 &lt;/a&gt;&#xd;
 &lt;/ul&gt;&#xd;
 &#xd;
@@ -617,6 +641,8 @@ Captures d’écrans des tests d’intégration :&#xd;
         <string>unm-backend-it-data</string>
         <string>unm-backend-it-parent</string>
         <string>unm-backend-sysadmin</string>
+        <string>unm-devel</string>
+        <string>unm-devel-sysadmin</string>
         <string>unm-mobileweb-core</string>
         <string>unm-webui-devel</string>
       </jobNames>

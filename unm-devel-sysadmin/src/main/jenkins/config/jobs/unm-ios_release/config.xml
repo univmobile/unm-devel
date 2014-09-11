@@ -12,10 +12,10 @@ Tableau de bord d’intégration continue :&#xd;
   <keepDependencies>false</keepDependencies>
   <properties>
     <hudson.security.AuthorizationMatrixProperty>
-      <permission>hudson.model.Item.Read:mgauzins</permission>
-      <permission>hudson.model.Item.Build:mgauzins</permission>
-      <permission>hudson.model.Item.Workspace:mgauzins</permission>
       <permission>hudson.model.Item.Cancel:mgauzins</permission>
+      <permission>hudson.model.Item.Workspace:mgauzins</permission>
+      <permission>hudson.model.Item.Build:mgauzins</permission>
+      <permission>hudson.model.Item.Read:mgauzins</permission>
     </hudson.security.AuthorizationMatrixProperty>
   </properties>
   <scm class="hudson.plugins.git.GitSCM" plugin="git@2.2.2">
@@ -37,12 +37,12 @@ Tableau de bord d’intégration continue :&#xd;
       <hudson.plugins.git.extensions.impl.CleanBeforeCheckout/>
     </extensions>
   </scm>
-  <assignedNode>master</assignedNode>
+  <assignedNode>macos_ios7</assignedNode>
   <canRoam>false</canRoam>
   <disabled>false</disabled>
   <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
   <blockBuildWhenUpstreamBuilding>true</blockBuildWhenUpstreamBuilding>
-  <jdk>Java 7</jdk>
+  <jdk>MacOS_iOS6</jdk>
   <triggers>
     <jenkins.triggers.ReverseBuildTrigger>
       <spec></spec>
@@ -60,7 +60,7 @@ Tableau de bord d’intégration continue :&#xd;
     <groupId>fr.univmobile</groupId>
     <artifactId>unm-ios</artifactId>
   </rootModule>
-  <goals>-U clean site:jar deploy</goals>
+  <goals>-U clean site site:jar site:deploy install</goals>
   <aggregatorStyleBuild>true</aggregatorStyleBuild>
   <incrementalBuild>false</incrementalBuild>
   <ignoreUpstremChanges>true</ignoreUpstremChanges>

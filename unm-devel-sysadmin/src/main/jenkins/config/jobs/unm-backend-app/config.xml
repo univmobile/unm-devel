@@ -21,7 +21,7 @@ Maven Artifacts: &lt;a&#xd;
     <daysToKeep>-1</daysToKeep>
     <numToKeep>10</numToKeep>
     <artifactDaysToKeep>-1</artifactDaysToKeep>
-    <artifactNumToKeep>-1</artifactNumToKeep>
+    <artifactNumToKeep>1</artifactNumToKeep>
   </logRotator>
   <keepDependencies>false</keepDependencies>
   <properties/>
@@ -87,9 +87,9 @@ Maven Artifacts: &lt;a&#xd;
   <publishers>
     <hudson.tasks.ArtifactArchiver>
       <artifacts>**/*.war</artifacts>
-      <latestOnly>true</latestOnly>
       <allowEmptyArchive>false</allowEmptyArchive>
       <onlyIfSuccessful>true</onlyIfSuccessful>
+      <fingerprint>false</fingerprint>
       <defaultExcludes>true</defaultExcludes>
     </hudson.tasks.ArtifactArchiver>
   </publishers>

@@ -1,7 +1,10 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <project>
   <actions/>
-  <description></description>
+  <description>&lt;p&gt;&#xd;
+  Construit les archives UnivMobile.apk avec jsonBaseURL qui pointe &#xd;
+  en HTTPS sur univmobile-dev, mais sans testSP/, c’est-à-dire sans Shibboleth.&#xd;
+&lt;/p&gt;</description>
   <logRotator class="hudson.tasks.LogRotator">
     <daysToKeep>-1</daysToKeep>
     <numToKeep>-1</numToKeep>
@@ -11,16 +14,16 @@
   <keepDependencies>false</keepDependencies>
   <properties>
     <hudson.security.AuthorizationMatrixProperty>
-      <permission>hudson.model.Item.Cancel:mgauzins</permission>
+      <permission>hudson.model.Item.Delete:mgauzins</permission>
+      <permission>hudson.model.Item.Read:mgauzins</permission>
+      <permission>hudson.model.Item.Configure:mgauzins</permission>
+      <permission>hudson.model.Item.Discover:mgauzins</permission>
       <permission>hudson.model.Item.Workspace:mgauzins</permission>
       <permission>hudson.model.Item.Build:mgauzins</permission>
-      <permission>hudson.model.Item.Read:mgauzins</permission>
-      <permission>hudson.model.Run.Delete:mgauzins</permission>
-      <permission>hudson.model.Item.Discover:mgauzins</permission>
-      <permission>hudson.model.Item.Configure:mgauzins</permission>
+      <permission>hudson.model.Item.Cancel:mgauzins</permission>
       <permission>hudson.scm.SCM.Tag:mgauzins</permission>
       <permission>hudson.model.Run.Update:mgauzins</permission>
-      <permission>hudson.model.Item.Delete:mgauzins</permission>
+      <permission>hudson.model.Run.Delete:mgauzins</permission>
     </hudson.security.AuthorizationMatrixProperty>
   </properties>
   <scm class="hudson.plugins.git.GitSCM" plugin="git@2.2.2">
@@ -87,9 +90,9 @@ BUILD_DISPLAY_NAME=${BUILD_DISPLAY_NAME}</properties>
   <publishers>
     <hudson.tasks.ArtifactArchiver>
       <artifacts>**/*.apk</artifacts>
-      <latestOnly>false</latestOnly>
       <allowEmptyArchive>false</allowEmptyArchive>
       <onlyIfSuccessful>false</onlyIfSuccessful>
+      <fingerprint>false</fingerprint>
       <defaultExcludes>true</defaultExcludes>
     </hudson.tasks.ArtifactArchiver>
   </publishers>

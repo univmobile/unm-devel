@@ -5,12 +5,12 @@
   <keepDependencies>false</keepDependencies>
   <properties>
     <hudson.security.AuthorizationMatrixProperty>
-      <permission>hudson.model.Item.Cancel:mgauzins</permission>
+      <permission>hudson.model.Item.Read:mgauzins</permission>
+      <permission>hudson.model.Item.Configure:mgauzins</permission>
+      <permission>hudson.model.Item.Discover:mgauzins</permission>
       <permission>hudson.model.Item.Workspace:mgauzins</permission>
       <permission>hudson.model.Item.Build:mgauzins</permission>
-      <permission>hudson.model.Item.Read:mgauzins</permission>
-      <permission>hudson.model.Item.Discover:mgauzins</permission>
-      <permission>hudson.model.Item.Configure:mgauzins</permission>
+      <permission>hudson.model.Item.Cancel:mgauzins</permission>
       <permission>com.cloudbees.plugins.credentials.CredentialsProvider.View:mgauzins</permission>
     </hudson.security.AuthorizationMatrixProperty>
   </properties>
@@ -78,9 +78,9 @@
   <publishers>
     <hudson.tasks.ArtifactArchiver>
       <artifacts>unm-android-it/target/screenshots/</artifacts>
-      <latestOnly>false</latestOnly>
       <allowEmptyArchive>false</allowEmptyArchive>
       <onlyIfSuccessful>false</onlyIfSuccessful>
+      <fingerprint>false</fingerprint>
       <defaultExcludes>true</defaultExcludes>
     </hudson.tasks.ArtifactArchiver>
   </publishers>

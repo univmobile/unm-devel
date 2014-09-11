@@ -1,18 +1,24 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <project>
   <actions/>
-  <description></description>
+  <description>&lt;p&gt;&#xd;
+  Note du 4/09/2014 : ce job Jenkins est en doublon avec unm-ios_xcode_release.&#xd;
+&lt;/p&gt;&#xd;
+&lt;p&gt;&#xd;
+  Construit l’archive UnivMobile.ipa avec jsonBaseURL qui pointe &#xd;
+  en HTTPS sur univmobile-dev, mais sans testSP/, c’est-à-dire sans Shibboleth.&#xd;
+&lt;/p&gt;</description>
   <keepDependencies>false</keepDependencies>
   <properties>
     <hudson.security.AuthorizationMatrixProperty>
-      <permission>hudson.model.Item.Cancel:mgauzins</permission>
-      <permission>hudson.model.Item.Cancel:dummy</permission>
+      <permission>hudson.model.Item.Read:mgauzins</permission>
+      <permission>hudson.model.Item.Read:dummy</permission>
       <permission>hudson.model.Item.Workspace:mgauzins</permission>
       <permission>hudson.model.Item.Workspace:dummy</permission>
       <permission>hudson.model.Item.Build:mgauzins</permission>
       <permission>hudson.model.Item.Build:dummy</permission>
-      <permission>hudson.model.Item.Read:mgauzins</permission>
-      <permission>hudson.model.Item.Read:dummy</permission>
+      <permission>hudson.model.Item.Cancel:mgauzins</permission>
+      <permission>hudson.model.Item.Cancel:dummy</permission>
     </hudson.security.AuthorizationMatrixProperty>
   </properties>
   <scm class="hudson.plugins.git.GitSCM" plugin="git@2.2.2">
@@ -55,9 +61,9 @@ cp UnivMobile/UnivMobile-Info.plist target/
   <publishers>
     <hudson.tasks.ArtifactArchiver>
       <artifacts>build/UnivMobile.ipa</artifacts>
-      <latestOnly>false</latestOnly>
       <allowEmptyArchive>false</allowEmptyArchive>
       <onlyIfSuccessful>false</onlyIfSuccessful>
+      <fingerprint>false</fingerprint>
       <defaultExcludes>true</defaultExcludes>
     </hudson.tasks.ArtifactArchiver>
   </publishers>
