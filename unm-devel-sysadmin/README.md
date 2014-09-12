@@ -123,14 +123,14 @@ il faut donc déclarer cette DataSource dans le Tomcat local.
 
 Pour la description générale
 des différents points de configurations :
-[J2EE.md](https://github.com/univmobile/unm-backend/blob/develop/src/site/markdown/J2EE.md)
+[J2EE.md](https://github.com/univmobile/unm-backend/blob/develop/J2EE.md)
 
 En intégration continue, pour que la DataSource soit bien utilisable pendant les tests
 déployés, il faut :
 
   * que le \<container/\> Cargo « tomcat7x » soit déclaré en tant 
     que \<type\>installed\</type\> dans pom.xml
-  * qu’un fichier local au projet src/test/conf/context.xml contienne la ligne \<ResourceLink/\> adéquate (voir [J2EE.md](https://github.com/univmobile/unm-backend/blob/develop/src/site/markdown/J2EE.md))
+  * qu’un fichier local au projet src/test/conf/context.xml contienne la ligne \<ResourceLink/\> adéquate (voir [J2EE.md](https://github.com/univmobile/unm-backend/blob/develop/J2EE.md))
   * que ce fichier soit copié dans le répertoire conf/ de Tomcat
   * que l’installation locale de Tomcat, qui servira de base à Cargo,
     contienne le driver JDBC

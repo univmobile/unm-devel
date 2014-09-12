@@ -35,6 +35,19 @@
 </xsl:template>
 
 <xsl:template match="a">
+
+<xsl:variable name="href">
+	<xsl:call-template name="href"/>
+</xsl:variable>
+
+<xsl:if test="contains($href, '/.html')">
+	<xsl:message>$href=<xsl:value-of select="$href"/>
+	</xsl:message>
+	<xsl:message terminate="yes">Error when extracting @href: <xsl:value-of
+		select="@href"/>	
+	</xsl:message>
+</xsl:if>
+
 <xsl:copy>
 <xsl:copy-of select="@*"/>
 <xsl:attribute name="href">
