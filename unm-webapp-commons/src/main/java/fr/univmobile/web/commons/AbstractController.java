@@ -206,6 +206,22 @@ public abstract class AbstractController {
 		return getPathStringVariable(uriPath, pattern, pathVariable);
 	}
 
+	/**
+	 * @param pathVariable
+	 *            e.g. <code>"${id}"</tt>
+	 * if the {@link Paths} annotation declared some path such as
+	 * <code>"pois/${id}"</code>.
+	 */
+	protected final boolean hasPathStringVariable(final String pathVariable) {
+
+		final String uriPath = UnivMobileHttpUtils
+				.extractUriPath(checkedRequest());
+
+		final String pattern = getPatternForUriPath(uriPath);
+
+		return hasPathStringVariable(uriPath, pattern, pathVariable);
+	}
+
 	static int getPathIntVariable(final String uriPath,
 			final String pathPattern, final String pathVariable) {
 
@@ -253,6 +269,28 @@ public abstract class AbstractController {
 		}
 
 		return extracted;
+	}
+
+	static boolean hasPathStringVariable(final String uriPath,
+			final String pathPattern, final String pathVariable) {
+
+		checkNotNull(uriPath, "uriPath");
+		checkNotNull(pathPattern, "pathPattern");
+		checkNotNull(pathVariable, "pathVariable");
+
+		if (!pathVariable.startsWith("${") || !pathVariable.endsWith("}")) {
+			throw new IllegalArgumentException(
+					"pathVariable should be of the form \"${...}\": "
+							+ pathVariable);
+		}
+
+		final String before = substringBefore(pathPattern, pathVariable);
+		final String after = substringAfter(pathPattern, pathVariable);
+
+		final String extracted = uriPath.substring(before.length(),
+				uriPath.length() - after.length());
+
+		return isBlank(extracted) ? false : true;
 	}
 
 	private static final ThreadLocal<HttpServletRequest> threadLocalRequest = new ThreadLocal<HttpServletRequest>();
