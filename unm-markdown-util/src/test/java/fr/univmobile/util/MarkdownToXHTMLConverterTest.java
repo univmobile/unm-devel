@@ -1,12 +1,15 @@
-package fr.univmobile.devel;
+package fr.univmobile.util;
 
-import static fr.univmobile.devel.MarkdownToXHTMLConverter.convert;
-import static fr.univmobile.devel.MarkdownToXHTMLConverter.convertToDocument;
+import static fr.univmobile.util.MarkdownToXHTMLConverter.convert;
+import static fr.univmobile.util.MarkdownToXHTMLConverter.convertToDocument;
+import static org.apache.commons.lang3.CharEncoding.UTF_8;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.InputStream;
 
 import org.junit.Ignore;
 import org.junit.Test;
@@ -43,7 +46,7 @@ public class MarkdownToXHTMLConverterTest {
 	@Test
 	public void testConvert_localREADME() throws Exception {
 
-		final File READMEFile = new File("./README.md");
+		final File READMEFile = new File("../unm-devel-sysadmin/README.md");
 
 		convert(READMEFile);
 	}
@@ -62,9 +65,29 @@ public class MarkdownToXHTMLConverterTest {
 	}
 
 	@Test
+	public void testConvert_localREADME_archive_InputStream() throws Exception {
+
+		final File READMEFile = new File("src/test/markdown/README.md_local");
+
+		final String xhtml;
+
+		final InputStream is = new FileInputStream(READMEFile);
+		try {
+			xhtml = convert(is, UTF_8);
+		} finally {
+			is.close();
+		}
+
+		assertTrue("Processed Markdown should contain: macos_",
+				xhtml.contains("macos_"));
+		assertFalse("Processed Markdown should not contain: macos<em>",
+				xhtml.contains("macos<em>"));
+	}
+
+	@Test
 	public void testConvert_localREADMEToDocument() throws Exception {
 
-		final File READMEFile = new File("./README.md");
+		final File READMEFile = new File("../unm-devel-sysadmin/README.md");
 
 		convertToDocument(READMEFile);
 	}
@@ -180,7 +203,8 @@ public class MarkdownToXHTMLConverterTest {
 	public void testImage_raw_width_title() throws Exception {
 
 		final String processed = convert(
-				"![](src/site/resources/images/backend-mock.png?raw=true =600x \"Hi\")").trim();
+				"![](src/site/resources/images/backend-mock.png?raw=true =600x \"Hi\")")
+				.trim();
 
 		assertEquals(
 				"<p><img src=\"images/backend-mock.png?raw=true\" width=\"600px\" alt=\"\" title=\"Hi\" /></p>",

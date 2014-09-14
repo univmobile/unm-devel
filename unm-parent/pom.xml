@@ -113,6 +113,11 @@
 			</dependency>
 			<dependency>
 				<groupId>fr.univmobile</groupId>
+				<artifactId>unm-markdown-util</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>fr.univmobile</groupId>
 				<artifactId>unm-backend-mock</artifactId>
 				<version>${project.version}</version>
 				<type>war</type>

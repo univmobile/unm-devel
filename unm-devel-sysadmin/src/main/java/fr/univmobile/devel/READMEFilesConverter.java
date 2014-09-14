@@ -20,6 +20,8 @@ import net.avcompris.binding.dom.helper.DomBinderUtils;
 import org.apache.commons.io.FileUtils;
 import org.w3c.dom.Document;
 
+import fr.univmobile.util.MarkdownToXHTMLConverter;
+
 /**
  * Command-line utility used to convert all local ./README.md files in Maven
  * projects into src/site/apt/index.apt files.
@@ -42,7 +44,7 @@ public class READMEFilesConverter {
 								"Markdown file should be at same level as pom.xml: "
 										+ file.getCanonicalPath());
 					}
-					
+
 					/*
 					 * final String aptFilename = "README.md".equals(filename)
 					 * // ? "index.apt" : filename.replace(".md", ".apt");
@@ -101,8 +103,8 @@ public class READMEFilesConverter {
 				"src/main/xslt/markdown.confluence.xsl"));
 	}
 
-	private static void md2xhtml(final File markdownFile,
-			final File aptFile) throws Exception {
+	private static void md2xhtml(final File markdownFile, final File aptFile)
+			throws Exception {
 
 		md2xxx(markdownFile, aptFile, new File(
 				"src/main/xslt/markdown.xhtml.xsl"));
@@ -251,7 +253,8 @@ public class READMEFilesConverter {
 				final String filename = file.getName();
 
 				if ("bin".equals(filename) || "target".equals(filename)
-						|| "build".equals(filename) || "Pods".equals(filename)) {
+						|| "build".equals(filename) || "Pods".equals(filename)
+						|| "WEB-INF".equals(filename)) {
 					continue;
 				}
 

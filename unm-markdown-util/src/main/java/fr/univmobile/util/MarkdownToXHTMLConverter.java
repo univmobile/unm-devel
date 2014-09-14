@@ -1,4 +1,4 @@
-package fr.univmobile.devel;
+package fr.univmobile.util;
 
 import static org.apache.commons.lang3.CharEncoding.UTF_8;
 import static org.apache.commons.lang3.StringUtils.substringAfter;
@@ -6,6 +6,7 @@ import static org.apache.commons.lang3.StringUtils.substringBetween;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.StringReader;
 import java.util.HashMap;
 import java.util.Map;
@@ -15,6 +16,7 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 
 import org.apache.commons.io.FileUtils;
+import org.apache.commons.io.IOUtils;
 import org.w3c.dom.Document;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
@@ -42,6 +44,15 @@ public abstract class MarkdownToXHTMLConverter {
 				+ "...");
 
 		return convert(FileUtils.readFileToString(markdownFile, UTF_8));
+	}
+
+	/**
+	 * Convert a Markdown stream into a XHTML stream, using txtmark.
+	 */
+	public static String convert(final InputStream markdownStream,
+			final String encoding) throws IOException {
+
+		return convert(IOUtils.toString(markdownStream, encoding));
 	}
 
 	/**
@@ -118,7 +129,7 @@ public abstract class MarkdownToXHTMLConverter {
 			final String width = (equals == -1 || equals > end) ? null
 					: substringBetween(image, " =", "x");
 
-			final int brack = prep.indexOf("](",i);
+			final int brack = prep.indexOf("](", i);
 
 			String src = prep.substring(brack + 2,
 					equals == -1 || equals > end ? quote : equals).trim();
@@ -128,8 +139,8 @@ public abstract class MarkdownToXHTMLConverter {
 			}
 
 			if (src.contains("src/site/resources/images/")) {
-				src = //"../" + 
-			substringAfter(src, "src/site/resources/");
+				src = // "../" +
+				substringAfter(src, "src/site/resources/");
 				prep = prep.substring(0, brack) + "](" + src
 						+ prep.substring(prep.indexOf(' ', brack));
 			}
