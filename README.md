@@ -39,14 +39,14 @@ Projets Maven parents et communs ou utilitaires pour les tests d’intégration
   * [unm-it-commons](https://github.com/univmobile/unm-devel/tree/develop/unm-it-commons "Projet unm-it-commons dans GitHub")
   * [unm-it-parent](https://github.com/univmobile/unm-devel/tree/develop/unm-it-parent "Projet unm-it-parent dans GitHub")
 
-### Autres repositories GitHub
+### Tous les repositories GitHub
 
   * **unm-devel**
-  * [unm-ios](https://github.com/univmobile/unm-ios/README.md "Repository GitHub unm-ios")
-  * [unm-android](https://github.com/univmobile/unm-android/README.md "Repository GitHub unm-android")
-  * [unm-mobileweb](https://github.com/univmobile/unm-mobileweb/README.md "Repository GitHub unm-mobileweb")
-  * [unm-backend](https://github.com/univmobile/unm-backend/README.md "Repository GitHub unm-backend")
-  * [unm-integration](https://github.com/univmobile/unm-integration/README.md "Repository GitHub unm-integration")
+  * [unm-ios](https://github.com/univmobile/unm-ios/blob/develop/README.md "Repository GitHub unm-ios")
+  * [unm-android](https://github.com/univmobile/unm-android/blob/develop/README.md "Repository GitHub unm-android")
+  * [unm-mobileweb](https://github.com/univmobile/unm-mobileweb/blob/develop/README.md "Repository GitHub unm-mobileweb")
+  * [unm-backend](https://github.com/univmobile/unm-backend/blob/develop/README.md "Repository GitHub unm-backend")
+  * [unm-integration](https://github.com/univmobile/unm-integration/blob/develop/README.md "Repository GitHub unm-integration")
   
 ### Points d’entrée de la documentation projet
 
