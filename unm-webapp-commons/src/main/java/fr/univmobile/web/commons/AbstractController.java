@@ -255,7 +255,7 @@ public abstract class AbstractController {
 		return extracted;
 	}
 
-	private final ThreadLocal<HttpServletRequest> threadLocalRequest = new ThreadLocal<HttpServletRequest>();
+	private static final ThreadLocal<HttpServletRequest> threadLocalRequest = new ThreadLocal<HttpServletRequest>();
 
 	final void setThreadLocalRequest(final HttpServletRequest request) {
 
