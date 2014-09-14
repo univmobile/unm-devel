@@ -48,7 +48,6 @@ public class PlainContentServlet extends HttpServlet {
 				&& !uriPath.startsWith("img/") //
 				&& !uriPath.equals("img") //
 		) {
-			
 			log.error("Unknown scheme for uriPath: " + uriPath);
 
 			UnivMobileHttpUtils.sendError404(request, response, uriPath);
@@ -66,12 +65,14 @@ public class PlainContentServlet extends HttpServlet {
 
 				final String contentType;
 
-				if (uriPath.startsWith("css/")) {
-					contentType = "text/css";
-				} else if (uriPath.startsWith("img/")) {
+				if (uriPath.startsWith("img/")
+						|| uriPath.startsWith("css/images/")
+						|| uriPath.endsWith(".png")) {
 
 					if (uriPath.endsWith(".png")) {
+
 						contentType = "image/png";
+
 					} else {
 
 						log.error("Unknown img file extension in uriPath: "
@@ -83,7 +84,18 @@ public class PlainContentServlet extends HttpServlet {
 						return;
 					}
 
+				} else if (// uriPath.startsWith("css/") ||
+				uriPath.endsWith(".css")) {
+
+					contentType = "text/css";
+
+				} else if (// uriPath.startsWith("js/") ||
+				uriPath.endsWith(".js")) {
+
+					contentType = "application/javascript";
+
 				} else {
+
 					contentType = "text/plain";
 				}
 
@@ -97,6 +109,8 @@ public class PlainContentServlet extends HttpServlet {
 				try {
 
 					IOUtils.copy(is, os);
+
+					return;
 
 				} finally {
 					os.close();
