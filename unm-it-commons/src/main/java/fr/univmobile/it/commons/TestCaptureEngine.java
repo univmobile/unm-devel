@@ -113,7 +113,8 @@ final class TestCaptureEngine extends TestPhasedEngine {
 	@Override
 	public ElementChecker elementByXPath(final String xpath) throws IOException {
 
-		return new WebElementCapturer(pw, "xpath="+xpath, defaultEngine.findElementByXPath(xpath));
+		return new WebElementCapturer(pw, "xpath=" + xpath,
+				defaultEngine.findElementByXPath(xpath));
 	}
 
 	@Override
@@ -188,6 +189,28 @@ final class WebElementCapturer implements ElementChecker {
 	private final String id;
 	private final WebElement element;
 	private final PrintWriter pw;
+
+	@Override
+	public void attrShouldEqualTo(final String name, @Nullable final String ref)
+			throws IOException {
+
+		checkNotNull(name, "name");
+
+		pw.println("# " + id + "." + name + ".shouldEqualTo: " + ref);
+
+		if (ref == null) {
+			return; // swallow the NPE
+		}
+
+		final String value = attr(name); // element.getAttribute(name);
+
+		if (!ref.equals(value)) {
+			message(id + "." + name + ": expected: <" + ref + ">, but was: <"
+					+ value + ">");
+		}
+
+		pw.println();
+	}
 
 	@Override
 	public void textShouldEqualTo(@Nullable final String ref)
@@ -283,6 +306,12 @@ final class WebElementCapturer implements ElementChecker {
 	}
 
 	@Override
+	public void sendKeys(final String keysToSend) {
+
+		element.sendKeys(keysToSend);
+	}
+
+	@Override
 	public void click() {
 
 		element.click();
@@ -297,7 +326,7 @@ final class WebElementCapturer implements ElementChecker {
 		pw.println("  " + attrName + ": " + attrValue);
 
 		pw.println();
-	
+
 		return attrValue;
 	}
 }

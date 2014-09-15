@@ -4,6 +4,8 @@ import static com.google.common.base.Preconditions.checkNotNull;
 import static fr.univmobile.it.commons.SeleniumWebDriverUtils.getWrappedSelenium;
 import static fr.univmobile.it.commons.SeleniumWebDriverUtils.wrapToWebDriver;
 
+import java.io.IOException;
+
 import org.junit.Before;
 
 import com.thoughtworks.selenium.DefaultSelenium;
@@ -20,6 +22,20 @@ final class SeleniumEnabledTestDefaultEngine extends
 	}
 
 	private final String defaultBrowser;
+
+	@Override
+	public void waitForElementById(final int seconds, final String id)
+			throws IOException {
+
+		final Selenium selenium = getWrappedSelenium(getDriver());
+
+		final String timeout = Integer.toString(seconds * 1000);
+
+		selenium.waitForPageToLoad(timeout);
+
+		selenium.waitForCondition("window.document.getElementById('" + id + "') != null",
+				timeout);
+	}
 
 	@Before
 	@Override
@@ -53,7 +69,7 @@ final class SeleniumEnabledTestDefaultEngine extends
 		selenium.start();
 
 		selenium.getEval("window.resizeTo(1280, 960);");
-		
+
 		selenium.open("/unm-backend" //
 				+ "?NO_SHIB_uid=tformica" //
 				+ "&NO_SHIB_eppn=tformica@univ-paris1.fr" //

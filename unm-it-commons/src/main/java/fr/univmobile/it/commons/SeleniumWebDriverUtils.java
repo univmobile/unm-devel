@@ -246,7 +246,10 @@ abstract class SeleniumWebDriverUtils {
 
 			@Override
 			public void sendKeys(final CharSequence... keysToSend) {
-				throw new NotImplementedException();
+
+				final String value = keysToSend[0].toString();
+				
+				selenium.type(locator, value);
 			}
 
 			@Override

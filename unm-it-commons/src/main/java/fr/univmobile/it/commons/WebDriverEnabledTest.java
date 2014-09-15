@@ -75,11 +75,22 @@ public abstract class WebDriverEnabledTest implements
 		return this;
 	}
 
+	private WebDriverEnabledTest checkUseWeb() {
+
+		if (!AppiumSafariEnabledTest.class.isAssignableFrom(this.getClass())
+				&& !SeleniumEnabledTest.class.isAssignableFrom(this.getClass())) {
+			throw new IllegalStateException(
+					"Call this method only from an AppiumSafariEnabledTest or SeleniumEnabledTest subclass.");
+		}
+
+		return this;
+	}
+
 	@Override
 	public final void waitForElementById(final int seconds, final String id)
 			throws IOException {
 
-		checkUseSafari().checkedEngine().waitForElementById(seconds, id);
+		checkUseWeb().checkedEngine().waitForElementById(seconds, id);
 	}
 
 	@Override
@@ -128,7 +139,8 @@ public abstract class WebDriverEnabledTest implements
 	}
 
 	@Override
-	public final ElementChecker elementByXPath(final String xpath) throws IOException {
+	public final ElementChecker elementByXPath(final String xpath)
+			throws IOException {
 
 		return checkedEngine().elementByXPath(xpath);
 	}

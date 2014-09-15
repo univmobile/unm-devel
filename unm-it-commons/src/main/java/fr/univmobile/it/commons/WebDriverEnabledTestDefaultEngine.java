@@ -40,8 +40,6 @@ abstract class WebDriverEnabledTestDefaultEngine implements
 
 		if (driver != null) {
 
-			// System.out.println("DEBUG: driver.quit()...");
-
 			driver.quit();
 
 			driver = null;
@@ -149,7 +147,7 @@ abstract class WebDriverEnabledTestDefaultEngine implements
 	}
 
 	@Override
-	public final void waitForElementById(final int seconds, final String id)
+	public void waitForElementById(final int seconds, final String id)
 			throws IOException {
 
 		new WebDriverWait(getDriver(), seconds).until(ExpectedConditions
@@ -317,6 +315,12 @@ final class WebElementChecker implements ElementChecker {
 	}
 
 	@Override
+	public void attrShouldEqualTo(final String name, @Nullable final String ref) {
+
+		assertEquals(id + "." + name, ref, element.getAttribute(name));
+	}
+
+	@Override
 	public void shouldBeVisible() {
 
 		assertTrue("!" + id + ".visible", element.isDisplayed());
@@ -326,6 +330,12 @@ final class WebElementChecker implements ElementChecker {
 	public void shouldBeHidden() {
 
 		assertFalse(id + ".visible", element.isDisplayed());
+	}
+
+	@Override
+	public void sendKeys(final String keysToSend) {
+
+		element.sendKeys(keysToSend);
 	}
 
 	@Override

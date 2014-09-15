@@ -218,6 +218,21 @@ public class TestCheckerEngine extends TestPhasedEngine {
 		}
 
 		@Override
+		public void attrShouldEqualTo(final String name,@Nullable 
+				final String ref) throws IOException {
+
+			checkNotNull(name,"name");
+			
+			final String value = attr(name); // attributes.get(name);
+
+			observer.notifyCheck(id + "."
+					+ name
+					+ ".shouldEqualTo: " + ref,
+					ref.equals(value), "expected: <" + ref + ">, but was: <"
+							+ value + ">");
+		}
+
+		@Override
 		public void shouldBeVisible() throws IOException {
 
 			observer.notifyCheck(id + ".shouldBeVisible",
@@ -231,6 +246,12 @@ public class TestCheckerEngine extends TestPhasedEngine {
 			observer.notifyCheck(id + ".shouldBeHidden",
 					!"true".equals(attributes.get("visible")),
 					"Element is visible.");
+		}
+
+		@Override
+		public void sendKeys(final String keysToSend) {
+
+			// do nothing?
 		}
 
 		@Override
