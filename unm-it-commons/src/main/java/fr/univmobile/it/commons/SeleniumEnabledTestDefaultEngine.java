@@ -4,12 +4,14 @@ import static com.google.common.base.Preconditions.checkNotNull;
 import static fr.univmobile.it.commons.SeleniumWebDriverUtils.getWrappedSelenium;
 import static fr.univmobile.it.commons.SeleniumWebDriverUtils.wrapToWebDriver;
 
+import java.io.File;
 import java.io.IOException;
 
 import org.junit.Before;
 
 import com.thoughtworks.selenium.DefaultSelenium;
 import com.thoughtworks.selenium.Selenium;
+import com.thoughtworks.selenium.SeleniumException;
 
 import fr.univmobile.testutil.PropertiesUtils;
 
@@ -33,8 +35,25 @@ final class SeleniumEnabledTestDefaultEngine extends
 
 		selenium.waitForPageToLoad(timeout);
 
-		selenium.waitForCondition("window.document.getElementById('" + id + "') != null",
-				timeout);
+		try {
+
+			selenium.waitForCondition("window.document.getElementById('" + id
+					+ "') != null", timeout);
+
+		} catch (final SeleniumException e) {
+
+			final String KWARGS = "";
+
+			final File file = new File("target", "crash_"
+					+ System.currentTimeMillis() + ".png");
+
+			System.err.println("Capturing screenshot: " + file.getPath());
+
+			selenium.captureEntirePageScreenshot(file.getCanonicalPath(),
+					KWARGS);
+
+			throw e;
+		}
 	}
 
 	@Before
