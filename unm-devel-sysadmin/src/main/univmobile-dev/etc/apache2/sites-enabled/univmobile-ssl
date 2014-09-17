@@ -1,0 +1,43 @@
+<VirtualHost *:443>
+	ServerAdmin crir@univ-paris1.fr
+	ServerName univmobile-dev.univ-paris1.fr
+	
+LoadModule proxy_module modules/mod_proxy.so
+LoadModule proxy_ajp_module modules/mod_proxy_ajp.so
+ProxyRequests Off
+
+<Location /testSP/json>
+    ProxyPass ajp://localhost:8009/testSP/json
+    ProxyPassReverse ajp://localhost:8009/testSP/json
+</Location>
+
+ScriptAlias /testSP /etc/shibboleth/printenv.pl
+<Location /testSP>
+
+    #SetEnvIf Request_URI "(json)" allow
+
+    AuthType shibboleth
+
+    ShibRequireSession On
+    require valid-user
+
+    #ShibRequireSession Off
+    #require shibboleth
+    ProxyPass  ajp://localhost:8009/testSP
+    ProxyPassReverse  ajp://localhost:8009/testSP
+
+</Location>
+
+<Location /json>
+    ProxyPass ajp://localhost:8009/testSP/json
+    ProxyPassReverse ajp://localhost:8009/testSP/json
+</Location>
+
+SSLEngine on
+SSLCipherSuite ALL:!ADH:!EXPORT56:RC4+RSA:+HIGH:+MEDIUM:+LOW:+SSLv2:+EXP:+eNULL
+SSLCertificateFile /usr/local/etc/ssl/certs/test4.univ-paris1.fr.crt
+SSLCertificateKeyFile /usr/local/etc/ssl/private/test4.univ-paris1.fr.key
+SSLCertificateChainFile /usr/local/etc/ssl/certs/cachain.crt
+
+
+</VirtualHost>

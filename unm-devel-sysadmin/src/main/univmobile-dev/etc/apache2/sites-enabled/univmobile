@@ -1,0 +1,17 @@
+JkWorkersFile /etc/apache2/sites-available/workers.properties
+Include httpd_univmobile.conf
+
+<VirtualHost *:80>
+	ServerAdmin crir@univ-paris1.fr
+	ServerName univmobile-dev.univ-paris1.fr
+	
+	
+	# !! tout le reste est à configurer ci-dessous
+        #
+        # Mod_jk settings
+        #
+           JkMount / default
+           JkMount /* default
+        # End of mod_jk settings
+
+</VirtualHost>
