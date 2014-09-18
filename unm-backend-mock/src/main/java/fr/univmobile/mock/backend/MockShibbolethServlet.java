@@ -138,6 +138,21 @@ public class MockShibbolethServlet extends HttpServlet {
 		printlnProperty(out, request, "servletPath");
 		printlnProperty(out, request, "userPrincipal");
 
+		out.println("-- request.parameters --");
+
+		for (final Enumeration<?> e = request.getParameterNames(); //
+		e.hasMoreElements();) {
+
+			final String name = e.nextElement().toString();
+
+			out.println(name + ":");
+
+			for (final String value : request.getParameterValues(name)) {
+
+				out.println("  " + value);
+			}
+		}
+
 		// END
 
 		out.flush();
