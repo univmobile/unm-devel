@@ -146,6 +146,20 @@ public class MockBackendServlet extends HttpServlet {
 			final HttpServletResponse response) throws IOException,
 			ServletException {
 
+		// -1. WEB.XML HACK
+
+		if (request.getRequestURI().contains("shibboleth/")) {
+
+			// Forward to {@link MockShibbolethServer}
+			//
+			final RequestDispatcher rd = request
+					.getRequestDispatcher("/shibboleth");
+
+			rd.forward(request, response);
+
+			return;
+		}
+
 		// 0. CONTEXT PATH
 
 		String contextPath = request.getContextPath();
@@ -159,7 +173,7 @@ public class MockBackendServlet extends HttpServlet {
 		// 1. HANDLE PARAMETERS AND PATH
 
 		request.setCharacterEncoding(UTF_8);
-		
+
 		String path = request.getParameter("path");
 		final String content = request.getParameter("content");
 
