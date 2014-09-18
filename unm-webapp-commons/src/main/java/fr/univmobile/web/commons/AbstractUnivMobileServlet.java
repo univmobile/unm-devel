@@ -118,7 +118,7 @@ public abstract class AbstractUnivMobileServlet extends HttpServlet {
 
 			if (controller.hasPath(uriPath)) {
 
-				setThreadLocal(controller, request);
+				setThreadLocal(controller, request, response);
 
 				try {
 
@@ -170,8 +170,8 @@ public abstract class AbstractUnivMobileServlet extends HttpServlet {
 	}
 
 	protected final void setThreadLocal(final AbstractController controller,
-			final HttpServletRequest request) {
+			final HttpServletRequest request, final HttpServletResponse response) {
 
-		controller.setThreadLocalRequest(request);
+		controller.setThreadLocalRequest(request, response);
 	}
 }

@@ -14,6 +14,7 @@ import java.util.Map;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.lang3.NotImplementedException;
 
@@ -293,13 +294,28 @@ public abstract class AbstractController {
 		return isBlank(extracted) ? false : true;
 	}
 
-	private static final ThreadLocal<HttpServletRequest> threadLocalRequest = new ThreadLocal<HttpServletRequest>();
+	private static final ThreadLocal<HttpServletRequestHolder> threadLocalRequest = new ThreadLocal<HttpServletRequestHolder>();
 
-	final void setThreadLocalRequest(final HttpServletRequest request) {
+	private final class HttpServletRequestHolder {
 
-		checkNotNull(request, "request");
+		public HttpServletRequestHolder(final HttpServletRequest request,
+				final HttpServletResponse response) {
 
-		threadLocalRequest.set(request);
+			this.request = checkNotNull(request, "request");
+			this.response = checkNotNull(response, "response");
+		}
+
+		public final HttpServletRequest request;
+		public final HttpServletResponse response;
+	}
+
+	final void setThreadLocalRequest(final HttpServletRequest request,
+			final HttpServletResponse response) {
+
+		// checkNotNull(request, "request");
+		// checkNotNull(response, "response");
+
+		threadLocalRequest.set(new HttpServletRequestHolder(request, response));
 	}
 
 	protected final String getRemoteUser() {
@@ -309,13 +325,24 @@ public abstract class AbstractController {
 
 	final HttpServletRequest checkedRequest() {
 
-		final HttpServletRequest request = threadLocalRequest.get();
+		final HttpServletRequestHolder holder = threadLocalRequest.get();
 
-		if (request == null) {
+		if (holder == null) {
 			throw new IllegalStateException("ThreadLocal.request == null");
 		}
 
-		return request;
+		return holder.request;
+	}
+
+	final HttpServletResponse checkedResponse() {
+
+		final HttpServletRequestHolder holder = threadLocalRequest.get();
+
+		if (holder == null) {
+			throw new IllegalStateException("ThreadLocal.request == null");
+		}
+
+		return holder.response;
 	}
 
 	protected final boolean isHttpGet() {

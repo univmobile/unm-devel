@@ -9,6 +9,7 @@ import static org.mockito.Mockito.when;
 import java.io.IOException;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.junit.Test;
 
@@ -31,8 +32,9 @@ public class HttpInputsTest {
 		};
 
 		final HttpServletRequest request = mock(HttpServletRequest.class);
+		final HttpServletResponse response = mock(HttpServletResponse.class);
 
-		controller.setThreadLocalRequest(request);
+		controller.setThreadLocalRequest(request, response);
 
 		when(request.getMethod()).thenReturn("GET");
 		when(request.getParameter("first_name")).thenReturn("Toto");
@@ -66,8 +68,9 @@ public class HttpInputsTest {
 		};
 
 		final HttpServletRequest request = mock(HttpServletRequest.class);
+		final HttpServletResponse response = mock(HttpServletResponse.class);
 
-		controller.setThreadLocalRequest(request);
+		controller.setThreadLocalRequest(request, response);
 
 		when(request.getMethod()).thenReturn("POST");
 		when(request.getParameter("age")).thenReturn("  80  ");

@@ -2,6 +2,9 @@ package fr.univmobile.web.commons;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
+import java.io.IOException;
+
+import javax.annotation.Nullable;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -85,5 +88,16 @@ public abstract class AbstractJspController extends AbstractController {
 		}
 
 		return clazz.cast(value);
+	}
+
+	/**
+	 * client-side redirect to an URL, generally on another server.
+	 */
+	@Nullable
+	protected final View sendRedirect(final String url) throws IOException {
+
+		checkedResponse().sendRedirect(url);
+
+		return null;
 	}
 }
