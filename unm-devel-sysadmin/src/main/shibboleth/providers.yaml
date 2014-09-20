@@ -1,0 +1,129 @@
+# To get this list of Shibboleth providerIds:
+# 1. Go to: http://unpidf.univ-paris1.fr/, click on "Boutique numérique", "Les
+#     offres"
+#    (or go to: http://unpidf.univ-paris1.fr/boutique-numerique_ol)
+# 2. Click on the image
+# 3. Browser’s URL is then:
+#    http://unpidf.univ-paris1.fr/choisissez-votre-fournisseur-didentite
+#      ?shire=https://unpidf.univ-paris1.fr/Shibboleth.sso/SAML/POST
+#      &time=1411107190
+#      &target=cookie:63e14283
+#      &providerId=http://unpidf.univ-paris1.fr
+#
+# Links are of the form:
+#   href=https://unpidf.univ-paris1.fr/Shibboleth.sso/WAYF
+#     ?target=<target>
+#     &providerId=<providerId>
+# 
+# Where target is always of the form:
+#   target=https://unpidf.univ-paris1.fr/boutique-numerique-unpidf/boutique-numerique
+# 
+# And where providerIds are found below.
+#  
+# ------------------------------------------------------------------------------
+#
+# For test Identity Providers, try for example:
+# https://discovery.renater.fr/test/WAYF
+#   ?shire=https://univmobile-dev.univ-paris1.fr/Shibboleth.sso/SAML/POST
+#   &target=https://univmobile-dev.univ-paris1.fr/testSP/
+#   &providerId=https://idp-test.univ-paris1.fr
+#
+
+providers:
+
+ #- label: Université Paris 1 — Panthéon-Sorbonne — Test
+ #  providerId: https://idp-test.univ-paris1.fr/
+   
+ - label: Université Paris 1 – Panthéon-Sorbonne
+   id: paris1
+   providerId: urn:mace:cru.fr:federation:univ-paris1.fr
+
+ - label: Université Panthéon Assas &#8211; Paris 2
+   providerId: https://idp.u-paris2.fr/idp/shibboleth
+
+ - label: Université Sorbonne Nouvelle &#8211; Paris 3
+   id: paris3
+   providerId: https://idp.univ-paris3.fr/idp/shibboleth
+   
+ - label: Université Paris Sorbonne &#8211; Paris 4
+   providerId: https://idp.univ-paris4.fr/idp/shibboleth
+   
+ - label: Université Paris 5 &#8211; Paris Descartes
+   providerId: https://idp.parisdescartes.fr/idp/shibboleth
+
+ - label: Université Pierre et Marie Curie &#8211; Paris 6
+   id: paris6
+   providerId: https://idp.upmc.fr/idp/shibboleth
+
+ - label: Université Paris Diderot &#8211; Paris 7
+   id: paris7
+   providerId: https://auth.univ-paris-diderot.fr/idp/shibboleth
+
+ - label: Université Paris 8 Vincennes Saint-Denis
+   id: paris8
+   providerId: https://idp.univ-paris8.fr/idp/shibboleth
+
+ - label: Université Paris Dauphine
+   providerId: https://idp.ent.dauphine.fr/idp/shibboleth
+
+ - label: Université Paris Ouest Nanterre La Défense
+   id: paris10
+   providerId: https://shib.u-paris10.fr/idp/shibboleth
+
+ - label: Université Paris Sud &#8211; Paris 11
+   id: paris11
+   providerId: https://sso.u-psud.fr/idp
+
+ - label: Université Paris Est Créteil Val de Marne
+   providerId: https://auth.u-pec.fr/idp/shibboleth
+
+ - label: Université Paris Nord &#8211; Paris 13
+   id: paris13
+   providerId: https://federation-identite.univ-paris13.fr/idp/shibboleth
+
+ - label: Université Paris-Est Marne-la-Vallée
+   providerId: https://federation.u-pem.fr/idp/shibboleth
+
+ - label: Université d&rsquo;Evry &#8211; Val d&rsquo;Essonne
+   id: evry
+   providerId: https://shibboleth.univ-evry.fr/idp/shibboleth
+
+ - label: Université de Cergy-Pontoise
+   id: ucp
+   providerId: https://idp.u-cergy.fr/idp/shibboleth
+
+ - label: Université de Versailles Saint-Quentin-en-Yvelines
+   id: uvsq
+   providerId: https://shibboleth.uvsq.fr/idp/shibboleth
+
+ - label: ENSIIE &#8211; École Nationale supérieure d&rsquo;Informatique pour l&rsquo;Industrie et l&rsquo;Entreprise
+   id: ensiie
+   providerId: https://shibboleth.ensiie.fr/idp/shibboleth
+
+ - label: INALCO &#8211; Institut National des Langues et Civilisations Orientales
+   providerId: https://idp.inalco.fr/idp
+
+ - label: Université Paris-Est
+   providerId: https://shibboleth.univ-paris-est.fr/idp/shibboleth
+
+ - label: ENS de Cachan
+   id: enscachan
+   providerId: https://idp.ens-cachan.fr/idp/shibboleth
+
+ - label: CROUS de Paris
+   providerId: https://idp.crous-paris.fr/idp/shibboleth
+
+ - label: CROUS de Versailles
+   id: crousVersailles
+   providerId: https://auth.crous-versailles.fr/idp/shibboleth
+
+ - label: EHESS
+   providerId: https://idp.ehess.fr/idp/shibboleth
+
+ - label: Muséum National d&rsquo;Histoire Naturelle (MNHN)
+   id: museum
+   providerId: https://idp.mnhn.fr/idp/shibboleth
+
+ - label: Ecole Pratique des Hautes Etudes (EPHE)
+   providerId: https://shibbo.ephe.fr/idp/shibboleth
+
