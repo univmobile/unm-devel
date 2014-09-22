@@ -1,0 +1,1089 @@
+# To get this list of Shibboleth Test Providers:
+# 1. Go to: https://discovery.renater.fr/test/
+#
+# For test Identity Providers, try for example:
+# https://univmobile-dev.univ-paris1.fr/Shibboleth.sso/Login
+#   ?target=https://univmobile-dev.univ-paris1.fr/testSP/
+#   &entityID=https://idp-test.univ-paris1.fr
+# https://univmobile-dev.univ-paris1.fr/Shibboleth.sso/Login
+#   ?target=https://univmobile-dev.univ-paris1.fr/testSP/
+#   &entityID=https://idp-test.crous-montpellier.fr/idp/shibboleth
+#
+
+providers:
+
+ - label: Select the organisation you are affiliated with ...
+   providerId: -
+
+ - label: A Université de Provence - Test
+   providerId: https://shibboleth2.univ-provence.fr/idp/shibboleth
+
+ - label: ABES
+   providerId: https://sharav.abes.fr/idp/shibboleth
+   logo: https://discovery.renater.fr/test/favicons/abes.fr.png
+
+ - label: ADUNEO - TEST IDP
+   providerId: https://192.168.1.10/idp/shibboleth
+
+ - label: AGROCAMPUS OUEST
+   providerId: https://federation.agrocampus-ouest.fr/idp/shibboleth
+   logo: https://discovery.renater.fr/test/favicons/agrocampus-ouest.fr.png
+
+ - label: Agence de mutualisation des universités et établissements
+   providerId: https://idptest.amue.fr/idp/saml2/metadata
+
+ - label: AgroParisTech Institut des sciences et des industries du vivant et de l'environnement
+   providerId: https://idp1.agroparistech.fr/shibboleth
+   logo: https://discovery.renater.fr/test/favicons/agroparistech.fr.png
+
+ - label: Agropolis International
+   providerId: https://aishib.agropolis.fr/idp/shibboleth
+   logo: https://discovery.renater.fr/test/favicons/agropolis.fr.png
+
+ - label: Authentic2
+   providerId: http://www.identity-hub.com/idp/saml2/metadata
+
+ - label: Autoformation jcvirtual1
+   providerId: https://jcvirtual1.u-bordeaux2.fr/idp/shibboleth
+   logo: https://discovery.renater.fr/test/favicons/u-bordeaux2.fr.png
+
+ - label: BIU - Montpellier III
+   providerId: urn:mace:cru.fr:federation:biu-montpellier.fr
+   logo: https://discovery.renater.fr/test/favicons/biu-montpellier.fr.png
+
+ - label: CC.IN2P3
+   providerId: https://ccfedo01.in2p3.fr:18443/idp/shibboleth
+
+ - label: CERIST - ARN
+   providerId: https://aai.arn.dz/idp/shibboleth
+   logo: https://discovery.renater.fr/test/favicons/arn.dz.png
+
+ - label: CIHEAM / IAMM
+   providerId: https://vmfetid.iamm.fr/idp/shibboleth
+
+ - label: CIRAD - Test
+   providerId: https://comminges.cirad.fr/idp/shibboleth
+
+ - label: CNDP - Centre National de Documentation Pédagogique
+   providerId: https://shibboleth-preprod.cndp.fr/idp/shibboleth
+   logo: https://discovery.renater.fr/test/favicons/cndp.fr.png
+
+ - label: CNRS - LPO - Test AttriProvider
+   providerId: https://crab.univ-brest.fr/idp/shibboleth
+   logo: https://discovery.renater.fr/test/favicons/univ-brest.fr.png
+
+ - label: CNRS - minte - ShibIdP
+   providerId: https://idp.minte.dsi.cnrs.fr/idp/shibboleth
+   logo: https://discovery.renater.fr/test/favicons/cnrs.fr.png
+
+ - label: CPE Lyon
+   providerId: https://idp.cpe.fr/idp/shibboleth
+   logo: https://discovery.renater.fr/test/favicons/cpe.fr.png
+
+ - label: CRDP d'Aquitaine
+   providerId: https://srv-cr-idp.crdp-aquitaine.fr/idp/shibboleth
+
+ - label: CRIHAN
+   providerId: https://idp.crihan.fr/saml2/idp/metadata.php
+
+ - label: CROUS Aix Marseille
+   providerId: https://idp1.crous-aix-marseille.fr/idp/shibboleth
+
+ - label: CROUS Amiens Picardie
+   providerId: https://shibb.crous-amiens.fr/idp/shibboleth
+   logo: https://discovery.renater.fr/test/favicons/crous-amiens.fr.png
+
+ - label: CROUS Antilles-Guyane
+   providerId: https://idp.crous-antillesguyane.fr/idp/shibboleth
+
+ - label: CROUS Besançon
+   providerId: https://idp.crous-besancon.fr/idp/shibboleth
+
+ - label: CROUS Clermont-Ferrand
+   providerId: https://idp.crous-clermont.fr/idp/shibboleth
+
+ - label: CROUS Créteil
+   providerId: https://idp.crous-creteil.fr/idp/shibboleth
+
+ - label: CROUS Grenoble - Personnels
+   providerId: https://idp.crous-grenoble.fr/idp/shibboleth
+
+ - label: CROUS Grenoble - étudiants
+   providerId: https://idp-etu.crous-grenoble.fr/idp/shibboleth
+   logo: https://discovery.renater.fr/test/favicons/crous-grenoble.fr.png
+
+ - label: CROUS Orléans-Tours - Personnels
+   providerId: https://idp.crous-orleans-tours.fr/idp/shibboleth
+
+ - label: CROUS Poitiers - Etudiants
+   providerId: https://shibboleth.crous-poitiers.fr/idp/shibboleth
+   logo: https://discovery.renater.fr/test/favicons/crous-poitiers.fr.png
+
+ - label: CROUS Poitiers - Personnels
+   providerId: https://shibboleth2.crous-poitiers.fr/idp/shibboleth
+   logo: https://discovery.renater.fr/test/favicons/crous-poitiers.fr.png
+
+ - label: CROUS Reims
+   providerId: https://idp.crous-reims.fr/idp/shibboleth
+
+ - label: CROUS Rennes - Personnels
+   providerId: https://idp.crous-rennes.fr/idp/shibboleth
+
+ - label: CROUS Toulouse - Etudiants
+   providerId: https://idp1.crous-toulouse.fr/idp/shibboleth
+   logo: https://discovery.renater.fr/test/favicons/crous-toulouse.fr.png
+
+ - label: CROUS Toulouse - Personnels
+   providerId: https://idp2.crous-toulouse.fr/idp/shibboleth
+
+ - label: CROUS Toulouse - Personnels Test
+   providerId: https://idptest.crous-toulouse.fr/idp/shibboleth
+
+ - label: CROUS Versailles - Personnels
+   providerId: https://auth.crous-versailles.fr/idp/shibboleth
+
+ - label: CROUS de Lyon
+   providerId: https://cas.crous-lyon.fr/idp/shibboleth
+
+ - label: CROUS de Montpellier - Test
+   providerId: https://idp-test.crous-montpellier.fr/idp/shibboleth
+
+ - label: CROUS de Nice - Employee
+   providerId: https://idp.crous-nice.fr/idp/shibboleth
+
+ - label: CROUS of Nantes
+   providerId: https://idp.crous-nantes.fr/idp/shibboleth
+
+ - label: CRU - testshib2 - idp2.2.1
+   providerId: https://testshib2.cru.fr/idp/shibboleth
+   logo: https://discovery.renater.fr/test/favicons/cru.fr.png
+
+ - label: CRU Accounts - Facebook authentication gateway
+   providerId: https://cru.renater.fr/facebook/saml2/idp/metadata.php
+
+ - label: CRU accounts
+   providerId: urn:mace:cru.fr:federation:sac
+   logo: https://discovery.renater.fr/test/favicons/renater.fr.png
+
+ - label: CUEA - Communauté d'universités et d'établissements d'Aquitaine
+   providerId: https://fed.id.univ-bordeaux.fr/idp_ubx/shibboleth
+   logo: https://discovery.renater.fr/test/favicons/univ-bordeaux.fr.png
+
+ - label: CUFR Jean-François Champollion
+   providerId: https://identities.univ-jfc.fr/idp/prod
+
+ - label: Community of Universities North of France - Idp Test
+   providerId: https://idp-test.cue-lillenorddefrance.fr/shibboleth
+
+ - label: Crous Caen
+   providerId: https://idp.crous-caen.fr/idp/shibboleth
+
+ - label: Crous-Cnous - Tests
+   providerId: https://idptest.crous-dijon.fr/idp/shibboleth
+   logo: https://discovery.renater.fr/test/favicons/crous-dijon.fr.png
+
+ - label: EHESS
+   providerId: https://shibboleth.ehess.fr/idp/shibboleth
+   logo: https://discovery.renater.fr/test/favicons/ehess.fr.png
+
+ - label: ENIB - Ecole Nationale d'Ingénieurs de Brest
+   providerId: https://idp.enib.fr/idp/shibboleth
+   logo: https://discovery.renater.fr/test/favicons/enib.fr.png
+
+ - label: ENIM
+   providerId: https://identites.enim.fr/idp/
+   logo: https://discovery.renater.fr/test/favicons/enim.fr.png
+
+ - label: ENISE-TEST2
+   providerId: https://fedident.enise.fr/idp/shibboleth
+   logo: https://discovery.renater.fr/test/favicons/enise.fr.png
+
+ - label: ENIT Ecole Nationale Ingénieurs Tarbes
+   providerId: https://idp.enit.fr/idp/shibboleth
+
+ - label: ENITA de Bordeaux
+   providerId: https://idp.enitab.fr/idp/shibboleth
+   logo: https://discovery.renater.fr/test/favicons/enitab.fr.png
+
+ - label: ENS Lettres et Sciences humaines
+   providerId: urn:mace:cru.fr:federation:ens-lsh.fr
+   logo: https://discovery.renater.fr/test/favicons/ens-lsh.fr.png
+
+ - label: ENS de Cachan
+   providerId: https://idp.ens-cachan.fr/idp/shibboleth
+   logo: https://discovery.renater.fr/test/favicons/ens-cachan.fr.png
+
+ - label: ENS de Lyon
+   providerId: https://shibboleth2.ens-lyon.fr/idp/shibboleth
+   logo: https://discovery.renater.fr/test/favicons/ens-lyon.fr.png
+
+ - label: ENSA Strasbourg
+   providerId: https://idp.strasbourg.archi.fr/idp/shibboleth
+
+ - label: ENSAI - Ecole Nationale Statistique Analyse de l'Information
+   providerId: https://idp.ensai.fr/idp/shibboleth
+   logo: https://discovery.renater.fr/test/favicons/ensai.fr.png
+
+ - label: ENSAIT /Test
+   providerId: https://shibboleth.ensait.fr/idp/shibboleth
+
+ - label: ENSEA
+   providerId: https://identites.ensea.fr/idp/shibboleth
+   logo: https://discovery.renater.fr/test/favicons/ensea.fr.png
+
+ - label: ENSICAEN
+   providerId: https://shibboleth.ensicaen.fr/idp/shibboleth
+   logo: https://discovery.renater.fr/test/favicons/ensicaen.fr.png
+
+ - label: ENSIIE TEST
+   providerId: https://shibbolethtest.ensiie.fr/idp/shibboleth
+
+ - label: ENSSIB
+   providerId: https://idp.enssib.fr/idp/shibboleth
+   logo: https://discovery.renater.fr/test/favicons/enssib.fr.png
+
+ - label: ENSTA Bretagne - Ecole Nationale Supérieure des Techniques Avancées
+   providerId: https://ident.ensta-bretagne.fr/idp/shibboleth
+   logo: https://discovery.renater.fr/test/favicons/ensta-bretagne.fr.png
+
+ - label: ENSTA Paristech - Ecole Nationale Supérieure de Techniques Avancées
+   providerId: https://ident.ensta.fr/idp/shibboleth
+   logo: https://discovery.renater.fr/test/favicons/ensta.fr.png
+
+ - label: ENTPE - Vaulx en Velin
+   providerId: https://idp.entpe.fr/idp/shibboleth
+   logo: https://discovery.renater.fr/test/favicons/entpe.fr.png
+
+ - label: EPHE - Ecole Pratique des Hautes Etudes
+   providerId: https://shibbo.ephe.fr/idp/shibboleth
+
+ - label: ESPCI ParisTech
+   providerId: https://vip.espci.fr/saml2/idp/metadata.php
+   logo: https://discovery.renater.fr/test/favicons/espci.fr.png
+
+ - label: ESPCI ParisTech (saml20)
+   providerId: https://vip2.espci.fr/saml2/idp/metadata.php
+   logo: https://discovery.renater.fr/test/favicons/espci.fr.png
+
+ - label: ESPCI ParisTech (shib13)
+   providerId: https://vip2.espci.fr/shib13/idp/metadata.php
+   logo: https://discovery.renater.fr/test/favicons/espci.fr.png
+
+ - label: ESPE de Bourgogne - Dpt MEEF
+   providerId: https://idp.dijon.iufm.fr/idp/shibboleth
+   logo: https://discovery.renater.fr/test/favicons/iufm.fr.png
+
+ - label: ETRS
+   providerId: https://svrcas-test.ent-etrs.net/idp/shibboleth
+   logo: https://discovery.renater.fr/test/favicons/ent-etrs.net.png
+
+ - label: EURECOM
+   providerId: https://navara.eurecom.fr/idp/shibboleth
+
+ - label: Ecole Centrale de LILLE - TEST
+   providerId: https://idpdev.ec-lille.fr/idp/shibboleth
+   logo: https://discovery.renater.fr/test/favicons/ec-lille.fr.png
+
+ - label: Ecole Centrale de Lyon TEST
+   providerId: https://identites-test.ec-lyon.fr/idp/shibboleth
+
+ - label: Ecole Centrale de Nantes
+   providerId: https://shibbo.ec-nantes.fr/idp/shibboleth
+   logo: https://discovery.renater.fr/test/favicons/ec-nantes.fr.png
+
+ - label: Ecole Nationale Polytechnique d'Alger
+   providerId: https://idp.enp.edu.dz/idp/shibboleth
+
+ - label: Ecole Nationale Vétérinaire de Toulouse (ENVT)
+   providerId: https://shibboleth.envt.fr/idp/shibboleth
+   logo: https://discovery.renater.fr/test/favicons/envt.fr.png
+
+ - label: Ecole Nationale des Chartes
+   providerId: https://shibbo.enc.sorbonne.fr/idp/login.jsp?actionUrl=%2Fidp%2FAuthn%2FUserPassword
+   logo: https://discovery.renater.fr/test/favicons/sorbonne.fr.png
+
+ - label: Ecole Navale
+   providerId: https://idp.ecole-navale.fr/idp/shibboleth
+
+ - label: Ecole des Mines d'Ales
+   providerId: https://shibboleth.mines-ales.fr/idp/shibboleth
+   logo: https://discovery.renater.fr/test/favicons/mines-ales.fr.png
+
+ - label: Ecole des Mines de Nantes
+   providerId: https://nte.gemtech.fr/idp/shibboleth
+   logo: https://discovery.renater.fr/test/favicons/gemtech.fr.png
+
+ - label: Ecole des Mines de Saint-Etienne
+   providerId: https://shibbo.emse.fr/idp/shibboleth
+   logo: https://discovery.renater.fr/test/favicons/emse.fr.png
+
+ - label: Ecole des Transmissions - Cesson Sévigné
+   providerId: https://cas.ent-etrs.net/idp/shibboleth
+   logo: https://discovery.renater.fr/test/favicons/ent-etrs.net.png
+
+ - label: Ecole des mines d'Albi-Carmaux
+   providerId: https://shib.mines-albi.fr/idp/shibboleth
+   logo: https://discovery.renater.fr/test/favicons/mines-albi.fr.png
+
+ - label: Ecoles de Saint- Cyr Coëtquidan
+   providerId: https://cas.st-cyr.terre.defense.gouv.fr/idp/shibboleth
+   logo: https://discovery.renater.fr/test/favicons/gouv.fr.png
+
+ - label: FNSP TEST
+   providerId: https://federation-test.sciences-po.fr/idp/shibboleth
+   logo: https://discovery.renater.fr/test/favicons/sciences-po.fr.png
+
+ - label: FRENCH DEPARTMENT OF EDUCATION - TEST HUB
+   providerId: https://ts-pia.ac-orleans-tours.fr/ts
+
+ - label: FRENCH DEPARTMENT OF EDUCATION - TEST HUB 2
+   providerId: https://fim-ts-01-idp.orion.education.fr
+
+ - label: Fédération Éducation-Recherche - IdP de Test
+   providerId: https://test.federation.renater.fr/idp/shibboleth
+   logo: https://discovery.renater.fr/test/favicons/renater.fr.png
+
+ - label: Google Gateway
+   providerId: https://dev-social.renater.fr/google/saml2/idp/metadata.php
+
+ - label: Grenoble 2 University - UPMF
+   providerId: https://shibboleth.upmf-grenoble.fr/idp/shibboleth
+   logo: https://discovery.renater.fr/test/favicons/upmf-grenoble.fr.png
+
+ - label: Grenoble INP
+   providerId: https://federation.upmf-grenoble.fr/grenoble-inp/idp
+   logo: https://discovery.renater.fr/test/favicons/upmf-grenoble.fr.png
+
+ - label: Grenoble INP - Institut polytechnique de Grenoble
+   providerId: https://shibboleth.grenoble-inp.fr/idp/shibboleth
+   logo: https://discovery.renater.fr/test/favicons/grenoble-inp.fr.png
+
+ - label: HEC Paris
+   providerId: https://idp.hec.fr/idp/shibboleth
+
+ - label: IDP Alyotech Pelican
+   providerId: https://int.pelican.fr/idp/shibboleth
+
+ - label: IDP de test Université de Lorraine
+   providerId: https://test-idp.univ-lorraine.fr/idp/shibboleth
+
+ - label: IDP test ETRS
+   providerId: https://shib-idp.ent-etrs.net/idp/shibboleth
+   logo: https://discovery.renater.fr/test/favicons/ent-etrs.net.png
+
+ - label: IDP test for ENVA
+   providerId: https://idp-test.vet-alfort.fr/idp/shibboleth
+
+ - label: IDP test mines-nantes
+   providerId: https://idpctauth.mines-nantes.fr/idp/shibboleth
+
+ - label: IFMA Clermont-Ferrand - Institut Francais de Mecanique Avancee
+   providerId: https://idpshib01.ifma.fr/idp/shibboleth
+   logo: https://discovery.renater.fr/test/favicons/ifma.fr.png
+
+ - label: IFSTTAR
+   providerId: https://sesame.ifsttar.fr/idp/shibboleth
+
+ - label: ILL test FP
+   providerId: https://shibbo.ill.fr/idp/shibboleth
+   logo: https://discovery.renater.fr/test/favicons/ill.fr.png
+
+ - label: INPL  Lorraine Test
+   providerId: https://idptest.inpl-nancy.fr/idp/shibboleth
+   logo: https://discovery.renater.fr/test/favicons/inpl-nancy.fr.png
+
+ - label: INRA - test
+   providerId: https://secutest.jouy.inra.fr/idp/shibboleth
+   logo: https://discovery.renater.fr/test/favicons/inra.fr.png
+
+ - label: INRIA (qualification)
+   providerId: https://qlf-idp.inria.fr/idp/shibboleth
+
+ - label: INRIA - Institut National de Recherche en Informatique et Automatique
+   providerId: https://idp1.inria.fr/idp/shibboleth
+   logo: https://discovery.renater.fr/test/favicons/inria.fr.png
+
+ - label: INSA Centre Val de Loire
+   providerId: https://shibboleth.insa-cvl.fr/idp/shibboleth
+
+ - label: INSA de Lyon
+   providerId: https://login.insa-lyon.fr/idp/shibboleth
+   logo: https://discovery.renater.fr/test/favicons/insa-lyon.fr.png
+
+ - label: INSA de Rennes
+   providerId: https://idp.insa-rennes.fr/idp/shibboleth
+
+ - label: INSA de Rouen
+   providerId: https://shibboleth.insa-rouen.fr/idp/shibboleth
+   logo: https://discovery.renater.fr/test/favicons/insa-rouen.fr.png
+
+ - label: INSA de Toulouse
+   providerId: https://srv-fii.insa-toulouse.fr/idp/shibboleth
+
+ - label: INSERM -TEST
+   providerId: https://idp-dev.inserm.fr/idp/shibboleth
+   logo: https://discovery.renater.fr/test/favicons/inserm.fr.png
+
+ - label: INSHEA
+   providerId: https://idp.inshea.fr/idp/shibboleth
+   logo: https://discovery.renater.fr/test/favicons/inshea.fr.png
+
+ - label: IPB - Institut Polytechnique de Bordeaux
+   providerId: https://shibboleth.ipb.fr/idp/shibboleth
+   logo: https://discovery.renater.fr/test/favicons/ipb.fr.png
+
+ - label: IRSTEA - Institut national de recherche en sciences et technologies pour l'environnement et l'agriculture
+   providerId: https://idp.irstea.fr/idp/shibboleth
+   logo: https://discovery.renater.fr/test/favicons/irstea.fr.png
+
+ - label: IUFM Nord - Pas de Calais
+   providerId: https://idp.lille.iufm.fr/idp/shibboleth
+   logo: https://discovery.renater.fr/test/favicons/iufm.fr.png
+
+ - label: IUFM de Bretagne
+   providerId: https://federation.bretagne.iufm.fr/idp/shibboleth
+   logo: https://discovery.renater.fr/test/favicons/iufm.fr.png
+
+ - label: IUFM de Bretagne  TEST (python.bretagne.iufm.fr)
+   providerId: https://python.bretagne.iufm.fr/idp/shibboleth
+   logo: https://discovery.renater.fr/test/favicons/iufm.fr.png
+
+ - label: IUFM de Montpellier
+   providerId: urn:mace:cru.fr:federation:montpellier.iufm.fr
+   logo: https://discovery.renater.fr/test/favicons/iufm.fr.png
+
+ - label: IdP de test Nuxeo
+   providerId: https://testidp.nuxeo.com/idp/shibboleth
+   logo: https://discovery.renater.fr/test/favicons/nuxeo.com.png
+
+ - label: IdP test Limoges
+   providerId: https://ident.unilim.fr/idp
+   logo: https://discovery.renater.fr/test/favicons/unilim.fr.png
+
+ - label: Idp Test ESEO
+   providerId: https://shibbouleth.eseo.fr/idp/shibboleth
+
+ - label: Idp test eleve2.cines.fr
+   providerId: https://eleve2.cines.fr/idp/shibboleth
+
+ - label: Idp test eleve3.cines.fr
+   providerId: https://eleve3.cines.fr/idp/shibboleth
+
+ - label: Idp test eleve4.cines.fr
+   providerId: https://eleve4.cines.fr/idp/shibboleth
+
+ - label: Idp test eleve5.cines.fr
+   providerId: https://eleve5.cines.fr/idp/shibboleth
+
+ - label: Idp test eleve6.cines.fr
+   providerId: https://eleve6.cines.fr/idp/shibboleth
+   logo: https://discovery.renater.fr/test/favicons/cines.fr.png
+
+ - label: Idp test eleve7.cines.fr
+   providerId: https://eleve7.cines.fr/idp/shibboleth
+   logo: https://discovery.renater.fr/test/favicons/cines.fr.png
+
+ - label: Idp test eleve8.cines.fr
+   providerId: https://eleve8.cines.fr/idp/shibboleth
+   logo: https://discovery.renater.fr/test/favicons/cines.fr.png
+
+ - label: Idp test eleve9.cines.fr
+   providerId: https://eleve9.cines.fr/idp/shibboleth
+
+ - label: Idp test federation.cnam.fr
+   providerId: https://federation.cnam.fr/idp/shibboleth
+
+ - label: Idp test ir-lan-fid.pir.images-et-reseaux.com
+   providerId: https://ir-lan-fid.pir.images-et-reseaux.com/idp/shibboleth
+
+ - label: Idp test lyembe.linux.com
+   providerId: https://lyembe.linux.com/idp/shibboleth
+
+ - label: Idp test social FB dev-social.renater.fr
+   providerId: https://dev-social.renater.fr/idp/shibboleth
+
+ - label: Ifremer-test
+   providerId: https://idp-test.ifremer.fr/idp/shibboleth
+   logo: https://discovery.renater.fr/test/favicons/ifremer.fr.png
+
+ - label: Inra / idp-preprod.inra.fr
+   providerId: https://idp-preprod.inra.fr/idp/shibboleth
+
+ - label: Institut Optique Graduate School
+   providerId: https://sso.institutoptique.fr/idp/shibboleth
+   logo: https://discovery.renater.fr/test/favicons/institutoptique.fr.png
+
+ - label: Institut de Physique du Globe de Paris
+   providerId: https://idp.ipgp.fr/idp/shibboleth
+   logo: https://discovery.renater.fr/test/favicons/ipgp.fr.png
+
+ - label: Linkedin gateway
+   providerId: https://dev-social.renater.fr/idplinkedin/saml2/idp/metadata.php
+
+ - label: MINES ParisTech
+   providerId: https://auth.mines-paristech.fr/idp/shibboleth
+   logo: https://discovery.renater.fr/test/favicons/mines-paristech.fr.png
+
+ - label: Mathrice - Test LF
+   providerId: https://cas.mathrice.org/idp/shibboleth
+
+ - label: Mines Douai
+   providerId: https://cerbere2.mines-douai.fr/idp/shibboleth
+   logo: https://discovery.renater.fr/test/favicons/mines-douai.fr.png
+
+ - label: Montpellier Supagro
+   providerId: https://idp.supagro.inra.fr/idp/shibboleth
+   logo: https://discovery.renater.fr/test/favicons/inra.fr.png
+
+ - label: Muséum National d'Histoire Naturelle (idptest)
+   providerId: https://idptest.mnhn.fr/idp/shibboleth
+
+ - label: Normandie Université (test)
+   providerId: https://idppp.normandie-univ.fr/idp/shibboleth
+
+ - label: Observatoire de Paris
+   providerId: https://shibboleth.obspm.fr/idp/shibboleth
+   logo: https://discovery.renater.fr/test/favicons/obspm.fr.png
+
+ - label: Observatoire de Paris - Test
+   providerId: https://shibtest.obspm.fr/idp/shibboleth
+   logo: https://discovery.renater.fr/test/favicons/obspm.fr.png
+
+ - label: Observatoire de la Côte d'Azur
+   providerId: https://shibidp.oca.eu/idp/shibboleth
+   logo: https://discovery.renater.fr/test/favicons/oca.eu.png
+
+ - label: Orleans University 2014 test
+   providerId: https://shibb2test.univ-orleans.fr/idp/shibboleth
+
+ - label: PELICAN Identity Provider
+   providerId: https://www.collecte.evaluation-contractualisation.fr/idp/shibboleth
+
+ - label: PELICAN Identity Provider (preprod)
+   providerId: https://test.collecte.evaluation-contractualisation.fr/idp/shibboleth
+
+ - label: RENATER -  dev-shibboleth.cru.fr
+   providerId: https://dev-shibboleth.cru.fr/idp/shibboleth
+   logo: https://discovery.renater.fr/test/favicons/cru.fr.png
+
+ - label: Rectorat Limoges Test
+   providerId: urn:fi:ac-limoges:univ:2.0
+
+ - label: Sciences Po Bordeaux
+   providerId: https://idp.sciencespobordeaux.fr/idp/shibboleth
+   logo: https://discovery.renater.fr/test/favicons/sciencespobordeaux.fr.png
+
+ - label: Sciences Po Grenoble
+   providerId: https://shibboleth.sciencespo-grenoble.fr/idp/shibboleth
+   logo: https://discovery.renater.fr/test/favicons/sciencespo-grenoble.fr.png
+
+ - label: TEST Université Paris8
+   providerId: https://idp.test.univ-paris8.fr/idp/shibboleth
+
+ - label: TEST Université de Poitiers (Test idp v2)
+   providerId: urn:mace:cru.fr:federation:univ-poitiers.fr.test
+   logo: https://discovery.renater.fr/test/favicons/univ-poitiers.fr.png
+
+ - label: TEST Université de Versailles - Saint Quentin en Yvelines
+   providerId: https://shibboleth-dev.uvsq.fr/idp/shibboleth
+   logo: https://discovery.renater.fr/test/favicons/uvsq.fr.png
+
+ - label: TP / ent.ac-grenoble.fr
+   providerId: https://ent.ac-grenoble.fr/idp/shibboleth
+
+ - label: TP / idp.cnrst.ma
+   providerId: https://idp.cnrst.ma/idp/shibboleth
+   logo: https://discovery.renater.fr/test/favicons/cnrst.ma.png
+
+ - label: TP / idp.iufm-martinique.fr
+   providerId: https://idp.iufm-martinique.fr/idp/shibboleth
+   logo: https://discovery.renater.fr/test/favicons/iufm-martinique.fr.png
+
+ - label: TP / idp.serveur.sn
+   providerId: https://idp.serveur.sn/idp/shibboleth
+
+ - label: TP / mplsvrap0007.ird.fr
+   providerId: https://mplsvrap0007.ird.fr/idp/shibboleth
+   logo: https://discovery.renater.fr/test/favicons/ird.fr.png
+
+ - label: TP / recette-sso.ird.fr
+   providerId: https://recette-sso.ird.fr/idp/shibboleth
+   logo: https://discovery.renater.fr/test/favicons/ird.fr.png
+
+ - label: TP / serveur.uvs.sn
+   providerId: https://serveur.uvs.sn/idp/shibboleth
+
+ - label: TP / shibboleth
+   providerId: https://shibboleth/idp/shibboleth
+
+ - label: TP / shibidp.expr.in.ac-lille.fr
+   providerId: https://shibidp.expr.in.ac-lille.fr/idp/shibboleth
+   logo: https://discovery.renater.fr/test/favicons/ac-lille.fr.png
+
+ - label: TP / shibtest.inp-toulouse.fr
+   providerId: https://shibtest.inp-toulouse.fr/idp/shibboleth
+   logo: https://discovery.renater.fr/test/favicons/inp-toulouse.fr.png
+
+ - label: TP / sp6.iufm-martinique.fr EDWIN
+   providerId: https://sp6.iufm-martinique.fr/idp/shibboleth
+   logo: https://discovery.renater.fr/test/favicons/iufm-martinique.fr.png
+
+ - label: TP / toufikexp.arn.dz
+   providerId: https://toufikexp.arn.dz/idp/shibboleth
+   logo: https://discovery.renater.fr/test/favicons/arn.dz.png
+
+ - label: Telecom Lille1
+   providerId: https://idp.telecom-lille1.eu/idp/shibboleth
+   logo: https://discovery.renater.fr/test/favicons/telecom-lille1.eu.png
+
+ - label: Telecom School of Management and Telecom SudParis
+   providerId: https://idpr.tem-tsp.eu/idp/shibboleth
+
+ - label: Telecom et Management SudParis v2.3.3
+   providerId: https://idp.it-sudparis.eu/idp/shibboleth
+   logo: https://discovery.renater.fr/test/favicons/it-sudparis.eu.png
+
+ - label: Test - Pentila - Igor
+   providerId: https://tice-a204.univ-savoie.fr/idp/shibboleth
+   logo: https://discovery.renater.fr/test/favicons/univ-savoie.fr.png
+
+ - label: Test - Pentila - Preprod
+   providerId: https://preprod.cartabledesavoie.com/idp/shibboleth
+
+ - label: Test IDP Centrale Marseille
+   providerId: https://dgeo.sysadm.ec-m.fr/idp/shibboleth
+
+ - label: Test IDP Rectorat de Bordeaux
+   providerId: https://barge.in.ac-bordeaux.fr/idp/shibboleth
+   logo: https://discovery.renater.fr/test/favicons/ac-bordeaux.fr.png
+
+ - label: Test IPB - Ne pas utiliser
+   providerId: https://shibtest.ipb.fr/idp/shibboleth
+   logo: https://discovery.renater.fr/test/favicons/ipb.fr.png
+
+ - label: Test IdP for eduGAIN
+   providerId: https://dev-edugain.renater.fr/simplesaml/saml2/idp/metadata.php
+
+ - label: Test Idp Université de franche comté
+   providerId: https://testidp.univ-fcomte.fr/idp/shibboleth
+   logo: https://discovery.renater.fr/test/favicons/univ-fcomte.fr.png
+
+ - label: Test Shibboleth SBEL
+   providerId: https://solog-bels.solog.biz/idp/shibboleth
+   logo: https://discovery.renater.fr/test/favicons/solog.biz.png
+
+ - label: Test noix de pécan
+   providerId: https://idp.shibboleth.ipdiva:8443/idp/shibboleth
+
+ - label: Test-Shibboleth-Sam
+   providerId: https://10.233.20.178/idp/shibboleth
+
+ - label: Toutatice
+   providerId: https://integration.toutatice.fr/idp/shibboleth
+   logo: https://discovery.renater.fr/test/favicons/toutatice.fr.png
+
+ - label: Télécom Bretagne
+   providerId: https://idp.telecom-bretagne.eu/idp/shibboleth
+   logo: https://discovery.renater.fr/test/favicons/telecom-bretagne.eu.png
+
+ - label: Télécom ParisTech
+   providerId: https://idp.telecom-paristech.fr/idp/shibboleth
+   logo: https://discovery.renater.fr/test/favicons/telecom-paristech.fr.png
+
+ - label: UBO TEST
+   providerId: https://federationsl.univ-brest.fr/idp/shibboleth
+   logo: https://discovery.renater.fr/test/favicons/univ-brest.fr.png
+
+ - label: UPJV - IdP test
+   providerId: https://idp.u-picardie.fr/idp/shibboleth
+   logo: https://discovery.renater.fr/test/favicons/u-picardie.fr.png
+
+ - label: UTC - Test IdP
+   providerId: https://idp2.utc.fr/idp/shibboleth
+
+ - label: UTC - Université de Technologie de Compiègne
+   providerId: urn:mace:cru.fr:federation:utc.fr
+   logo: https://discovery.renater.fr/test/favicons/utc.fr.png
+
+ - label: UTC TEST
+   providerId: urn:mace:cru.fr:federation:oldutc.fr
+   logo: https://discovery.renater.fr/test/favicons/utc.fr.png
+
+ - label: Ubisecure
+   providerId: https://eidm.demo.ubisecure.com/uas
+   logo: https://discovery.renater.fr/test/favicons/ubisecure.com.png
+
+ - label: Universite Montpellier 1 - idp2 Test
+   providerId: https://federation.univ-montp1.fr/shibboleth2-idp-test/shibboleth
+   logo: https://discovery.renater.fr/test/favicons/univ-montp1.fr.png
+
+ - label: Universite Toulouse 1 Capitole
+   providerId: https://idp-test.ut-capitole.fr/idp/shibboleth
+   logo: https://discovery.renater.fr/test/favicons/ut-capitole.fr.png
+
+ - label: Universite Toulouse 1 Sciences Sociales
+   providerId: https://idp-test.univ-tlse1.fr/idp/shibboleth
+   logo: https://discovery.renater.fr/test/favicons/univ-tlse1.fr.png
+
+ - label: Universite de Tours test
+   providerId: https://idptest.univ-tours.fr/idp/shibboleth
+   logo: https://discovery.renater.fr/test/favicons/univ-tours.fr.png
+
+ - label: University Paris Diderot - Paris 7 - dev
+   providerId: https://authdev.dsi.univ-paris-diderot.fr/idp/shibboleth
+   logo: https://discovery.renater.fr/test/favicons/univ-paris-diderot.fr.png
+
+ - label: University Paris Diderot - Paris 7 - test
+   providerId: https://authtest.dsi.univ-paris-diderot.fr/idp/shibboleth
+
+ - label: University of Angers
+   providerId: urn:mace:cru.fr:federation:univ-angers.fr
+   logo: https://discovery.renater.fr/test/favicons/univ-angers.fr.png
+
+ - label: University of Nantes (FRANCE)
+   providerId: urn:mace:cru.fr:federation:univ-nantes.fr
+   logo: https://discovery.renater.fr/test/favicons/univ-nantes.fr.png
+
+ - label: University of Rennes 1 - Test
+   providerId: https://ident-shib-test.univ-rennes1.fr/idp/shibboleth
+
+ - label: Université  Stendhal - Grenoble 3
+   providerId: https://shibboleth.u-grenoble3.fr/idp/shibboleth
+   logo: https://discovery.renater.fr/test/favicons/u-grenoble3.fr.png
+
+ - label: Université Angers - qualif Shibboleth
+   providerId: https://shib-qual.uang/idp/shibboleth
+   logo: https://discovery.renater.fr/test/favicons/univ-angers.fr.png
+
+ - label: Université Bordeaux 1 Sciences et Techniques
+   providerId: https://gummo.drimm.u-bordeaux1.fr/idp/shibboleth
+   logo: https://discovery.renater.fr/test/favicons/u-bordeaux1.fr.png
+
+ - label: Université Catholique de l'Ouest - Angers
+   providerId: https://www.uco.fr/idp/shibboleth
+   logo: https://discovery.renater.fr/test/favicons/uco.fr.png
+
+ - label: Université Henri Poincaré - Nancy 1
+   providerId: urn:mace:cru.fr:federation:uhp-nancy.fr-2
+
+ - label: Université Jean Monnet - TEST
+   providerId: https://idp-test.univ-st-etienne.fr/idp/shibboleth
+   logo: https://discovery.renater.fr/test/favicons/univ-st-etienne.fr.png
+
+ - label: Université Jean Moulin - Lyon 3 (test)
+   providerId: https://idptest.univ-lyon3.fr/idp/shibboleth
+   logo: https://discovery.renater.fr/test/favicons/univ-lyon3.fr.png
+
+ - label: Université Lille 1,  Sciences et Technologies
+   providerId: urn:mace:cru.fr:federation:univ-lille1.fr
+   logo: https://discovery.renater.fr/test/favicons/univ-lille1.fr.png
+
+ - label: Université Lille 3
+   providerId: https://federation.dev.univ-lille3.fr
+   logo: https://discovery.renater.fr/test/favicons/univ-lille3.fr.png
+
+ - label: Université Montesquieu Bordeaux IV - IDPTEST
+   providerId: https://idptest.u-bordeaux4.fr/idp/shibboleth
+   logo: https://discovery.renater.fr/test/favicons/u-bordeaux4.fr.png
+
+ - label: Université Montpellier 2 TEST
+   providerId: https://test-federationrenater.univ-montp2.fr/idp/shibboleth
+   logo: https://discovery.renater.fr/test/favicons/univ-montp2.fr.png
+
+ - label: Université Nancy 2
+   providerId: https://idpr-test.univ-nancy2.fr/idp/shibboleth
+
+ - label: Université Panthéon Assas ( Paris 2 ) - Test
+   providerId: https://dev-ssri.u-paris2.fr/idp/shibboleth
+
+ - label: Université Paris 1 Panthéon-Sorbonne TEST
+   providerId: https://idp-test.univ-paris1.fr
+
+ - label: Université Paris 12
+   providerId: https://idp.univ-paris12.fr/idp/shibboleth
+   logo: https://discovery.renater.fr/test/favicons/univ-paris12.fr.png
+
+ - label: Université Paris 13
+   providerId: https://federation-identite.univ-paris13.fr/idp/shibboleth
+   logo: https://discovery.renater.fr/test/favicons/univ-paris13.fr.png
+
+ - label: Université Paris Est Creteil
+   providerId: https://idp.test.u-pec.fr/idp/shibboleth
+
+ - label: Université Paris Ouest Nanterre La Défense
+   providerId: https://shib.u-paris10.fr/idp/shibboleth
+
+ - label: Université Paris-Sud 11
+   providerId: https://federateur.u-psud.fr/idp/shibboleth
+   logo: https://discovery.renater.fr/test/favicons/u-psud.fr.png
+
+ - label: Université Paris-Sud 11 - Test
+   providerId: https://castest1.di.u-psud.fr/idp
+   logo: https://discovery.renater.fr/test/favicons/u-psud.fr.png
+
+ - label: Université Paul Cézanne - Aix-Marseille III
+   providerId: https://shibboleth.univ-cezanne.fr/idp/shibboleth
+
+ - label: Université Paul Verlaine - Metz (test)
+   providerId: https://authold.univ-metz.fr/idp/shibboleth
+
+ - label: Université Toulouse 2 - Mirail
+   providerId: https://tonga.univ-tlse2.fr/idp/shibboleth
+   logo: https://discovery.renater.fr/test/favicons/univ-tlse2.fr.png
+
+ - label: Université Toulouse 3 - Paul Sabatier (idpups)
+   providerId: https://idpups.cict.local/idp/shibboleth
+
+ - label: Université Toulouse 3 - Paul Sabatier (test shib 2.3.0)
+   providerId: https://shibboleth.ups-tlse.fr:18443/idp/shibboleth
+   logo: https://discovery.renater.fr/test/favicons/ups-tlse.fr.png
+
+ - label: Université d'Artois - Test
+   providerId: https://idptest.univ-artois.fr/idp/shibboleth
+   logo: https://discovery.renater.fr/test/favicons/univ-artois.fr.png
+
+ - label: Université d'Avignon et des Pays de Vaucluse
+   providerId: https://idp.univ-avignon.fr/idp/shibboleth
+   logo: https://discovery.renater.fr/test/favicons/univ-avignon.fr.png
+
+ - label: Université d'Evry Val d'Essonne
+   providerId: https://shibboleth.univ-evry.fr/idp/shibboleth
+   logo: https://discovery.renater.fr/test/favicons/univ-evry.fr.png
+
+ - label: Université d'Orléans - Test
+   providerId: https://idptest.univ-orleans.fr/idp/shibboleth
+   logo: https://discovery.renater.fr/test/favicons/univ-orleans.fr.png
+
+ - label: Université de Bordeaux
+   providerId: https://idp.u-bordeaux.fr/idp_ubx/shibboleth
+
+ - label: Université de Bordeaux 2 - Victor Segalen
+   providerId: https://idp.u-bordeaux2.fr/idp/shibboleth
+   logo: https://discovery.renater.fr/test/favicons/u-bordeaux2.fr.png
+
+ - label: Université de Bordeaux 2 - Victor Segalen - Développement
+   providerId: https://idpdev.u-bordeaux2.fr/idp/shibboleth
+   logo: https://discovery.renater.fr/test/favicons/u-bordeaux2.fr.png
+
+ - label: Université de Bordeaux IV - Montesquieu
+   providerId: https://idp.u-bordeaux4.fr/idp/shibboleth
+   logo: https://discovery.renater.fr/test/favicons/u-bordeaux4.fr.png
+
+ - label: Université de Bretagne Occidentale
+   providerId: https://federation2.univ-brest.fr/idp/shibboleth
+   logo: https://discovery.renater.fr/test/favicons/univ-brest.fr.png
+
+ - label: Université de Bretagne Sud - TESTS
+   providerId: urn:mace:cru.fr:federation:test.univ-ubs.fr
+   logo: https://discovery.renater.fr/test/favicons/univ-ubs.fr.png
+
+ - label: Université de Caen - Basse Normandie
+   providerId: https://idp.unicaen.fr/idp/shibboleth
+   logo: https://discovery.renater.fr/test/favicons/unicaen.fr.png
+
+ - label: Université de Cergy Pontoise
+   providerId: https://idp.u-cergy.fr/idp/shibboleth
+   logo: https://discovery.renater.fr/test/favicons/u-cergy.fr.png
+
+ - label: Université de Corse
+   providerId: https://shibboleth.univ-corse.fr/idp/shibboleth
+   logo: https://discovery.renater.fr/test/favicons/univ-corse.fr.png
+
+ - label: Université de Franche-Comté
+   providerId: https://idp.univ-fcomte.fr/idp/shibboleth
+   logo: https://discovery.renater.fr/test/favicons/univ-fcomte.fr.png
+
+ - label: Université de Grenoble 1 - Joseph Fourier
+   providerId: urn:mace:cru.fr:federation:ujf-grenoble.fr
+   logo: https://discovery.renater.fr/test/favicons/upmf-grenoble.fr.png
+
+ - label: Université de Grenoble 1 - Joseph Fourier
+   providerId: https://shibboleth.ujf-grenoble.fr/idp/shibboleth
+   logo: https://discovery.renater.fr/test/favicons/ujf-grenoble.fr.png
+
+ - label: Université de Grenoble 2 UPMF - V2.1
+   providerId: urn:mace:cru.fr:federation:upmf-grenoble.fr
+   logo: https://discovery.renater.fr/test/favicons/upmf-grenoble.fr.png
+
+ - label: Université de Grenoble 3 Stendhal-v2
+   providerId: urn:mace:cru.fr:federation:u-grenoble3.fr
+   logo: https://discovery.renater.fr/test/favicons/upmf-grenoble.fr.png
+
+ - label: Université de Haute Alsace
+   providerId: https://idp.uha.fr/idp/shibboleth
+   logo: https://discovery.renater.fr/test/favicons/uha.fr.png
+
+ - label: Université de La Rochelle
+   providerId: https://apps.univ-lr.fr/idp/shibboleth
+   logo: https://discovery.renater.fr/test/favicons/univ-lr.fr.png
+
+ - label: Université de Lille 2 Droit et Santé
+   providerId: urn:mace:cru.fr:federation:univ-lille2.fr
+   logo: https://discovery.renater.fr/test/favicons/univ-lille2.fr.png
+
+ - label: Université de Lyon
+   providerId: https://idp.universite-lyon.fr/idp/shibboleth
+   logo: https://discovery.renater.fr/test/favicons/universite-lyon.fr.png
+
+ - label: Université de Lyon 1 - Claude Bernard
+   providerId: urn:mace:cru.fr:federation:univ-lyon1.fr
+   logo: https://discovery.renater.fr/test/favicons/univ-lyon1.fr.png
+
+ - label: Université de Lyon 2 - Lumière
+   providerId: https://idp.univ-lyon2.fr/idp/shibboleth
+   logo: https://discovery.renater.fr/test/favicons/univ-lyon2.fr.png
+
+ - label: Université de Lyon 2 - Lumière - supann
+   providerId: https://idp-ly2.univ-lyon2.fr/idp/shibboleth
+
+ - label: Université de Montpellier 3
+   providerId: urn:mace:cru.fr:federation:univ-montp3.fr
+   logo: https://discovery.renater.fr/test/favicons/univ-montp3.fr.png
+
+ - label: Université de Nice-Sophia Antipolis
+   providerId: urn:mace:cru.fr:federation:test-unice.fr
+   logo: https://discovery.renater.fr/test/favicons/unice.fr.png
+
+ - label: Université de Nimes
+   providerId: https://federation.unimes.fr/idp-test/shibboleth
+   logo: https://discovery.renater.fr/test/favicons/unimes.fr.png
+
+ - label: Université de Paris 3 - Sorbonne Nouvelle ***TEST***
+   providerId: https://idp-test.univ-paris3.fr/idp-test/shibboleth
+   logo: https://discovery.renater.fr/test/favicons/univ-paris3.fr.png
+
+ - label: Université de Paris 5 - Paris Descartes - TEST
+   providerId: https://idp-test.parisdescartes.fr/idp/shibboleth
+   logo: https://discovery.renater.fr/test/favicons/parisdescartes.fr.png
+
+ - label: Université de Paris 6 - Pierre et Marie Curie
+   providerId: https://idp.upmc.fr/idp/shibboleth
+   logo: https://discovery.renater.fr/test/favicons/upmc.fr.png
+
+ - label: Université de Paris 9 - Dauphine
+   providerId: https://idp.ent.dauphine.fr/idp/shibboleth
+
+ - label: Université de Paris IV - Sorbonne
+   providerId: https://idp.univ-paris4.fr/idp/shibboleth
+   logo: https://discovery.renater.fr/test/favicons/univ-paris4.fr.png
+
+ - label: Université de Pau et des Pays de l'Adour
+   providerId: https://auth.univ-pau.fr/idp/shibboleth
+   logo: https://discovery.renater.fr/test/favicons/univ-pau.fr.png
+
+ - label: Université de Perpignan Via Domitia
+   providerId: https://federation2.univ-perp.fr/idp/shibboleth
+   logo: https://discovery.renater.fr/test/favicons/univ-perp.fr.png
+
+ - label: Université de Picardie Jules Verne
+   providerId: https://idp.u-picardie.fr/shibboleth
+   logo: https://discovery.renater.fr/test/favicons/u-picardie.fr.png
+
+ - label: Université de Reims Champagne-Ardenne
+   providerId: urn:mace:cru.fr:federation:univ-reims.fr
+   logo: https://discovery.renater.fr/test/favicons/univ-reims.fr.png
+
+ - label: Université de Rennes 2 - Haute Bretagne
+   providerId: urn:mace:cru.fr:federation:uhb.fr
+   logo: https://discovery.renater.fr/test/favicons/uhb.fr.png
+
+ - label: Université de Rouen
+   providerId: urn:mace:cru.fr:federation:univ-rouen.fr
+
+ - label: Université de Rouen (test)
+   providerId: https://test3.univ-rouen.fr/idp/shibboleth
+
+ - label: Université de Savoie
+   providerId: https://federation.upmf-grenoble.fr/us/idp
+   logo: https://discovery.renater.fr/test/favicons/upmf-grenoble.fr.png
+
+ - label: Université de Strasbourg - preprod
+   providerId: https://idp-preprod.u-strasbg.fr/idp/shibboleth
+   logo: https://discovery.renater.fr/test/favicons/u-strasbg.fr.png
+
+ - label: Université de Technologie de Belfort-Montbéliard
+   providerId: https://federation.utbm.fr/idp/shibboleth
+   logo: https://discovery.renater.fr/test/favicons/utbm.fr.png
+
+ - label: Université de Technologie de Troyes
+   providerId: urn:mace:cru.fr:federation:utt.fr
+
+ - label: Université de Toulouse
+   providerId: https://shibboleth.univ-toulouse.fr/idp/shibboleth
+   logo: https://discovery.renater.fr/test/favicons/univ-toulouse.fr.png
+
+ - label: Université de Toulouse 1 Capitole
+   providerId: https://idp.ut-capitole.fr/idp/shibboleth
+   logo: https://discovery.renater.fr/test/favicons/ut-capitole.fr.png
+
+ - label: Université de Toulouse 3 - Paul Sabatier
+   providerId: https://shibboleth.ups-tlse.fr/idp/shibboleth
+   logo: https://discovery.renater.fr/test/favicons/ups-tlse.fr.png
+
+ - label: Université de Tours
+   providerId: https://idp.univ-tours.fr/idp/shibboleth
+   logo: https://discovery.renater.fr/test/favicons/univ-tours.fr.png
+
+ - label: Université de Valenciennes
+   providerId: urn:mace:cru.fr:federation:univ-valenciennes.fr
+   logo: https://discovery.renater.fr/test/favicons/univ-valenciennes.fr.png
+
+ - label: Université de Versailles St-Quentin-en-Yvelines (REEDS)  - IDP ePLANETe TEST
+   providerId: https://idp.reeds.uvsq.fr/idp/shibboleth
+
+ - label: Université de la Réunion
+   providerId: https://idpdev.univ-reunion.fr/idp/shibboleth
+
+ - label: Université de la méditerranée - Test
+   providerId: https://idp.univmed.fr/idp/shibboleth
+
+ - label: Université des Antilles et de la Guyane
+   providerId: https://idp.univ-ag.fr/idp/shibboleth
+   logo: https://discovery.renater.fr/test/favicons/univ-ag.fr.png
+
+ - label: Université du Havre
+   providerId: https://idp.univ-lehavre.fr/idp/shibboleth
+   logo: https://discovery.renater.fr/test/favicons/univ-lehavre.fr.png
+
+ - label: Université du Littoral Côte d'Opale
+   providerId: urn:mace:cru.fr:federation:univ-littoral.fr
+
+ - label: Université du Sud Toulon Var
+   providerId: urn:mace:cru.fr:federation-dev:univ-tln.fr
+   logo: https://discovery.renater.fr/test/favicons/univ-tln.fr.png
+
+ - label: Windowslive Gateway
+   providerId: https://dev-social.renater.fr/windowslive/saml2/idp/metadata.php
+
+ - label: Yahoo Gateway
+   providerId: https://dev-social.renater.fr/idpyahoo/saml2/idp/metadata.php
+
+ - label: aaa_test
+   providerId: https://idp.mon-poste.fr/idp/shibboleth
+
+ - label: bibliothèque nationale universitaire - Strasbourg
+   providerId: https://idp-bnu.bnu.fr/idp/shibboleth
+
+ - label: educagri
+   providerId: https://idp.educagri.fr/idp/shibboleth
+   logo: https://discovery.renater.fr/test/favicons/educagri.fr.png
+
+ - label: idp crhn sopra
+   providerId: https://slnxenthn09.z-ptx-43.fr.sopra/idp/shibboleth
+
+ - label: idp test federation.ac-noumea.nc
+   providerId: https://federation.ac-noumea.nc/idp/shibboleth
+
+ - label: test IEL
+   providerId: http://test-auth-iel.iutenligne.net/idp/shibboleth
+   logo: https://discovery.renater.fr/test/favicons/iutenligne.net.png
+
+ - label: test-SSO-SIR
+   providerId: https://srvSSO.telecom-lille1.fr/idp/shibboleth
+
+ - label: testshib1.cru.fr
+   providerId: https://testshib1.cru.fr/idp/shibboleth
+   logo: https://discovery.renater.fr/test/favicons/cru.fr.png
+
+ - label: École des Ponts ParisTech
+   providerId: https://rigal.enpc.fr/idp/shibboleth

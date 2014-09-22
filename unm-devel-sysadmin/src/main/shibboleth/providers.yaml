@@ -1,4 +1,4 @@
-# To get this list of Shibboleth providerIds:
+# To get this list of Shibboleth Providers:
 # 1. Go to: http://unpidf.univ-paris1.fr/, click on "Boutique numérique", "Les
 #     offres"
 #    (or go to: http://unpidf.univ-paris1.fr/boutique-numerique_ol)
@@ -20,19 +20,8 @@
 # 
 # And where providerIds are found below.
 #  
-# ------------------------------------------------------------------------------
-#
-# For test Identity Providers, try for example:
-# https://discovery.renater.fr/test/WAYF
-#   ?shire=https://univmobile-dev.univ-paris1.fr/Shibboleth.sso/SAML/POST
-#   &target=https://univmobile-dev.univ-paris1.fr/testSP/
-#   &providerId=https://idp-test.univ-paris1.fr
-#
 
 providers:
-
- #- label: Université Paris 1 — Panthéon-Sorbonne — Test
- #  providerId: https://idp-test.univ-paris1.fr/
    
  - label: Université Paris 1 – Panthéon-Sorbonne
    id: paris1
