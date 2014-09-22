@@ -5,12 +5,14 @@ import static org.apache.commons.lang3.StringUtils.isBlank;
 import static org.apache.commons.lang3.StringUtils.substringAfter;
 import static org.apache.commons.lang3.StringUtils.substringBefore;
 
+import java.io.IOException;
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.annotation.Nullable;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -566,4 +568,20 @@ public abstract class AbstractController {
 	}
 
 	private String baseURL = null;
+
+	/**
+	 * Send a 400 (BAD REQUEST) HTTP error code.
+	 * 
+	 * @return <code>null</code>
+	 */
+	@Nullable
+	protected final View sendError400() throws IOException {
+
+		final HttpServletRequest request = checkedRequest();
+		final HttpServletResponse response = checkedResponse();
+
+		UnivMobileHttpUtils.sendError400(request, response);
+
+		return null;
+	}
 }

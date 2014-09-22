@@ -71,6 +71,34 @@ public abstract class UnivMobileHttpUtils {
 		}
 	}
 
+	public static void sendError400(final HttpServletRequest request,
+			final HttpServletResponse response) throws IOException {
+
+		final String method = request.getMethod();
+
+		final String message = "400 BAD REQUEST -- method: " + method;
+
+		log.error(message);
+
+		response.setContentType("text/plain");
+		response.setCharacterEncoding(UTF_8);
+		response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+
+		final PrintWriter out = response.getWriter();
+		try {
+
+			out.println(message);
+
+			out.println();
+
+			out.println("requestURI: " + request.getRequestURI());
+
+		} finally {
+			out.flush();
+			out.close();
+		}
+	}
+
 	public static void sendError500(final HttpServletRequest request,
 			final HttpServletResponse response, @Nullable final Throwable e)
 			throws IOException {
