@@ -12,9 +12,6 @@
 
 providers:
 
- - label: Select the organisation you are affiliated with ...
-   providerId: -
-
  - label: A Université de Provence - Test
    providerId: https://shibboleth2.univ-provence.fr/idp/shibboleth
 
