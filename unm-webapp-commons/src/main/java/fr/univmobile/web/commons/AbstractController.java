@@ -439,10 +439,21 @@ public abstract class AbstractController {
 						return invalidHttpInputs(clazz);
 					}
 
+				} else if (double.class.equals(type)) {
+
+					try {
+
+						httpParameterValue = Double
+								.parseDouble(httpParameterValueStr);
+
+					} catch (final NumberFormatException e) {
+						return invalidHttpInputs(clazz);
+					}
+
 				} else {
 
 					throw new RuntimeException("Unknown httpParameter type: "
-							+ type.getClass());
+							+ type.getName());
 				}
 
 				httpParameterValues.put(method, httpParameterValue);
