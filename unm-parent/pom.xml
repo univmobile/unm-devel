@@ -59,7 +59,7 @@
 			<dependency>
 				<groupId>net.avcompris.commons</groupId>
 				<artifactId>avc-binding-dom</artifactId>
-				<version>0.1.5</version>
+				<version>0.1.6-SNAPSHOT</version>
 			</dependency>
 			<dependency>
 				<groupId>net.avcompris.commons</groupId>
@@ -69,7 +69,7 @@
 			<dependency>
 				<groupId>net.avcompris.commons</groupId>
 				<artifactId>avc-binding-json</artifactId>
-				<version>0.1.1</version>
+				<version>0.1.2-SNAPSHOT</version>
 			</dependency>
 			<dependency>
 				<groupId>com.googlecode.json-simple</groupId>
