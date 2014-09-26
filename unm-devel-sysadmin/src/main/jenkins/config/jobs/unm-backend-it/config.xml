@@ -54,7 +54,7 @@
     <artifactId>unm-backend-it</artifactId>
   </rootModule>
   <rootPOM>unm-backend-it/pom.xml</rootPOM>
-  <goals>-U clean help:effective-pom install</goals>
+  <goals>-V -U clean dependency:tree install</goals>
   <aggregatorStyleBuild>true</aggregatorStyleBuild>
   <incrementalBuild>false</incrementalBuild>
   <ignoreUpstremChanges>false</ignoreUpstremChanges>
@@ -79,7 +79,11 @@
     </hudson.tasks.ArtifactArchiver>
   </publishers>
   <buildWrappers/>
-  <prebuilders/>
+  <prebuilders>
+    <hudson.tasks.Shell>
+      <command>echo &quot;DISPLAY: ${DISPLAY}&quot;</command>
+    </hudson.tasks.Shell>
+  </prebuilders>
   <postbuilders/>
   <runPostStepsIfResult>
     <name>FAILURE</name>

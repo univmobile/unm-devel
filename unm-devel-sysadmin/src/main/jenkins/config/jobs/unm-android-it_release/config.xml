@@ -6,8 +6,8 @@
   <properties>
     <hudson.security.AuthorizationMatrixProperty>
       <permission>hudson.model.Item.Read:mgauzins</permission>
-      <permission>hudson.model.Item.Configure:mgauzins</permission>
       <permission>hudson.model.Item.Discover:mgauzins</permission>
+      <permission>hudson.model.Item.Configure:mgauzins</permission>
       <permission>hudson.model.Item.Workspace:mgauzins</permission>
       <permission>hudson.model.Item.Build:mgauzins</permission>
       <permission>hudson.model.Item.Cancel:mgauzins</permission>
@@ -57,7 +57,7 @@
     <artifactId>unm-android-it</artifactId>
   </rootModule>
   <rootPOM>unm-android-it/pom.xml</rootPOM>
-  <goals>-U clean site:jar deploy</goals>
+  <goals>-U clean help:effective-pom site:jar deploy</goals>
   <mavenOpts>-Djava.awt.headless=true</mavenOpts>
   <aggregatorStyleBuild>true</aggregatorStyleBuild>
   <incrementalBuild>false</incrementalBuild>

@@ -62,7 +62,7 @@ Tableau de bord d’intégration continue :&#xd;
     <artifactId>unm-ios-it</artifactId>
   </rootModule>
   <rootPOM>unm-ios-it/pom.xml</rootPOM>
-  <goals>-U clean site:jar deploy -DappCommitId=36e3605cffd1db585ace014ce6e24895370ca1fb</goals>
+  <goals>-U clean help:effective-pom site:jar deploy -DappCommitId=36e3605cffd1db585ace014ce6e24895370ca1fb</goals>
   <mavenOpts>-Djava.awt.headless=true</mavenOpts>
   <aggregatorStyleBuild>true</aggregatorStyleBuild>
   <incrementalBuild>false</incrementalBuild>

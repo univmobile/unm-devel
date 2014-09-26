@@ -50,7 +50,7 @@
     <artifactId>unm-ios-ut-results_up_to_date</artifactId>
   </rootModule>
   <rootPOM>unm-ios-ut-results_up_to_date/pom.xml</rootPOM>
-  <goals>-U clean site:jar deploy -Dmaven.test.skip=true</goals>
+  <goals>-U clean help:effective-pom site:jar deploy -Dmaven.test.skip=true</goals>
   <aggregatorStyleBuild>true</aggregatorStyleBuild>
   <incrementalBuild>false</incrementalBuild>
   <ignoreUpstremChanges>true</ignoreUpstremChanges>

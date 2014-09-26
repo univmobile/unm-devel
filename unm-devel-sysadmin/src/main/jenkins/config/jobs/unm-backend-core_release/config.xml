@@ -46,7 +46,7 @@
     <artifactId>unm-backend-core</artifactId>
   </rootModule>
   <rootPOM>unm-backend-core/pom.xml</rootPOM>
-  <goals>-U clean site:jar deploy</goals>
+  <goals>-U clean help:effective-pom site:jar deploy</goals>
   <aggregatorStyleBuild>true</aggregatorStyleBuild>
   <incrementalBuild>false</incrementalBuild>
   <ignoreUpstremChanges>true</ignoreUpstremChanges>

@@ -28,10 +28,6 @@
   <blockBuildWhenUpstreamBuilding>true</blockBuildWhenUpstreamBuilding>
   <jdk>(Default)</jdk>
   <triggers>
-    <hudson.triggers.SCMTrigger>
-      <spec>H * * * *</spec>
-      <ignorePostCommitHooks>false</ignorePostCommitHooks>
-    </hudson.triggers.SCMTrigger>
     <jenkins.triggers.ReverseBuildTrigger>
       <spec></spec>
       <upstreamProjects>unm-parent,</upstreamProjects>
@@ -42,13 +38,17 @@
         <completeBuild>true</completeBuild>
       </threshold>
     </jenkins.triggers.ReverseBuildTrigger>
+    <hudson.triggers.SCMTrigger>
+      <spec>H * * * *</spec>
+      <ignorePostCommitHooks>false</ignorePostCommitHooks>
+    </hudson.triggers.SCMTrigger>
   </triggers>
   <concurrentBuild>false</concurrentBuild>
   <rootModule>
     <groupId>fr.univmobile</groupId>
     <artifactId>unm-backend</artifactId>
   </rootModule>
-  <goals>-U clean install</goals>
+  <goals>-U clean site:site site:deploy -N</goals>
   <aggregatorStyleBuild>true</aggregatorStyleBuild>
   <incrementalBuild>false</incrementalBuild>
   <ignoreUpstremChanges>false</ignoreUpstremChanges>

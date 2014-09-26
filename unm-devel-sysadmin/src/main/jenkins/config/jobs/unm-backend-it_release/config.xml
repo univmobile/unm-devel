@@ -46,7 +46,7 @@
     <artifactId>unm-backend-it</artifactId>
   </rootModule>
   <rootPOM>unm-backend-it/pom.xml</rootPOM>
-  <goals>-U dependency:purge-local-repository -DactTransitively=false clean site:jar deploy</goals>
+  <goals>-U dependency:purge-local-repository -DactTransitively=false clean help:effective-pom site:jar deploy</goals>
   <aggregatorStyleBuild>true</aggregatorStyleBuild>
   <incrementalBuild>false</incrementalBuild>
   <ignoreUpstremChanges>true</ignoreUpstremChanges>
