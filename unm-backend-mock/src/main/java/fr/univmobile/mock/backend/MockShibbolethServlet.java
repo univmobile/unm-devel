@@ -54,26 +54,25 @@ public class MockShibbolethServlet extends HttpServlet {
 
 		out.println(new DateTime());
 
-		out.println("-- request.attributes --");
+		out.println("-- request.attributes (introspection) --");
 
 		for (final Enumeration<?> e = request.getAttributeNames(); e
 				.hasMoreElements();) {
 
 			final String name = e.nextElement().toString();
 
-			final Object attribute = request.getAttribute(name);
-
-			final String value = attribute.toString();
-
-			out.print(name + ": ");
-
-			if (!String.class.equals(attribute.getClass())) {
-
-				out.print("(" + attribute.getClass().getName() + ") ");
-			}
-
-			out.println(value);
+			printlnAttribute(out, request, name);
 		}
+
+		out.println("-- request.attributes (forced) --");
+
+		printlnAttribute(out, request, "REMOTE_USER");
+		printlnAttribute(out, request, "cn");
+		printlnAttribute(out, request, "sn");
+		printlnAttribute(out, request, "uid");
+		printlnAttribute(out, request, "Shib_Identity_Provider");
+		printlnAttribute(out, request, "persistent_id");
+		printlnAttribute(out, request, "eppn");
 
 		out.println("-- request.cookies --");
 
@@ -158,6 +157,30 @@ public class MockShibbolethServlet extends HttpServlet {
 		out.flush();
 
 		out.close();
+	}
+
+	private static void printlnAttribute(final PrintWriter out,
+			final HttpServletRequest request, final String name) {
+
+		out.print(name + ": ");
+
+		final Object attribute = request.getAttribute(name);
+
+		if (attribute == null) {
+
+			out.println("(null)"	);
+
+			return;
+		}
+
+		final String value = attribute.toString();
+
+		if (!String.class.equals(attribute.getClass())) {
+
+			out.print("(" + attribute.getClass().getName() + ") ");
+		}
+
+		out.println(value);
 	}
 
 	private static void printlnProperty(final PrintWriter out,
