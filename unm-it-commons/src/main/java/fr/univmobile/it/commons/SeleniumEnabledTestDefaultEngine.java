@@ -7,6 +7,7 @@ import static fr.univmobile.it.commons.SeleniumWebDriverUtils.wrapToWebDriver;
 import java.io.File;
 import java.io.IOException;
 
+import org.apache.commons.io.FileUtils;
 import org.junit.Before;
 
 import com.thoughtworks.selenium.DefaultSelenium;
@@ -44,13 +45,17 @@ final class SeleniumEnabledTestDefaultEngine extends
 
 			final String KWARGS = "";
 
-			final File file = new File("target", "crash_"
-					+ System.currentTimeMillis() + ".png");
+			final String prefix = "crash_" + System.currentTimeMillis();
+
+			final File file = new File("target", prefix + ".png");
 
 			System.err.println("Capturing screenshot: " + file.getPath());
 
 			selenium.captureEntirePageScreenshot(file.getCanonicalPath(),
 					KWARGS);
+
+			FileUtils.write(new File("target", prefix + ".html"),
+					selenium.getHtmlSource());
 
 			throw e;
 		}
