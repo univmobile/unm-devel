@@ -243,10 +243,10 @@
 		<profile>
 			<id>unm_ios7</id>
 			<properties>
-				<!--
 				<ios.platformVersion.shouldBe>7.1</ios.platformVersion.shouldBe>
-				-->
+				<!--
 				<ios.platformVersion.shouldBe>8.0</ios.platformVersion.shouldBe>
+				-->
 			</properties>
 		</profile>
 	</profiles>
