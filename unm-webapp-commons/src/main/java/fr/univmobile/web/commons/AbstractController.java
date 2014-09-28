@@ -357,7 +357,7 @@ public abstract class AbstractController {
 		return "POST".equalsIgnoreCase(checkedRequest().getMethod());
 	}
 
-	protected final <T> T getHttpInputs(final Class<T> clazz) {
+	protected final <T extends HttpInputs> T getHttpInputs(final Class<T> clazz) {
 
 		final HttpMethods httpMethods = clazz.getAnnotation(HttpMethods.class);
 
