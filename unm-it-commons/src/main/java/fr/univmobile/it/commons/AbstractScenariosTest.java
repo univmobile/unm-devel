@@ -14,6 +14,7 @@ import java.util.Collection;
 import java.util.List;
 
 import org.apache.commons.io.FileUtils;
+import org.joda.time.DateTime;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Ignore;
@@ -282,7 +283,7 @@ public abstract class AbstractScenariosTest {
 					&& method.getParameterTypes().length == 0) {
 
 				System.out.println("Invoking: @Before " //
-						+ method.getName() + "()");
+						+ method.getName() + "() - " + new DateTime());
 
 				method.invoke(instance);
 			}
@@ -298,9 +299,9 @@ public abstract class AbstractScenariosTest {
 
 		instance = null;
 	}
-	
+
 	private void recursiveTearDown(final Class<?> clazz) throws Exception {
-		
+
 		for (final Method method : clazz.getDeclaredMethods()) {
 
 			if (method.isAnnotationPresent(After.class)
@@ -308,7 +309,7 @@ public abstract class AbstractScenariosTest {
 					&& method.getParameterTypes().length == 0) {
 
 				System.out.println("Invoking: @After " //
-						+ method.getName() + "()");
+						+ method.getName() + "() - " + new DateTime());
 
 				method.invoke(instance);
 			}
