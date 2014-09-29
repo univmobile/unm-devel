@@ -51,8 +51,24 @@ abstract class SeleniumWebDriverUtils {
 					+ System.currentTimeMillis() + "_"
 					+ RandomUtils.nextInt(1000000, 99999999) + ".png");
 
-			getWrappedSelenium(driver).captureEntirePageScreenshot(
-					file.getCanonicalPath(), KWARGS);
+			final String path = file.getCanonicalPath();
+
+			final Selenium selenium = getWrappedSelenium(driver);
+
+			try {
+
+				selenium.captureEntirePageScreenshot(path, KWARGS);
+
+			} catch (final SeleniumException e) {
+
+				e.printStackTrace();
+
+				System.err.println( //
+						"Error while capturing entirePageScreenshot: " + path
+								+ ", trying to capture regular screenshot.");
+
+				selenium.captureScreenshot(path);
+			}
 
 			return file;
 		}
@@ -248,7 +264,7 @@ abstract class SeleniumWebDriverUtils {
 			public void sendKeys(final CharSequence... keysToSend) {
 
 				final String value = keysToSend[0].toString();
-				
+
 				selenium.type(locator, value);
 			}
 
