@@ -1,6 +1,6 @@
 package fr.univmobile.commons.http;
 
-import static fr.univmobile.commons.http.HttpUtils.urlEncode;
+import static fr.univmobile.commons.http.HttpUtils.*;
 import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
@@ -54,5 +54,30 @@ public class HttpUtilsTest {
 	public void test_urlEncode_colon() throws Exception {
 
 		assertEquals("a%3Ab", urlEncode("a:b"));
+	}
+
+	@Test
+	public void test_base64encode() throws Exception {
+
+		assertEquals("cmlyaTpmaWZpOmxvdWxvdQ==", base64Encode("riri:fifi:loulou"));
+	}
+	
+	@Test
+	public void test_composeURL_noParam() throws Exception {
+		
+		assertEquals("http://toto",composeURL("http://toto"));
+	}
+	
+	@Test
+	public void test_composeURL_oneParam() throws Exception {
+		
+		assertEquals("http://toto?a=123",composeURL("http://toto", "a","123"));
+	}
+	
+	@Test
+	public void test_composeURL_twoParams() throws Exception {
+		
+		assertEquals("http://toto?a=123&b=Hello+World%21",composeURL(
+				"http://toto", "a","123", "b","Hello World!"));
 	}
 }

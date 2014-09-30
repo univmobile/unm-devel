@@ -10,7 +10,14 @@
 		<version>0.0.5-SNAPSHOT</version>
 		<relativePath />
 	</parent>
-	
+
+	<dependencies>
+		<dependency>
+			<groupId>commons-codec</groupId>
+			<artifactId>commons-codec</artifactId>
+		</dependency>
+	</dependencies>
+
 	<name>unm-http</name>
 	<description>
 		Common classes for HTTP networking.
