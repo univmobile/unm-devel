@@ -77,14 +77,6 @@
 			<url>http://www.gnu.org/licenses/lgpl-3.0.txt</url>
 		</license>
 	</licenses>
-	<distributionManagement>
-		<site>
-			<id>vswip</id>
-			<url>
-                dav:http://univmobile.vswip.com/nexus/content/sites/pub/${project.artifactId}/${project.version}
-            </url>
-		</site>
-	</distributionManagement>
 	<repositories>
 		<repository>
 			<id>vswip</id>
@@ -135,5 +127,29 @@
 			</snapshots>
 		</repository>
 	</repositories>
+	<distributionManagement>
+		<repository>
+			<id>vswip</id>
+			<name>Viewniverse Studio WIP Repository for releases</name>
+			<url>
+                http://univmobile.vswip.com/nexus/content/repositories/releases
+            </url>
+			<uniqueVersion>false</uniqueVersion>
+		</repository>
+		<snapshotRepository>
+			<id>vswip</id>
+			<name>Viewniverse Studio WIP Repository for releases</name>
+			<url>
+                http://univmobile.vswip.com/nexus/content/repositories/snapshots
+            </url>
+			<uniqueVersion>false</uniqueVersion>
+		</snapshotRepository>
+		<site>
+			<id>vswip</id>
+			<url>
+                dav:http://univmobile.vswip.com/nexus/content/sites/pub/${project.artifactId}/${project.version}
+            </url>
+		</site>
+	</distributionManagement>
 
 </project>
