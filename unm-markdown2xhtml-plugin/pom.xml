@@ -2,37 +2,60 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<artifactId>unm-devel</artifactId>
-	<packaging>pom</packaging>
+	<properties>
+		<unm-version>0.0.6-SNAPSHOT</unm-version>
+	</properties>
 	
-	<parent>
-		<groupId>fr.univmobile</groupId>
-		<artifactId>unm-parent</artifactId>
-		<version>0.0.6-SNAPSHOT</version>
-		<relativePath>unm-parent</relativePath>
-	</parent>
+	<groupId>fr.univmobile</groupId>
+	<artifactId>unm-markdown2xhtml-plugin</artifactId>
+	<packaging>maven-plugin</packaging>
+	<version>${unm-version}</version>
 	
-	<modules>
-		<module>unm-markdown-util</module>
-		<module>unm-markdown2xhtml-plugin</module>
-		<module>unm-parent</module>
-		<module>unm-commons</module>
-		<module>unm-testutil</module>
-		<module>unm-devel-xmldoclet</module>
-		<module>unm-devel-sysadmin</module>
-		<module>unm-it-parent</module>
-		<module>unm-it-commons</module>
-		<module>unm-webapp-parent</module>
-		<module>unm-backend-mock</module>
-		<module>unm-webapp-commons</module>
-		<module>unm-http</module>
-		<module>unm-webui-devel</module>
-	</modules>
-
-	<name>unm-devel</name>
+	<dependencies>
+		<dependency>
+			<groupId>fr.univmobile</groupId>
+			<artifactId>unm-markdown-util</artifactId>
+			<version>${unm-version}</version>
+		</dependency>
+		<dependency>
+			<groupId>commons-io</groupId>
+			<artifactId>commons-io</artifactId>
+			<version>2.4</version>
+		</dependency>
+		<dependency>
+			<groupId>net.avcompris.commons</groupId>
+			<artifactId>avc-binding-dom</artifactId>
+			<version>0.1.6</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.maven</groupId>
+			<artifactId>maven-plugin-api</artifactId>
+			<version>3.2.3</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.maven</groupId>
+			<artifactId>maven-project</artifactId>
+			<version>2.2.1</version>
+			<exclusions>
+				<exclusion>
+					<groupId>org.codehaus.plexus</groupId>
+					<artifactId>plexus-utils</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.11</version>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+	
+	<name>unm-markdown2xhtml-plugin</name>
 	<description>
-		Home project for the "unm-devel" UnivMobile GitHub repository.
-    </description>
+		Maven Plugin that produces target XHTML documentation files 
+		based on Markdown documentation files.
+	</description>
 	<url>
         http://univmobile.vswip.com/nexus/content/sites/pub/${project.artifactId}/${project.version}/
     </url>
@@ -45,28 +68,9 @@
             scm:git:https://github.com/univmobile/unm-devel.git
         </developerConnection>
 		<url>
-            https://github.com/univmobile/unm-devel
+            https://github.com/univmobile/unm-devel/tree/master/unm-markdown2xhtml-plugin
         </url>
 	</scm>
-	<ciManagement>
-		<system>jenkins</system>
-		<url>http://univmobile.vswip.com/job/unm-devel</url>
-	</ciManagement>
-	<organization>
-		<name>UnivMobile</name>
-		<url>https://github.com/univmobile/</url>
-	</organization>
-	<developers>
-		<developer>
-			<id>dandriana</id>
-			<name>David Andrianavalontsalama</name>
-			<email>david.andriana@viewniverse-studio.com</email>
-		</developer>
-		<developer>
-			<id>choumss</id>
-			<name>Michel Gauzins</name>
-		</developer>
-	</developers>
 	<licenses>
 		<license>
 			<name>LGPL v3</name>

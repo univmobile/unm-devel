@@ -82,14 +82,6 @@
 	<profiles>
 		<profile>
 			<id>dandriana</id>
-			<properties>
-				<unm-devel>/Users/dandriana/Documents/workspace/unm-devel</unm-devel>
-				<unm-backend>/Users/dandriana/Documents/workspace/unm-backend</unm-backend>
-				<unm-mobileweb>/Users/dandriana/Documents/workspace/unm-mobileweb</unm-mobileweb>
-				<unm-ios>/Users/dandriana/Documents/xcode/unm-ios</unm-ios>
-				<unm-android>/Users/dandriana/Documents/workspace/unm-android</unm-android>
-				<unm-integration>/Users/dandriana/Documents/workspace/unm-integration</unm-integration>
-			</properties>
 		</profile>
 	</profiles>
 		

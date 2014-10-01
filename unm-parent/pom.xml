@@ -4,7 +4,7 @@
 
 	<groupId>fr.univmobile</groupId>
 	<artifactId>unm-parent</artifactId>
-	<version>${unm-version}</version>
+	<version>0.0.6-SNAPSHOT</version>
 	<packaging>pom</packaging>
 
 	<dependencies>
@@ -237,6 +237,20 @@
 
 	<build>
 		<plugins>
+			<plugin>
+				<groupId>fr.univmobile</groupId>
+				<artifactId>unm-markdown2xhtml-plugin</artifactId>
+				<version>${unm-version}</version>
+				<executions>
+					<execution>
+						<id>generate</id>
+						<phase>pre-site</phase>
+						<goals>
+							<goal>generate</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-source-plugin</artifactId>
