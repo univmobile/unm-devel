@@ -115,7 +115,7 @@
 							<docletArtifact>
 								<groupId>fr.univmobile</groupId>
 								<artifactId>unm-devel-xmldoclet</artifactId>
-								<version>${project.version}</version>
+								<version>${unm-version}</version>
 							</docletArtifact>
 							<useStandardDocletOptions>false</useStandardDocletOptions>
 							<!--

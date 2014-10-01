@@ -21,7 +21,7 @@
 		<dependency>
 			<groupId>fr.univmobile</groupId>
 			<artifactId>unm-testutil</artifactId>
-			<version>${project.version}</version>
+			<version>${unm-version}</version>
 		</dependency>
 		<dependency>
 			<artifactId>httpclient</artifactId>
@@ -64,58 +64,58 @@
 			<dependency>
 				<groupId>fr.univmobile</groupId>
 				<artifactId>unm-it-commons</artifactId>
-				<version>${project.version}</version>
+				<version>${unm-version}</version>
 			</dependency>
 			<dependency>
 				<groupId>fr.univmobile</groupId>
 				<artifactId>unm-backend-it-data</artifactId>
-				<version>${project.version}</version>
+				<version>${unm-version}</version>
 			</dependency>
 			<dependency>
 				<groupId>fr.univmobile</groupId>
 				<artifactId>unm-mobileweb-app</artifactId>
-				<version>${project.version}</version>
+				<version>${unm-version}</version>
 				<type>war</type>
 			</dependency>
 			<dependency>
 				<groupId>fr.univmobile</groupId>
 				<artifactId>unm-backend-app</artifactId>
-				<version>${project.version}</version>
+				<version>${unm-version}</version>
 				<type>war</type>
 			</dependency>
 			<dependency>
 				<groupId>fr.univmobile</groupId>
 				<artifactId>unm-backend-app-noshib</artifactId>
-				<version>${project.version}</version>
+				<version>${unm-version}</version>
 				<type>war</type>
 			</dependency>
 			<dependency>
 				<groupId>fr.univmobile</groupId>
 				<artifactId>unm-mobileweb-core</artifactId>
-				<version>${project.version}</version>
+				<version>${unm-version}</version>
 			</dependency>
 			<dependency>
 				<groupId>fr.univmobile</groupId>
 				<artifactId>unm-mobileweb-app-local</artifactId>
 				<type>war</type>
-				<version>${project.version}</version>
+				<version>${unm-version}</version>
 			</dependency>
 			<dependency>
 				<groupId>fr.univmobile</groupId>
 				<artifactId>unm-ios</artifactId>
 				<type>pom</type>
-				<version>${project.version}</version>
+				<version>${unm-version}</version>
 			</dependency>
 			<dependency>
 				<groupId>fr.univmobile</groupId>
 				<artifactId>unm-android-testutil</artifactId>
-				<version>${project.version}</version>
+				<version>${unm-version}</version>
 			</dependency>
 			<dependency>
 				<groupId>fr.univmobile.localhost</groupId>
 				<artifactId>UnivMobile</artifactId>
 				<type>apk</type>
-				<version>${project.version}</version>
+				<version>${unm-version}</version>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
@@ -150,7 +150,7 @@
 							<docletArtifact>
 								<groupId>fr.univmobile</groupId>
 								<artifactId>unm-devel-xmldoclet</artifactId>
-								<version>${project.version}</version>
+								<version>${unm-version}</version>
 							</docletArtifact>
 							<useStandardDocletOptions>false</useStandardDocletOptions>
 							<!--  
