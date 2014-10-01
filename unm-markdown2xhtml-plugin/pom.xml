@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<properties>
-		<unm-version>0.0.6-SNAPSHOT</unm-version>
+		<unm-version>0.1.0-SNAPSHOT</unm-version>
 	</properties>
 	
 	<groupId>fr.univmobile</groupId>
