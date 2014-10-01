@@ -42,7 +42,7 @@ Maven Generated Site: &lt;a&#xd;
     </hudson.triggers.SCMTrigger>
     <jenkins.triggers.ReverseBuildTrigger>
       <spec></spec>
-      <upstreamProjects>unm-webapp-parent,unm-commons,</upstreamProjects>
+      <upstreamProjects>unm-webapp-parent,unm-commons</upstreamProjects>
       <threshold>
         <name>SUCCESS</name>
         <ordinal>0</ordinal>

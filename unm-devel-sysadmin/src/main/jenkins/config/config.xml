@@ -122,7 +122,7 @@
       <mode>EXCLUSIVE</mode>
       <retentionStrategy class="hudson.slaves.RetentionStrategy$Always"/>
       <launcher class="hudson.plugins.sshslaves.SSHLauncher" plugin="ssh-slaves@1.6">
-        <host>88.172.20.221</host>
+        <host>87.231.199.91</host>
         <port>22</port>
         <credentialsId>e1ae9453-ac0a-4f14-b14b-2fbf3cac79a9</credentialsId>
         <jvmOptions>-Djava.awt.headless=true</jvmOptions>
@@ -151,7 +151,7 @@
       <mode>EXCLUSIVE</mode>
       <retentionStrategy class="hudson.slaves.RetentionStrategy$Always"/>
       <launcher class="hudson.plugins.sshslaves.SSHLauncher" plugin="ssh-slaves@1.6">
-        <host>88.172.20.221</host>
+        <host>87.231.199.91</host>
         <port>22</port>
         <credentialsId>14ea0071-a9fb-4382-9d54-9a533ff8c85b</credentialsId>
         <jvmOptions>-Djava.awt.headless=true</jvmOptions>
@@ -208,7 +208,7 @@
       <mode>EXCLUSIVE</mode>
       <retentionStrategy class="hudson.slaves.RetentionStrategy$Always"/>
       <launcher class="hudson.plugins.sshslaves.SSHLauncher" plugin="ssh-slaves@1.6">
-        <host>88.172.20.221</host>
+        <host>87.231.199.91</host>
         <port>22</port>
         <credentialsId>8a407adc-0a4e-4ef0-a4c9-d48663e023d2</credentialsId>
         <jvmOptions>-Djava.awt.headless=true</jvmOptions>
@@ -220,7 +220,7 @@
             <unserializable-parents/>
             <tree-map>
               <default>
-                <comparator class="hudson.util.CaseInsensitiveComparator" reference="../../../../../../../slave[3]/nodeProperties/hudson.slaves.EnvironmentVariablesNodeProperty/envVars/tree-map/default/comparator"/>
+                <comparator class="hudson.util.CaseInsensitiveComparator" reference="../../../../../../../slave/nodeProperties/hudson.slaves.EnvironmentVariablesNodeProperty/envVars/tree-map/default/comparator"/>
               </default>
               <int>0</int>
             </tree-map>
@@ -315,7 +315,7 @@ Tableau de bord d’intégration continue :&#xd;
       <filterQueue>false</filterQueue>
       <properties class="hudson.model.View$PropertyList"/>
       <jobNames>
-        <comparator class="hudson.util.CaseInsensitiveComparator" reference="../../../../slaves/slave/nodeProperties/hudson.slaves.EnvironmentVariablesNodeProperty/envVars/tree-map/default/comparator"/>
+        <comparator class="hudson.util.CaseInsensitiveComparator"/>
         <string>unm-ios</string>
         <string>unm-ios-it</string>
         <string>unm-ios-it_ios6</string>
@@ -341,9 +341,12 @@ Tableau de bord d’intégration continue :&#xd;
       <filterQueue>false</filterQueue>
       <properties class="hudson.model.View$PropertyList"/>
       <jobNames>
-        <comparator class="hudson.util.CaseInsensitiveComparator" reference="../../../../slaves/slave/nodeProperties/hudson.slaves.EnvironmentVariablesNodeProperty/envVars/tree-map/default/comparator"/>
+        <comparator class="hudson.util.CaseInsensitiveComparator" reference="../../../listView/jobNames/comparator"/>
         <string>Android-UnivMobile</string>
         <string>Android-UnivMobile_gradle</string>
+        <string>Android-UnivMobile_gradle_localhost</string>
+        <string>Android-UnivMobile_integration</string>
+        <string>Android-UnivMobile_localhost</string>
         <string>unm-android-it</string>
         <string>unm-android-testutil</string>
       </jobNames>
@@ -366,16 +369,19 @@ Tableau de bord d’intégration continue :&#xd;
       <filterQueue>false</filterQueue>
       <properties class="hudson.model.View$PropertyList"/>
       <jobNames>
-        <comparator class="hudson.util.CaseInsensitiveComparator" reference="../../../../slaves/slave/nodeProperties/hudson.slaves.EnvironmentVariablesNodeProperty/envVars/tree-map/default/comparator"/>
+        <comparator class="hudson.util.CaseInsensitiveComparator" reference="../../../listView/jobNames/comparator"/>
         <string>unm-backend-mock</string>
         <string>unm-commons</string>
         <string>unm-commons_release</string>
         <string>unm-devel</string>
+        <string>unm-devel-sysadmin</string>
         <string>unm-devel-xmldoclet</string>
+        <string>unm-http</string>
         <string>unm-it-commons</string>
         <string>unm-it-commons_ios6</string>
         <string>unm-it-commons_ios7</string>
         <string>unm-it-parent</string>
+        <string>unm-markdown-util</string>
         <string>unm-parent</string>
         <string>unm-testutil</string>
         <string>unm-webapp-commons</string>
@@ -401,16 +407,18 @@ Tableau de bord d’intégration continue :&#xd;
       <filterQueue>false</filterQueue>
       <properties class="hudson.model.View$PropertyList"/>
       <jobNames>
-        <comparator class="hudson.util.CaseInsensitiveComparator" reference="../../../../slaves/slave/nodeProperties/hudson.slaves.EnvironmentVariablesNodeProperty/envVars/tree-map/default/comparator"/>
+        <comparator class="hudson.util.CaseInsensitiveComparator" reference="../../../listView/jobNames/comparator"/>
         <string>unm-backend</string>
         <string>unm-backend-app</string>
         <string>unm-backend-app-noshib</string>
         <string>unm-backend-client</string>
         <string>unm-backend-core</string>
+        <string>unm-backend-core-it</string>
         <string>unm-backend-filter-noshib</string>
         <string>unm-backend-it</string>
         <string>unm-backend-it-data</string>
         <string>unm-backend-it-parent</string>
+        <string>unm-backend-it_ks3haxm</string>
         <string>unm-backend-it_macos</string>
         <string>unm-backend-parent</string>
         <string>unm-backend-sysadmin</string>
@@ -435,7 +443,7 @@ Tableau de bord d’intégration continue :&#xd;
       <filterQueue>false</filterQueue>
       <properties class="hudson.model.View$PropertyList"/>
       <jobNames>
-        <comparator class="hudson.util.CaseInsensitiveComparator" reference="../../../../slaves/slave/nodeProperties/hudson.slaves.EnvironmentVariablesNodeProperty/envVars/tree-map/default/comparator"/>
+        <comparator class="hudson.util.CaseInsensitiveComparator" reference="../../../listView/jobNames/comparator"/>
         <string>unm-devel-it</string>
         <string>unm-ios-ut-results</string>
         <string>unm-ios-ut-results_up_to_date</string>
@@ -463,7 +471,7 @@ Tableau de bord d’intégration continue :&#xd;
       <filterQueue>false</filterQueue>
       <properties class="hudson.model.View$PropertyList"/>
       <jobNames>
-        <comparator class="hudson.util.CaseInsensitiveComparator" reference="../../../../slaves/slave/nodeProperties/hudson.slaves.EnvironmentVariablesNodeProperty/envVars/tree-map/default/comparator"/>
+        <comparator class="hudson.util.CaseInsensitiveComparator" reference="../../../listView/jobNames/comparator"/>
         <string>unm-mobileweb-app</string>
         <string>unm-mobileweb-app-local</string>
         <string>unm-mobileweb-app-local-it_ios6</string>
@@ -493,17 +501,24 @@ Tableau de bord d’intégration continue :&#xd;
       <jobNames>
         <comparator class="hudson.util.CaseInsensitiveComparator" reference="../../../../slaves/slave[3]/nodeProperties/hudson.slaves.EnvironmentVariablesNodeProperty/envVars/tree-map/default/comparator"/>
         <string>Android-UnivMobile_gradle_localhost_release</string>
+        <string>Android-UnivMobile_integration_release</string>
         <string>Android-UnivMobile_localhost_release</string>
         <string>unm-android-testutil_release</string>
+        <string>unm-backend-core-it_release</string>
         <string>unm-backend-it-data_release</string>
         <string>unm-backend-it-parent_release</string>
+        <string>unm-backend-it_ks3haxm_release</string>
         <string>unm-backend-it_macos_release</string>
         <string>unm-backend-sysadmin_release</string>
         <string>unm-commons-datasource_release</string>
+        <string>unm-devel-sysadmin_release</string>
+        <string>unm-devel_release</string>
+        <string>unm-http_release</string>
         <string>unm-ios-it_ios6_release</string>
         <string>unm-ios-it_release</string>
         <string>unm-ios_release</string>
         <string>unm-ios_xcode_integration_release</string>
+        <string>unm-markdown-util_release</string>
         <string>unm-mobileweb-app-local-it_ios6_release</string>
         <string>unm-mobileweb-app-local-it_ios7_release</string>
         <string>unm-mobileweb-app-local_release</string>
@@ -639,12 +654,14 @@ Flux JSON en test :&#xd;
         <string>Android-UnivMobile_integration</string>
         <string>Android-UnivMobile_localhost</string>
         <string>unm-android-testutil</string>
+        <string>unm-backend-core-it</string>
         <string>unm-backend-it-data</string>
         <string>unm-backend-it-parent</string>
         <string>unm-backend-it_ks3haxm</string>
         <string>unm-backend-sysadmin</string>
         <string>unm-devel</string>
         <string>unm-devel-sysadmin</string>
+        <string>unm-http</string>
         <string>unm-markdown-util</string>
         <string>unm-mobileweb-core</string>
         <string>unm-webui-devel</string>

@@ -5,12 +5,12 @@
   <keepDependencies>false</keepDependencies>
   <properties>
     <hudson.security.AuthorizationMatrixProperty>
-      <permission>hudson.model.Item.Read:mgauzins</permission>
-      <permission>hudson.model.Item.Discover:mgauzins</permission>
-      <permission>hudson.model.Item.Configure:mgauzins</permission>
       <permission>hudson.model.Item.Workspace:mgauzins</permission>
-      <permission>hudson.model.Item.Build:mgauzins</permission>
+      <permission>hudson.model.Item.Discover:mgauzins</permission>
       <permission>hudson.model.Item.Cancel:mgauzins</permission>
+      <permission>hudson.model.Item.Configure:mgauzins</permission>
+      <permission>hudson.model.Item.Read:mgauzins</permission>
+      <permission>hudson.model.Item.Build:mgauzins</permission>
       <permission>com.cloudbees.plugins.credentials.CredentialsProvider.View:mgauzins</permission>
     </hudson.security.AuthorizationMatrixProperty>
   </properties>
@@ -41,7 +41,7 @@
   <triggers>
     <jenkins.triggers.ReverseBuildTrigger>
       <spec></spec>
-      <upstreamProjects>unm-it-parent_release,unm-it-commons_ios6_release,unm-it-commons_ios7_release,unm-it-commons_release,</upstreamProjects>
+      <upstreamProjects>unm-it-parent_release,unm-it-commons_ios6_release,unm-it-commons_ios7_release,unm-it-commons_release</upstreamProjects>
       <threshold>
         <name>SUCCESS</name>
         <ordinal>0</ordinal>
@@ -57,7 +57,7 @@
     <artifactId>unm-android-testutil</artifactId>
   </rootModule>
   <rootPOM>unm-android-testutil/pom.xml</rootPOM>
-  <goals>-U clean help:effective-pom site:jar deploy</goals>
+  <goals>-U -V clean dependency:tree help:effective-pom site:jar deploy</goals>
   <mavenOpts>-Djava.awt.headless=true</mavenOpts>
   <aggregatorStyleBuild>true</aggregatorStyleBuild>
   <incrementalBuild>false</incrementalBuild>

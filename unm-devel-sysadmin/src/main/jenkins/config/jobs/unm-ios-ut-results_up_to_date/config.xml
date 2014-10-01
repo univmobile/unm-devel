@@ -38,7 +38,7 @@
   <triggers>
     <jenkins.triggers.ReverseBuildTrigger>
       <spec></spec>
-      <upstreamProjects>unm-it-parent,unm-ios-ut-results,unm-it-commons,</upstreamProjects>
+      <upstreamProjects>unm-it-parent,unm-ios-ut-results,unm-it-commons</upstreamProjects>
       <threshold>
         <name>SUCCESS</name>
         <ordinal>0</ordinal>

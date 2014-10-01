@@ -32,7 +32,7 @@
     </hudson.triggers.SCMTrigger>
     <jenkins.triggers.ReverseBuildTrigger>
       <spec></spec>
-      <upstreamProjects>unm-backend-parent,</upstreamProjects>
+      <upstreamProjects>unm-backend-parent</upstreamProjects>
       <threshold>
         <name>SUCCESS</name>
         <ordinal>0</ordinal>

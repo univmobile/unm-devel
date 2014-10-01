@@ -30,7 +30,7 @@
   <triggers>
     <jenkins.triggers.ReverseBuildTrigger>
       <spec></spec>
-      <upstreamProjects>unm-webapp-parent_release,</upstreamProjects>
+      <upstreamProjects>unm-webapp-parent_release</upstreamProjects>
       <threshold>
         <name>SUCCESS</name>
         <ordinal>0</ordinal>

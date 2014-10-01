@@ -30,7 +30,7 @@
   <triggers>
     <jenkins.triggers.ReverseBuildTrigger>
       <spec></spec>
-      <upstreamProjects>unm-parent_release,</upstreamProjects>
+      <upstreamProjects>unm-parent_release</upstreamProjects>
       <threshold>
         <name>SUCCESS</name>
         <ordinal>0</ordinal>
@@ -46,7 +46,7 @@
     <artifactId>unm-backend-sysadmin</artifactId>
   </rootModule>
   <rootPOM>unm-backend-sysadmin/pom.xml</rootPOM>
-  <goals>-U clean site:jar deploy</goals>
+  <goals>-U -V clean help:effective-pom dependency:tree site:jar deploy</goals>
   <aggregatorStyleBuild>true</aggregatorStyleBuild>
   <incrementalBuild>false</incrementalBuild>
   <ignoreUpstremChanges>true</ignoreUpstremChanges>

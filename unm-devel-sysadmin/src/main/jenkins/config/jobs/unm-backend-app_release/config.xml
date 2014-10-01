@@ -51,7 +51,7 @@ Maven Artifacts: &lt;a&#xd;
   <triggers>
     <jenkins.triggers.ReverseBuildTrigger>
       <spec></spec>
-      <upstreamProjects>unm-backend-parent_release,unm-backend-core_release,unm-webapp-commons_release,</upstreamProjects>
+      <upstreamProjects>unm-backend-parent_release,unm-backend-core_release,unm-webapp-commons_release</upstreamProjects>
       <threshold>
         <name>SUCCESS</name>
         <ordinal>0</ordinal>
