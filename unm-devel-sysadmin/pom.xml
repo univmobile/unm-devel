@@ -14,7 +14,6 @@
 		<dependency>
 			<groupId>fr.univmobile</groupId>
 			<artifactId>unm-markdown-util</artifactId>
-			<version>${project.version}</version>
 		</dependency>
 	</dependencies>
 
