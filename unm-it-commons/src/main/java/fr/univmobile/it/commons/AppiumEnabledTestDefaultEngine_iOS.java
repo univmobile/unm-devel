@@ -100,6 +100,8 @@ final class AppiumEnabledTestDefaultEngine_iOS extends
 			capabilities.setCapability(APP, app.getAbsolutePath());
 		}
 
+		capabilities.setCapability("useLocationServices", true);
+		
 		// System.out.println("DEBUG: new AppiumDriver()...");
 
 		driver = new AppiumDriver(new URL("http://localhost:4723/wd/hub"),
