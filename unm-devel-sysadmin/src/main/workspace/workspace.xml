@@ -175,6 +175,29 @@
 	</parent>
 </project>
 </mavenProject>
+<mavenProject id="unm-backend-core-it" gitRepository-ref="unm-backend">
+<project>
+	<description>
+		Tests d’intégration (suffixe « -it » = « Integration Tests »)
+		sur les classes techniques du projet
+		<mavenProject ref="unm-backend-core"/>,
+		en particulier les appels HTTP+JSON vers l’API Twitter.
+	</description>
+	<parent>
+		<artifactId>unm-it-parent</artifactId>
+	</parent>
+</project>
+</mavenProject>
+<mavenProject id="unm-integration" gitRepository-ref="unm-integration">
+<project>
+	<description>
+		Projet Maven chapeau des classes d’intégration du projet UnivMobile.
+	</description>
+	<parent>
+		<artifactId>unm-parent</artifactId>
+	</parent>
+</project>
+</mavenProject>
 <mavenProject id="unm-webapp-commons" gitRepository-ref="unm-devel">
 <project>
 	<description>
@@ -464,6 +487,28 @@
 			<artifactId>unm-testutil</artifactId>
 		</dependency>
 	</dependencies>
+</project>
+</mavenProject>
+<mavenProject id="unm-http" gitRepository-ref="unm-devel">
+<project>
+	<description>
+		Classes de communication réseau HTTP. 
+	</description>
+	<parent>
+		<artifactId>unm-parent</artifactId>
+	</parent>
+	<dependencies>
+		<dependency>
+			<artifactId>unm-testutil</artifactId>
+		</dependency>
+	</dependencies>
+</project>
+</mavenProject>
+<mavenProject id="unm-markdown-util" gitRepository-ref="unm-devel">
+<project>
+	<description>
+		Parsing et transformations de fichiers Markdown (.md). 
+	</description>
 </project>
 </mavenProject>
 <mavenProject id="unm-backend-it-data" gitRepository-ref="unm-backend">
