@@ -8,7 +8,7 @@
 	<parent>
 		<groupId>fr.univmobile</groupId>
 		<artifactId>unm-parent</artifactId>
-		<version>0.0.5-SNAPSHOT</version>
+		<version>0.0.5</version>
 		<relativePath />
 	</parent>
 
@@ -150,7 +150,7 @@
 							<docletArtifact>
 								<groupId>fr.univmobile</groupId>
 								<artifactId>unm-devel-xmldoclet</artifactId>
-								<version>0.0.5-SNAPSHOT</version>
+								<version>0.0.5</version>
 							</docletArtifact>
 							<useStandardDocletOptions>false</useStandardDocletOptions>
 							<!--  
