@@ -1,6 +1,7 @@
 package fr.univmobile.tools;
 
 import static org.apache.commons.lang3.StringUtils.isBlank;
+import static org.apache.commons.lang3.StringUtils.substringBefore;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -130,11 +131,12 @@ final class Markdown2xhtmlEngine {
 		final Transformer transformer = transformerFactory
 				.newTransformer(new StreamSource(xsltIs));
 
+		logger.info("Transforming to: " + destFile.getCanonicalPath());
+
 		final String gitHubRepository = getGitHubRepository(markdownFile);
 
-		logger.info("Transforming to: " + destFile.getCanonicalPath());
 		logger.info("GitHub Repository: " + gitHubRepository);
-		
+
 		transformer.setParameter("currentGitHubRepository", gitHubRepository);
 
 		transformer.setParameter("projectVersion",
@@ -144,21 +146,28 @@ final class Markdown2xhtmlEngine {
 				destFile));
 	}
 
-	private static String getGitHubRepository(final File file)
-			throws IOException {
+	private String getGitHubRepository(final File file) throws IOException {
 
-		return getGitHubRepository(file, file.getCanonicalFile()
-				.getParentFile());
+		final String rawGitHubRepository = getGitHubRepository(file, file
+				.getCanonicalFile().getParentFile());
+
+		return rawGitHubRepository.endsWith("_release") //
+		? substringBefore(rawGitHubRepository, "_release") //
+				: rawGitHubRepository;
 	}
 
-	private static String getGitHubRepository(final File file,
-			@Nullable final File dir) throws IOException {
+	private String getGitHubRepository(final File file, @Nullable final File dir)
+			throws IOException {
+
+		logger.debug("getGitHubRepository():dir: " + dir);
 
 		if (dir == null) {
 			throw new FileNotFoundException(
 					"Cannot get GitHub Repository for: "
 							+ file.getCanonicalPath());
 		}
+
+		logger.debug("getGitHubRepository():dir: " + dir.getCanonicalPath());
 
 		if (new File(dir, ".git").isDirectory()) {
 

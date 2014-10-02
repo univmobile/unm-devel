@@ -63,6 +63,14 @@ public class MarkdownDefsXsltTest {
 	}
 
 	@Test
+	public void test_slash_slash_Devel() throws Exception {
+
+		assertEquals(
+				"../../unm-devel/1.2.3/Devel.html",
+				href("https://github.com/univmobile/unm-devel/blob/develop//Devel.md"));
+	}
+
+	@Test
 	public void testREADME() throws Exception {
 
 		assertEquals(

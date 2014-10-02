@@ -40,9 +40,7 @@
 
 <xsl:template name="href">
 <xsl:param name="href" select="@href"/>
-<!--  
 <xsl:message>href: <xsl:value-of select="$href"/></xsl:message>
--->
 <xsl:choose>
 <!-- Current GitHub Repository -->
 <xsl:when test="$href = '../README.md'">
@@ -95,6 +93,22 @@
 	<xsl:value-of select="concat('../../', $project,
 		'/', $projectVersion, '/', substring-before(
 			substring-after($href, '/blob/develop/'), '.md'), '.html')"/>
+</xsl:when>
+<!-- Online GitHub Repository .md file -->
+<xsl:when test="starts-with($href, 'https://github.com/univmobile/')
+		and contains($href, '/blob/develop//')
+		and contains($href, '.md')
+		and not(contains(substring-after($href, '/blob/develop//'), '/'))">
+	<xsl:variable name="project">
+		<xsl:call-template name="extract-project">
+		<xsl:with-param name="text" select="substring-before(
+			substring-after($href, 'https://github.com/univmobile/'),
+				'/blob/develop//')"/>
+		</xsl:call-template>
+	</xsl:variable>
+	<xsl:value-of select="concat('../../', $project,
+		'/', $projectVersion, '/', substring-before(
+			substring-after($href, '/blob/develop//'), '.md'), '.html')"/>
 </xsl:when>
 <!-- Online Sub-Project README.md file -->
 <xsl:when test="starts-with($href, 'https://github.com/univmobile/unm-')
