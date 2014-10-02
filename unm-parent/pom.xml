@@ -585,7 +585,7 @@
 	</pluginRepositories>
 
 	<properties>
-		<unm-version>0.1.0/unm-version>
+		<unm-version>0.1.0</unm-version>
         <!--            
             relativizeDecorationLinks=false:
             Used by maven-site-plugin to keep external links declared
