@@ -34,10 +34,12 @@ final class Markdown2xhtmlEngine {
 			final File sourceDirectory, final File outputDirectory, //
 			final Properties properties) {
 
+		this.logger = logger;
 		this.sourceDirectory = sourceDirectory;
 		this.outputDirectory = outputDirectory;
 	}
 
+	private final Log logger;
 	private final File sourceDirectory;
 	private final File outputDirectory;
 
@@ -63,7 +65,7 @@ final class Markdown2xhtmlEngine {
 		}
 	}
 
-	private static void md2xhtml(final File markdownFile, final File xhtmlFile)
+	private void md2xhtml(final File markdownFile, final File xhtmlFile)
 			throws Exception {
 
 		final InputStream xsltIs = getResourceAsStream("markdown.xhtml.xsl");
@@ -89,7 +91,7 @@ final class Markdown2xhtmlEngine {
 		return is;
 	}
 
-	private static void md2xxx(final File markdownFile, final File destFile,
+	private void md2xxx(final File markdownFile, final File destFile,
 			final InputStream xsltIs) throws Exception {
 
 		final File destDir = destFile.getParentFile();
@@ -128,10 +130,12 @@ final class Markdown2xhtmlEngine {
 		final Transformer transformer = transformerFactory
 				.newTransformer(new StreamSource(xsltIs));
 
-		System.out.println("Transforming to: " + destFile.getCanonicalPath());
+		final String gitHubRepository = getGitHubRepository(markdownFile);
 
-		transformer.setParameter("currentGitHubRepository",
-				getGitHubRepository(markdownFile));
+		logger.info("Transforming to: " + destFile.getCanonicalPath());
+		logger.info("GitHub Repository: " + gitHubRepository);
+		
+		transformer.setParameter("currentGitHubRepository", gitHubRepository);
 
 		transformer.setParameter("projectVersion",
 				getProjectVersion(markdownFile));
@@ -155,11 +159,13 @@ final class Markdown2xhtmlEngine {
 					"Cannot get GitHub Repository for: "
 							+ file.getCanonicalPath());
 		}
-		/*
-		 * if (new File(dir, ".git").isDirectory()) { return dir.getName(); }
-		 * 
-		 * return getGitHubRepository(file, dir.getParentFile());
-		 */
+
+		if (new File(dir, ".git").isDirectory()) {
+
+			return dir.getName();
+		}
+
+		// return getGitHubRepository(file, dir.getParentFile());
 
 		final Workspace workspace = DomBinderUtils.xmlContentToJava(
 				getResourceAsStream("workspace.xml"), Workspace.class);

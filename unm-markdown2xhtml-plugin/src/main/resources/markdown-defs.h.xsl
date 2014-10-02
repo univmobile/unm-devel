@@ -41,9 +41,7 @@
 <xsl:template name="href">
 <xsl:param name="href" select="@href"/>
 <!--  
-<xsl:message>
-	<xsl:value-of select="$href"/>
-</xsl:message>
+<xsl:message>href: <xsl:value-of select="$href"/></xsl:message>
 -->
 <xsl:choose>
 <!-- Current GitHub Repository -->
@@ -70,12 +68,13 @@
 </xsl:when>
 <!-- Online GitHub Repository README.md file -->
 <xsl:when test="starts-with($href, 'https://github.com/univmobile/')
-		and contains($href, '/blob/develop/README.md')">
+		and (contains($href, '/blob/develop/README.md')
+		or contains($href, '/blob/develop//README.md'))">
 	<xsl:variable name="project">
 		<xsl:call-template name="extract-project">
 		<xsl:with-param name="text" select="substring-before(
 			substring-after($href, 'https://github.com/univmobile/'),
-				'/blob/develop/README.md')"/>
+				'/blob/develop/')"/>
 		</xsl:call-template>
 	</xsl:variable>
 	<xsl:value-of select="concat('../../', $project,
