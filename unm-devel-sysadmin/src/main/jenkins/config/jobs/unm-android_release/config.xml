@@ -8,7 +8,7 @@
     <configVersion>2</configVersion>
     <userRemoteConfigs>
       <hudson.plugins.git.UserRemoteConfig>
-        <url>https://github.com/univmobile/unm-backend.git</url>
+        <url>https://github.com/univmobile/unm-android.git</url>
       </hudson.plugins.git.UserRemoteConfig>
     </userRemoteConfigs>
     <branches>
@@ -42,7 +42,7 @@
   <concurrentBuild>false</concurrentBuild>
   <rootModule>
     <groupId>fr.univmobile</groupId>
-    <artifactId>unm-backend</artifactId>
+    <artifactId>unm-android</artifactId>
   </rootModule>
   <goals>-U clean help:effective-pom pre-site site:jar deploy -N</goals>
   <aggregatorStyleBuild>true</aggregatorStyleBuild>

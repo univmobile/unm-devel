@@ -35,7 +35,7 @@
             scm:git:https://github.com/univmobile/unm-devel.git
         </developerConnection>
 		<url>
-            https://github.com/univmobile/unm-devel/tree/devel/unm-webui-devel
+            https://github.com/univmobile/unm-devel/tree/master/unm-webui-devel
         </url>
 	</scm>
 	<licenses>

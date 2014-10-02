@@ -34,7 +34,7 @@
     <artifactId>unm-markdown-util</artifactId>
   </rootModule>
   <rootPOM>unm-markdown-util/pom.xml</rootPOM>
-  <goals>-U clean help:effective-pom site:jar deploy</goals>
+  <goals>-U clean help:effective-pom pre-site site:jar deploy</goals>
   <aggregatorStyleBuild>true</aggregatorStyleBuild>
   <incrementalBuild>false</incrementalBuild>
   <ignoreUpstremChanges>true</ignoreUpstremChanges>

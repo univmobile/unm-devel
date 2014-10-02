@@ -640,6 +640,14 @@
 	</parent>
 </project>
 </mavenProject>
+<mavenProject id="unm-markdown2xhtml-plugin" gitRepository-ref="unm-devel">
+<project>
+	<description>
+		Plugin Maven qui produit de la documentation XHTML à partir des
+		fichiers Markdown, et les inclut dans les Maven Generated Sites/ 
+	</description>
+</project>
+</mavenProject>
 </mavenProjects>
 	
 </workspace>
