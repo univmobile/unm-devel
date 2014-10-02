@@ -26,14 +26,14 @@
   <disabled>false</disabled>
   <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
   <blockBuildWhenUpstreamBuilding>true</blockBuildWhenUpstreamBuilding>
-  <jdk>(Default)</jdk>
+  <jdk>Java 7</jdk>
   <triggers/>
   <concurrentBuild>false</concurrentBuild>
   <rootModule>
     <groupId>fr.univmobile</groupId>
     <artifactId>unm-devel</artifactId>
   </rootModule>
-  <goals>-U clean help:effective-pom pre-site site:site site:jar deploy site:deploy -N</goals>
+  <goals>-V -U clean help:effective-pom dependency:tree pre-site site:site site:jar deploy site:deploy -N -Dmaven.test.failure.ignore=false</goals>
   <aggregatorStyleBuild>true</aggregatorStyleBuild>
   <incrementalBuild>false</incrementalBuild>
   <ignoreUpstremChanges>true</ignoreUpstremChanges>

@@ -44,7 +44,7 @@
     <groupId>fr.univmobile</groupId>
     <artifactId>unm-mobileweb</artifactId>
   </rootModule>
-  <goals>-U clean help:effective-pom site:jar deploy -N</goals>
+  <goals>-V -U clean help:effective-pom dependency:tree pre-site site:jar deploy -N -Dmaven.test.failure.ignore=false</goals>
   <aggregatorStyleBuild>true</aggregatorStyleBuild>
   <incrementalBuild>false</incrementalBuild>
   <ignoreUpstremChanges>true</ignoreUpstremChanges>

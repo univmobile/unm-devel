@@ -46,7 +46,7 @@
     <artifactId>unm-devel-it</artifactId>
   </rootModule>
   <rootPOM>unm-devel-it/pom.xml</rootPOM>
-  <goals>-U clean help:effective-pom pre-site site:jar deploy -Dmaven.test.skip=true</goals>
+  <goals>-V -U clean help:effective-pom dependency:tree pre-site site:jar deploy -Dmaven.test.skip=true -Dmaven.test.failure.ignore=false</goals>
   <aggregatorStyleBuild>true</aggregatorStyleBuild>
   <incrementalBuild>false</incrementalBuild>
   <ignoreUpstremChanges>true</ignoreUpstremChanges>

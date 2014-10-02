@@ -18,7 +18,9 @@
     </branches>
     <doGenerateSubmoduleConfigurations>false</doGenerateSubmoduleConfigurations>
     <submoduleCfg class="list"/>
-    <extensions/>
+    <extensions>
+      <hudson.plugins.git.extensions.impl.CleanBeforeCheckout/>
+    </extensions>
   </scm>
   <assignedNode>master</assignedNode>
   <canRoam>false</canRoam>
@@ -31,10 +33,10 @@
   <customWorkspace>unm-markdown2xhtml-plugin</customWorkspace>
   <rootModule>
     <groupId>fr.univmobile</groupId>
-    <artifactId>unm-http</artifactId>
+    <artifactId>unm-markdown2xhtml-plugin</artifactId>
   </rootModule>
   <rootPOM>unm-markdown2xhtml-plugin/pom.xml</rootPOM>
-  <goals>-U clean help:effective-pom pre-site site:jar deploy</goals>
+  <goals>-V -U clean help:effective-pom dependency:tree pre-site site:jar deploy -Dmaven.test.failure.ignore=false</goals>
   <aggregatorStyleBuild>true</aggregatorStyleBuild>
   <incrementalBuild>false</incrementalBuild>
   <ignoreUpstremChanges>true</ignoreUpstremChanges>

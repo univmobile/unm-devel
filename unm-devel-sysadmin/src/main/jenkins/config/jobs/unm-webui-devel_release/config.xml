@@ -36,7 +36,7 @@
     <artifactId>unm-webui-devel</artifactId>
   </rootModule>
   <rootPOM>unm-webui-devel/pom.xml</rootPOM>
-  <goals>-U clean help:effective-pom pre-site site:jar deploy</goals>
+  <goals>-V -U clean help:effective-pom dependency:tree pre-site site:jar deploy -Dmaven.test.failure.ignore=false</goals>
   <aggregatorStyleBuild>true</aggregatorStyleBuild>
   <incrementalBuild>false</incrementalBuild>
   <ignoreUpstremChanges>true</ignoreUpstremChanges>

@@ -24,7 +24,9 @@
     </branches>
     <doGenerateSubmoduleConfigurations>false</doGenerateSubmoduleConfigurations>
     <submoduleCfg class="list"/>
-    <extensions/>
+    <extensions>
+      <hudson.plugins.git.extensions.impl.CleanBeforeCheckout/>
+    </extensions>
   </scm>
   <assignedNode>ks3haxm</assignedNode>
   <canRoam>false</canRoam>
@@ -40,7 +42,7 @@
     <artifactId>unm-backend-it</artifactId>
   </rootModule>
   <rootPOM>unm-backend-it/pom.xml</rootPOM>
-  <goals>-U  help:effective-pom clean install -Dtest=SimpleSeleniumTest</goals>
+  <goals>-V -U  help:effective-pom dependency:tree clean install -Dtest=SimpleSeleniumTest -Dmaven.test.failure.ignore=false</goals>
   <aggregatorStyleBuild>true</aggregatorStyleBuild>
   <incrementalBuild>false</incrementalBuild>
   <ignoreUpstremChanges>true</ignoreUpstremChanges>

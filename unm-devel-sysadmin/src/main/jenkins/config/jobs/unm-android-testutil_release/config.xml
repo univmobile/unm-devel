@@ -57,7 +57,7 @@
     <artifactId>unm-android-testutil</artifactId>
   </rootModule>
   <rootPOM>unm-android-testutil/pom.xml</rootPOM>
-  <goals>-U -V clean dependency:tree help:effective-pom pre-site site:jar deploy</goals>
+  <goals>-U -V clean help:effective-pom dependency:tree pre-site site:jar deploy -Dmaven.test.failure.ignore=false</goals>
   <mavenOpts>-Djava.awt.headless=true</mavenOpts>
   <aggregatorStyleBuild>true</aggregatorStyleBuild>
   <incrementalBuild>false</incrementalBuild>

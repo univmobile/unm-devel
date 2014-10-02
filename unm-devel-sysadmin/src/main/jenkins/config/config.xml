@@ -347,6 +347,7 @@ Tableau de bord d’intégration continue :&#xd;
         <string>Android-UnivMobile_gradle_localhost</string>
         <string>Android-UnivMobile_integration</string>
         <string>Android-UnivMobile_localhost</string>
+        <string>unm-android</string>
         <string>unm-android-it</string>
         <string>unm-android-testutil</string>
       </jobNames>
@@ -472,6 +473,7 @@ Tableau de bord d’intégration continue :&#xd;
       <properties class="hudson.model.View$PropertyList"/>
       <jobNames>
         <comparator class="hudson.util.CaseInsensitiveComparator" reference="../../../listView/jobNames/comparator"/>
+        <string>unm-mobileweb</string>
         <string>unm-mobileweb-app</string>
         <string>unm-mobileweb-app-local</string>
         <string>unm-mobileweb-app-local-it_ios6</string>
