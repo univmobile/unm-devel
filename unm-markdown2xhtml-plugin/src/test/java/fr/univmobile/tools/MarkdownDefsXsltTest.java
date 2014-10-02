@@ -22,12 +22,11 @@ public class MarkdownDefsXsltTest {
 				"../../unm-devel-sysadmin/1.2.3/index.html",
 				href("https://github.com/univmobile/unm-devel/tree/develop/unm-devel-sysadmin"));
 	}
-	
+
 	@Test
 	public void testGitHubRepository() throws Exception {
-		
-		assertEquals(
-				"https://github.com/univmobile/unm-ios",
+
+		assertEquals("https://github.com/univmobile/unm-ios",
 				href("https://github.com/univmobile/unm-ios"));
 	}
 
@@ -38,7 +37,6 @@ public class MarkdownDefsXsltTest {
 				"../../unm-backend-mock/1.2.3/index.html",
 				href("https://github.com/univmobile/unm-devel/blob/develop/unm-backend-mock/README.md"));
 	}
-
 
 	@Test
 	public void testSubProjectDevel() throws Exception {
@@ -55,7 +53,31 @@ public class MarkdownDefsXsltTest {
 				"../../unm-ios/1.2.3/Devel.html",
 				href("https://github.com/univmobile/unm-ios/blob/develop/Devel.md"));
 	}
-		
+
+	@Test
+	public void test_slash_slash_README() throws Exception {
+
+		assertEquals(
+				"../../unm-devel/1.2.3/index.html",
+				href("https://github.com/univmobile/unm-devel/blob/develop//README.md"));
+	}
+
+	@Test
+	public void test_slash_slash_Devel() throws Exception {
+
+		assertEquals(
+				"../../unm-devel/1.2.3/Devel.html",
+				href("https://github.com/univmobile/unm-devel/blob/develop//Devel.md"));
+	}
+
+	@Test
+	public void testREADME() throws Exception {
+
+		assertEquals(
+				"../../unm-devel/1.2.3/index.html",
+				href("https://github.com/univmobile/unm-devel/blob/develop/README.md"));
+	}
+
 	private static String href(final String href) throws Exception {
 
 		final TransformerFactory transformerFactory = TransformerFactory
@@ -68,8 +90,8 @@ public class MarkdownDefsXsltTest {
 		final String xml = "<href>" + href + "</href>";
 
 		transformer.setParameter("href", href);
-		
-		transformer.setParameter("projectVersion","1.2.3");
+
+		transformer.setParameter("projectVersion", "1.2.3");
 
 		final StringWriter sw = new StringWriter();
 
