@@ -36,10 +36,6 @@ Maven Generated Site: &lt;a&#xd;
   <blockBuildWhenUpstreamBuilding>true</blockBuildWhenUpstreamBuilding>
   <jdk>JDK 1.6.0_31</jdk>
   <triggers>
-    <hudson.triggers.SCMTrigger>
-      <spec>H/5 * * * *</spec>
-      <ignorePostCommitHooks>false</ignorePostCommitHooks>
-    </hudson.triggers.SCMTrigger>
     <jenkins.triggers.ReverseBuildTrigger>
       <spec></spec>
       <upstreamProjects>unm-parent</upstreamProjects>
@@ -50,6 +46,10 @@ Maven Generated Site: &lt;a&#xd;
         <completeBuild>true</completeBuild>
       </threshold>
     </jenkins.triggers.ReverseBuildTrigger>
+    <hudson.triggers.SCMTrigger>
+      <spec>H/5 * * * *</spec>
+      <ignorePostCommitHooks>false</ignorePostCommitHooks>
+    </hudson.triggers.SCMTrigger>
   </triggers>
   <concurrentBuild>false</concurrentBuild>
   <customWorkspace>unm-webapp-parent</customWorkspace>
@@ -58,7 +58,7 @@ Maven Generated Site: &lt;a&#xd;
     <artifactId>unm-webapp-parent</artifactId>
   </rootModule>
   <rootPOM>unm-webapp-parent/pom.xml</rootPOM>
-  <goals>-U clean deploy</goals>
+  <goals>-U clean pre-site deploy</goals>
   <aggregatorStyleBuild>true</aggregatorStyleBuild>
   <incrementalBuild>false</incrementalBuild>
   <ignoreUpstremChanges>false</ignoreUpstremChanges>

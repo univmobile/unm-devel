@@ -39,7 +39,7 @@
     <artifactId>unm-markdown-util</artifactId>
   </rootModule>
   <rootPOM>unm-markdown-util/pom.xml</rootPOM>
-  <goals>-U clean deploy</goals>
+  <goals>-U clean pre-site deploy</goals>
   <aggregatorStyleBuild>true</aggregatorStyleBuild>
   <incrementalBuild>false</incrementalBuild>
   <ignoreUpstremChanges>false</ignoreUpstremChanges>

@@ -48,7 +48,7 @@
     <artifactId>unm-backend-core-it</artifactId>
   </rootModule>
   <rootPOM>unm-backend-core-it/pom.xml</rootPOM>
-  <goals>-U clean deploy</goals>
+  <goals>-U clean pre-site deploy</goals>
   <aggregatorStyleBuild>true</aggregatorStyleBuild>
   <incrementalBuild>false</incrementalBuild>
   <ignoreUpstremChanges>false</ignoreUpstremChanges>

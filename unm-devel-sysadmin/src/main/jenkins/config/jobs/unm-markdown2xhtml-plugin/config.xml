@@ -49,7 +49,7 @@
     <artifactId>unm-markdown2xhtml-plugin</artifactId>
   </rootModule>
   <rootPOM>unm-markdown2xhtml-plugin/pom.xml</rootPOM>
-  <goals>-U clean deploy</goals>
+  <goals>-U clean pre-site deploy</goals>
   <aggregatorStyleBuild>true</aggregatorStyleBuild>
   <incrementalBuild>false</incrementalBuild>
   <ignoreUpstremChanges>false</ignoreUpstremChanges>

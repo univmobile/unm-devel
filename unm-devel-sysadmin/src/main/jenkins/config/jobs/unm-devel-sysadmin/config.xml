@@ -49,7 +49,7 @@
     <artifactId>unm-devel-sysadmin</artifactId>
   </rootModule>
   <rootPOM>unm-devel-sysadmin/pom.xml</rootPOM>
-  <goals>-U clean deploy</goals>
+  <goals>-U clean pre-site deploy</goals>
   <aggregatorStyleBuild>true</aggregatorStyleBuild>
   <incrementalBuild>false</incrementalBuild>
   <ignoreUpstremChanges>false</ignoreUpstremChanges>
