@@ -446,6 +446,7 @@ Tableau de bord d’intégration continue :&#xd;
       <jobNames>
         <comparator class="hudson.util.CaseInsensitiveComparator" reference="../../../listView/jobNames/comparator"/>
         <string>unm-devel-it</string>
+        <string>unm-integration</string>
         <string>unm-ios-ut-results</string>
         <string>unm-ios-ut-results_up_to_date</string>
         <string>unm-it-commons_ios6</string>
@@ -517,6 +518,7 @@ Tableau de bord d’intégration continue :&#xd;
         <string>unm-devel-sysadmin_release</string>
         <string>unm-devel_release</string>
         <string>unm-http_release</string>
+        <string>unm-integration_release</string>
         <string>unm-ios-it_ios6_release</string>
         <string>unm-ios-it_release</string>
         <string>unm-ios_release</string>
