@@ -48,7 +48,7 @@
     <groupId>fr.univmobile</groupId>
     <artifactId>unm-android</artifactId>
   </rootModule>
-  <goals>-U clean pre-site site:site site:deploy -N</goals>
+  <goals>-U clean pre-site site:site</goals>
   <aggregatorStyleBuild>true</aggregatorStyleBuild>
   <incrementalBuild>false</incrementalBuild>
   <ignoreUpstremChanges>false</ignoreUpstremChanges>
