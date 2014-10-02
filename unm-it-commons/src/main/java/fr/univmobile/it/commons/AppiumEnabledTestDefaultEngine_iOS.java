@@ -14,6 +14,7 @@ import java.net.URL;
 
 import javax.annotation.Nullable;
 
+import org.apache.commons.io.FileUtils;
 import org.junit.Before;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
@@ -99,6 +100,21 @@ final class AppiumEnabledTestDefaultEngine_iOS extends
 		if (!useSafari) {
 			capabilities.setCapability(APP, app.getAbsolutePath());
 		}
+
+		System.out.println("Setting capability: location services...");
+
+		capabilities.setCapability("useLocationServices", true); // doesn’t work
+		capabilities.setCapability("locationServicesEnabled", true); // sauceLabs
+
+		final File clients_plist_source = new File(
+				PropertiesUtils.getTestProperty("clients_plist_source"));
+		final File clients_plist_target = new File(
+				PropertiesUtils.getTestProperty("clients_plist_target"));
+		System.out.println("clients_plist_source: "
+				+ clients_plist_source.getCanonicalPath());
+		System.out.println("clients_plist_target: "
+				+ clients_plist_target.getCanonicalPath());
+		FileUtils.copyFile(clients_plist_source, clients_plist_target);
 
 		// System.out.println("DEBUG: new AppiumDriver()...");
 

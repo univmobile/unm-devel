@@ -25,7 +25,7 @@
   <disabled>false</disabled>
   <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
   <blockBuildWhenUpstreamBuilding>true</blockBuildWhenUpstreamBuilding>
-  <jdk>JDK 1.6.0_31</jdk>
+  <jdk>Java 7</jdk>
   <triggers/>
   <concurrentBuild>false</concurrentBuild>
   <customWorkspace>unm-devel-sysadmin</customWorkspace>
@@ -34,7 +34,7 @@
     <artifactId>unm-devel-sysadmin</artifactId>
   </rootModule>
   <rootPOM>unm-devel-sysadmin/pom.xml</rootPOM>
-  <goals>-U clean help:effective-pom site:jar deploy</goals>
+  <goals>-U clean help:effective-pom pre-site site:jar deploy</goals>
   <aggregatorStyleBuild>true</aggregatorStyleBuild>
   <incrementalBuild>false</incrementalBuild>
   <ignoreUpstremChanges>true</ignoreUpstremChanges>

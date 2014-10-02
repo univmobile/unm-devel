@@ -49,7 +49,7 @@
     <artifactId>unm-mobileweb-app-local-it</artifactId>
   </rootModule>
   <rootPOM>unm-mobileweb-app-local-it/pom.xml</rootPOM>
-  <goals>-U clean install</goals>
+  <goals>-U clean pre-site install</goals>
   <aggregatorStyleBuild>true</aggregatorStyleBuild>
   <incrementalBuild>false</incrementalBuild>
   <ignoreUpstremChanges>false</ignoreUpstremChanges>

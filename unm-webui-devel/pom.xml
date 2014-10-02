@@ -7,7 +7,7 @@
 	<parent>
 		<groupId>fr.univmobile</groupId>
 		<artifactId>unm-parent</artifactId>
-		<version>0.0.5</version>
+		<version>0.1.0-SNAPSHOT</version>
 		<relativePath />
 	</parent>
 	
@@ -35,7 +35,7 @@
             scm:git:https://github.com/univmobile/unm-devel.git
         </developerConnection>
 		<url>
-            https://github.com/univmobile/unm-devel/tree/devel/unm-webui-devel
+            https://github.com/univmobile/unm-devel/tree/master/unm-webui-devel
         </url>
 	</scm>
 	<licenses>

@@ -40,7 +40,7 @@
     <artifactId>unm-backend-it</artifactId>
   </rootModule>
   <rootPOM>unm-backend-it/pom.xml</rootPOM>
-  <goals>-U clean install -Dtest=SimpleSeleniumTest</goals>
+  <goals>-U clean pre-site install -Dtest=SimpleSeleniumTest</goals>
   <aggregatorStyleBuild>true</aggregatorStyleBuild>
   <incrementalBuild>false</incrementalBuild>
   <ignoreUpstremChanges>true</ignoreUpstremChanges>

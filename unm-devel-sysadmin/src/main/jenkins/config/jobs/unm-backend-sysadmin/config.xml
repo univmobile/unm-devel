@@ -48,7 +48,7 @@
     <artifactId>unm-backend-sysadmin</artifactId>
   </rootModule>
   <rootPOM>unm-backend-sysadmin/pom.xml</rootPOM>
-  <goals>-U clean deploy</goals>
+  <goals>-U clean pre-site deploy</goals>
   <aggregatorStyleBuild>true</aggregatorStyleBuild>
   <incrementalBuild>false</incrementalBuild>
   <ignoreUpstremChanges>false</ignoreUpstremChanges>

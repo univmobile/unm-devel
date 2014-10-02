@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
-<xsl:import href="../../main/xslt/markdown-defs.h.xsl"/>
+<xsl:import href="../../main/resources/markdown-defs.h.xsl"/>
 <xsl:output method="text" encoding="UTF-8"/>
 
 <xsl:param name="href"/>

@@ -39,7 +39,7 @@
   <triggers>
     <jenkins.triggers.ReverseBuildTrigger>
       <spec></spec>
-      <upstreamProjects>unm-backend-it-parent,unm-android-testutil,Android-UnivMobile,Android-UnivMobile_gradle,Android-UnivMobile_gradle_localhost,Android-UnivMobile_localhost,</upstreamProjects>
+      <upstreamProjects>unm-backend-it-parent,unm-android-testutil,Android-UnivMobile,Android-UnivMobile_gradle,Android-UnivMobile_gradle_localhost,Android-UnivMobile_localhost,unm-testutil</upstreamProjects>
       <threshold>
         <name>SUCCESS</name>
         <ordinal>0</ordinal>
@@ -59,7 +59,7 @@
     <artifactId>unm-android-it</artifactId>
   </rootModule>
   <rootPOM>unm-android-it/pom.xml</rootPOM>
-  <goals>-U clean install</goals>
+  <goals>-U clean pre-site install</goals>
   <mavenOpts>-Djava.awt.headless=true</mavenOpts>
   <aggregatorStyleBuild>true</aggregatorStyleBuild>
   <incrementalBuild>false</incrementalBuild>

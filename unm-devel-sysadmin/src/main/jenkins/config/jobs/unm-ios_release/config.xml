@@ -60,7 +60,7 @@ Tableau de bord d’intégration continue :&#xd;
     <groupId>fr.univmobile</groupId>
     <artifactId>unm-ios</artifactId>
   </rootModule>
-  <goals>-U clean help:effective-pom site site:jar site:deploy install</goals>
+  <goals>-U clean help:effective-pom deploy pre-site site site:jar site:deploy -N</goals>
   <aggregatorStyleBuild>true</aggregatorStyleBuild>
   <incrementalBuild>false</incrementalBuild>
   <ignoreUpstremChanges>true</ignoreUpstremChanges>

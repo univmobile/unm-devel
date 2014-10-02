@@ -36,10 +36,6 @@ Maven Generated Site: &lt;a&#xd;
   <blockBuildWhenUpstreamBuilding>true</blockBuildWhenUpstreamBuilding>
   <jdk>MacOS_iOS6</jdk>
   <triggers>
-    <hudson.triggers.SCMTrigger>
-      <spec>H/5 * * * *</spec>
-      <ignorePostCommitHooks>false</ignorePostCommitHooks>
-    </hudson.triggers.SCMTrigger>
     <jenkins.triggers.ReverseBuildTrigger>
       <spec></spec>
       <upstreamProjects>unm-it-parent</upstreamProjects>
@@ -50,6 +46,10 @@ Maven Generated Site: &lt;a&#xd;
         <completeBuild>true</completeBuild>
       </threshold>
     </jenkins.triggers.ReverseBuildTrigger>
+    <hudson.triggers.SCMTrigger>
+      <spec>H/5 * * * *</spec>
+      <ignorePostCommitHooks>false</ignorePostCommitHooks>
+    </hudson.triggers.SCMTrigger>
   </triggers>
   <concurrentBuild>false</concurrentBuild>
   <customWorkspace>unm-it-commons</customWorkspace>
@@ -58,7 +58,7 @@ Maven Generated Site: &lt;a&#xd;
     <artifactId>unm-it-commons</artifactId>
   </rootModule>
   <rootPOM>unm-it-commons/pom.xml</rootPOM>
-  <goals>-U clean test</goals>
+  <goals>-U clean pre-site test</goals>
   <aggregatorStyleBuild>true</aggregatorStyleBuild>
   <incrementalBuild>false</incrementalBuild>
   <ignoreUpstremChanges>false</ignoreUpstremChanges>

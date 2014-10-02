@@ -1,12 +1,13 @@
-<?xml version="1.0" encoding="UTF-8"?><maven2-moduleset plugin="maven-plugin@2.5">
+<?xml version='1.0' encoding='UTF-8'?>
+<maven2-moduleset plugin="maven-plugin@2.5">
   <actions/>
-  <description>GitHub: &lt;a href="https://github.com/univmobile/unm-devel/tree/develop/unm-parent"&gt;https://github.com/univmobile/unm-devel/tree/develop/unm-parent&#13;
-&lt;/a&gt;&#13;
-&lt;p&gt;&#13;
-Maven Generated Site: &lt;a&#13;
-  href="http://univmobile.vswip.com/nexus/content/sites/pub/unm-parent/"&gt;http://univmobile.vswip.com/nexus/content/sites/pub/unm-parent/&lt;/a&gt;&#13;
-&lt;a&#13;
-  href="http://univmobile.vswip.com/nexus/content/sites/pub/unm-parent/0.0.1-SNAPSHOT/"&gt;0.0.1-SNAPSHOT/&lt;/a&gt;&#13;
+  <description>GitHub: &lt;a href=&quot;https://github.com/univmobile/unm-devel/tree/develop/unm-parent&quot;&gt;https://github.com/univmobile/unm-devel/tree/develop/unm-parent&#xd;
+&lt;/a&gt;&#xd;
+&lt;p&gt;&#xd;
+Maven Generated Site: &lt;a&#xd;
+  href=&quot;http://univmobile.vswip.com/nexus/content/sites/pub/unm-parent/&quot;&gt;http://univmobile.vswip.com/nexus/content/sites/pub/unm-parent/&lt;/a&gt;&#xd;
+&lt;a&#xd;
+  href=&quot;http://univmobile.vswip.com/nexus/content/sites/pub/unm-parent/0.0.1-SNAPSHOT/&quot;&gt;0.0.1-SNAPSHOT/&lt;/a&gt;&#xd;
 </description>
   <keepDependencies>false</keepDependencies>
   <properties/>
@@ -33,11 +34,21 @@ Maven Generated Site: &lt;a&#13;
   <blockBuildWhenUpstreamBuilding>true</blockBuildWhenUpstreamBuilding>
   <jdk>JDK 1.6.0_31</jdk>
   <triggers>
+    <jenkins.triggers.ReverseBuildTrigger>
+      <spec></spec>
+      <upstreamProjects></upstreamProjects>
+      <threshold>
+        <name>SUCCESS</name>
+        <ordinal>0</ordinal>
+        <color>BLUE</color>
+        <completeBuild>true</completeBuild>
+      </threshold>
+    </jenkins.triggers.ReverseBuildTrigger>
     <hudson.triggers.SCMTrigger>
       <spec>H/5 * * * *</spec>
       <ignorePostCommitHooks>false</ignorePostCommitHooks>
     </hudson.triggers.SCMTrigger>
-  <jenkins.triggers.ReverseBuildTrigger><spec/><upstreamProjects/><threshold><name>SUCCESS</name><ordinal>0</ordinal><color>BLUE</color><completeBuild>true</completeBuild></threshold></jenkins.triggers.ReverseBuildTrigger></triggers>
+  </triggers>
   <concurrentBuild>false</concurrentBuild>
   <customWorkspace>unm-parent</customWorkspace>
   <rootModule>
@@ -45,7 +56,7 @@ Maven Generated Site: &lt;a&#13;
     <artifactId>unm-parent</artifactId>
   </rootModule>
   <rootPOM>unm-parent/pom.xml</rootPOM>
-  <goals>-U clean deploy</goals>
+  <goals>-U clean pre-site deploy</goals>
   <aggregatorStyleBuild>true</aggregatorStyleBuild>
   <incrementalBuild>false</incrementalBuild>
   <ignoreUpstremChanges>false</ignoreUpstremChanges>

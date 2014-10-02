@@ -1,4 +1,4 @@
-package fr.univmobile.devel;
+package fr.univmobile.tools;
 
 import static org.junit.Assert.assertEquals;
 

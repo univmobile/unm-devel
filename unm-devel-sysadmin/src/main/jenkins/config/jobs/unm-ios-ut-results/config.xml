@@ -34,10 +34,6 @@ Tableau de bord d’intégration continue :&#xd;
   <blockBuildWhenUpstreamBuilding>true</blockBuildWhenUpstreamBuilding>
   <jdk>JDK 1.6.0_31</jdk>
   <triggers>
-    <hudson.triggers.SCMTrigger>
-      <spec>H/5 * * * *</spec>
-      <ignorePostCommitHooks>false</ignorePostCommitHooks>
-    </hudson.triggers.SCMTrigger>
     <jenkins.triggers.ReverseBuildTrigger>
       <spec></spec>
       <upstreamProjects>unm-it-parent,unm-it-commons</upstreamProjects>
@@ -48,6 +44,10 @@ Tableau de bord d’intégration continue :&#xd;
         <completeBuild>true</completeBuild>
       </threshold>
     </jenkins.triggers.ReverseBuildTrigger>
+    <hudson.triggers.SCMTrigger>
+      <spec>H/5 * * * *</spec>
+      <ignorePostCommitHooks>false</ignorePostCommitHooks>
+    </hudson.triggers.SCMTrigger>
   </triggers>
   <concurrentBuild>false</concurrentBuild>
   <customWorkspace>unm-ios-ut-results</customWorkspace>
@@ -56,7 +56,7 @@ Tableau de bord d’intégration continue :&#xd;
     <artifactId>unm-ios-ut-results</artifactId>
   </rootModule>
   <rootPOM>unm-ios-ut-results/pom.xml</rootPOM>
-  <goals>-U clean deploy -DtagCommitAfterLaunch=true</goals>
+  <goals>-U clean pre-site deploy -DtagCommitAfterLaunch=true</goals>
   <aggregatorStyleBuild>true</aggregatorStyleBuild>
   <incrementalBuild>false</incrementalBuild>
   <ignoreUpstremChanges>false</ignoreUpstremChanges>

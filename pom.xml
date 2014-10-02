@@ -8,12 +8,13 @@
 	<parent>
 		<groupId>fr.univmobile</groupId>
 		<artifactId>unm-parent</artifactId>
-		<version>0.0.5</version>
+		<version>0.1.0-SNAPSHOT</version>
 		<relativePath>unm-parent</relativePath>
 	</parent>
 	
 	<modules>
 		<module>unm-markdown-util</module>
+		<module>unm-markdown2xhtml-plugin</module>
 		<module>unm-parent</module>
 		<module>unm-commons</module>
 		<module>unm-testutil</module>
@@ -24,6 +25,7 @@
 		<module>unm-webapp-parent</module>
 		<module>unm-backend-mock</module>
 		<module>unm-webapp-commons</module>
+		<module>unm-http</module>
 		<module>unm-webui-devel</module>
 	</modules>
 

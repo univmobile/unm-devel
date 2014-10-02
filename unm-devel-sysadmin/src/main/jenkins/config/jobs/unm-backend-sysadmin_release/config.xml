@@ -46,7 +46,7 @@
     <artifactId>unm-backend-sysadmin</artifactId>
   </rootModule>
   <rootPOM>unm-backend-sysadmin/pom.xml</rootPOM>
-  <goals>-U -V clean help:effective-pom dependency:tree site:jar deploy</goals>
+  <goals>-U -V clean help:effective-pom dependency:tree pre-site site:jar deploy</goals>
   <aggregatorStyleBuild>true</aggregatorStyleBuild>
   <incrementalBuild>false</incrementalBuild>
   <ignoreUpstremChanges>true</ignoreUpstremChanges>

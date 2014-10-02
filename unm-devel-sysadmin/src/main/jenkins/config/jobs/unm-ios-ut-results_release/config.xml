@@ -54,7 +54,7 @@ Tableau de bord d’intégration continue :&#xd;
     <artifactId>unm-ios-ut-results</artifactId>
   </rootModule>
   <rootPOM>unm-ios-ut-results/pom.xml</rootPOM>
-  <goals>-U clean site:jar deploy -Dmaven.test.skip=true</goals>
+  <goals>-U clean pre-site site:jar deploy -Dmaven.test.skip=true</goals>
   <aggregatorStyleBuild>true</aggregatorStyleBuild>
   <incrementalBuild>false</incrementalBuild>
   <ignoreUpstremChanges>true</ignoreUpstremChanges>

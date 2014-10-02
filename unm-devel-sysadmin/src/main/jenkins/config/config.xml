@@ -372,7 +372,6 @@ Tableau de bord d’intégration continue :&#xd;
         <comparator class="hudson.util.CaseInsensitiveComparator" reference="../../../listView/jobNames/comparator"/>
         <string>unm-backend-mock</string>
         <string>unm-commons</string>
-        <string>unm-commons_release</string>
         <string>unm-devel</string>
         <string>unm-devel-sysadmin</string>
         <string>unm-devel-xmldoclet</string>
@@ -382,6 +381,7 @@ Tableau de bord d’intégration continue :&#xd;
         <string>unm-it-commons_ios7</string>
         <string>unm-it-parent</string>
         <string>unm-markdown-util</string>
+        <string>unm-markdown2xhtml-plugin</string>
         <string>unm-parent</string>
         <string>unm-testutil</string>
         <string>unm-webapp-commons</string>
@@ -504,6 +504,7 @@ Tableau de bord d’intégration continue :&#xd;
         <string>Android-UnivMobile_integration_release</string>
         <string>Android-UnivMobile_localhost_release</string>
         <string>unm-android-testutil_release</string>
+        <string>unm-android_release</string>
         <string>unm-backend-core-it_release</string>
         <string>unm-backend-it-data_release</string>
         <string>unm-backend-it-parent_release</string>
@@ -519,10 +520,12 @@ Tableau de bord d’intégration continue :&#xd;
         <string>unm-ios_release</string>
         <string>unm-ios_xcode_integration_release</string>
         <string>unm-markdown-util_release</string>
+        <string>unm-markdown2xhtml-plugin_release</string>
         <string>unm-mobileweb-app-local-it_ios6_release</string>
         <string>unm-mobileweb-app-local-it_ios7_release</string>
         <string>unm-mobileweb-app-local_release</string>
         <string>unm-mobileweb-core_release</string>
+        <string>unm-mobileweb_release</string>
         <string>unm-webui-devel_release</string>
       </jobNames>
       <jobFilters/>
@@ -653,6 +656,7 @@ Flux JSON en test :&#xd;
         <comparator class="hudson.util.CaseInsensitiveComparator"/>
         <string>Android-UnivMobile_integration</string>
         <string>Android-UnivMobile_localhost</string>
+        <string>unm-android</string>
         <string>unm-android-testutil</string>
         <string>unm-backend-core-it</string>
         <string>unm-backend-it-data</string>
@@ -663,6 +667,7 @@ Flux JSON en test :&#xd;
         <string>unm-devel-sysadmin</string>
         <string>unm-http</string>
         <string>unm-markdown-util</string>
+        <string>unm-mobileweb</string>
         <string>unm-mobileweb-core</string>
         <string>unm-webui-devel</string>
       </jobNames>

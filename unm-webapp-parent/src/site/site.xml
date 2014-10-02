@@ -6,7 +6,7 @@
 		<menu name="Workspace">
 			<item href="http://univmobile.vswip.com/job/unm-webapp-parent"
 				name="Job Jenkins" />
-			<item href="../../unm-devel/0.0.5-SNAPSHOT/index.html"
+			<item href="../../unm-devel/0.1.0-SNAPSHOT/index.html"
 				name="unm-devel" />
 		</menu>
 

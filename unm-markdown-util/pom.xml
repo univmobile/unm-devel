@@ -3,8 +3,8 @@
 	<modelVersion>4.0.0</modelVersion>
 
 		<groupId>fr.univmobile</groupId>
-	<artifactId>unm-markdown-util</artifactId>
-		<version>0.0.5</version>
+		<artifactId>unm-markdown-util</artifactId>
+		<version>0.1.0-SNAPSHOT</version>
 	
 	<dependencies>
 		<dependency>

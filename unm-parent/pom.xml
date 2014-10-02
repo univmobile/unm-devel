@@ -4,7 +4,7 @@
 
 	<groupId>fr.univmobile</groupId>
 	<artifactId>unm-parent</artifactId>
-	<version>0.0.5</version>
+	<version>0.1.0-SNAPSHOT</version>
 	<packaging>pom</packaging>
 
 	<dependencies>
@@ -119,83 +119,83 @@
 			<dependency>
 				<groupId>fr.univmobile</groupId>
 				<artifactId>unm-markdown-util</artifactId>
-				<version>${project.version}</version>
+				<version>${unm-version}</version>
 			</dependency>
 			<dependency>
 				<groupId>fr.univmobile</groupId>
 				<artifactId>unm-backend-mock</artifactId>
-				<version>${project.version}</version>
+				<version>${unm-version}</version>
 				<type>war</type>
 			</dependency>
 			<dependency>
 				<groupId>fr.univmobile</groupId>
 				<artifactId>unm-it-commons</artifactId>
-				<version>${project.version}</version>
+				<version>${unm-version}</version>
 			</dependency>
 			<dependency>
 				<groupId>fr.univmobile</groupId>
 				<artifactId>unm-webapp-commons</artifactId>
-				<version>${project.version}</version>
+				<version>${unm-version}</version>
 			</dependency>
 			<dependency>
 				<groupId>fr.univmobile</groupId>
 				<artifactId>unm-http</artifactId>
-				<version>${project.version}</version>
+				<version>${unm-version}</version>
 			</dependency>
 			<dependency>
 				<groupId>fr.univmobile</groupId>
 				<artifactId>unm-devel-xmldoclet</artifactId>
-				<version>${project.version}</version>
+				<version>${unm-version}</version>
 			</dependency>
 			<dependency>
 				<groupId>fr.univmobile</groupId>
 				<artifactId>unm-backend-core</artifactId>
-				<version>${project.version}</version>
+				<version>${unm-version}</version>
 			</dependency>
 			<dependency>
 				<groupId>fr.univmobile</groupId>
 				<artifactId>unm-backend-client-api</artifactId>
-				<version>${project.version}</version>
+				<version>${unm-version}</version>
 			</dependency>
 			<dependency>
 				<groupId>fr.univmobile</groupId>
 				<artifactId>unm-backend-client-jsonapi</artifactId>
-				<version>${project.version}</version>
+				<version>${unm-version}</version>
 			</dependency>
 			<dependency>
 				<groupId>fr.univmobile</groupId>
 				<artifactId>unm-backend-client-local</artifactId>
-				<version>${project.version}</version>
+				<version>${unm-version}</version>
 			</dependency>
 			<dependency>
 				<groupId>fr.univmobile</groupId>
 				<artifactId>unm-backend-client-jsonlocal</artifactId>
-				<version>${project.version}</version>
+				<version>${unm-version}</version>
 			</dependency>
 			<dependency>
 				<groupId>fr.univmobile</groupId>
 				<artifactId>unm-backend-client-json</artifactId>
-				<version>${project.version}</version>
+				<version>${unm-version}</version>
 			</dependency>
 			<dependency>
 				<groupId>fr.univmobile</groupId>
 				<artifactId>unm-commons</artifactId>
-				<version>${project.version}</version>
+				<version>${unm-version}</version>
 			</dependency>
 			<dependency>
 				<groupId>fr.univmobile</groupId>
 				<artifactId>unm-ios-ut-results</artifactId>
-				<version>${project.version}</version>
+				<version>${unm-version}</version>
 			</dependency>
 			<dependency>
 				<groupId>fr.univmobile</groupId>
 				<artifactId>unm-testutil</artifactId>
-				<version>${project.version}</version>
+				<version>${unm-version}</version>
 			</dependency>
 			<dependency>
 				<groupId>fr.univmobile</groupId>
 				<artifactId>unm-commons-datasource</artifactId>
-				<version>${project.version}</version>
+				<version>${unm-version}</version>
 			</dependency>
 			<dependency>
 				<groupId>org.apache.ant</groupId>
@@ -237,6 +237,20 @@
 
 	<build>
 		<plugins>
+			<plugin>
+				<groupId>fr.univmobile</groupId>
+				<artifactId>unm-markdown2xhtml-plugin</artifactId>
+				<version>${unm-version}</version>
+				<executions>
+					<execution>
+						<id>generate</id>
+						<phase>pre-site</phase>
+						<goals>
+							<goal>generate</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-source-plugin</artifactId>
@@ -541,8 +555,37 @@
 			</snapshots>
 		</repository>
 	</repositories>
+	<pluginRepositories>
+		<pluginRepository>
+			<id>vswip</id>
+			<name>Viewniverse Studio WIP Repository for releases</name>
+			<url>
+                http://univmobile.vswip.com/nexus/content/repositories/releases
+            </url>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</pluginRepository>
+		<pluginRepository>
+			<id>vswip-snapshots</id>
+			<name>Viewniverse Studio WIP Repository for snapshots</name>
+			<url>
+                http://univmobile.vswip.com/nexus/content/repositories/snapshots
+            </url>
+			<releases>
+				<enabled>false</enabled>
+			</releases>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+		</pluginRepository>
+	</pluginRepositories>
 
 	<properties>
+		<unm-version>0.1.0-SNAPSHOT</unm-version>
         <!--            
             relativizeDecorationLinks=false:
             Used by maven-site-plugin to keep external links declared

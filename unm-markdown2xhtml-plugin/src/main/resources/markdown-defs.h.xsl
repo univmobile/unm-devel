@@ -12,12 +12,12 @@
 </xsl:template>
 
 <xsl:variable name="WORKSPACE"
-	select="document('../workspace/workspace.xml')/workspace"/>
+	select="document('workspace.xml')/workspace"/>
 	
 <xsl:variable name="PROJECTS" select="$WORKSPACE/*/gitRepository/@name
 	| $WORKSPACE/*/mavenProject/@id"/>
 
-<xsl:variable name="OTHER_JOBS" select="document('markdown.apt.xsl')
+<xsl:variable name="OTHER_JOBS" select="document('markdown-defs.h.xsl')
 	/xsl:stylesheet/xsl:variable[@name = 'OTHER_JOBS']/xsl:comment/job">
 <xsl:comment>
 	<job>unm-ios-it_ios6</job>

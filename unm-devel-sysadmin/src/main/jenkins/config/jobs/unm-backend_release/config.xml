@@ -44,7 +44,7 @@
     <groupId>fr.univmobile</groupId>
     <artifactId>unm-backend</artifactId>
   </rootModule>
-  <goals>-U clean help:effective-pom site:jar deploy</goals>
+  <goals>-U clean help:effective-pom pre-site site:jar deploy -N</goals>
   <aggregatorStyleBuild>true</aggregatorStyleBuild>
   <incrementalBuild>false</incrementalBuild>
   <ignoreUpstremChanges>true</ignoreUpstremChanges>
