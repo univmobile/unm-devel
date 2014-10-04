@@ -46,7 +46,7 @@
     <artifactId>unm-backend-client</artifactId>
   </rootModule>
   <rootPOM>unm-backend-client/pom.xml</rootPOM>
-  <goals>-V -U clean help:effective-pom dependency:tree pre-site site:jar deploy -Dmaven.test.failure.ignore=false</goals>
+  <goals>-V -U clean help:effective-pom dependency:tree pre-site site post-site site:jar deploy -Dmaven.test.failure.ignore=false</goals>
   <aggregatorStyleBuild>true</aggregatorStyleBuild>
   <incrementalBuild>false</incrementalBuild>
   <ignoreUpstremChanges>true</ignoreUpstremChanges>
@@ -63,7 +63,15 @@
   <reporters/>
   <publishers/>
   <buildWrappers/>
-  <prebuilders/>
+  <prebuilders>
+    <hudson.tasks.Shell>
+      <command># The POM file must be hacked, because as is, it doesn’t generate the Maven site for unm-backend-client-json
+sed -i &apos;s/&lt;directory&gt;src\/main\/javadoc&lt;\/directory&gt;/&lt;directory&gt;${basedir}\/src\/main\/javadoc&lt;\/directory&gt;/&apos; unm-backend-client/unm-backend-client-json/pom.xml 
+sed -i &apos;s/&lt;targetPath&gt;\.\.\/javadoc&lt;\/targetPath&gt;/&lt;targetPath&gt;${project.build.directory}\/javadoc&lt;\/targetPath&gt;/&apos; unm-backend-client/unm-backend-client-json/pom.xml
+sed -i &apos;s/&lt;overview&gt;target\/javadoc\/overview\.html&lt;\/overview&gt;/&lt;overview&gt;${project.build.directory}\/javadoc\/overview.html&lt;\/overview&gt;/&apos; unm-backend-client/unm-backend-client-json/pom.xml
+sed -i &apos;s/&lt;phase&gt;process-sources&lt;\/phase&gt;/&lt;phase&gt;post-site&lt;\/phase&gt;/&apos; unm-backend-client/unm-backend-client-json/pom.xml</command>
+    </hudson.tasks.Shell>
+  </prebuilders>
   <postbuilders/>
   <runPostStepsIfResult>
     <name>FAILURE</name>

@@ -60,7 +60,7 @@ Tableau de bord d’intégration continue :&#xd;
     <groupId>fr.univmobile</groupId>
     <artifactId>unm-ios</artifactId>
   </rootModule>
-  <goals>-V -U clean help:effective-pom dependency:tree deploy pre-site site site:jar site:deploy -N -Dmaven.test.failure.ignore=false</goals>
+  <goals>-V -U help:effective-pom dependency:tree pre-site site site:jar deploy -Dmaven.test.skip=true -Dmaven.test.failure.ignore=false -N</goals>
   <aggregatorStyleBuild>true</aggregatorStyleBuild>
   <incrementalBuild>false</incrementalBuild>
   <ignoreUpstremChanges>true</ignoreUpstremChanges>
@@ -77,7 +77,12 @@ Tableau de bord d’intégration continue :&#xd;
   <reporters/>
   <publishers/>
   <buildWrappers/>
-  <prebuilders/>
+  <prebuilders>
+    <hudson.tasks.Shell>
+      <command>mkdir -p target/doxygen/
+cp src/doxygen/doxygen.config target/doxygen/</command>
+    </hudson.tasks.Shell>
+  </prebuilders>
   <postbuilders/>
   <runPostStepsIfResult>
     <name>FAILURE</name>
