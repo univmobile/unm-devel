@@ -99,7 +99,18 @@ public abstract class EnvironmentUtils {
 			commandLine.addArgument(argument);
 		}
 
-		executor.execute(commandLine);
+		ExecuteException executeException = null;
+
+		try {
+
+			executor.execute(commandLine);
+
+		} catch (final ExecuteException e) {
+
+			System.err.println(e);
+			
+			executeException = e;
+		}
 
 		final String error = err.toString(UTF_8);
 
@@ -121,6 +132,11 @@ public abstract class EnvironmentUtils {
 			System.out.println("Output:");
 
 			System.out.println(output);
+		}
+
+		if (executeException != null) {
+
+			throw executeException;
 		}
 
 		return output;
