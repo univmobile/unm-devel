@@ -9,12 +9,11 @@ import static org.apache.commons.lang3.StringUtils.substringBetween;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.List;
 
-import org.apache.commons.exec.CommandLine;
-import org.apache.commons.exec.DefaultExecutor;
 import org.apache.commons.exec.ExecuteException;
-import org.apache.commons.exec.Executor;
-import org.apache.commons.exec.PumpStreamHandler;
 
 public abstract class EnvironmentUtils {
 
@@ -73,9 +72,11 @@ public abstract class EnvironmentUtils {
 	}
 
 	public static String exec(final File executable, final String... arguments)
-			throws ExecuteException, IOException {
+			throws IOException {
 
-		System.out.print("Executing: " + executable.getCanonicalPath());
+		final String executablePath = executable.getPath();
+
+		System.out.print("Executing: " + executablePath);
 
 		for (final String argument : arguments) {
 
@@ -84,35 +85,78 @@ public abstract class EnvironmentUtils {
 
 		System.out.println("...");
 
-		final Executor executor = new DefaultExecutor();
+		final ByteArrayOutputStream bos_out = new ByteArrayOutputStream();
 
-		final ByteArrayOutputStream out = new ByteArrayOutputStream();
+		final ByteArrayOutputStream bos_err = new ByteArrayOutputStream();
 
-		final ByteArrayOutputStream err = new ByteArrayOutputStream();
+		final List<String> command = new ArrayList<String>();
 
-		executor.setStreamHandler(new PumpStreamHandler(out, err));
-
-		final CommandLine commandLine = new CommandLine(executable);
+		command.add(executablePath);
 
 		for (final String argument : arguments) {
 
-			commandLine.addArgument(argument);
+			command.add(argument);
 		}
 
-		ExecuteException executeException = null;
+		final Process process = new ProcessBuilder(command).start();
+
+		final InputStream err = process.getErrorStream();
+		final InputStream out = process.getInputStream();
+
+		while (true) {
+
+			final int b1 = out.read();
+			final int b2 = err.read();
+
+			if (b1 != -1) {
+				bos_out.write(b1);
+			}
+
+			if (b2 != -1) {
+				bos_err.write(b2);
+			}
+
+			if (b1 == -1 && b2 == -1) {
+				break;
+			}
+		}
+
+		final int result;
 
 		try {
 
-			executor.execute(commandLine);
+			result = process.waitFor();
 
-		} catch (final ExecuteException e) {
+		} catch (final InterruptedException e) {
 
-			System.err.println(e);
-			
-			executeException = e;
+			throw new RuntimeException(e);
 		}
 
-		final String error = err.toString(UTF_8);
+		/*
+		 * final Executor executor = new DefaultExecutor();
+		 * 
+		 * executor.setStreamHandler(new PumpStreamHandler(out, err));
+		 * 
+		 * final CommandLine commandLine = new CommandLine(executable);
+		 * 
+		 * for (final String argument : arguments) {
+		 * 
+		 * commandLine.addArgument(argument); }
+		 * 
+		 * ExecuteException executeException = null;
+		 * 
+		 * try {
+		 * 
+		 * executor.execute(commandLine);
+		 * 
+		 * } catch (final ExecuteException e) {
+		 * 
+		 * System.err.println(e);
+		 * 
+		 * executeException = e; }
+		 */
+
+		final String error = bos_err.toString(UTF_8);
 
 		if (!isBlank(error)) {
 
@@ -121,7 +165,7 @@ public abstract class EnvironmentUtils {
 			System.err.println(error);
 		}
 
-		final String output = out.toString(UTF_8);
+		final String output = bos_out.toString(UTF_8);
 
 		if (isBlank(output)) {
 
@@ -134,9 +178,9 @@ public abstract class EnvironmentUtils {
 			System.out.println(output);
 		}
 
-		if (executeException != null) {
+		if (result != 0) {
 
-			throw executeException;
+			throw new ExecuteException(split(error)[0], result);
 		}
 
 		return output;
