@@ -101,7 +101,16 @@ public abstract class EnvironmentUtils {
 
 		final String output = bos.toString(UTF_8);
 
-		System.out.println("Output: " + output);
+		if (isBlank(output)) {
+
+			System.out.println("(No output.)");
+
+		} else {
+
+			System.out.println("Output:");
+
+			System.out.println(output);
+		}
 
 		return output;
 	}

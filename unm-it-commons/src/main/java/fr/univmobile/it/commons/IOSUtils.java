@@ -1,6 +1,7 @@
 package fr.univmobile.it.commons;
 
 import static com.google.common.base.Preconditions.checkNotNull;
+import static fr.univmobile.it.commons.EnvironmentUtils.exec;
 import static org.apache.commons.lang3.CharEncoding.UTF_8;
 import static org.apache.commons.lang3.StringUtils.split;
 import static org.apache.commons.lang3.StringUtils.substringAfter;
@@ -131,11 +132,11 @@ abstract class IOSUtils {
 
 		// 6. UPDATE "UNMJsonBaseURL"
 
-		EnvironmentUtils
-				.exec(new File("/usr/libexec/Plistbuddy"),
-						"-c",
-						"Set UNMJsonBaseURL 'https://univmobile-dev.univ-paris1.fr/json/'",
-						appPath + "/Info.plist");
+		exec( //
+		new File("/usr/libexec/Plistbuddy"),
+				"-c",
+				"Set UNMJsonBaseURL 'https://univmobile-dev.univ-paris1.fr/json/'",
+				appPath + "/Info.plist");
 
 		// 9. END
 
