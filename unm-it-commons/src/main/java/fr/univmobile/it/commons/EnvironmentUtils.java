@@ -86,9 +86,11 @@ public abstract class EnvironmentUtils {
 
 		final Executor executor = new DefaultExecutor();
 
-		final ByteArrayOutputStream bos = new ByteArrayOutputStream();
+		final ByteArrayOutputStream out = new ByteArrayOutputStream();
 
-		executor.setStreamHandler(new PumpStreamHandler(bos, null));
+		final ByteArrayOutputStream err = new ByteArrayOutputStream();
+
+		executor.setStreamHandler(new PumpStreamHandler(out, err));
 
 		final CommandLine commandLine = new CommandLine(executable);
 
@@ -99,7 +101,16 @@ public abstract class EnvironmentUtils {
 
 		executor.execute(commandLine);
 
-		final String output = bos.toString(UTF_8);
+		final String error = err.toString(UTF_8);
+
+		if (!isBlank(error)) {
+
+			System.err.println("Error:");
+
+			System.err.println(error);
+		}
+
+		final String output = out.toString(UTF_8);
 
 		if (isBlank(output)) {
 

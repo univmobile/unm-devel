@@ -2,22 +2,16 @@ package fr.univmobile.it.commons;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 import static fr.univmobile.it.commons.EnvironmentUtils.exec;
-import static org.apache.commons.lang3.CharEncoding.UTF_8;
 import static org.apache.commons.lang3.StringUtils.split;
 import static org.apache.commons.lang3.StringUtils.substringAfter;
 import static org.apache.commons.lang3.StringUtils.substringBeforeLast;
 
-import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
 import javax.annotation.Nullable;
 
-import org.apache.commons.exec.CommandLine;
-import org.apache.commons.exec.DefaultExecutor;
-import org.apache.commons.exec.Executor;
-import org.apache.commons.exec.PumpStreamHandler;
 import org.apache.commons.io.FileUtils;
 import org.joda.time.DateTime;
 import org.joda.time.format.DateTimeFormat;
@@ -133,10 +127,10 @@ abstract class IOSUtils {
 		// 6. UPDATE "UNMJsonBaseURL"
 
 		exec( //
-		new File("/usr/libexec/Plistbuddy"),
+		new File("/usr/libexec/PlistBuddy"),
 				"-c",
 				"Set UNMJsonBaseURL 'https://univmobile-dev.univ-paris1.fr/json/'",
-				appPath + "/Info.plist");
+				new File(appDest, "Info.plist").getCanonicalPath());
 
 		// 9. END
 
@@ -146,19 +140,8 @@ abstract class IOSUtils {
 	@Nullable
 	private static String readAppCommitId(final File appDir) throws IOException {
 
-		final Executor executor = new DefaultExecutor();
-
-		final ByteArrayOutputStream bos = new ByteArrayOutputStream();
-
-		executor.setStreamHandler(new PumpStreamHandler(bos, null));
-
-		// $ /usr/libexec/PlistBuddy -c Print Info.plist
-
-		executor.execute(new CommandLine(new File("/usr/libexec/PlistBuddy"))
-				.addArgument("-c").addArgument("Print")
-				.addArgument(new File(appDir, "Info.plist").getCanonicalPath()));
-
-		final String output = bos.toString(UTF_8);
+		final String output = exec(new File("/usr/libexec/PlistBuddy"), "-c",
+				"Print", new File(appDir, "Info.plist").getCanonicalPath());
 
 		for (final String line : split(output, "\r\n")) {
 
