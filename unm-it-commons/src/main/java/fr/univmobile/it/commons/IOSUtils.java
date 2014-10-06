@@ -16,6 +16,8 @@ import org.apache.commons.io.FileUtils;
 import org.joda.time.DateTime;
 import org.joda.time.format.DateTimeFormat;
 
+import fr.univmobile.testutil.PropertiesUtils;
+
 abstract class IOSUtils {
 
 	public static String getMostRecentAppPath(final String appPathProperty,
@@ -126,10 +128,12 @@ abstract class IOSUtils {
 
 		// 6. UPDATE "UNMJsonBaseURL"
 
+		final String jsonBaseURL = PropertiesUtils
+				.getTestProperty("jsonBaseURL");
+
 		exec( //
-		new File("/usr/libexec/PlistBuddy"),
-				"-c",
-				"Set UNMJsonBaseURL 'https://univmobile-dev.univ-paris1.fr/json/'",
+		new File("/usr/libexec/PlistBuddy"), //
+				"-c", "Set UNMJsonBaseURL '" + jsonBaseURL + "'", //
 				new File(appDest, "Info.plist").getCanonicalPath());
 
 		// 9. END

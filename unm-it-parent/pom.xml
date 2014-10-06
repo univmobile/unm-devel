@@ -227,6 +227,7 @@
 
 	<properties>
 		<jsonBaseURL>http://localhost:8380/unm-backend/json/</jsonBaseURL>
+		<appium.port>4723</appium.port>
 	</properties>
 	
 	<profiles>

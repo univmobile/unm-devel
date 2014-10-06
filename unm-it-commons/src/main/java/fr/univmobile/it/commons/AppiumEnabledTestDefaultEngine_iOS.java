@@ -118,8 +118,13 @@ final class AppiumEnabledTestDefaultEngine_iOS extends
 
 		// System.out.println("DEBUG: new AppiumDriver()...");
 
-		driver = new AppiumDriver(new URL("http://localhost:4723/wd/hub"),
-				capabilities);
+		final String appiumPort = PropertiesUtils
+				.getTestProperty("appium.port");
+
+		System.out.println("appiumPort: " + appiumPort);
+		
+		driver = new AppiumDriver(new URL("http://localhost:" + appiumPort
+				+ "/wd/hub"), capabilities);
 
 		setDriver(driver);
 	}
