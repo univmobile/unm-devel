@@ -12,6 +12,7 @@ import java.io.IOException;
 
 import org.apache.commons.exec.CommandLine;
 import org.apache.commons.exec.DefaultExecutor;
+import org.apache.commons.exec.ExecuteException;
 import org.apache.commons.exec.Executor;
 import org.apache.commons.exec.PumpStreamHandler;
 
@@ -47,16 +48,7 @@ public abstract class EnvironmentUtils {
 
 	private static String getCurrentPlatformVersion_iOS() throws IOException {
 
-		final Executor executor = new DefaultExecutor();
-
-		final ByteArrayOutputStream bos = new ByteArrayOutputStream();
-
-		executor.setStreamHandler(new PumpStreamHandler(bos, null));
-
-		executor.execute(new CommandLine(new File("/usr/bin/xcodebuild"))
-				.addArgument("-showsdks"));
-
-		final String output = bos.toString(UTF_8);
+		final String output = exec(new File("/usr/bin/xcodebuild"), "-showsdks");
 
 		String platformVersion = null;
 
@@ -78,5 +70,39 @@ public abstract class EnvironmentUtils {
 		}
 
 		return platformVersion;
+	}
+
+	public static String exec(final File executable, final String... arguments)
+			throws ExecuteException, IOException {
+
+		System.out.print("Executing: " + executable.getCanonicalPath());
+
+		for (final String argument : arguments) {
+
+			System.out.print(" \"" + argument + "\"");
+		}
+
+		System.out.println("...");
+
+		final Executor executor = new DefaultExecutor();
+
+		final ByteArrayOutputStream bos = new ByteArrayOutputStream();
+
+		executor.setStreamHandler(new PumpStreamHandler(bos, null));
+
+		final CommandLine commandLine = new CommandLine(executable);
+
+		for (final String argument : arguments) {
+
+			commandLine.addArgument(argument);
+		}
+
+		executor.execute(commandLine);
+
+		final String output = bos.toString(UTF_8);
+
+		System.out.println("Output: " + output);
+
+		return output;
 	}
 }

@@ -123,9 +123,21 @@ abstract class IOSUtils {
 			FileUtils.deleteDirectory(appDest);
 		}
 
+		// 4. COPY APP FILES
+
 		System.out.println("Copying into: " + appPath + "...");
 
 		FileUtils.copyDirectory(mostRecentApp, appDest);
+
+		// 6. UPDATE "UNMJsonBaseURL"
+
+		EnvironmentUtils
+				.exec(new File("/usr/libexec/Plistbuddy"),
+						"-c",
+						"Set UNMJsonBaseURL 'https://univmobile-dev.univ-paris1.fr/json/'",
+						appPath + "/Info.plist");
+
+		// 9. END
 
 		return appPath;
 	}
