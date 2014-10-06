@@ -225,6 +225,10 @@
 		</repository>
 	</repositories>
 
+	<properties>
+		<jsonBaseURL>http://localhost:8380/unm-backend/json/</jsonBaseURL>
+	</properties>
+	
 	<profiles>
 		<profile>
 			<id>dandriana</id>
