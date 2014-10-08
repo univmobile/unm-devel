@@ -82,7 +82,7 @@ final class SeleniumEnabledTestDefaultEngine extends
 		final int seleniumPort = 8888;
 
 		final String url = "http://localhost:"
-				+ PropertiesUtils.getTestProperty("tomcat.port") + "/";
+				+ PropertiesUtils.getTestProperty("tomcat.servlet.port") + "/";
 
 		System.out.println("Using browser: " + defaultBrowser + "...");
 
