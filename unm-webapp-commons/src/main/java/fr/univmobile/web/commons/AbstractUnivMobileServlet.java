@@ -1,5 +1,6 @@
 package fr.univmobile.web.commons;
 
+import static com.google.common.base.Preconditions.checkNotNull;
 import static org.apache.commons.lang3.CharEncoding.UTF_8;
 import static org.apache.commons.lang3.StringUtils.isBlank;
 import static org.apache.commons.lang3.StringUtils.substringBeforeLast;
@@ -75,7 +76,7 @@ public abstract class AbstractUnivMobileServlet extends HttpServlet {
 		if (baseURL.contains("$") || baseURL.contains("{")
 				|| baseURL.contains("}")) {
 			throw new ServletException(
-					"Servlet init parameter baseURL has not been filtered: "
+					"Servlet init parameter \"baseURL\" has not been filtered: "
 							+ baseURL);
 		}
 
@@ -173,5 +174,30 @@ public abstract class AbstractUnivMobileServlet extends HttpServlet {
 			final HttpServletRequest request, final HttpServletResponse response) {
 
 		controller.setThreadLocalRequest(request, response);
+	}
+
+	/**
+	 * Retrieve a initialization parameter of the current servlet (configured
+	 * with a <code>&lt;init-param/&gt;</code> element in the web.xml file),
+	 * checking for null or empty values.
+	 */
+	protected final String checkedInitParameter(final String name)
+			throws ServletException {
+
+		checkNotNull(name, "name");
+
+		final String value = getInitParameter(name);
+
+		if (value == null) {
+			throw new ServletException("Servlet init parameter \"" + name
+					+ "\" cannot be found: " + value);
+		}
+
+		if (isBlank(value)) {
+			throw new ServletException("Servlet init parameter \"" + name
+					+ "\" is empty: " + value);
+		}
+		
+		return value;
 	}
 }
