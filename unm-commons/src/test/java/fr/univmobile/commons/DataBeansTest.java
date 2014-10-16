@@ -38,6 +38,66 @@ public class DataBeansTest {
 	}
 
 	@Test
+	public void test_instantiatePerson_enrich() throws Exception {
+
+		final Person person = DataBeans.instantiate(Person.class);
+
+		person.setFirstName("David");
+
+		assertEquals("David", person.getFirstName());
+
+		assertEquals("{bookTitles: null, firstName: David, lastName: null}",
+				person.toString());
+
+		final PersonEnriched enriched = DataBeans.enrich(person,
+				PersonEnriched.class);
+
+		assertEquals("David", enriched.getFirstName());
+
+		enriched.setEditable(false);
+
+		assertEquals(false, enriched.getEditable());
+
+		assertEquals(
+				"{bookTitles: null, editable: false, firstName: David, lastName: null}",
+				enriched.toString());
+
+		enriched.setEditable(true);
+
+		assertEquals(true, enriched.getEditable());
+
+		assertEquals(
+				"{bookTitles: null, editable: true, firstName: David, lastName: null}",
+				enriched.toString());
+
+		enriched.setFirstName("Dan");
+
+		assertEquals("Dan", person.getFirstName());
+
+		assertEquals("Dan", enriched.getFirstName());
+
+		person.setFirstName("Dany");
+
+		assertEquals("Dany", person.getFirstName());
+
+		assertEquals("Dany", enriched.getFirstName());
+	}
+
+	@Test
+	public void test_instantiateBook_isXxx_enrich() throws Exception {
+
+		final Book book = DataBeans.instantiate(Book.class);
+
+		book.setPaperback(true);
+
+		assertEquals(true, book.isPaperback());
+		
+		final BookEnriched enriched = DataBeans.enrich(book, BookEnriched.class);
+		
+		assertEquals(true, enriched.isPaperback());
+	}
+
+	@Test
 	public void test_setNullable() throws Exception {
 
 		final Person person = DataBeans.instantiate(Person.class);
@@ -199,4 +259,29 @@ interface PersonWithAddress {
 
 		Address setText(String text);
 	}
+}
+
+interface PersonEnriched extends Person {
+
+	boolean getEditable();
+
+	PersonEnriched setEditable(boolean editable);
+}
+
+interface Book {
+
+	Book setTitle();
+
+	String getTitle();
+
+	boolean isPaperback();
+
+	Book setPaperback(boolean paperback);
+}
+
+interface BookEnriched extends Book {
+
+	boolean getEditable();
+
+	BookEnriched setEditable(boolean editable);
 }

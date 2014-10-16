@@ -1,6 +1,7 @@
 package fr.univmobile.commons;
 
 import static com.google.common.base.Preconditions.checkNotNull;
+import static fr.univmobile.commons.ReflectUtils.hasMethod;
 import static org.apache.commons.lang3.StringUtils.capitalize;
 import static org.apache.commons.lang3.StringUtils.uncapitalize;
 
@@ -44,6 +45,43 @@ public abstract class DataBeans {
 	private static class DataBeanInvocationHandler implements InvocationHandler {
 
 		public DataBeanInvocationHandler(final Class<?> clazz) {
+
+			this(null, clazz);
+		}
+
+		public DataBeanInvocationHandler(@Nullable final Object base,
+				final Class<?> clazz) {
+
+			if (base != null) {
+
+				this.base = base;
+
+				baseClass = base.getClass();
+
+				if (Proxy.isProxyClass(baseClass)) {
+
+					final InvocationHandler ih = Proxy
+							.getInvocationHandler(base);
+
+					if (DataBeanInvocationHandler.class.isInstance(ih)) {
+
+						baseInvocationHandler = (DataBeanInvocationHandler) ih;
+					} else {
+
+						baseInvocationHandler = null;
+					}
+
+				} else {
+
+					baseInvocationHandler = null;
+				}
+
+			} else {
+
+				this.base = null;
+				baseClass = null;
+				baseInvocationHandler = null;
+			}
 
 			this.clazz = checkNotNull(clazz);
 
@@ -116,9 +154,34 @@ public abstract class DataBeans {
 			}
 		}
 
+		@Nullable
+		private final Object base;
+
+		@Nullable
+		private final Class<?> baseClass;
+
+		@Nullable
+		private final DataBeanInvocationHandler baseInvocationHandler;
+
 		private final Class<?> clazz;
 
 		private final Map<String, Object> properties = new HashMap<String, Object>();
+
+		private Object getProperty(final String name) {
+
+			if (baseInvocationHandler != null) {
+
+				final Object baseValue = baseInvocationHandler
+						.getProperty(name);
+
+				if (baseValue != null) {
+
+					return baseValue;
+				}
+			}
+
+			return properties.get(name);
+		}
 
 		private Method[] getGetters() {
 
@@ -187,6 +250,10 @@ public abstract class DataBeans {
 
 				return uncapitalize(methodName.substring(3));
 
+			} else if (methodName.startsWith("is")) {
+
+				return uncapitalize(methodName.substring(2));
+
 			} else if (methodName.startsWith("addTo")) {
 
 				return uncapitalize(methodName.substring(5));
@@ -232,6 +299,9 @@ public abstract class DataBeans {
 		public Object invoke(final Object proxy, final Method method,
 				final Object[] args) throws Throwable {
 
+			// System.out.println("method: "+method);
+			// System.out.println("  baseClass: "+baseClass);
+
 			final String methodName = method.getName();
 
 			final boolean noArgs = args == null || args.length == 0;
@@ -256,7 +326,7 @@ public abstract class DataBeans {
 					sb.append(propertyName).append(": ");
 
 					final Object value = // getter.invoke(proxy); // !@Nullable
-					properties.get(propertyName);
+					getProperty(propertyName);
 
 					sb.append(value);
 				}
@@ -304,9 +374,9 @@ public abstract class DataBeans {
 
 					final String propertyName = getPropertyName(getter);
 
-					final Object value = properties.get(propertyName);
+					final Object value = getProperty(propertyName);
 
-					final Object tValue = t.properties.get(propertyName);
+					final Object tValue = t.getProperty(propertyName);
 
 					if (value == tValue) {
 						continue;
@@ -328,7 +398,13 @@ public abstract class DataBeans {
 						"getClass() should not be accessible: " + clazz);
 			}
 
-			if (methodName.startsWith("get") && noArgs) {
+			if ((methodName.startsWith("get") || methodName.startsWith("is"))
+					&& noArgs) {
+
+				if (base != null && hasMethod(baseClass, methodName)) {
+
+					return method.invoke(base);
+				}
 
 				final String propertyName = getPropertyName(method);
 
@@ -380,9 +456,14 @@ public abstract class DataBeans {
 
 			if (methodName.startsWith("set") && oneArg) {
 
-				final String propertyName = getPropertyName(method);
-
 				final Object value = args[0];
+
+				if (base != null && hasMethod(baseClass, methodName, 1)) {
+
+					return method.invoke(base, value);
+				}
+
+				final String propertyName = getPropertyName(method);
 
 				if (value == null) {
 
@@ -399,22 +480,22 @@ public abstract class DataBeans {
 				} else if (value.getClass().isArray()) {
 
 					// Array -> List
-					
+
 					final List<Object> list = new ArrayList<Object>();
 
 					final int length = Array.getLength(value);
-					
+
 					for (int i = 0; i < length; ++i) {
-						
+
 						final Object item = Array.get(value, i);
-						
+
 						list.add(item);
 					}
-					
+
 					properties.put(propertyName, list);
 
 				} else {
-					
+
 					properties.put(propertyName, value);
 				}
 
@@ -431,9 +512,14 @@ public abstract class DataBeans {
 
 			if (methodName.startsWith("addTo") && oneArg) {
 
-				final String propertyName = getPropertyName(method);
-
 				final Object value = args[0];
+
+				if (base != null && hasMethod(baseClass, methodName, 1)) {
+
+					return method.invoke(base, value);
+				}
+
+				final String propertyName = getPropertyName(method);
 
 				if (value == null) {
 					throw new NotImplementedException("Array property "
@@ -482,5 +568,22 @@ public abstract class DataBeans {
 		}
 
 		return false;
+	}
+
+	public static <U, T extends U> T enrich(final U instance,
+			final Class<T> clazz) {
+
+		checkNotNull(clazz, "clazz");
+
+		final ClassLoader classLoader = clazz.getClassLoader();
+
+		final InvocationHandler invocationHandler = //
+		new DataBeanInvocationHandler(instance, clazz);
+
+		final Object proxy = Proxy
+				.newProxyInstance(classLoader, new Class<?>[] { clazz,
+						Serializable.class }, invocationHandler);
+
+		return clazz.cast(proxy);
 	}
 }
