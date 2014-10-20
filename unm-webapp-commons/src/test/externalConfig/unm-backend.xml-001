@@ -1,0 +1,13 @@
+<unm-backend>
+	<servlet xmlns="http://java.sun.com/xml/ns/j2ee">
+		<servlet-name>BackendServlet</servlet-name>
+		<init-param>
+			<param-name>twitter.consumerKey</param-name>
+			<param-value>Hello, consumerKey</param-value>
+		</init-param>
+		<init-param>
+			<param-name>twitter.consumerSecret</param-name>
+			<param-value>Hello, consumerSecret</param-value>
+		</init-param>		
+	</servlet>
+</unm-backend>

@@ -1,6 +1,5 @@
 package fr.univmobile.web.commons;
 
-import static com.google.common.base.Preconditions.checkNotNull;
 import static org.apache.commons.lang3.CharEncoding.UTF_8;
 import static org.apache.commons.lang3.StringUtils.isBlank;
 import static org.apache.commons.lang3.StringUtils.substringBeforeLast;
@@ -182,22 +181,8 @@ public abstract class AbstractUnivMobileServlet extends HttpServlet {
 	 * checking for null or empty values.
 	 */
 	protected final String checkedInitParameter(final String name)
-			throws ServletException {
+			throws ServletException, IOException {
 
-		checkNotNull(name, "name");
-
-		final String value = getInitParameter(name);
-
-		if (value == null) {
-			throw new ServletException("Servlet init parameter \"" + name
-					+ "\" cannot be found: " + value);
-		}
-
-		if (isBlank(value)) {
-			throw new ServletException("Servlet init parameter \"" + name
-					+ "\" is empty: " + value);
-		}
-		
-		return value;
+		return new InitParamUtils(this).checkedInitParameter(name);
 	}
 }
