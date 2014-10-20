@@ -4,8 +4,6 @@ import static com.google.common.base.Preconditions.checkNotNull;
 import static org.apache.commons.lang3.StringUtils.isBlank;
 
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.IOException;
 
 import javax.annotation.Nullable;
 import javax.servlet.ServletException;
@@ -64,7 +62,7 @@ final class InitParamUtils {
 	}
 
 	public String checkedInitParameter(final String name)
-			throws ServletException, IOException {
+			throws ServletException {
 
 		checkNotNull(name, "name");
 
@@ -75,8 +73,8 @@ final class InitParamUtils {
 			final File file = new File(externalConfig);
 
 			if (!file.isFile()) {
-				throw new FileNotFoundException(
-						"Cannot find file for externalConfig: "
+				throw new ServletException(
+						"Cannot find local file for externalConfig: "
 								+ externalConfig);
 			}
 

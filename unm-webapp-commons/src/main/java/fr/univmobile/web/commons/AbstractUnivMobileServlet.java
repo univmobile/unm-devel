@@ -181,7 +181,7 @@ public abstract class AbstractUnivMobileServlet extends HttpServlet {
 	 * checking for null or empty values.
 	 */
 	protected final String checkedInitParameter(final String name)
-			throws ServletException, IOException {
+			throws ServletException {
 
 		return new InitParamUtils(this).checkedInitParameter(name);
 	}
