@@ -90,6 +90,11 @@ public abstract class WebDriverEnabledTest implements
 	public final void waitForElementById(final int seconds, final String id)
 			throws IOException {
 
+		if (seconds > 100) {
+
+			throw new IllegalArgumentException("seconds > 100: " + seconds);
+		}
+
 		checkUseWeb().checkedEngine().waitForElementById(seconds, id);
 	}
 
