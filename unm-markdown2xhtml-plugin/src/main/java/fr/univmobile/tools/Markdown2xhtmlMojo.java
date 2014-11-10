@@ -44,7 +44,6 @@ public final class Markdown2xhtmlMojo extends AbstractMojo {
 	 * 
 	 * @throws MojoExecutionException
 	 */
-	@Override
 	public void execute() throws MojoExecutionException {
 
 		final Log logger = getLog();
