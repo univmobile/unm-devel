@@ -109,7 +109,6 @@ final class Markdown2xhtmlEngine {
 
 		transformerFactory.setURIResolver(new URIResolver() {
 
-			@Override
 			public Source resolve(final String href, final String base)
 					throws TransformerException {
 
