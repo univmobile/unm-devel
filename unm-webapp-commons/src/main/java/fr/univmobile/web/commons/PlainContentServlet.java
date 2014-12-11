@@ -47,6 +47,8 @@ public class PlainContentServlet extends HttpServlet {
 				&& !uriPath.equals("js") //
 				&& !uriPath.startsWith("img/") //
 				&& !uriPath.equals("img") //
+				&& !uriPath.startsWith("fonts/") //
+				&& !uriPath.equals("fonts") //
 		) {
 			log.error("Unknown scheme for uriPath: " + uriPath);
 
