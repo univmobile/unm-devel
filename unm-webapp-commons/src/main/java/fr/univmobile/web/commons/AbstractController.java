@@ -439,6 +439,17 @@ public abstract class AbstractController {
 						return invalidHttpInputs(clazz);
 					}
 
+				} else if (Long.class.equals(type)) {
+
+					try {
+
+						httpParameterValue = Long
+								.parseLong(httpParameterValueStr);
+
+					} catch (final NumberFormatException e) {
+						return invalidHttpInputs(clazz);
+					}
+
 				} else if (double.class.equals(type)) {
 
 					try {
