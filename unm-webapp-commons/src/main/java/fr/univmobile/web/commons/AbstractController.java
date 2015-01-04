@@ -163,6 +163,11 @@ public abstract class AbstractController {
 		return false;
 	}
 
+	protected final String getAbsolutePath() {
+		return getBaseURL() + "/"
+				+ UnivMobileHttpUtils.extractUriPath(checkedRequest());
+	}
+
 	/**
 	 * @param pathVariable
 	 *            e.g. <code>"${id}"</tt>
@@ -170,6 +175,22 @@ public abstract class AbstractController {
 	 * <code>"pois/${id}"</code>.
 	 */
 	protected final int getPathIntVariable(final String pathVariable) {
+
+		final String uriPath = UnivMobileHttpUtils
+				.extractUriPath(checkedRequest());
+
+		final String pattern = getPatternForUriPath(uriPath);
+
+		return getPathIntVariable(uriPath, pattern, pathVariable);
+	}
+
+	/**
+	 * @param pathVariable
+	 *            e.g. <code>"${id}"</tt>
+	 * if the {@link Paths} annotation declared some path such as
+	 * <code>"pois/${id}"</code>.
+	 */
+	protected final int getPathLongVariable(final String pathVariable) {
 
 		final String uriPath = UnivMobileHttpUtils
 				.extractUriPath(checkedRequest());
@@ -450,12 +471,15 @@ public abstract class AbstractController {
 						return invalidHttpInputs(clazz);
 					}
 
-				} else if (double.class.equals(type)) {
+				} else if (Double.class.equals(type) || double.class.equals(type)) {
 
 					try {
 
-						httpParameterValue = Double
-								.parseDouble(httpParameterValueStr);
+						if (isBlank(httpParameterValueStr))
+							httpParameterValue = null;
+						else
+							httpParameterValue = Double
+									.parseDouble(httpParameterValueStr);
 
 					} catch (final NumberFormatException e) {
 						return invalidHttpInputs(clazz);
@@ -603,6 +627,40 @@ public abstract class AbstractController {
 		final HttpServletResponse response = checkedResponse();
 
 		UnivMobileHttpUtils.sendError400(request, response);
+
+		return null;
+	}
+	
+	/**
+	 * Send a 403 (FORBIDEN) HTTP error code.
+	 * 
+	 * @return <code>null</code>
+	 * @throws IOException 
+	 */
+	@Nullable
+	protected final View sendError403(String reason) throws IOException {
+
+		final HttpServletRequest request = checkedRequest();
+		final HttpServletResponse response = checkedResponse();
+
+		UnivMobileHttpUtils.sendError403(request, response, reason);
+
+		return null;
+	}
+
+	/**
+	 * Send a 404 (NOT FOUND) HTTP error code.
+	 * 
+	 * @return <code>null</code>
+	 */
+	@Nullable
+	protected final View sendError404() throws IOException {
+
+		final HttpServletRequest request = checkedRequest();
+		final HttpServletResponse response = checkedResponse();
+
+		UnivMobileHttpUtils.sendError404(request, response, getBaseURL()
+				+ getAbsolutePath());
 
 		return null;
 	}
