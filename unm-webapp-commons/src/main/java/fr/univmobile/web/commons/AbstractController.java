@@ -190,7 +190,7 @@ public abstract class AbstractController {
 	 * if the {@link Paths} annotation declared some path such as
 	 * <code>"pois/${id}"</code>.
 	 */
-	protected final int getPathLongVariable(final String pathVariable) {
+	protected final long getPathLongVariable(final String pathVariable) {
 
 		final String uriPath = UnivMobileHttpUtils
 				.extractUriPath(checkedRequest());
