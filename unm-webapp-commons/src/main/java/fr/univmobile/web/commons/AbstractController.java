@@ -346,7 +346,7 @@ public abstract class AbstractController {
 		return checkedRequest().getRemoteUser();
 	}
 
-	final HttpServletRequest checkedRequest() {
+	protected final HttpServletRequest checkedRequest() {
 
 		final HttpServletRequestHolder holder = threadLocalRequest.get();
 
@@ -357,7 +357,7 @@ public abstract class AbstractController {
 		return holder.request;
 	}
 
-	final HttpServletResponse checkedResponse() {
+	protected final HttpServletResponse checkedResponse() {
 
 		final HttpServletRequestHolder holder = threadLocalRequest.get();
 
